@@ -16,7 +16,30 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible ];
+    
+    //主页
+    HomeController *homeView = [[HomeController alloc] init];
+    homeView.title = @"首页";
+    UINavigationController *NHomeView = [[UINavigationController alloc] initWithRootViewController:homeView];
+    
+    //左侧栏
+    LeftMainController *LMVC = [[LeftMainController alloc] init];
+    UINavigationController *NLMVC = [[UINavigationController alloc] initWithRootViewController:LMVC];
+    
+    MMDrawerController *MMVC = [[MMDrawerController alloc] initWithCenterViewController:NHomeView
+                                                               leftDrawerViewController:NLMVC];
+    MMVC.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
+    MMVC.closeDrawerGestureModeMask =MMCloseDrawerGestureModeAll;
+    //5、设置左右两边抽屉显示的多少
+    MMVC.maximumLeftDrawerWidth = 200.0;
+    
+    [self.window setRootViewController:MMVC];
+    
+    
     return YES;
 }
 

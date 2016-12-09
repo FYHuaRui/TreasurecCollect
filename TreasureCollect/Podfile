@@ -1,5 +1,13 @@
 platform:ios,'8.0'
 
-target :TreasureCollect do
+target 'TreasureCollect' do
+
+pod 'AFNetworking', '~> 3.1.0'
+pod 'JSONKit-NoWarning', '~> 1.2'
+pod 'MMDrawerController', '~> 0.6.0'
+pod 'SDWebImage', '~> 4.0.0-beta2'
+pod 'MJRefresh', '~> 3.1.12'
+pod 'MBProgressHUD', '~> 1.0.0'
+pod 'Masonry', '~> 1.0.2'
 
 end

@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		18273CA71DFA574F00855FCB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18273CA61DFA574F00855FCB /* main.m */; };
 		18273CAA1DFA574F00855FCB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18273CA91DFA574F00855FCB /* AppDelegate.m */; };
-		18273CAD1DFA574F00855FCB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18273CAC1DFA574F00855FCB /* ViewController.m */; };
-		18273CB01DFA574F00855FCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18273CAE1DFA574F00855FCB /* Main.storyboard */; };
 		18273CB21DFA574F00855FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18273CB11DFA574F00855FCB /* Assets.xcassets */; };
 		18273CB51DFA574F00855FCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18273CB31DFA574F00855FCB /* LaunchScreen.storyboard */; };
 		18273CC01DFA574F00855FCB /* TreasureCollectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18273CBF1DFA574F00855FCB /* TreasureCollectTests.m */; };
 		18273CCB1DFA574F00855FCB /* TreasureCollectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18273CCA1DFA574F00855FCB /* TreasureCollectUITests.m */; };
+		18273CE31DFAA01C00855FCB /* HttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18273CE21DFAA01C00855FCB /* HttpTool.m */; };
+		1829D9C41DFAA78300405DF2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829D9C21DFAA78300405DF2 /* BaseViewController.m */; };
+		1829D9C51DFAA78300405DF2 /* BaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1829D9C31DFAA78300405DF2 /* BaseViewController.xib */; };
+		1829D9C91DFAA7CE00405DF2 /* UIColor+RGB.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829D9C81DFAA7CE00405DF2 /* UIColor+RGB.m */; };
+		1829D9D11DFAA9AB00405DF2 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829D9CF1DFAA9AB00405DF2 /* HomeController.m */; };
+		1829D9D21DFAA9AB00405DF2 /* HomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1829D9D01DFAA9AB00405DF2 /* HomeController.xib */; };
+		1829D9DB1DFAAA4600405DF2 /* LeftMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829D9D91DFAAA4600405DF2 /* LeftMainController.m */; };
+		1829D9DC1DFAAA4600405DF2 /* LeftMainController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1829D9DA1DFAAA4600405DF2 /* LeftMainController.xib */; };
 		9D7204B0697FFCC7D0153A8D /* libPods-TreasureCollect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */; };
 /* End PBXBuildFile section */
 
@@ -40,9 +46,6 @@
 		18273CA61DFA574F00855FCB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18273CA81DFA574F00855FCB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18273CA91DFA574F00855FCB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		18273CAB1DFA574F00855FCB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		18273CAC1DFA574F00855FCB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		18273CAF1DFA574F00855FCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18273CB11DFA574F00855FCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18273CB41DFA574F00855FCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18273CB61DFA574F00855FCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +55,21 @@
 		18273CC61DFA574F00855FCB /* TreasureCollectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreasureCollectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18273CCA1DFA574F00855FCB /* TreasureCollectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreasureCollectUITests.m; sourceTree = "<group>"; };
 		18273CCC1DFA574F00855FCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18273CDE1DFA9E2400855FCB /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		18273CDF1DFA9E4500855FCB /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		18273CE11DFAA01C00855FCB /* HttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpTool.h; sourceTree = "<group>"; };
+		18273CE21DFAA01C00855FCB /* HttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpTool.m; sourceTree = "<group>"; };
+		1829D9C11DFAA78300405DF2 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		1829D9C21DFAA78300405DF2 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		1829D9C31DFAA78300405DF2 /* BaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseViewController.xib; sourceTree = "<group>"; };
+		1829D9C71DFAA7CE00405DF2 /* UIColor+RGB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGB.h"; sourceTree = "<group>"; };
+		1829D9C81DFAA7CE00405DF2 /* UIColor+RGB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGB.m"; sourceTree = "<group>"; };
+		1829D9CE1DFAA9AB00405DF2 /* HomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
+		1829D9CF1DFAA9AB00405DF2 /* HomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
+		1829D9D01DFAA9AB00405DF2 /* HomeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeController.xib; sourceTree = "<group>"; };
+		1829D9D81DFAAA4600405DF2 /* LeftMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMainController.h; sourceTree = "<group>"; };
+		1829D9D91DFAAA4600405DF2 /* LeftMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMainController.m; sourceTree = "<group>"; };
+		1829D9DA1DFAAA4600405DF2 /* LeftMainController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMainController.xib; sourceTree = "<group>"; };
 		5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.release.xcconfig"; sourceTree = "<group>"; };
 		973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.debug.xcconfig"; sourceTree = "<group>"; };
 		EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreasureCollect.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,9 +128,8 @@
 			children = (
 				18273CA81DFA574F00855FCB /* AppDelegate.h */,
 				18273CA91DFA574F00855FCB /* AppDelegate.m */,
-				18273CAB1DFA574F00855FCB /* ViewController.h */,
-				18273CAC1DFA574F00855FCB /* ViewController.m */,
-				18273CAE1DFA574F00855FCB /* Main.storyboard */,
+				18273CDD1DFA9E1100855FCB /* Common */,
+				1829D9BE1DFAA62D00405DF2 /* MainCode */,
 				18273CB11DFA574F00855FCB /* Assets.xcassets */,
 				18273CB31DFA574F00855FCB /* LaunchScreen.storyboard */,
 				18273CB61DFA574F00855FCB /* Info.plist */,
@@ -125,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				18273CA61DFA574F00855FCB /* main.m */,
+				18273CDF1DFA9E4500855FCB /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -145,6 +163,138 @@
 				18273CCC1DFA574F00855FCB /* Info.plist */,
 			);
 			path = TreasureCollectUITests;
+			sourceTree = "<group>";
+		};
+		18273CDD1DFA9E1100855FCB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				18273CDE1DFA9E2400855FCB /* Common.h */,
+				1829D9C61DFAA7CE00405DF2 /* 上色类目 */,
+				18273CE01DFAA00200855FCB /* HttpTools */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		18273CE01DFAA00200855FCB /* HttpTools */ = {
+			isa = PBXGroup;
+			children = (
+				18273CE11DFAA01C00855FCB /* HttpTool.h */,
+				18273CE21DFAA01C00855FCB /* HttpTool.m */,
+			);
+			path = HttpTools;
+			sourceTree = "<group>";
+		};
+		1829D9BE1DFAA62D00405DF2 /* MainCode */ = {
+			isa = PBXGroup;
+			children = (
+				1829D9BF1DFAA62D00405DF2 /* Base */,
+				1829D9C01DFAA6CC00405DF2 /* HomePage */,
+				1829D9D31DFAA9EC00405DF2 /* LeftFunction */,
+			);
+			path = MainCode;
+			sourceTree = "<group>";
+		};
+		1829D9BF1DFAA62D00405DF2 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1829D9C11DFAA78300405DF2 /* BaseViewController.h */,
+				1829D9C21DFAA78300405DF2 /* BaseViewController.m */,
+				1829D9C31DFAA78300405DF2 /* BaseViewController.xib */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		1829D9C01DFAA6CC00405DF2 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				1829D9CA1DFAA97800405DF2 /* Home */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		1829D9C61DFAA7CE00405DF2 /* 上色类目 */ = {
+			isa = PBXGroup;
+			children = (
+				1829D9C71DFAA7CE00405DF2 /* UIColor+RGB.h */,
+				1829D9C81DFAA7CE00405DF2 /* UIColor+RGB.m */,
+			);
+			path = "上色类目";
+			sourceTree = "<group>";
+		};
+		1829D9CA1DFAA97800405DF2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1829D9CB1DFAA99A00405DF2 /* Controller */,
+				1829D9CC1DFAA99A00405DF2 /* Model */,
+				1829D9CD1DFAA99A00405DF2 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1829D9CB1DFAA99A00405DF2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1829D9CE1DFAA9AB00405DF2 /* HomeController.h */,
+				1829D9CF1DFAA9AB00405DF2 /* HomeController.m */,
+				1829D9D01DFAA9AB00405DF2 /* HomeController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1829D9CC1DFAA99A00405DF2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1829D9CD1DFAA99A00405DF2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1829D9D31DFAA9EC00405DF2 /* LeftFunction */ = {
+			isa = PBXGroup;
+			children = (
+				1829D9D41DFAAA3300405DF2 /* LeftMain */,
+			);
+			path = LeftFunction;
+			sourceTree = "<group>";
+		};
+		1829D9D41DFAAA3300405DF2 /* LeftMain */ = {
+			isa = PBXGroup;
+			children = (
+				1829D9D51DFAAA3300405DF2 /* Controller */,
+				1829D9D61DFAAA3300405DF2 /* Model */,
+				1829D9D71DFAAA3300405DF2 /* View */,
+			);
+			path = LeftMain;
+			sourceTree = "<group>";
+		};
+		1829D9D51DFAAA3300405DF2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1829D9D81DFAAA4600405DF2 /* LeftMainController.h */,
+				1829D9D91DFAAA4600405DF2 /* LeftMainController.m */,
+				1829D9DA1DFAAA4600405DF2 /* LeftMainController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1829D9D61DFAAA3300405DF2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1829D9D71DFAAA3300405DF2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		33D3739CAE8A88E9F62F8BD5 /* Frameworks */ = {
@@ -273,9 +423,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1829D9D21DFAA9AB00405DF2 /* HomeController.xib in Resources */,
+				1829D9C51DFAA78300405DF2 /* BaseViewController.xib in Resources */,
+				1829D9DC1DFAAA4600405DF2 /* LeftMainController.xib in Resources */,
 				18273CB51DFA574F00855FCB /* LaunchScreen.storyboard in Resources */,
 				18273CB21DFA574F00855FCB /* Assets.xcassets in Resources */,
-				18273CB01DFA574F00855FCB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,9 +500,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18273CAD1DFA574F00855FCB /* ViewController.m in Sources */,
+				1829D9DB1DFAAA4600405DF2 /* LeftMainController.m in Sources */,
 				18273CAA1DFA574F00855FCB /* AppDelegate.m in Sources */,
+				1829D9C41DFAA78300405DF2 /* BaseViewController.m in Sources */,
 				18273CA71DFA574F00855FCB /* main.m in Sources */,
+				1829D9C91DFAA7CE00405DF2 /* UIColor+RGB.m in Sources */,
+				1829D9D11DFAA9AB00405DF2 /* HomeController.m in Sources */,
+				18273CE31DFAA01C00855FCB /* HttpTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,14 +542,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		18273CAE1DFA574F00855FCB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18273CAF1DFA574F00855FCB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		18273CB31DFA574F00855FCB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -500,10 +648,13 @@
 			baseConfigurationReference = 973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = TreasureCollect/PrefixHeader.pch;
 				INFOPLIST_FILE = TreasureCollect/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fyhr.TreasureCollect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -512,10 +663,13 @@
 			baseConfigurationReference = 5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = TreasureCollect/PrefixHeader.pch;
 				INFOPLIST_FILE = TreasureCollect/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fyhr.TreasureCollect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -584,6 +738,7 @@
 				18273CD11DFA574F00855FCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18273CD21DFA574F00855FCB /* Build configuration list for PBXNativeTarget "TreasureCollectTests" */ = {
 			isa = XCConfigurationList;
@@ -592,6 +747,7 @@
 				18273CD41DFA574F00855FCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18273CD51DFA574F00855FCB /* Build configuration list for PBXNativeTarget "TreasureCollectUITests" */ = {
 			isa = XCConfigurationList;
@@ -600,6 +756,7 @@
 				18273CD71DFA574F00855FCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
