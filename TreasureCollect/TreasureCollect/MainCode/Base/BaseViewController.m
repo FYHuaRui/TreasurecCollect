@@ -30,10 +30,9 @@
 -(void)setNavigationBar{
     
     self.navigationController.navigationBar.translucent = NO;
-//    [self.navigationController.navigationBar setBarTintColor:[UIColor darkGrayColor]];
     [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSFontAttributeName:[UIFont systemFontOfSize:22],
-       NSForegroundColorAttributeName : [UIColor darkGrayColor]}];
+     @{NSFontAttributeName:[UIFont systemFontOfSize:18],
+       NSForegroundColorAttributeName : [UIColor blackColor]}];
     [self _addBackItem];
 }
 
