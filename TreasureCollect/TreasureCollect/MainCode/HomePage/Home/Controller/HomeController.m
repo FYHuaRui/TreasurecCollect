@@ -53,6 +53,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
     //测试数据
     {
         _isShowFiveRecord = YES;
@@ -258,18 +259,9 @@
     NSLog(@"DEALLOC");
 }
 
-- (BOOL)prefersStatusBarHidden {
-    return YES;
-}
 
 #pragma mark -底部控件
 - (void)initViews{
-    
-    
-    //更多按钮展示界面
-    self.leftMore = [[LeftMore alloc] initWithFrame:CGRectMake(-150, 20, self.leftMore.frame.size.width, self.leftMore.frame.size.height)];
-    self.leftMore.hidden = YES;//先设置隐藏
-    [self.view addSubview:self.leftMore];
     
     //点击收回更多界面
     UITapGestureRecognizer  *moreTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(moreTapClicked)];
@@ -290,6 +282,20 @@
                         action:@selector(rechargeAction:)
               forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_rechargeButton];
+    
+    //银元券
+    _ticketButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _ticketButton.frame = CGRectMake(180.f, 12.f, 60.f, 24.f);
+    [_ticketButton setTitle:@"银元券" forState:UIControlStateNormal];
+    [_ticketButton addTarget:self
+                        action:@selector(ticketAction:)
+              forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_ticketButton];
+    
+    //更多按钮展示界面
+    self.leftMore = [[LeftMore alloc] initWithFrame:CGRectMake(-150, 20, self.leftMore.frame.size.width, self.leftMore.frame.size.height)];
+    self.leftMore.hidden = YES;//先设置隐藏
+    [self.view addSubview:self.leftMore];
     
 //
 //    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(12.f, KScreenHeight - kNavigationBarHeight - 12.f - KScreenWidth-kNavigationBarHeight-_stockContainerView.bottom - 24.f, KScreenWidth / 2 - 24.f, KScreenWidth-kNavigationBarHeight-_stockContainerView.bottom - 24.f)];
@@ -343,6 +349,14 @@
     [self.navigationController pushViewController:RVC
                                          animated:YES];
     
+}
+
+- (void)ticketAction:(UIButton *)button{
+
+    TicketViewController *TVC = [[TicketViewController alloc] init];
+    [self.navigationController pushViewController:TVC
+                                         animated:YES];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{

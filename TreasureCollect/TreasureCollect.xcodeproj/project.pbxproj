@@ -53,6 +53,9 @@
 		1829DA501DFAB85D00405DF2 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829DA4F1DFAB85D00405DF2 /* UIViewExt.m */; };
 		188F09421DFE3C6F004E1284 /* RechargeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188F09401DFE3C6F004E1284 /* RechargeController.m */; };
 		188F09431DFE3C6F004E1284 /* RechargeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188F09411DFE3C6F004E1284 /* RechargeController.xib */; };
+		188F09611DFE899D004E1284 /* TicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188F095F1DFE899D004E1284 /* TicketViewController.m */; };
+		188F09621DFE899D004E1284 /* TicketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188F09601DFE899D004E1284 /* TicketViewController.xib */; };
+		188F09651DFE91CF004E1284 /* ticktBlank.png in Resources */ = {isa = PBXBuildFile; fileRef = 188F09641DFE91CF004E1284 /* ticktBlank.png */; };
 		92442FC41DFE400C008BF127 /* LeftMore.m in Sources */ = {isa = PBXBuildFile; fileRef = 92442FC31DFE400C008BF127 /* LeftMore.m */; };
 		92442FC71DFE6E18008BF127 /* LeftTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92442FC61DFE6E18008BF127 /* LeftTableView.m */; };
 		92442FCB1DFE7841008BF127 /* UIButton+BackGroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 92442FCA1DFE7841008BF127 /* UIButton+BackGroundColor.m */; };
@@ -174,6 +177,10 @@
 		188F093F1DFE3C6F004E1284 /* RechargeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeController.h; sourceTree = "<group>"; };
 		188F09401DFE3C6F004E1284 /* RechargeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeController.m; sourceTree = "<group>"; };
 		188F09411DFE3C6F004E1284 /* RechargeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeController.xib; sourceTree = "<group>"; };
+		188F095E1DFE899D004E1284 /* TicketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketViewController.h; sourceTree = "<group>"; };
+		188F095F1DFE899D004E1284 /* TicketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketViewController.m; sourceTree = "<group>"; };
+		188F09601DFE899D004E1284 /* TicketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketViewController.xib; sourceTree = "<group>"; };
+		188F09641DFE91CF004E1284 /* ticktBlank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ticktBlank.png; sourceTree = "<group>"; };
 		5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.release.xcconfig"; sourceTree = "<group>"; };
 		92442FC21DFE400C008BF127 /* LeftMore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMore.h; sourceTree = "<group>"; };
 		92442FC31DFE400C008BF127 /* LeftMore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMore.m; sourceTree = "<group>"; };
@@ -366,6 +373,9 @@
 				188F093F1DFE3C6F004E1284 /* RechargeController.h */,
 				188F09401DFE3C6F004E1284 /* RechargeController.m */,
 				188F09411DFE3C6F004E1284 /* RechargeController.xib */,
+				188F095E1DFE899D004E1284 /* TicketViewController.h */,
+				188F095F1DFE899D004E1284 /* TicketViewController.m */,
+				188F09601DFE899D004E1284 /* TicketViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -705,6 +715,14 @@
 			path = UIViewExt;
 			sourceTree = "<group>";
 		};
+		188F09631DFE91CF004E1284 /* 银元券 */ = {
+			isa = PBXGroup;
+			children = (
+				188F09641DFE91CF004E1284 /* ticktBlank.png */,
+			);
+			path = "银元券";
+			sourceTree = "<group>";
+		};
 		33D3739CAE8A88E9F62F8BD5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -781,6 +799,7 @@
 		92442FD21DFE78A0008BF127 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				188F09631DFE91CF004E1284 /* 银元券 */,
 				92442FD31DFE78A0008BF127 /* 充值 */,
 				92442FD81DFE78A0008BF127 /* 返回.png */,
 			);
@@ -922,6 +941,8 @@
 				92442FD91DFE78A0008BF127 /* hot.png in Resources */,
 				1829DA4C1DFAB28E00405DF2 /* YYStockFullScreenView.xib in Resources */,
 				18273CB21DFA574F00855FCB /* Assets.xcassets in Resources */,
+				188F09621DFE899D004E1284 /* TicketViewController.xib in Resources */,
+				188F09651DFE91CF004E1284 /* ticktBlank.png in Resources */,
 				92442FDB1DFE78A0008BF127 /* 微信支付.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1013,6 +1034,7 @@
 				1829DA2D1DFAAFE000405DF2 /* YYKlineVolumeView.m in Sources */,
 				1829DA501DFAB85D00405DF2 /* UIViewExt.m in Sources */,
 				1829DA2F1DFAAFE000405DF2 /* YYStockScrollView.m in Sources */,
+				188F09611DFE899D004E1284 /* TicketViewController.m in Sources */,
 				1829DA351DFAAFE000405DF2 /* YYTimeLineVolumeView.m in Sources */,
 				1829DA2C1DFAAFE000405DF2 /* YYKlineMaskView.m in Sources */,
 				92442FD11DFE785F008BF127 /* PayCountButton.m in Sources */,
