@@ -72,6 +72,7 @@
 		9293DED61DFE976C0032EFA1 /* TicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9293DED41DFE976C0032EFA1 /* TicketViewController.m */; };
 		9293DED71DFE976C0032EFA1 /* TicketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9293DED51DFE976C0032EFA1 /* TicketViewController.xib */; };
 		9293DEDA1DFE978D0032EFA1 /* ticktBlank.png in Resources */ = {isa = PBXBuildFile; fileRef = 9293DED91DFE978D0032EFA1 /* ticktBlank.png */; };
+		9293DEDC1DFE98C10032EFA1 /* icon-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9293DEDB1DFE98C10032EFA1 /* icon-logo.png */; };
 		9D7204B0697FFCC7D0153A8D /* libPods-TreasureCollect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */; };
 /* End PBXBuildFile section */
 
@@ -209,6 +210,7 @@
 		9293DED41DFE976C0032EFA1 /* TicketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketViewController.m; sourceTree = "<group>"; };
 		9293DED51DFE976C0032EFA1 /* TicketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketViewController.xib; sourceTree = "<group>"; };
 		9293DED91DFE978D0032EFA1 /* ticktBlank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ticktBlank.png; sourceTree = "<group>"; };
+		9293DEDB1DFE98C10032EFA1 /* icon-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-logo.png"; sourceTree = "<group>"; };
 		973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.debug.xcconfig"; sourceTree = "<group>"; };
 		EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreasureCollect.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -832,6 +834,7 @@
 				92442FE21DFE84F1008BF127 /* 了解.png */,
 				92442FE31DFE84F1008BF127 /* 券.png */,
 				92442FE41DFE84F1008BF127 /* bg.png */,
+				9293DEDB1DFE98C10032EFA1 /* icon-logo.png */,
 			);
 			name = "更多";
 			path = "充值/更多";
@@ -958,6 +961,7 @@
 				1829D9C51DFAA78300405DF2 /* BaseViewController.xib in Resources */,
 				1829DA481DFAB12B00405DF2 /* dayData.plist in Resources */,
 				1829D9DC1DFAAA4600405DF2 /* LeftMainController.xib in Resources */,
+				9293DEDC1DFE98C10032EFA1 /* icon-logo.png in Resources */,
 				188F09431DFE3C6F004E1284 /* RechargeController.xib in Resources */,
 				1829DA491DFAB12B00405DF2 /* fiveData.plist in Resources */,
 				92442FDA1DFE78A0008BF127 /* recharge_top.png in Resources */,

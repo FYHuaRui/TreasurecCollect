@@ -293,7 +293,7 @@
     [self.view addSubview:_ticketButton];
     
     //更多按钮展示界面
-    self.leftMore = [[LeftMore alloc] initWithFrame:CGRectMake(-150, 20, self.leftMore.frame.size.width, self.leftMore.frame.size.height)];
+    self.leftMore = [[LeftMore alloc] initWithFrame:CGRectMake(-150, 20, 150, 300)];
     self.leftMore.hidden = YES;//先设置隐藏
     [self.view addSubview:self.leftMore];
     

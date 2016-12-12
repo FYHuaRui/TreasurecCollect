@@ -86,10 +86,13 @@
     self.arrayData = [NSArray arrayWithObjects:table1, table2, table3, table4, table5, nil];
     
     //添加软件Log
-    UIButton *logBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 250, 120, 40)];
-    logBtn.backgroundColor = [UIColor blueColor];
+    UIButton *logBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 250, 40, 40)];//120
     [logBtn addTarget:self action:@selector(logBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [logBtn setBackgroundImage:[UIImage imageNamed:@"icon-logo"] forState:UIControlStateNormal];
     [imageView addSubview:logBtn];
+    
+    UITapGestureRecognizer  *moreTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(logBtnClicked)];
+    [aView addGestureRecognizer:moreTap];
     
 }
 
