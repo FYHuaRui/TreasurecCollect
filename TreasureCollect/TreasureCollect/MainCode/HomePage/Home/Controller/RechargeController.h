@@ -8,14 +8,31 @@
 
 #import "BaseViewController.h"
 
+#import "PayButton.h"
+#import "PayCountButton.h"
+
 @interface RechargeController : BaseViewController{
 
+    UIScrollView *_bgScrollView;
+    
     UIImageView *_topImage;
     
     UILabel     *_restLabel;
     
+    UIImageView *_bgLine;
     
-
+    UIImageView *_flowLine;
+    
+    UILabel     *_selectLabel;
+    
+    PayCountButton *_countSelectButton;
+    
+    UIButton    *_rechargeButton;
+    
+    UILabel     *_recommandLabel;
+    
+    UILabel     *_recommandDetailLabel;
+    
 }
 
 @end
