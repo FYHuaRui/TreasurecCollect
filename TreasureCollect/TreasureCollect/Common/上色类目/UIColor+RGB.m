@@ -10,8 +10,8 @@
 
 @implementation UIColor (RGB)
 
-+ (UIColor *) colorFromHexRGB:(NSString *) inColorString
-{
++ (UIColor *) colorFromHexRGB:(NSString *) inColorString{
+    
     UIColor *result = nil;
     unsigned int colorCode = 0;
     unsigned char redByte, greenByte, blueByte;

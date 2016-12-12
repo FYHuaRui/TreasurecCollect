@@ -55,6 +55,14 @@
 		188F09431DFE3C6F004E1284 /* RechargeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188F09411DFE3C6F004E1284 /* RechargeController.xib */; };
 		92442FC41DFE400C008BF127 /* LeftMore.m in Sources */ = {isa = PBXBuildFile; fileRef = 92442FC31DFE400C008BF127 /* LeftMore.m */; };
 		92442FC71DFE6E18008BF127 /* LeftTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92442FC61DFE6E18008BF127 /* LeftTableView.m */; };
+		92442FCB1DFE7841008BF127 /* UIButton+BackGroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 92442FCA1DFE7841008BF127 /* UIButton+BackGroundColor.m */; };
+		92442FD01DFE785F008BF127 /* PayButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 92442FCD1DFE785F008BF127 /* PayButton.m */; };
+		92442FD11DFE785F008BF127 /* PayCountButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 92442FCF1DFE785F008BF127 /* PayCountButton.m */; };
+		92442FD91DFE78A0008BF127 /* hot.png in Resources */ = {isa = PBXBuildFile; fileRef = 92442FD41DFE78A0008BF127 /* hot.png */; };
+		92442FDA1DFE78A0008BF127 /* recharge_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 92442FD51DFE78A0008BF127 /* recharge_top.png */; };
+		92442FDB1DFE78A0008BF127 /* 微信支付.png in Resources */ = {isa = PBXBuildFile; fileRef = 92442FD61DFE78A0008BF127 /* 微信支付.png */; };
+		92442FDC1DFE78A0008BF127 /* 银联支付.png in Resources */ = {isa = PBXBuildFile; fileRef = 92442FD71DFE78A0008BF127 /* 银联支付.png */; };
+		92442FDD1DFE78A0008BF127 /* 返回.png in Resources */ = {isa = PBXBuildFile; fileRef = 92442FD81DFE78A0008BF127 /* 返回.png */; };
 		9D7204B0697FFCC7D0153A8D /* libPods-TreasureCollect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */; };
 /* End PBXBuildFile section */
 
@@ -171,6 +179,17 @@
 		92442FC31DFE400C008BF127 /* LeftMore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMore.m; sourceTree = "<group>"; };
 		92442FC51DFE6E18008BF127 /* LeftTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTableView.h; sourceTree = "<group>"; };
 		92442FC61DFE6E18008BF127 /* LeftTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTableView.m; sourceTree = "<group>"; };
+		92442FC91DFE7841008BF127 /* UIButton+BackGroundColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+BackGroundColor.h"; sourceTree = "<group>"; };
+		92442FCA1DFE7841008BF127 /* UIButton+BackGroundColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BackGroundColor.m"; sourceTree = "<group>"; };
+		92442FCC1DFE785F008BF127 /* PayButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayButton.h; sourceTree = "<group>"; };
+		92442FCD1DFE785F008BF127 /* PayButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayButton.m; sourceTree = "<group>"; };
+		92442FCE1DFE785F008BF127 /* PayCountButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayCountButton.h; sourceTree = "<group>"; };
+		92442FCF1DFE785F008BF127 /* PayCountButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayCountButton.m; sourceTree = "<group>"; };
+		92442FD41DFE78A0008BF127 /* hot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hot.png; sourceTree = "<group>"; };
+		92442FD51DFE78A0008BF127 /* recharge_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recharge_top.png; sourceTree = "<group>"; };
+		92442FD61DFE78A0008BF127 /* 微信支付.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "微信支付.png"; sourceTree = "<group>"; };
+		92442FD71DFE78A0008BF127 /* 银联支付.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "银联支付.png"; sourceTree = "<group>"; };
+		92442FD81DFE78A0008BF127 /* 返回.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回.png"; sourceTree = "<group>"; };
 		973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.debug.xcconfig"; sourceTree = "<group>"; };
 		EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreasureCollect.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -230,6 +249,7 @@
 				18273CA91DFA574F00855FCB /* AppDelegate.m */,
 				18273CDD1DFA9E1100855FCB /* Common */,
 				1829D9BE1DFAA62D00405DF2 /* MainCode */,
+				92442FD21DFE78A0008BF127 /* Images */,
 				18273CB11DFA574F00855FCB /* Assets.xcassets */,
 				18273CB31DFA574F00855FCB /* LaunchScreen.storyboard */,
 				18273CB61DFA574F00855FCB /* Info.plist */,
@@ -269,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				18273CDE1DFA9E2400855FCB /* Common.h */,
+				92442FC81DFE7841008BF127 /* UIButton类目 */,
 				1829DA4D1DFAB85D00405DF2 /* UIViewExt */,
 				1829D9C61DFAA7CE00405DF2 /* 上色类目 */,
 				18273CE01DFAA00200855FCB /* HttpTools */,
@@ -368,6 +389,10 @@
 		1829D9CD1DFAA99A00405DF2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				92442FCC1DFE785F008BF127 /* PayButton.h */,
+				92442FCD1DFE785F008BF127 /* PayButton.m */,
+				92442FCE1DFE785F008BF127 /* PayCountButton.h */,
+				92442FCF1DFE785F008BF127 /* PayCountButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -744,6 +769,35 @@
 			path = "了解微盘宝";
 			sourceTree = "<group>";
 		};
+		92442FC81DFE7841008BF127 /* UIButton类目 */ = {
+			isa = PBXGroup;
+			children = (
+				92442FC91DFE7841008BF127 /* UIButton+BackGroundColor.h */,
+				92442FCA1DFE7841008BF127 /* UIButton+BackGroundColor.m */,
+			);
+			path = "UIButton类目";
+			sourceTree = "<group>";
+		};
+		92442FD21DFE78A0008BF127 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				92442FD31DFE78A0008BF127 /* 充值 */,
+				92442FD81DFE78A0008BF127 /* 返回.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		92442FD31DFE78A0008BF127 /* 充值 */ = {
+			isa = PBXGroup;
+			children = (
+				92442FD41DFE78A0008BF127 /* hot.png */,
+				92442FD51DFE78A0008BF127 /* recharge_top.png */,
+				92442FD61DFE78A0008BF127 /* 微信支付.png */,
+				92442FD71DFE78A0008BF127 /* 银联支付.png */,
+			);
+			path = "充值";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -859,11 +913,16 @@
 				1829D9DC1DFAAA4600405DF2 /* LeftMainController.xib in Resources */,
 				188F09431DFE3C6F004E1284 /* RechargeController.xib in Resources */,
 				1829DA491DFAB12B00405DF2 /* fiveData.plist in Resources */,
+				92442FDA1DFE78A0008BF127 /* recharge_top.png in Resources */,
 				18273CB51DFA574F00855FCB /* LaunchScreen.storyboard in Resources */,
+				92442FDC1DFE78A0008BF127 /* 银联支付.png in Resources */,
 				1829DA4A1DFAB12B00405DF2 /* minuteData.plist in Resources */,
 				1829DA311DFAAFE000405DF2 /* YYFiveRecordTableViewCell.xib in Resources */,
+				92442FDD1DFE78A0008BF127 /* 返回.png in Resources */,
+				92442FD91DFE78A0008BF127 /* hot.png in Resources */,
 				1829DA4C1DFAB28E00405DF2 /* YYStockFullScreenView.xib in Resources */,
 				18273CB21DFA574F00855FCB /* Assets.xcassets in Resources */,
+				92442FDB1DFE78A0008BF127 /* 微信支付.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -956,6 +1015,7 @@
 				1829DA2F1DFAAFE000405DF2 /* YYStockScrollView.m in Sources */,
 				1829DA351DFAAFE000405DF2 /* YYTimeLineVolumeView.m in Sources */,
 				1829DA2C1DFAAFE000405DF2 /* YYKlineMaskView.m in Sources */,
+				92442FD11DFE785F008BF127 /* PayCountButton.m in Sources */,
 				1829DA441DFAB0F300405DF2 /* AppServer.m in Sources */,
 				18273CA71DFA574F00855FCB /* main.m in Sources */,
 				188F09421DFE3C6F004E1284 /* RechargeController.m in Sources */,
@@ -965,10 +1025,12 @@
 				1829D9D11DFAA9AB00405DF2 /* HomeController.m in Sources */,
 				1829DA371DFAAFE000405DF2 /* YYStockView_TimeLine.m in Sources */,
 				18273CE31DFAA01C00855FCB /* HttpTool.m in Sources */,
+				92442FCB1DFE7841008BF127 /* UIButton+BackGroundColor.m in Sources */,
 				92442FC71DFE6E18008BF127 /* LeftTableView.m in Sources */,
 				1829DA291DFAAFE000405DF2 /* YYKline.m in Sources */,
 				1829DA381DFAAFE000405DF2 /* YYStock.m in Sources */,
 				1829DA2A1DFAAFE000405DF2 /* MAline.m in Sources */,
+				92442FD01DFE785F008BF127 /* PayButton.m in Sources */,
 				1829DA2E1DFAAFE000405DF2 /* YYStockViewMaskView.m in Sources */,
 				1829DA2B1DFAAFE000405DF2 /* YYKlineView.m in Sources */,
 			);
