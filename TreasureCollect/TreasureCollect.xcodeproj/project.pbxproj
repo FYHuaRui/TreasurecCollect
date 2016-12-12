@@ -259,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				1829D9D41DFAAA3300405DF2 /* LeftMain */,
+				922CC4511DFAB7EE00630A21 /* More */,
 			);
 			path = LeftFunction;
 			sourceTree = "<group>";
@@ -312,6 +313,53 @@
 				5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		922CC4511DFAB7EE00630A21 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				92442FBF1DFE33E6008BF127 /* 合买大厅 */,
+				92442FBE1DFE33E6008BF127 /* 个人中心 */,
+				92442FBD1DFE33E6008BF127 /* 分享领券 */,
+				92442FC01DFE33E6008BF127 /* 建议反馈 */,
+				92442FC11DFE33E6008BF127 /* 了解微盘宝 */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		92442FBD1DFE33E6008BF127 /* 分享领券 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "分享领券";
+			sourceTree = "<group>";
+		};
+		92442FBE1DFE33E6008BF127 /* 个人中心 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "个人中心";
+			sourceTree = "<group>";
+		};
+		92442FBF1DFE33E6008BF127 /* 合买大厅 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "合买大厅";
+			sourceTree = "<group>";
+		};
+		92442FC01DFE33E6008BF127 /* 建议反馈 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "建议反馈";
+			sourceTree = "<group>";
+		};
+		92442FC11DFE33E6008BF127 /* 了解微盘宝 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "了解微盘宝";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

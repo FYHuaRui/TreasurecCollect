@@ -35,8 +35,7 @@
     MMVC.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
     MMVC.closeDrawerGestureModeMask =MMCloseDrawerGestureModeAll;
     //5、设置左右两边抽屉显示的多少
-    MMVC.maximumLeftDrawerWidth = 200.0;
-    
+    MMVC.maximumLeftDrawerWidth = 150.0;
     [self.window setRootViewController:MMVC];
     
     
