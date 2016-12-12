@@ -327,12 +327,16 @@
 #pragma mark - 单机手势相应事件
 - (void)moreTapClicked
 {
-    [UIView animateWithDuration:0.3 animations:^{
-        self.leftMore.transform = CGAffineTransformIdentity;
+    if (self.leftMore.hidden == NO)
+    {
+        NSLogTC(@"首页手势触发了");
+        [UIView animateWithDuration:0.3 animations:^{
+            self.leftMore.transform = CGAffineTransformIdentity;
+        }completion:^(BOOL finished) {
+            self.leftMore.hidden = YES;
+            }];
     }
-     completion:^(BOOL finished) {
-         self.leftMore.hidden = YES;
-     }];
+    
 }
 
 #pragma mark - 充值事件
