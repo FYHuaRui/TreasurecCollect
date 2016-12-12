@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LeftMore : UIView
+@interface LeftMore : UIView<UITableViewDelegate, UITableViewDataSource>
 
 
-//@property (nonatomic, retain) UITableView       *tableView;//更多功能表视图
-//@property (nonatomic, retain) NSArray           *arrayData;//数据源
+@property (nonatomic, retain) UITableView       *tableView;//更多功能表视图
+@property (nonatomic, retain) NSArray           *arrayData;//数据源
 
 @end
