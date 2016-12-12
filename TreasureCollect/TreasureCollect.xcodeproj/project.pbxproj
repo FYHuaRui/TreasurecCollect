@@ -53,6 +53,7 @@
 		1829DA501DFAB85D00405DF2 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829DA4F1DFAB85D00405DF2 /* UIViewExt.m */; };
 		188F09421DFE3C6F004E1284 /* RechargeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188F09401DFE3C6F004E1284 /* RechargeController.m */; };
 		188F09431DFE3C6F004E1284 /* RechargeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188F09411DFE3C6F004E1284 /* RechargeController.xib */; };
+		188F09471DFE406E004E1284 /* recharge_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 188F09461DFE406E004E1284 /* recharge_top.png */; };
 		9D7204B0697FFCC7D0153A8D /* libPods-TreasureCollect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */; };
 /* End PBXBuildFile section */
 
@@ -164,6 +165,7 @@
 		188F093F1DFE3C6F004E1284 /* RechargeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeController.h; sourceTree = "<group>"; };
 		188F09401DFE3C6F004E1284 /* RechargeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeController.m; sourceTree = "<group>"; };
 		188F09411DFE3C6F004E1284 /* RechargeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeController.xib; sourceTree = "<group>"; };
+		188F09461DFE406E004E1284 /* recharge_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recharge_top.png; sourceTree = "<group>"; };
 		5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.release.xcconfig"; sourceTree = "<group>"; };
 		973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.debug.xcconfig"; sourceTree = "<group>"; };
 		EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreasureCollect.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,6 +226,7 @@
 				18273CA91DFA574F00855FCB /* AppDelegate.m */,
 				18273CDD1DFA9E1100855FCB /* Common */,
 				1829D9BE1DFAA62D00405DF2 /* MainCode */,
+				188F09441DFE404E004E1284 /* Images */,
 				18273CB11DFA574F00855FCB /* Assets.xcassets */,
 				18273CB31DFA574F00855FCB /* LaunchScreen.storyboard */,
 				18273CB61DFA574F00855FCB /* Info.plist */,
@@ -669,6 +672,22 @@
 			path = UIViewExt;
 			sourceTree = "<group>";
 		};
+		188F09441DFE404E004E1284 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				188F09451DFE404E004E1284 /* 充值 */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		188F09451DFE404E004E1284 /* 充值 */ = {
+			isa = PBXGroup;
+			children = (
+				188F09461DFE406E004E1284 /* recharge_top.png */,
+			);
+			path = "充值";
+			sourceTree = "<group>";
+		};
 		33D3739CAE8A88E9F62F8BD5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -797,6 +816,7 @@
 			files = (
 				1829D9D21DFAA9AB00405DF2 /* HomeController.xib in Resources */,
 				1829D9C51DFAA78300405DF2 /* BaseViewController.xib in Resources */,
+				188F09471DFE406E004E1284 /* recharge_top.png in Resources */,
 				1829DA481DFAB12B00405DF2 /* dayData.plist in Resources */,
 				1829D9DC1DFAAA4600405DF2 /* LeftMainController.xib in Resources */,
 				188F09431DFE3C6F004E1284 /* RechargeController.xib in Resources */,

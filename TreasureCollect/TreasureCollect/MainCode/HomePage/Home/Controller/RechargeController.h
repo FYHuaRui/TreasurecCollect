@@ -8,6 +8,14 @@
 
 #import "BaseViewController.h"
 
-@interface RechargeController : BaseViewController
+@interface RechargeController : BaseViewController{
+
+    UIImageView *_topImage;
+    
+    UILabel     *_restLabel;
+    
+    
+
+}
 
 @end
