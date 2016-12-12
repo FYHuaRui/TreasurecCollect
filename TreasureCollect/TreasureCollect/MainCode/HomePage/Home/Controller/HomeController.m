@@ -8,6 +8,7 @@
 
 #import "HomeController.h"
 
+
 @interface HomeController ()<YYStockDataSource>
 
 /**
@@ -265,10 +266,16 @@
 - (void)initViews{
     
     
+    //更多按钮展示界面
+    self.leftMore = [[LeftMore alloc] initWithFrame:CGRectMake(-150, 20, self.leftMore.frame.size.width, self.leftMore.frame.size.height)];
+    self.leftMore.hidden = YES;//先设置隐藏
+    [self.view addSubview:self.leftMore];
+    
     //更多功能按钮
     _leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     _leftButton.frame = CGRectMake(20.f, 12.f, 44.f, 24.f);
     [_leftButton setTitle:@"更多" forState:UIControlStateNormal];
+    [_leftButton addTarget:self action:@selector(MoreButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_leftButton];
     
     //充值按钮
@@ -296,6 +303,24 @@
 //    [self.view addSubview:button2];
 
 }
+
+#pragma mark - 更多功能
+- (void)MoreButtonClicked:(UIButton*)button
+{
+    if (self.leftMore.hidden == YES)
+    {
+        self.leftMore.hidden = NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.leftMore.transform = CGAffineTransformMakeTranslation(150, 0);
+        }completion:^(BOOL finished) {
+            
+        }];
+    }
+    
+    NSLogTC(@"更多按钮点击了");
+}
+
+
 
 #pragma mark - 充值事件
 - (void)rechargeAction:(UIButton *)button{

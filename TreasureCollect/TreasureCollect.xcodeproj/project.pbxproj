@@ -53,6 +53,7 @@
 		1829DA501DFAB85D00405DF2 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829DA4F1DFAB85D00405DF2 /* UIViewExt.m */; };
 		188F09421DFE3C6F004E1284 /* RechargeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188F09401DFE3C6F004E1284 /* RechargeController.m */; };
 		188F09431DFE3C6F004E1284 /* RechargeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188F09411DFE3C6F004E1284 /* RechargeController.xib */; };
+		92442FC41DFE400C008BF127 /* LeftMore.m in Sources */ = {isa = PBXBuildFile; fileRef = 92442FC31DFE400C008BF127 /* LeftMore.m */; };
 		9D7204B0697FFCC7D0153A8D /* libPods-TreasureCollect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +166,8 @@
 		188F09401DFE3C6F004E1284 /* RechargeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeController.m; sourceTree = "<group>"; };
 		188F09411DFE3C6F004E1284 /* RechargeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeController.xib; sourceTree = "<group>"; };
 		5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.release.xcconfig"; sourceTree = "<group>"; };
+		92442FC21DFE400C008BF127 /* LeftMore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMore.h; sourceTree = "<group>"; };
+		92442FC31DFE400C008BF127 /* LeftMore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMore.m; sourceTree = "<group>"; };
 		973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.debug.xcconfig"; sourceTree = "<group>"; };
 		EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreasureCollect.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -378,6 +381,8 @@
 		1829D9D41DFAAA3300405DF2 /* LeftMain */ = {
 			isa = PBXGroup;
 			children = (
+				92442FC21DFE400C008BF127 /* LeftMore.h */,
+				92442FC31DFE400C008BF127 /* LeftMore.m */,
 				1829D9D51DFAAA3300405DF2 /* Controller */,
 				1829D9D61DFAAA3300405DF2 /* Model */,
 				1829D9D71DFAAA3300405DF2 /* View */,
@@ -951,6 +956,7 @@
 				188F09421DFE3C6F004E1284 /* RechargeController.m in Sources */,
 				1829D9C91DFAA7CE00405DF2 /* UIColor+RGB.m in Sources */,
 				1829DA331DFAAFE000405DF2 /* YYTimeLineMaskView.m in Sources */,
+				92442FC41DFE400C008BF127 /* LeftMore.m in Sources */,
 				1829D9D11DFAA9AB00405DF2 /* HomeController.m in Sources */,
 				1829DA371DFAAFE000405DF2 /* YYStockView_TimeLine.m in Sources */,
 				18273CE31DFAA01C00855FCB /* HttpTool.m in Sources */,

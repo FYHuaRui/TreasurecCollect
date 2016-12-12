@@ -14,6 +14,7 @@
 #import "AppServer.h"
 #import "YYStock.h"
 #import "RechargeController.h"
+#import "LeftMore.h"
 
 @interface HomeController : BaseViewController{
 
@@ -22,5 +23,7 @@
     UIButton *_rechargeButton;
     
 }
+
+@property (nonatomic, retain) LeftMore      *leftMore;//更多视图
 
 @end
