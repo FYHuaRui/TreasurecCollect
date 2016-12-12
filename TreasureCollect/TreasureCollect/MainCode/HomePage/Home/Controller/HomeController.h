@@ -7,7 +7,20 @@
 //
 
 #import "BaseViewController.h"
+#import "UIColor+YYStockTheme.h"
+#import "YYFiveRecordModel.h"
+#import "YYLineDataModel.h"
+#import "YYTimeLineModel.h"
+#import "AppServer.h"
+#import "YYStock.h"
+#import "RechargeController.h"
 
-@interface HomeController : BaseViewController
+@interface HomeController : BaseViewController{
+
+    UIButton *_leftButton;
+    
+    UIButton *_rechargeButton;
+    
+}
 
 @end
