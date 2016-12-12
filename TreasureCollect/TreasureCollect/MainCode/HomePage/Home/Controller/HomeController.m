@@ -271,6 +271,10 @@
     self.leftMore.hidden = YES;//先设置隐藏
     [self.view addSubview:self.leftMore];
     
+    //点击收回更多界面
+    UITapGestureRecognizer  *moreTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(moreTapClicked)];
+    [self.view addGestureRecognizer:moreTap];
+    
     //更多功能按钮
     _leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     _leftButton.frame = CGRectMake(20.f, 12.f, 44.f, 24.f);
@@ -320,7 +324,16 @@
     NSLogTC(@"更多按钮点击了");
 }
 
-
+#pragma mark - 单机手势相应事件
+- (void)moreTapClicked
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.leftMore.transform = CGAffineTransformIdentity;
+    }
+     completion:^(BOOL finished) {
+         self.leftMore.hidden = YES;
+     }];
+}
 
 #pragma mark - 充值事件
 - (void)rechargeAction:(UIButton *)button{
