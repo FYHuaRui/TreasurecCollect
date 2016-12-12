@@ -26,19 +26,18 @@
     homeView.title = @"首页";
     UINavigationController *NHomeView = [[UINavigationController alloc] initWithRootViewController:homeView];
     
-    //左侧栏
-    LeftMainController *LMVC = [[LeftMainController alloc] init];
-    UINavigationController *NLMVC = [[UINavigationController alloc] initWithRootViewController:LMVC];
+//    //左侧栏
+//    LeftMainController *LMVC = [[LeftMainController alloc] init];
+//    UINavigationController *NLMVC = [[UINavigationController alloc] initWithRootViewController:LMVC];
+//    
+//    MMDrawerController *MMVC = [[MMDrawerController alloc] initWithCenterViewController:NHomeView
+//                                                               leftDrawerViewController:NLMVC];
+//    MMVC.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
+//    MMVC.closeDrawerGestureModeMask =MMCloseDrawerGestureModeAll;
+//    //5、设置左右两边抽屉显示的多少
+//    MMVC.maximumLeftDrawerWidth = 200.0;
     
-    MMDrawerController *MMVC = [[MMDrawerController alloc] initWithCenterViewController:NHomeView
-                                                               leftDrawerViewController:NLMVC];
-    MMVC.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
-    MMVC.closeDrawerGestureModeMask =MMCloseDrawerGestureModeAll;
-    //5、设置左右两边抽屉显示的多少
-    MMVC.maximumLeftDrawerWidth = 200.0;
-    
-    [self.window setRootViewController:MMVC];
-    
+    [self.window setRootViewController:NHomeView];
     
     return YES;
 }
