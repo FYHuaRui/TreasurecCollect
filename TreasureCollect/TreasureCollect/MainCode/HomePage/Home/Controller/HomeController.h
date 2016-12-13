@@ -19,13 +19,19 @@
 #import "TicketViewController.h"
 #import "LeftMore.h"
 
-@interface HomeController : BaseViewController{
+@interface HomeController : BaseViewController<UIPickerViewDelegate,UIPickerViewDataSource>{
 
     UIButton *_leftButton;
     
     UIButton *_rechargeButton;
     
     UIButton *_ticketButton;
+    
+    UIButton *_liveShowButton;
+    
+    UIPickerView    *_countPicker;
+    
+    NSArray  *_titleArr;
     
 }
 
