@@ -264,8 +264,8 @@
 - (void)initViews{
     
     //点击收回更多界面
-    UITapGestureRecognizer  *moreTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(moreTapClicked)];
-    [self.view addGestureRecognizer:moreTap];
+//    UITapGestureRecognizer  *moreTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(moreTapClicked)];
+//    [self.view addGestureRecognizer:moreTap];
     
     //更多功能按钮
     _leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];

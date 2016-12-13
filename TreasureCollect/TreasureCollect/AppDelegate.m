@@ -21,7 +21,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible ];
     
-    //主页
+//    主页
     HomeController *homeView = [[HomeController alloc] init];
     homeView.title = @"首页";
     UINavigationController *NHomeView = [[UINavigationController alloc] initWithRootViewController:homeView];
