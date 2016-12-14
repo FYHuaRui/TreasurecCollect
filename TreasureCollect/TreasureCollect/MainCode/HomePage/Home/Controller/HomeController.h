@@ -33,6 +33,10 @@
     
     NSArray  *_titleArr;
     
+    UIButton    *_buyButton;
+    
+    UIButton    *_saleButton;
+    
 }
 
 @property (nonatomic, retain) LeftMore      *leftMore;//更多视图

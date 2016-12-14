@@ -51,6 +51,8 @@
 		1829DA4A1DFAB12B00405DF2 /* minuteData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1829DA471DFAB12B00405DF2 /* minuteData.plist */; };
 		1829DA4C1DFAB28E00405DF2 /* YYStockFullScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1829DA4B1DFAB28E00405DF2 /* YYStockFullScreenView.xib */; };
 		1829DA501DFAB85D00405DF2 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829DA4F1DFAB85D00405DF2 /* UIViewExt.m */; };
+		1886D6D91DFFFBF000F4A067 /* toptrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1886D6D81DFFFBF000F4A067 /* toptrangle.png */; };
+		1886D6DB1DFFFDFB00F4A067 /* downtrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1886D6DA1DFFFDFB00F4A067 /* downtrangle.png */; };
 		188F09421DFE3C6F004E1284 /* RechargeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188F09401DFE3C6F004E1284 /* RechargeController.m */; };
 		188F09431DFE3C6F004E1284 /* RechargeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188F09411DFE3C6F004E1284 /* RechargeController.xib */; };
 		921BDE461DFFBE1A00C031C5 /* PersNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 921BDE451DFFBE1A00C031C5 /* PersNSObject.m */; };
@@ -196,6 +198,8 @@
 		1829DA4B1DFAB28E00405DF2 /* YYStockFullScreenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YYStockFullScreenView.xib; sourceTree = "<group>"; };
 		1829DA4E1DFAB85D00405DF2 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		1829DA4F1DFAB85D00405DF2 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		1886D6D81DFFFBF000F4A067 /* toptrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toptrangle.png; sourceTree = "<group>"; };
+		1886D6DA1DFFFDFB00F4A067 /* downtrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downtrangle.png; sourceTree = "<group>"; };
 		188F093F1DFE3C6F004E1284 /* RechargeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeController.h; sourceTree = "<group>"; };
 		188F09401DFE3C6F004E1284 /* RechargeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeController.m; sourceTree = "<group>"; };
 		188F09411DFE3C6F004E1284 /* RechargeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeController.xib; sourceTree = "<group>"; };
@@ -763,6 +767,15 @@
 			path = UIViewExt;
 			sourceTree = "<group>";
 		};
+		1886D6D71DFFFBF000F4A067 /* 首页 */ = {
+			isa = PBXGroup;
+			children = (
+				1886D6D81DFFFBF000F4A067 /* toptrangle.png */,
+				1886D6DA1DFFFDFB00F4A067 /* downtrangle.png */,
+			);
+			path = "首页";
+			sourceTree = "<group>";
+		};
 		33D3739CAE8A88E9F62F8BD5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -863,6 +876,7 @@
 		92442FD21DFE78A0008BF127 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1886D6D71DFFFBF000F4A067 /* 首页 */,
 				9293DED81DFE978D0032EFA1 /* 银元券 */,
 				92442FD31DFE78A0008BF127 /* 充值 */,
 				92442FDE1DFE84E4008BF127 /* 更多 */,
@@ -1071,11 +1085,13 @@
 				1829D9C51DFAA78300405DF2 /* BaseViewController.xib in Resources */,
 				921BDE591DFFCB7900C031C5 /* 009.png in Resources */,
 				1829DA481DFAB12B00405DF2 /* dayData.plist in Resources */,
+				1886D6D91DFFFBF000F4A067 /* toptrangle.png in Resources */,
 				1829D9DC1DFAAA4600405DF2 /* LeftMainController.xib in Resources */,
 				9293DEDC1DFE98C10032EFA1 /* icon-logo.png in Resources */,
 				188F09431DFE3C6F004E1284 /* RechargeController.xib in Resources */,
 				1829DA491DFAB12B00405DF2 /* fiveData.plist in Resources */,
 				92442FDA1DFE78A0008BF127 /* recharge_top.png in Resources */,
+				1886D6DB1DFFFDFB00F4A067 /* downtrangle.png in Resources */,
 				921BDE541DFFCB7900C031C5 /* 004.png in Resources */,
 				92442FE51DFE84F1008BF127 /* 反馈.png in Resources */,
 				18273CB51DFA574F00855FCB /* LaunchScreen.storyboard in Resources */,

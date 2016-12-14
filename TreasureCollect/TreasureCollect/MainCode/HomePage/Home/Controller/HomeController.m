@@ -307,7 +307,7 @@
     [self.view addSubview:self.leftMore];
     
     //选择弃
-    _countPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(KScreenWidth / 2 - 30, KScreenHeight - kNavigationBarHeight - 140.f, 80.f, 90.f)];
+    _countPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(KScreenWidth / 2 - 40, KScreenHeight - kNavigationBarHeight - 140.f, 80.f, 90.f)];
     _countPicker.backgroundColor = [UIColor colorFromHexRGB:@"E9E9E9"];
     _countPicker.dataSource = self;
     _countPicker.delegate = self;
@@ -327,20 +327,29 @@
     [_countPicker reloadAllComponents];
     _titleArr = @[@"8",@"80",@"200",@"2000",@"银元券"];
     
-//
-//    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(12.f, KScreenHeight - kNavigationBarHeight - 12.f - KScreenWidth-kNavigationBarHeight-_stockContainerView.bottom - 24.f, KScreenWidth / 2 - 24.f, KScreenWidth-kNavigationBarHeight-_stockContainerView.bottom - 24.f)];
-//    [button setTitle:@"买入" forState:UIControlStateNormal];
-//    [button setTitleColor:[UIColor whiteColor]
-//                 forState:UIControlStateNormal];
-//    button.backgroundColor = [UIColor greenColor];
-//    [self.view addSubview:button];
-//    
-//    UIButton *button2 = [[UIButton alloc] initWithFrame:CGRectMake(KScreenWidth / 2 + 12.f, KScreenHeight - kNavigationBarHeight - 12.f - KScreenWidth-kNavigationBarHeight-_stockContainerView.bottom - 24.f, KScreenWidth / 2 - 24.f, KScreenWidth-kNavigationBarHeight-_stockContainerView.bottom - 24.f)];
-//    [button2 setTitle:@"卖出" forState:UIControlStateNormal];
-//    [button2 setTitleColor:[UIColor whiteColor]
-//                 forState:UIControlStateNormal];
-//    button2.backgroundColor = [UIColor redColor];
-//    [self.view addSubview:button2];
+    //买入卖出按钮
+    _buyButton = [[UIButton alloc] initWithFrame:CGRectMake(12.f, _countPicker.top, _countPicker.left - 24.f, _countPicker.height)];
+    _buyButton.layer.cornerRadius = 5.f;
+    _buyButton.layer.masksToBounds = YES;
+    [_buyButton setTitle:@"买涨" forState:UIControlStateNormal];
+    _buyButton.backgroundColor = [UIColor colorFromHexRGB:@"E45141"];
+    [self.view addSubview:_buyButton];
+    
+    UIImageView *redImage = [[UIImageView alloc] initWithFrame:CGRectMake(_buyButton.width / 2 - 8, 16.f, 16.f, 16.f)];
+    [redImage setImage:[UIImage imageNamed:@"toptrangle"]];
+    [_buyButton addSubview:redImage];
+    
+    _saleButton = [[UIButton alloc] initWithFrame:CGRectMake(_countPicker.right + 12.f, _countPicker.top, _countPicker.left - 24.f, _countPicker.height)];
+    _saleButton.layer.cornerRadius = 5.f;
+    _saleButton.layer.masksToBounds = YES;
+    [_saleButton setTitle:@"买跌" forState:UIControlStateNormal];
+    _saleButton.backgroundColor = [UIColor colorFromHexRGB:@"55BB72"];
+    [self.view addSubview:_saleButton];
+    
+    UIImageView *greenImage = [[UIImageView alloc] initWithFrame:CGRectMake(_buyButton.width / 2 - 8, 16.f, 16.f, 16.f)];
+    [greenImage setImage:[UIImage imageNamed:@"downtrangle"]];
+    [_saleButton addSubview:greenImage];
+    
 
 }
 
@@ -489,8 +498,6 @@
         bottomView.layer.transform = CATransform3DMakeRotation(- M_PI_4 / 2, 0, 1, 0);
         
     }
-    
-    NSLogTC(@"%ld,%@",row,_titleArr[row]);
     
 }
 
