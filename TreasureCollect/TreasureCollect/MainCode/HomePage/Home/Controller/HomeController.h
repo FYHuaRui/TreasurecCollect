@@ -18,8 +18,9 @@
 #import "RechargeController.h"
 #import "TicketViewController.h"
 #import "LeftMore.h"
+#import "ProportionView.h"
 
-@interface HomeController : BaseViewController<UIPickerViewDelegate,UIPickerViewDataSource>{
+@interface HomeController : BaseViewController<UIPickerViewDelegate,UIPickerViewDataSource,GCDAsyncSocketDelegate>{
 
     UIButton *_leftButton;
     
@@ -36,6 +37,10 @@
     UIButton    *_buyButton;
     
     UIButton    *_saleButton;
+    
+    ProportionView *_proportionView;
+    
+    GCDAsyncSocket *_asyncSocket;
     
 }
 

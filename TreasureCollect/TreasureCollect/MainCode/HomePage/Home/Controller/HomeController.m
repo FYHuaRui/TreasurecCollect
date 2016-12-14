@@ -64,10 +64,10 @@
     [self initStockView];
     [self fetchData];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self stock_enterFullScreen:self.stock.containerView.gestureRecognizers.firstObject];
-    });
-    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self stock_enterFullScreen:self.stock.containerView.gestureRecognizers.firstObject];
+//    });
+//    
     [self initViews];
 }
 
@@ -128,6 +128,149 @@
         
     } fail:^(NSDictionary *info) {
     }];
+
+    //socket
+    _asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self
+                                              delegateQueue:dispatch_get_main_queue()];
+    
+    NSError *err;
+    
+    //socket连接
+    [_asyncSocket connectToHost:@"43.254.148.72" onPort:9103 error:&err];
+    
+    if (err != nil)
+        
+    {
+        
+        NSLog(@"%@",err);
+        
+    }
+    
+}
+
+- (void)socket:(GCDAsyncSocket*)sock didConnectToHost:(NSString*)host port:(UInt16)port{
+    
+    NSLog(@"socket链接成功");
+    [_asyncSocket readDataWithTimeout:-1 tag:0];
+    
+}
+
+-(void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
+    
+    NSLog(@"收到数据了");
+    
+    
+    Byte *testByte = (Byte *)[data bytes];
+    
+    for(int i=0;i<[data length];i++)
+        
+        printf("testByte = %d\n",testByte[i]);
+    
+    [self bytesplit2byte:testByte
+                   begin:24
+                   count:[data length] - 24];
+    
+}
+
+- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError*)err{
+    
+    NSLog(@"socket链接失败了");
+    
+}
+
+
+-(void)bytesplit2byte:(Byte[])src begin:(NSInteger)begin count:(NSInteger)count{
+    
+    unsigned c = (int)count;
+    uint8_t *bytes = malloc(sizeof(*bytes) * c);
+    for (NSInteger i = begin; i < begin+count; i++){
+        
+        bytes[i-begin] = src[i];
+        
+    }
+    
+    NSData *newdata = [NSData dataWithBytes:bytes
+                                     length:count];
+    NSString *str = [[NSMutableString alloc] initWithData:newdata encoding:NSUTF8StringEncoding];
+    
+    NSData *stringData = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *jsonError = nil;
+    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:stringData
+                                                               options:NSJSONReadingAllowFragments
+                                                                 error:&jsonError];
+    if (jsonError == nil) {
+        
+        NSLog(@"字典%@",dictionary);
+        
+        [AppServer Get:@"minute" params:nil success:^(NSDictionary *response) {
+            NSMutableArray *array = [NSMutableArray array];
+            
+            if ([dictionary allKeys].count == 5) {
+                
+                //修改array；
+                NSMutableArray *dataArr = [response[@"minutes"] mutableCopy];
+                
+                //构建新的数据
+                NSMutableDictionary *dataDic = [[dataArr lastObject] mutableCopy];
+                [dataArr removeObjectAtIndex:0];
+                
+                //id
+                NSMutableString *idString = [dataDic objectForKey:@"id"];
+                NSString *substring = [idString substringWithRange:NSMakeRange(7, idString.length - 7)];
+                NSInteger subId = [substring integerValue];
+                [idString stringByReplacingOccurrencesOfString:substring withString:[NSString stringWithFormat:@"%ld",subId + 1]];
+                [dataDic setObject:idString forKey:@"id"];
+                
+                //minute
+                NSInteger minute = [[dataDic objectForKey:@"minute"] integerValue];
+                minute ++;
+                [dataDic setObject:[NSNumber numberWithInteger:minute] forKey:@"price"];
+                
+                //随机上下浮动的数
+                double nextValue = sin(CFAbsoluteTimeGetCurrent()) + ((double)rand()/(double)RAND_MAX);
+                NSInteger isdouble = [[NSNumber numberWithDouble:nextValue] integerValue] % 2;
+                
+                //price
+                float priceFloat = [[dictionary objectForKey:@"lastprice"] floatValue];
+                [dataDic setObject:[NSNumber numberWithFloat:priceFloat * (287  + 0.5 *(isdouble - 1))] forKey:@"price"];
+                
+                //avgPrice
+                float acgRiceFloat = [[dictionary objectForKey:@"result"] floatValue];
+                [dataDic setObject:[NSNumber numberWithFloat:acgRiceFloat * (287  + 0.5 *(isdouble - 1))] forKey:@"avgPrice"];
+                
+                [dataArr addObject:dataDic];
+                
+                [dataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    YYTimeLineModel *model = [[YYTimeLineModel alloc]initWithDict:obj];
+                    [array addObject: model];
+                }];
+                
+                [self.stockDatadict setObject:array forKey:@"minutes"];
+                [self.stock draw];
+                
+                NSMutableDictionary *responseDic = [response mutableCopy];
+                [responseDic setObject:dataArr forKey:@"minutes"];
+                
+                [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"minuteData" ofType:@"plist"]];
+                [responseDic writeToFile:[[NSBundle mainBundle] pathForResource:@"minuteData" ofType:@"plist"] atomically:YES];
+                
+            }
+            
+            _proportionView.proportionNum = 0.8;
+            
+        } fail:^(NSDictionary *info) {
+            
+        }];
+        
+        [_asyncSocket readDataWithTimeout:-1 tag:0];
+        
+    }else{
+        
+        NSLog(@"数据异常：%@ ",jsonError);
+        [_asyncSocket readDataWithTimeout:-1 tag:0];
+        
+    }
+    
 }
 
 
@@ -326,6 +469,11 @@
     
     [_countPicker reloadAllComponents];
     _titleArr = @[@"8",@"80",@"200",@"2000",@"银元券"];
+    
+    _proportionView = [[ProportionView alloc] initWithFrame:CGRectMake(0, _stockContainerView.bottom, KScreenWidth, 16.f)];
+    _proportionView.backgroundColor = [UIColor yellowColor];
+    _proportionView.userInteractionEnabled = NO;
+    [self.view addSubview:_proportionView];
     
     //买入卖出按钮
     _buyButton = [[UIButton alloc] initWithFrame:CGRectMake(12.f, _countPicker.top, _countPicker.left - 24.f, _countPicker.height)];

@@ -55,6 +55,9 @@
 		1886D6DB1DFFFDFB00F4A067 /* downtrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1886D6DA1DFFFDFB00F4A067 /* downtrangle.png */; };
 		188F09421DFE3C6F004E1284 /* RechargeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188F09401DFE3C6F004E1284 /* RechargeController.m */; };
 		188F09431DFE3C6F004E1284 /* RechargeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188F09411DFE3C6F004E1284 /* RechargeController.xib */; };
+		1896E5FD1E011DE80072DC50 /* leftTrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896E5FB1E011DE80072DC50 /* leftTrangle.png */; };
+		1896E5FE1E011DE80072DC50 /* rightTrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896E5FC1E011DE80072DC50 /* rightTrangle.png */; };
+		1896E6011E011EC10072DC50 /* ProportionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896E6001E011EC10072DC50 /* ProportionView.m */; };
 		921BDE461DFFBE1A00C031C5 /* PersNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 921BDE451DFFBE1A00C031C5 /* PersNSObject.m */; };
 		921BDE511DFFCB7900C031C5 /* 001.png in Resources */ = {isa = PBXBuildFile; fileRef = 921BDE481DFFCB7900C031C5 /* 001.png */; };
 		921BDE521DFFCB7900C031C5 /* 002.png in Resources */ = {isa = PBXBuildFile; fileRef = 921BDE491DFFCB7900C031C5 /* 002.png */; };
@@ -203,6 +206,10 @@
 		188F093F1DFE3C6F004E1284 /* RechargeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeController.h; sourceTree = "<group>"; };
 		188F09401DFE3C6F004E1284 /* RechargeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeController.m; sourceTree = "<group>"; };
 		188F09411DFE3C6F004E1284 /* RechargeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeController.xib; sourceTree = "<group>"; };
+		1896E5FB1E011DE80072DC50 /* leftTrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftTrangle.png; sourceTree = "<group>"; };
+		1896E5FC1E011DE80072DC50 /* rightTrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightTrangle.png; sourceTree = "<group>"; };
+		1896E5FF1E011EC10072DC50 /* ProportionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProportionView.h; sourceTree = "<group>"; };
+		1896E6001E011EC10072DC50 /* ProportionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProportionView.m; sourceTree = "<group>"; };
 		5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.release.xcconfig"; sourceTree = "<group>"; };
 		921BDE441DFFBE1A00C031C5 /* PersNSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersNSObject.h; sourceTree = "<group>"; };
 		921BDE451DFFBE1A00C031C5 /* PersNSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersNSObject.m; sourceTree = "<group>"; };
@@ -455,6 +462,8 @@
 				92442FCD1DFE785F008BF127 /* PayButton.m */,
 				92442FCE1DFE785F008BF127 /* PayCountButton.h */,
 				92442FCF1DFE785F008BF127 /* PayCountButton.m */,
+				1896E5FF1E011EC10072DC50 /* ProportionView.h */,
+				1896E6001E011EC10072DC50 /* ProportionView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -770,6 +779,8 @@
 		1886D6D71DFFFBF000F4A067 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				1896E5FB1E011DE80072DC50 /* leftTrangle.png */,
+				1896E5FC1E011DE80072DC50 /* rightTrangle.png */,
 				1886D6D81DFFFBF000F4A067 /* toptrangle.png */,
 				1886D6DA1DFFFDFB00F4A067 /* downtrangle.png */,
 			);
@@ -1095,6 +1106,7 @@
 				921BDE541DFFCB7900C031C5 /* 004.png in Resources */,
 				92442FE51DFE84F1008BF127 /* 反馈.png in Resources */,
 				18273CB51DFA574F00855FCB /* LaunchScreen.storyboard in Resources */,
+				1896E5FD1E011DE80072DC50 /* leftTrangle.png in Resources */,
 				921BDE5B1DFFCE5D00C031C5 /* 010.png in Resources */,
 				92442FDC1DFE78A0008BF127 /* 银联支付.png in Resources */,
 				92442FE81DFE84F1008BF127 /* 了解.png in Resources */,
@@ -1109,6 +1121,7 @@
 				9293DEDA1DFE978D0032EFA1 /* ticktBlank.png in Resources */,
 				1829DA311DFAAFE000405DF2 /* YYFiveRecordTableViewCell.xib in Resources */,
 				921BDE581DFFCB7900C031C5 /* 008.png in Resources */,
+				1896E5FE1E011DE80072DC50 /* rightTrangle.png in Resources */,
 				921BDE511DFFCB7900C031C5 /* 001.png in Resources */,
 				92442FDD1DFE78A0008BF127 /* 返回.png in Resources */,
 				92442FD91DFE78A0008BF127 /* hot.png in Resources */,
@@ -1196,6 +1209,7 @@
 				1829DA251DFAAFE000405DF2 /* YYStockVariable.m in Sources */,
 				1829DA261DFAAFE000405DF2 /* YYTopBarView.m in Sources */,
 				1829DA401DFAB0E900405DF2 /* YYLineDataModel.m in Sources */,
+				1896E6011E011EC10072DC50 /* ProportionView.m in Sources */,
 				18273CAA1DFA574F00855FCB /* AppDelegate.m in Sources */,
 				1829DA321DFAAFE000405DF2 /* YYFiveRecordView.m in Sources */,
 				1829DA411DFAB0E900405DF2 /* YYTimeLineModel.m in Sources */,
