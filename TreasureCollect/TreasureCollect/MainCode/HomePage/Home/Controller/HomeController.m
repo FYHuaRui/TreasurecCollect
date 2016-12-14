@@ -64,10 +64,10 @@
     [self initStockView];
     [self fetchData];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self stock_enterFullScreen:self.stock.containerView.gestureRecognizers.firstObject];
-    });
-    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self stock_enterFullScreen:self.stock.containerView.gestureRecognizers.firstObject];
+//    });
+//    
     [self initViews];
 }
 
@@ -128,6 +128,149 @@
         
     } fail:^(NSDictionary *info) {
     }];
+
+    //socket
+    _asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self
+                                              delegateQueue:dispatch_get_main_queue()];
+    
+    NSError *err;
+    
+    //socket连接
+    [_asyncSocket connectToHost:@"43.254.148.72" onPort:9103 error:&err];
+    
+    if (err != nil)
+        
+    {
+        
+        NSLog(@"%@",err);
+        
+    }
+    
+}
+
+- (void)socket:(GCDAsyncSocket*)sock didConnectToHost:(NSString*)host port:(UInt16)port{
+    
+    NSLog(@"socket链接成功");
+    [_asyncSocket readDataWithTimeout:-1 tag:0];
+    
+}
+
+-(void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
+    
+    NSLog(@"收到数据了");
+    
+    
+    Byte *testByte = (Byte *)[data bytes];
+    
+    for(int i=0;i<[data length];i++)
+        
+        printf("testByte = %d\n",testByte[i]);
+    
+    [self bytesplit2byte:testByte
+                   begin:24
+                   count:[data length] - 24];
+    
+}
+
+- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError*)err{
+    
+    NSLog(@"socket链接失败了");
+    
+}
+
+
+-(void)bytesplit2byte:(Byte[])src begin:(NSInteger)begin count:(NSInteger)count{
+    
+    unsigned c = (int)count;
+    uint8_t *bytes = malloc(sizeof(*bytes) * c);
+    for (NSInteger i = begin; i < begin+count; i++){
+        
+        bytes[i-begin] = src[i];
+        
+    }
+    
+    NSData *newdata = [NSData dataWithBytes:bytes
+                                     length:count];
+    NSString *str = [[NSMutableString alloc] initWithData:newdata encoding:NSUTF8StringEncoding];
+    
+    NSData *stringData = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *jsonError = nil;
+    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:stringData
+                                                               options:NSJSONReadingAllowFragments
+                                                                 error:&jsonError];
+    if (jsonError == nil) {
+        
+        NSLog(@"字典%@",dictionary);
+        
+        [AppServer Get:@"minute" params:nil success:^(NSDictionary *response) {
+            NSMutableArray *array = [NSMutableArray array];
+            
+            if ([dictionary allKeys].count == 5) {
+                
+                //修改array；
+                NSMutableArray *dataArr = [response[@"minutes"] mutableCopy];
+                
+                //构建新的数据
+                NSMutableDictionary *dataDic = [[dataArr lastObject] mutableCopy];
+                [dataArr removeObjectAtIndex:0];
+                
+                //id
+                NSMutableString *idString = [dataDic objectForKey:@"id"];
+                NSString *substring = [idString substringWithRange:NSMakeRange(7, idString.length - 7)];
+                NSInteger subId = [substring integerValue];
+                [idString stringByReplacingOccurrencesOfString:substring withString:[NSString stringWithFormat:@"%ld",subId + 1]];
+                [dataDic setObject:idString forKey:@"id"];
+                
+                //minute
+                NSInteger minute = [[dataDic objectForKey:@"minute"] integerValue];
+                minute ++;
+                [dataDic setObject:[NSNumber numberWithInteger:minute] forKey:@"price"];
+                
+                //随机上下浮动的数
+                double nextValue = sin(CFAbsoluteTimeGetCurrent()) + ((double)rand()/(double)RAND_MAX);
+                NSInteger isdouble = [[NSNumber numberWithDouble:nextValue] integerValue] % 2;
+                
+                //price
+                float priceFloat = [[dictionary objectForKey:@"lastprice"] floatValue];
+                [dataDic setObject:[NSNumber numberWithFloat:priceFloat * (287  + 0.5 *(isdouble - 1))] forKey:@"price"];
+                
+                //avgPrice
+                float acgRiceFloat = [[dictionary objectForKey:@"result"] floatValue];
+                [dataDic setObject:[NSNumber numberWithFloat:acgRiceFloat * (287  + 0.5 *(isdouble - 1))] forKey:@"avgPrice"];
+                
+                [dataArr addObject:dataDic];
+                
+                [dataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    YYTimeLineModel *model = [[YYTimeLineModel alloc]initWithDict:obj];
+                    [array addObject: model];
+                }];
+                
+                [self.stockDatadict setObject:array forKey:@"minutes"];
+                [self.stock draw];
+                
+                NSMutableDictionary *responseDic = [response mutableCopy];
+                [responseDic setObject:dataArr forKey:@"minutes"];
+                
+                [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"minuteData" ofType:@"plist"]];
+                [responseDic writeToFile:[[NSBundle mainBundle] pathForResource:@"minuteData" ofType:@"plist"] atomically:YES];
+                
+            }
+            
+            _proportionView.proportionNum = 0.8;
+            
+        } fail:^(NSDictionary *info) {
+            
+        }];
+        
+        [_asyncSocket readDataWithTimeout:-1 tag:0];
+        
+    }else{
+        
+        NSLog(@"数据异常：%@ ",jsonError);
+        [_asyncSocket readDataWithTimeout:-1 tag:0];
+        
+    }
+    
 }
 
 
@@ -292,25 +435,69 @@
               forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_ticketButton];
     
+    //直播室
+    _liveShowButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _liveShowButton.frame = CGRectMake(260.f, 12.f, 60.f, 24.f);
+    [_liveShowButton setTitle:@"直播室" forState:UIControlStateNormal];
+    [_liveShowButton addTarget:self
+                      action:@selector(LiveShowAction:)
+            forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_liveShowButton];
+    
     //更多按钮展示界面
     self.leftMore = [[LeftMore alloc] initWithFrame:CGRectMake(-150, 20, 150, 300)];
     self.leftMore.hidden = YES;//先设置隐藏
     [self.view addSubview:self.leftMore];
     
-//
-//    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(12.f, KScreenHeight - kNavigationBarHeight - 12.f - KScreenWidth-kNavigationBarHeight-_stockContainerView.bottom - 24.f, KScreenWidth / 2 - 24.f, KScreenWidth-kNavigationBarHeight-_stockContainerView.bottom - 24.f)];
-//    [button setTitle:@"买入" forState:UIControlStateNormal];
-//    [button setTitleColor:[UIColor whiteColor]
-//                 forState:UIControlStateNormal];
-//    button.backgroundColor = [UIColor greenColor];
-//    [self.view addSubview:button];
-//    
-//    UIButton *button2 = [[UIButton alloc] initWithFrame:CGRectMake(KScreenWidth / 2 + 12.f, KScreenHeight - kNavigationBarHeight - 12.f - KScreenWidth-kNavigationBarHeight-_stockContainerView.bottom - 24.f, KScreenWidth / 2 - 24.f, KScreenWidth-kNavigationBarHeight-_stockContainerView.bottom - 24.f)];
-//    [button2 setTitle:@"卖出" forState:UIControlStateNormal];
-//    [button2 setTitleColor:[UIColor whiteColor]
-//                 forState:UIControlStateNormal];
-//    button2.backgroundColor = [UIColor redColor];
-//    [self.view addSubview:button2];
+    //选择弃
+    _countPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(KScreenWidth / 2 - 40, KScreenHeight - kNavigationBarHeight - 140.f, 80.f, 90.f)];
+    _countPicker.backgroundColor = [UIColor colorFromHexRGB:@"E9E9E9"];
+    _countPicker.dataSource = self;
+    _countPicker.delegate = self;
+    //设置圆角
+    _countPicker.layer.borderColor = [[UIColor colorFromHexRGB:@"B5B5B5"] CGColor];
+    _countPicker.layer.borderWidth = 5.f;
+    _countPicker.layer.cornerRadius = 5.f;
+    _countPicker.layer.masksToBounds = NO;
+    //设置阴影
+    _countPicker.layer.shadowOffset = CGSizeMake(0, -1);
+    _countPicker.layer.shadowColor = [[UIColor blackColor] CGColor];
+    _countPicker.layer.shadowRadius = 1.f;
+    _countPicker.layer.shadowOpacity = 0.5;
+    
+    [self.view addSubview:_countPicker];
+    
+    [_countPicker reloadAllComponents];
+    _titleArr = @[@"8",@"80",@"200",@"2000",@"银元券"];
+    
+    _proportionView = [[ProportionView alloc] initWithFrame:CGRectMake(0, _stockContainerView.bottom, KScreenWidth, 16.f)];
+    _proportionView.backgroundColor = [UIColor yellowColor];
+    _proportionView.userInteractionEnabled = NO;
+    [self.view addSubview:_proportionView];
+    
+    //买入卖出按钮
+    _buyButton = [[UIButton alloc] initWithFrame:CGRectMake(12.f, _countPicker.top, _countPicker.left - 24.f, _countPicker.height)];
+    _buyButton.layer.cornerRadius = 5.f;
+    _buyButton.layer.masksToBounds = YES;
+    [_buyButton setTitle:@"买涨" forState:UIControlStateNormal];
+    _buyButton.backgroundColor = [UIColor colorFromHexRGB:@"E45141"];
+    [self.view addSubview:_buyButton];
+    
+    UIImageView *redImage = [[UIImageView alloc] initWithFrame:CGRectMake(_buyButton.width / 2 - 8, 16.f, 16.f, 16.f)];
+    [redImage setImage:[UIImage imageNamed:@"toptrangle"]];
+    [_buyButton addSubview:redImage];
+    
+    _saleButton = [[UIButton alloc] initWithFrame:CGRectMake(_countPicker.right + 12.f, _countPicker.top, _countPicker.left - 24.f, _countPicker.height)];
+    _saleButton.layer.cornerRadius = 5.f;
+    _saleButton.layer.masksToBounds = YES;
+    [_saleButton setTitle:@"买跌" forState:UIControlStateNormal];
+    _saleButton.backgroundColor = [UIColor colorFromHexRGB:@"55BB72"];
+    [self.view addSubview:_saleButton];
+    
+    UIImageView *greenImage = [[UIImageView alloc] initWithFrame:CGRectMake(_buyButton.width / 2 - 8, 16.f, 16.f, 16.f)];
+    [greenImage setImage:[UIImage imageNamed:@"downtrangle"]];
+    [_saleButton addSubview:greenImage];
+    
 
 }
 
@@ -363,6 +550,12 @@
 
 }
 
+- (void)LiveShowAction:(UIButton *)button{
+
+    NSLogTC(@"要进入直播室了");
+
+}
+
 - (void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:animated];
@@ -370,6 +563,90 @@
     //隐藏导航栏
     self.navigationController.navigationBar.hidden = YES;
 
+}
+
+#pragma mark - UIPickerDelegate,UIPickerDatasource
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+
+    return 1;
+
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+
+    return _titleArr.count;
+
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component{
+
+    return 30;
+
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{
+
+    return pickerView.width;
+
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+
+    if (!view) {
+        view = [[UIView alloc] init];
+        view.backgroundColor = [UIColor colorFromHexRGB:@"F4F4F4"];
+    }
+    UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, pickerView.width, 30.f)];
+    text.textAlignment = NSTextAlignmentCenter;
+    text.text = [_titleArr objectAtIndex:row];
+    [view addSubview:text];
+    
+    return view;
+
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+
+    return _titleArr[0];
+
+}
+
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component{
+
+    NSString *str = [_titleArr objectAtIndex:row];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:str];
+    [attributedString addAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:16],NSForegroundColorAttributeName:[UIColor whiteColor]}
+                              range:NSMakeRange(0, [attributedString length])];
+    return attributedString;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    
+    //选中栏上一栏3d旋转
+    if (row != 0) {
+        
+        UIView *topView = [pickerView viewForRow:row - 1 forComponent:component];
+        topView.layer.transform = CATransform3DIdentity;
+        topView.layer.transform = CATransform3DMakeRotation(M_PI_4 / 2, 0, 1, 0);
+        
+    }
+    
+    //当前选中栏放大
+    UIView *view = [pickerView viewForRow:row forComponent:component];
+    CGAffineTransform transform = CGAffineTransformMakeScale(1.2, 1.2);
+    [UIView animateWithDuration:0.3 animations:^{
+        view.transform = transform;
+    }];
+    
+    //选中栏下一栏3d旋转
+    if (row != _titleArr.count) {
+        
+        UIView *bottomView = [pickerView viewForRow:row + 1 forComponent:component];
+        bottomView.layer.transform = CATransform3DIdentity;
+        bottomView.layer.transform = CATransform3DMakeRotation(- M_PI_4 / 2, 0, 1, 0);
+        
+    }
+    
 }
 
 

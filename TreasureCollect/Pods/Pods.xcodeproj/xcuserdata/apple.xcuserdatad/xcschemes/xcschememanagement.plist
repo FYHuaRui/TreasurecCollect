@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CocoaAsyncSocket.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JSONKit-NoWarning.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,12 +57,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3679203FDD32E942E3773E7A9598AB74</key>
+		<key>132E9C1833471AAA6F47B8B81B9071CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>48A1E9E06403D719847A52DEE0843F06</key>
+		<key>23D7DA26C40DEA0CBB49A7825C7CD4F1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -78,6 +83,11 @@
 			<true/>
 		</dict>
 		<key>9E033EDB5EC0819481B0546434FA577B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A49E51165D5F6B552C22791D46298804</key>
 		<dict>
 			<key>primary</key>
 			<true/>

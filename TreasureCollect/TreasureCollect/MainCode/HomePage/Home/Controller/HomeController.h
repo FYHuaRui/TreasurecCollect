@@ -18,14 +18,29 @@
 #import "RechargeController.h"
 #import "TicketViewController.h"
 #import "LeftMore.h"
+#import "ProportionView.h"
 
-@interface HomeController : BaseViewController{
+@interface HomeController : BaseViewController<UIPickerViewDelegate,UIPickerViewDataSource,GCDAsyncSocketDelegate>{
 
     UIButton *_leftButton;
     
     UIButton *_rechargeButton;
     
     UIButton *_ticketButton;
+    
+    UIButton *_liveShowButton;
+    
+    UIPickerView    *_countPicker;
+    
+    NSArray  *_titleArr;
+    
+    UIButton    *_buyButton;
+    
+    UIButton    *_saleButton;
+    
+    ProportionView *_proportionView;
+    
+    GCDAsyncSocket *_asyncSocket;
     
 }
 
