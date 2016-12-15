@@ -154,35 +154,35 @@
     return 40;
 }
 
-////选择
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    switch (indexPath.row)
-//    {
-//        case 0:
-//            NSLogTC(@"合买点击了");
-//            
-//            break;
-//            
-//        case 1:
-//            //
-//            break;
-//            
-//        case 2:
-//            //
-//            break;
-//            
-//        case 3:
-//            //
-//            break;
-//            
-//        case 4:
-//            //
-//            break;
-//            
-//        default:
-//            break;
-//    }
-//}
+//选择
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row)
+    {
+        case 0:
+            NSLogTC(@"合买点击了");
+            
+            break;
+            
+        case 1:
+            //
+            break;
+            
+        case 2:
+            //
+            break;
+            
+        case 3:
+            //
+            break;
+            
+        case 4:
+            //
+            break;
+            
+        default:
+            break;
+    }
+}
 
 @end

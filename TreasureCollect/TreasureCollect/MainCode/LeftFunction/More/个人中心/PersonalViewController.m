@@ -7,6 +7,11 @@
 //
 
 #import "PersonalViewController.h"
+#import "SettingVC.h"
+#import "tradeVC.h"
+#import "TicketViewController.h"
+#import "ImportantVC.h"
+#import "MyBuyViewController.h"
 
 @interface PersonalViewController ()
 
@@ -14,11 +19,20 @@
 
 @implementation PersonalViewController
 
+
+//视图即将出现
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self Daohang];//导航栏设置
+//    self.navigationController.navigationBar.barTintColor = [UIColor colorFromHexRGB:@"2887ee"];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self Daohang];//导航栏设置
+//    [self Daohang];//导航栏设置
     [self initSubViews];//主要内容
 }
 
@@ -31,10 +45,10 @@
 - (void)Daohang
 {
     self.title = @"我";
+    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = [UIColor colorFromHexRGB:@"2887ee"];
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.backBarButtonItem = nil;
-    self.view.backgroundColor = [UIColor colorFromHexRGB:@"2887ee"];
     
     //左侧返回按钮
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -62,19 +76,19 @@
 - (void)initSubViews
 {
     //数据源
-    PersNSObject *table1 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"001"] label:@"交易明细" rightView:nil];
-    PersNSObject *table2 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"002"] label:@"资金流水" rightView:nil];
+    PersNSObject *table1 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"交易明细"] label:@"交易明细" rightView:nil];
+    PersNSObject *table2 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"资金流水"] label:@"资金流水" rightView:nil];
     
     //显示银元券有多少张
-    UILabel *sLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-    int a = 1;
-    sLab.textAlignment = NSTextAlignmentRight;
-    sLab.text = [NSString stringWithFormat:@"%d张",a];
-    PersNSObject *table3 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"003"] label:@"银元券" rightView:sLab];
+//    UILabel *sLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+//    int a = 1;
+//    sLab.textAlignment = NSTextAlignmentRight;
+//    sLab.text = [NSString stringWithFormat:@"%d张",a];
+    PersNSObject *table3 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"银元券"] label:@"银元券" rightView:nil];
     
-    PersNSObject *table4 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"004"] label:@"重要提醒" rightView:nil];
-    PersNSObject *table5 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"005"] label:@"建议反馈" rightView:nil];
-    PersNSObject *table6 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"006"] label:@"我的合买" rightView:nil];
+    PersNSObject *table4 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"重要提醒"] label:@"重要提醒" rightView:nil];
+    PersNSObject *table5 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"建议反馈"] label:@"建议反馈" rightView:nil];
+    PersNSObject *table6 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"我的合买"] label:@"我的合买" rightView:nil];
     
     //添加建仓确认开关
     UISwitch *aSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
@@ -82,8 +96,8 @@
     aSwitch.tintColor = [UIColor lightGrayColor];
     aSwitch.thumbTintColor = [UIColor whiteColor];
     aSwitch.on = YES;//开关打开
-    PersNSObject *table7 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"007"] label:@"建仓确认" rightView:aSwitch];
-    PersNSObject *table8 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"008"] label:@"一分钟了解" rightView:nil];
+    PersNSObject *table7 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"建仓确认"] label:@"建仓确认" rightView:aSwitch];
+    PersNSObject *table8 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"了解"] label:@"一分钟了解微胜宝" rightView:nil];
     
     NSArray *ary1 = [NSArray arrayWithObjects:table1, table2, table3, nil];
     NSArray *ary2 = [NSArray arrayWithObjects:table4, table5, nil];
@@ -121,6 +135,73 @@
         make.top.and.right.left.equalTo(headerView).offset(0);
         make.bottom.equalTo(headerView).offset(-70);
     }];
+    
+    //登录／提现
+    UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    loginBtn.frame = CGRectMake(15, 110, KScreenWidth/2 - 20, 40);
+//    [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+    [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    loginBtn.backgroundColor = [UIColor colorFromHexRGB:@"00a6ff"];
+    loginBtn.layer.cornerRadius = 3.0;
+    [pView addSubview:loginBtn];
+    
+    //注册／充值
+    UIButton *CzBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    CzBtn.frame = CGRectMake(self.view.center.x+10, loginBtn.frame.origin.y, loginBtn.frame.size.width, loginBtn.frame.size.height);
+//    [CzBtn setTitle:@"注册" forState:UIControlStateNormal];
+    [CzBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    CzBtn.backgroundColor = [UIColor colorFromHexRGB:@"ffba00"];
+    CzBtn.layer.cornerRadius = 3.0;
+    [pView addSubview:CzBtn];
+    
+    
+    BOOL login = YES;
+    if (login)
+    {
+        UIView *personView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, KScreenWidth, 70)];
+        personView.backgroundColor = [UIColor clearColor];
+        [pView addSubview:personView];
+        
+        //点击收回更多界面
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(personalSetTap)];
+        [personView addGestureRecognizer:singleTap];
+        
+        UIImageView *headView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 70, 70)];
+        headView.image = [UIImage imageNamed:@"头像-登录状态"];
+        [personView addSubview:headView];
+        
+        //显示用户名Lab
+        UILabel *userLab = [[UILabel alloc] initWithFrame:CGRectMake(headView.frame.origin.x+headView.frame.size.width+10, 10, KScreenWidth/2, 20)];
+        userLab.text = @"大象adfadfadfa";
+        userLab.textColor = [UIColor whiteColor];
+        [personView addSubview:userLab];
+        
+        //显示用户手机号Lab
+        UILabel *phoneLab = [[UILabel alloc] initWithFrame:CGRectMake(userLab.frame.origin.x, userLab.frame.origin.y+userLab.frame.size.height+10, userLab.frame.size.width, userLab.frame.size.height)];
+        phoneLab.text = [NSString stringWithFormat:@"手机：%ld", 123123123123];
+        phoneLab.font = [UIFont systemFontOfSize:12];
+        phoneLab.textColor = [UIColor whiteColor];
+        [personView addSubview:phoneLab];
+        
+        //显示箭头
+        UIImageView *pointImage = [[UIImageView alloc] initWithFrame:CGRectMake(KScreenWidth-40, personView.frame.size.height/2-15, 20, 20)];
+        pointImage.image = [UIImage imageNamed:@"返回3"];
+        [personView addSubview:pointImage];
+        
+        [loginBtn setTitle:@"提现" forState:UIControlStateNormal];
+        [CzBtn setTitle:@"充值" forState:UIControlStateNormal];
+        
+    }
+    else
+    {
+        //添加未登录的图片
+        UIImageView *headImage = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x-30, 20, 60, 60)];
+        headImage.image = [UIImage imageNamed:@"未登录状态"];
+        [pView addSubview:headImage];
+        
+        [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+        [CzBtn setTitle:@"注册" forState:UIControlStateNormal];
+    }
 
     //个人资产
     UILabel *aLab = [[UILabel alloc] initWithFrame:CGRectMake(10, 180, 150, 10)];
@@ -128,13 +209,15 @@
     aLab.text = @"个人资产（元）";
     [headerView addSubview:aLab];
     
-    UILabel *moneyLab = [[UILabel alloc] initWithFrame:CGRectMake(aLab.frame.origin.x, aLab.frame.origin.y+aLab.frame.size.height+5, 100, 50)];
-    moneyLab.text = @"55.55";
+    UILabel *moneyLab = [[UILabel alloc] initWithFrame:CGRectMake(aLab.frame.origin.x, aLab.frame.origin.y+aLab.frame.size.height+5, KScreenWidth, 50)];
+    moneyLab.text = @"8888888";
     moneyLab.textColor = [UIColor redColor];
     moneyLab.font = [UIFont systemFontOfSize:35];
     [headerView addSubview:moneyLab];
     
     self.tableView.tableHeaderView = headerView;
+    
+    [self.tableView reloadData];
 }
 
 //左侧返回按钮响应事件
@@ -149,6 +232,15 @@
 - (void)rightBtnClicked
 {
     NSLogTC(@"联系客服");
+}
+
+//
+- (void)personalSetTap
+{
+    NSLogTC(@"添加头像按钮点击了");
+    SettingVC *setVC = [[SettingVC alloc] init];
+    [self.navigationController pushViewController:setVC animated:YES];
+    
 }
 
 
@@ -195,10 +287,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        cell.backgroundColor = [UIColor clearColor];
-        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+//        cell = [[UITableViewCell alloc] init];
     }
+    
     if (indexPath.section < [self.arrayData count])
     {
         NSArray *array = [self.arrayData objectAtIndex:indexPath.section];
@@ -213,7 +305,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         //设置cell.imageview的宽高
-        CGSize itemSize = CGSizeMake(30, 30);
+        CGSize itemSize = CGSizeMake(25, 25);
         UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
         CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
         [cell.imageView.image drawInRect:imageRect];
@@ -222,11 +314,9 @@
         
         if (indexPath.section == 0 && indexPath.row == 2)
         {
-            //设置cell的附属图片
-//            NSArray *array = [self.arrayData objectAtIndex:indexPath.section];
-//            PPersNSObject *tableCell = [array objectAtIndex:indexPath.row];
-            cell.accessoryView = tableCell.rightView;
-
+            cell.detailTextLabel.text = @"0张";
+            cell.detailTextLabel.textColor = [UIColor redColor];
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
         }
         
         if (indexPath.section == 3 && indexPath.row == 0)
@@ -238,10 +328,60 @@
     return cell;
 }
 
+
+#pragma mark - UITableViewDelegate
 //设置每行表格的高度
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return 40;
+}
+
+//选择表格视图某一行调用的方法
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *array = [self.arrayData objectAtIndex:indexPath.section];
+    PersNSObject *tableCell = [array objectAtIndex:indexPath.row];
+    
+    if (indexPath.section == 0)
+    {
+        if (indexPath.row == 0)
+        {
+            tradeVC *tVC = [[tradeVC alloc] initwithTitle:tableCell.context];
+            [self.navigationController pushViewController:tVC animated:YES];
+        }
+        
+        if (indexPath.row == 1)
+        {
+            tradeVC *tVC = [[tradeVC alloc] initwithTitle:tableCell.context];
+            [self.navigationController pushViewController:tVC animated:YES];
+        }
+        
+        if (indexPath.row == 2)
+        {
+            TicketViewController *ticketVC = [[TicketViewController alloc] init];
+            [self.navigationController pushViewController:ticketVC animated:YES];
+        }
+    }
+    
+    if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0)
+        {
+            ImportantVC *impVC = [[ImportantVC alloc] init];
+            [self.navigationController pushViewController:impVC animated:YES];
+        }
+        
+        if (indexPath.row == 1)
+        {
+            NSLogTC(@"建议反馈");
+        }
+    }
+    
+    if (indexPath.section == 2 && indexPath.row == 0)
+    {
+        MyBuyViewController *myBuyVC = [[MyBuyViewController alloc] init];
+        [self.navigationController pushViewController:myBuyVC animated:YES];
+    }
 }
 
 

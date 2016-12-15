@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "PersonalViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,10 +22,10 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible ];
     
-//    主页
-    HomeController *homeView = [[HomeController alloc] init];
-    homeView.title = @"首页";
-    UINavigationController *NHomeView = [[UINavigationController alloc] initWithRootViewController:homeView];
+//    //主页
+//    HomeController *homeView = [[HomeController alloc] init];
+//    homeView.title = @"首页";
+//    UINavigationController *NHomeView = [[UINavigationController alloc] initWithRootViewController:homeView];
     
 //    //左侧栏
 //    LeftMainController *LMVC = [[LeftMainController alloc] init];
@@ -37,7 +38,14 @@
 //    //5、设置左右两边抽屉显示的多少
 //    MMVC.maximumLeftDrawerWidth = 200.0;
     
-    [self.window setRootViewController:NHomeView];
+//    [self.window setRootViewController:NHomeView];
+    
+    PersonalViewController *pVC = [[PersonalViewController alloc] init];
+    UINavigationController *naVC = [[UINavigationController alloc] initWithRootViewController:pVC];
+    
+    [self.window setRootViewController:naVC];
+    
+    
     
     return YES;
 }
