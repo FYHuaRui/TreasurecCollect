@@ -49,16 +49,26 @@
 - (void)initViews{
     
     //买涨的比例视图
-    _redScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.width / 2, self.height)];
-    _redScrollView.backgroundColor = [UIColor clearColor];
-    _redScrollView.showsVerticalScrollIndicator = NO;
-    _redScrollView.showsHorizontalScrollIndicator = NO;
-    _redScrollView.tag = 100;
-    [self addSubview:_redScrollView];
+    _redcellCount = 15;
+    _greencellCount = 15;
     
-    UIImage *redimage = [UIImage imageNamed:@"rightTrangle"];
-    [self addImage:redimage
-         ToSubview:_redScrollView];
+    UICollectionViewFlowLayout *redlayout = [[UICollectionViewFlowLayout alloc] init];
+    redlayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    //设置单元格的间隙
+    redlayout.minimumInteritemSpacing = 0;
+    redlayout.minimumLineSpacing = 0;
+    redlayout.itemSize = CGSizeMake(24.f  , self.height);
+    _redCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.width / 2, self.height)
+                                            collectionViewLayout:redlayout];
+    _redCollectionView.backgroundColor = [UIColor colorFromHexRGB:@"C93723"];
+    [_redCollectionView registerNib:[UINib nibWithNibName:@"TrangleCell"
+                                               bundle:[NSBundle mainBundle]]
+     forCellWithReuseIdentifier:@"Trangle_Cell"];
+    _redCollectionView.dataSource = self;
+    _redCollectionView.delegate = self;
+    _redCollectionView.tag = 400;
+    [_redCollectionView setContentOffset:CGPointMake(_redCollectionView.contentSize.width, 0)];
+    [self addSubview:_redCollectionView];
 
     _redLabel = [[UILabel alloc] initWithFrame:CGRectMake(2.f, 2.f, 72.f, self.height - 4.f)];
     _redLabel.text = [NSString stringWithFormat:@"买涨：%.0f%%",_proportionNum];
@@ -68,16 +78,63 @@
     [self addSubview:_redLabel];
     
     //买跌的比例视图
-    _greenScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(self.width / 2, 0, self.width / 2, self.height)];
-    _greenScrollView.backgroundColor = [UIColor clearColor];
-    _greenScrollView.showsVerticalScrollIndicator = NO;
-    _greenScrollView.showsHorizontalScrollIndicator = NO;
-    _greenScrollView.tag = 101;
-    [self addSubview:_greenScrollView];
+    UICollectionViewFlowLayout *greenlayout = [[UICollectionViewFlowLayout alloc] init];
+    greenlayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    //设置单元格的间隙
+    greenlayout.minimumInteritemSpacing = 0;
+    greenlayout.minimumLineSpacing = 0;
+    greenlayout.itemSize = CGSizeMake(24.f , self.height);
+    _greenCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(self.width / 2, 0, self.width / 2, self.height)
+                                            collectionViewLayout:greenlayout];
+    _greenCollectionView.backgroundColor = [UIColor colorFromHexRGB:@"75BA7F"];
+    [_greenCollectionView registerNib:[UINib nibWithNibName:@"TrangleCell"
+                                                   bundle:[NSBundle mainBundle]]
+         forCellWithReuseIdentifier:@"Trangle_Cell"];
+    _greenCollectionView.dataSource = self;
+    _greenCollectionView.delegate = self;
+    _greenCollectionView.tag = 401;
+    [self addSubview:_greenCollectionView];
     
-    UIImage *greenimage = [UIImage imageNamed:@"leftTrangle"];
-    [self addImage:greenimage
-         ToSubview:_greenScrollView];
+    [NSTimer scheduledTimerWithTimeInterval:0.5
+                                    repeats:YES
+                                      block:^(NSTimer * _Nonnull timer) {
+                                          
+                                          [UIView animateWithDuration:0.5
+                                                                delay:0
+                                                              options:UIViewAnimationOptionCurveLinear
+                                                           animations:^{
+                                                               
+                                                               CGPoint greenpoint = _greenCollectionView.contentOffset;
+                                                               greenpoint.x += 20;
+                                                               _greenCollectionView.contentOffset = greenpoint;
+                                                               
+                                                               float greenOffsize = _greenCollectionView.contentSize.width -  _greenCollectionView.contentOffset.x;
+                                                               if (greenOffsize < _greenCollectionView.frame.size.width) {
+                                                                   
+                                                                   _greencellCount += 10;
+                                                                   
+                                                                   [_greenCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+                                                                   
+                                                               }
+                                                               
+                                                               CGPoint redpoint = _redCollectionView.contentOffset;
+                                                               redpoint.x -= 20;
+                                                               _redCollectionView.contentOffset = redpoint;
+                                                               
+                                                               float redOffsize = _redCollectionView.contentOffset.x;
+                                                               if (redOffsize < _redCollectionView.frame.size.width) {
+                                                                   
+                                                                   _redcellCount += 10;
+                                                                   
+                                                                   [_redCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+                                                                   
+                                                               }
+                                                               
+                                                           } completion:^(BOOL finished) {
+                                                               
+                                                           }];
+                                          
+                                      }];
     
     _greenLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.width - 74.f, 2.f, 72.f, self.height - 4.f)];
     _greenLabel.text = [NSString stringWithFormat:@"买跌：%.0f%%",_proportionNum];
@@ -86,47 +143,33 @@
     _greenLabel.font = [UIFont systemFontOfSize:11];
     [self addSubview:_greenLabel];
     
-//    if (!_timer) {
-//        
-//        _timer = [NSTimer scheduledTimerWithTimeInterval:1
-//                                                 repeats:YES
-//                                                   block:^(NSTimer * _Nonnull timer) {
-//                                                       
-//                                                       CABasicAnimation *animation = [CABasicAnimation animation];
-//                                                       animation.keyPath = @"position.x";
-//                                                       //                                                       animation.fromValue = @0;
-//                                                       //                                                       animation.toValue = @(_redScrollView.contentSize.width);
-//                                                       animation.byValue = @20;
-//                                                       animation.duration = 1;
-//                                                       [_redScrollView.layer addAnimation:animation forKey:@"basic"];
-//                                                       
-//                                                       CGPoint redPoint = _redScrollView.contentOffset;
-//                                                       redPoint.x -= 20.f;
-//                                                       _redScrollView.contentOffset = redPoint;
-//                                                       
-//                                                       //                                                       [UIView animateKeyframesWithDuration:1
-//                                                       //                                                                                      delay:0
-//                                                       //                                                                                    options:UIViewKeyframeAnimationOptionCalculationModeLinear
-//                                                       //                                                                                 animations:^{
-//                                                       //
-//                                                       //
-//                                                       //                                                                                     CGPoint redPoint = _redScrollView.contentOffset;
-//                                                       //                                                                                     redPoint.x -= 20.f;
-//                                                       //                                                                                     _redScrollView.contentOffset = redPoint;
-//                                                       //
-//                                                       //                                                                                     CGPoint greenPoint = _greenScrollView.contentOffset;
-//                                                       //                                                                                     greenPoint.x += 20.f;
-//                                                       //                                                                                     _greenScrollView.contentOffset = greenPoint;
-//                                                       //                                                                                     
-//                                                       //                                                                                 } completion:^(BOOL finished) {
-//                                                       //                                                                                     
-//                                                       //                                                                                 }];
-//                                                       
-//                                                   }];
-//        
-//    }
+
+}
 
 
+#pragma mark - UICollectionViewDelegate，UICollectionViewDatasource
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    
+    if (collectionView.tag == 400) {
+        return _redcellCount;
+    }else{
+        return _greencellCount;
+    }
+
+    
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    TrangleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Trangle_Cell" forIndexPath:indexPath];
+    if (collectionView.tag == 400) {
+        [cell.cellImg setImage:[UIImage imageNamed:@"rightTrangle"]];
+    }else{
+        [cell.cellImg setImage:[UIImage imageNamed:@"leftTrangle"]];
+    }
+
+    return cell;
+    
 }
 
 
@@ -168,26 +211,30 @@
         //根据大小判断,比例改变情况（谁增谁减少）
         if (proportionNum > _proportionNum) {
             
+//            _redcellCount = 15;
+//            _greencellCount = 15;
+//            [_redCollectionView reloadData];
+//            [_greenCollectionView reloadData];
             [UIView animateWithDuration:1
                              animations:^{
                                  
-                                 CGRect redFrame = _redScrollView.frame;
+                                 CGRect redFrame = _redCollectionView.frame;
                                  redFrame.size.width = self.width  * proportionNum;
-                                 _redScrollView.frame = redFrame;
+                                 _redCollectionView.frame = redFrame;
                                  UIImage *redimage = [UIImage imageNamed:@"rightTrangle"];
                                  [self addImage:redimage
-                                      ToSubview:_redScrollView];
+                                      ToSubview:_redCollectionView];
                                  
-                                 CGRect greenFrame = _greenScrollView.frame;
+                                 CGRect greenFrame = _greenCollectionView.frame;
                                  greenFrame.origin.x =  greenFrame.origin.x + greenFrame.size.width - self.width * (1 - proportionNum);
                                  greenFrame.size.width = self.width * (1 - proportionNum);
-                                 _greenScrollView.frame = greenFrame;
+                                 _greenCollectionView.frame = greenFrame;
                                  
                              } completion:^(BOOL finished) {
                                  
                                  UIImage *greenimage = [UIImage imageNamed:@"leftTrangle"];
                                  [self addImage:greenimage
-                                      ToSubview:_greenScrollView];
+                                      ToSubview:_greenCollectionView];
                                  
                              }];
             
@@ -197,24 +244,19 @@
             [UIView animateWithDuration:1
                              animations:^{
                                  
-                                 CGRect redFrame = _redScrollView.frame;
+                                 CGRect redFrame = _redCollectionView.frame;
                                  redFrame.size.width = self.width  * proportionNum;
-                                 _redScrollView.frame = redFrame;
+                                 _redCollectionView.frame = redFrame;
                                  
-                                 CGRect greenFrame = _greenScrollView.frame;
+                                 CGRect greenFrame = _greenCollectionView.frame;
                                  greenFrame.origin.x =  greenFrame.origin.x + greenFrame.size.width - self.width * (1 - proportionNum);
                                  greenFrame.size.width = self.width * (1 - proportionNum);
-                                 _greenScrollView.frame = greenFrame;
-                                 UIImage *greenimage = [UIImage imageNamed:@"leftTrangle"];
-                                 [self addImage:greenimage
-                                      ToSubview:_greenScrollView];
+                                 _greenCollectionView.frame = greenFrame;
+
                                  
                              } completion:^(BOOL finished) {
                                  
-                                 UIImage *redimage = [UIImage imageNamed:@"rightTrangle"];
-                                 [self addImage:redimage
-                                      ToSubview:_redScrollView];
-                                 
+
                              }];
             
         

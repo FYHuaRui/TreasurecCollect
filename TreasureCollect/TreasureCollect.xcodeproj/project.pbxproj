@@ -51,6 +51,8 @@
 		1829DA4A1DFAB12B00405DF2 /* minuteData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1829DA471DFAB12B00405DF2 /* minuteData.plist */; };
 		1829DA4C1DFAB28E00405DF2 /* YYStockFullScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1829DA4B1DFAB28E00405DF2 /* YYStockFullScreenView.xib */; };
 		1829DA501DFAB85D00405DF2 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829DA4F1DFAB85D00405DF2 /* UIViewExt.m */; };
+		1877BD461E0278510055AC7F /* TrangleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1877BD441E0278510055AC7F /* TrangleCell.m */; };
+		1877BD471E0278510055AC7F /* TrangleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1877BD451E0278510055AC7F /* TrangleCell.xib */; };
 		1886D6D91DFFFBF000F4A067 /* toptrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1886D6D81DFFFBF000F4A067 /* toptrangle.png */; };
 		1886D6DB1DFFFDFB00F4A067 /* downtrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1886D6DA1DFFFDFB00F4A067 /* downtrangle.png */; };
 		188F09421DFE3C6F004E1284 /* RechargeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188F09401DFE3C6F004E1284 /* RechargeController.m */; };
@@ -201,6 +203,9 @@
 		1829DA4B1DFAB28E00405DF2 /* YYStockFullScreenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YYStockFullScreenView.xib; sourceTree = "<group>"; };
 		1829DA4E1DFAB85D00405DF2 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		1829DA4F1DFAB85D00405DF2 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		1877BD431E0278510055AC7F /* TrangleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrangleCell.h; sourceTree = "<group>"; };
+		1877BD441E0278510055AC7F /* TrangleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrangleCell.m; sourceTree = "<group>"; };
+		1877BD451E0278510055AC7F /* TrangleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrangleCell.xib; sourceTree = "<group>"; };
 		1886D6D81DFFFBF000F4A067 /* toptrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toptrangle.png; sourceTree = "<group>"; };
 		1886D6DA1DFFFDFB00F4A067 /* downtrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downtrangle.png; sourceTree = "<group>"; };
 		188F093F1DFE3C6F004E1284 /* RechargeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeController.h; sourceTree = "<group>"; };
@@ -464,6 +469,9 @@
 				92442FCF1DFE785F008BF127 /* PayCountButton.m */,
 				1896E5FF1E011EC10072DC50 /* ProportionView.h */,
 				1896E6001E011EC10072DC50 /* ProportionView.m */,
+				1877BD431E0278510055AC7F /* TrangleCell.h */,
+				1877BD441E0278510055AC7F /* TrangleCell.m */,
+				1877BD451E0278510055AC7F /* TrangleCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1106,6 +1114,7 @@
 				921BDE541DFFCB7900C031C5 /* 004.png in Resources */,
 				92442FE51DFE84F1008BF127 /* 反馈.png in Resources */,
 				18273CB51DFA574F00855FCB /* LaunchScreen.storyboard in Resources */,
+				1877BD471E0278510055AC7F /* TrangleCell.xib in Resources */,
 				1896E5FD1E011DE80072DC50 /* leftTrangle.png in Resources */,
 				921BDE5B1DFFCE5D00C031C5 /* 010.png in Resources */,
 				92442FDC1DFE78A0008BF127 /* 银联支付.png in Resources */,
@@ -1207,6 +1216,7 @@
 				1829DA341DFAAFE000405DF2 /* YYTimeLineView.m in Sources */,
 				1829D9DB1DFAAA4600405DF2 /* LeftMainController.m in Sources */,
 				1829DA251DFAAFE000405DF2 /* YYStockVariable.m in Sources */,
+				1877BD461E0278510055AC7F /* TrangleCell.m in Sources */,
 				1829DA261DFAAFE000405DF2 /* YYTopBarView.m in Sources */,
 				1829DA401DFAB0E900405DF2 /* YYLineDataModel.m in Sources */,
 				1896E6011E011EC10072DC50 /* ProportionView.m in Sources */,

@@ -228,6 +228,7 @@
                 
                 //随机上下浮动的数
                 double nextValue = sin(CFAbsoluteTimeGetCurrent()) + ((double)rand()/(double)RAND_MAX);
+                NSLogTC(@"看这里%f",nextValue);
                 NSInteger isdouble = [[NSNumber numberWithDouble:nextValue] integerValue] % 2;
                 
                 //price
@@ -256,7 +257,7 @@
                 
             }
             
-            _proportionView.proportionNum = 0.8;
+            _proportionView.proportionNum = 0.3;
             
         } fail:^(NSDictionary *info) {
             

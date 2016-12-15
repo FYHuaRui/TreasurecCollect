@@ -8,16 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProportionView : UIView{
+#import "TrangleCell.h"
 
-    UIScrollView *_redScrollView;
-    UIScrollView *_greenScrollView;
+@interface ProportionView : UIView<UICollectionViewDelegate,UICollectionViewDataSource>{
+
+    UICollectionView *_redCollectionView;
+    UICollectionView *_greenCollectionView;
     
     UILabel *_redLabel;
     UILabel *_greenLabel;
     
     NSTimer *_timer;
-
+    
+    NSInteger _redcellCount;
+    NSInteger _greencellCount;
 }
 
 @property (nonatomic ,assign)float proportionNum;
