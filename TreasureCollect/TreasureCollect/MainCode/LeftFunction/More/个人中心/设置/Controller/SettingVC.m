@@ -7,6 +7,9 @@
 //
 
 #import "SettingVC.h"
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "nickNameVC.h"
 
 @interface SettingVC ()
 
@@ -40,6 +43,21 @@
     self.title = @"设置";
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    //左侧返回按钮
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    leftBtn.frame = CGRectMake(0, 0, 30, 30);
+    [leftBtn addTarget:self action:@selector(returnClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+    self.navigationItem.leftBarButtonItem = leftItem;
+}
+
+//返回按钮
+- (void)returnClicked
+{
+    NSLogTC(@"返回按钮点击了");
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //主页面显示
@@ -83,14 +101,21 @@
     enterImage.image = [UIImage imageNamed:@"进入"];
     [hView addSubview:enterImage];
     
-    UIImageView *headImage = [[UIImageView alloc] initWithFrame:CGRectMake(enterImage.frame.origin.x-55, 12.5, 45, 45)];
-    headImage.image = [UIImage imageNamed:@"头像-登录状态"];
-    [hView addSubview:headImage];
+    self.myHeadPortrait = [[UIImageView alloc] initWithFrame:CGRectMake(enterImage.frame.origin.x-55, 12.5, 45, 45)];
+    self.myHeadPortrait.image = [UIImage imageNamed:@"头像-登录状态"];
+    //  把头像设置成圆形
+    self.myHeadPortrait.layer.cornerRadius=self.myHeadPortrait.frame.size.width/2;
+    self.myHeadPortrait.layer.masksToBounds=YES;
+    //  给头像加一个圆形边框
+    self.myHeadPortrait.layer.borderWidth = 1.5f;
+    self.myHeadPortrait.layer.borderColor = [UIColor whiteColor].CGColor;
+    
+    [hView addSubview:self.myHeadPortrait];
     
     self.tableView.tableHeaderView = headerView;
 }
 
-//xiu ga
+//修改头像手势响应事件
 - (void)personalSetTap
 {
     NSLogTC(@"设置图片");
@@ -98,6 +123,12 @@
                                                                        message:nil
                                                                 preferredStyle:UIAlertControllerStyleActionSheet];
     [alertView addAction:[UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum])
+        {
+            NSLogTC(@"当前设备不支持访问相册");
+            return ;
+        }
         UIImagePickerController *PickerImage = [[UIImagePickerController alloc]init];
         PickerImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         //允许编辑，即放大裁剪
@@ -109,9 +140,16 @@
     }]];
     
     [alertView addAction:[UIAlertAction actionWithTitle:@"照相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+        {
+            NSLogTC(@"当前设备不支持拍照");
+            return ;
+        }
+        
         UIImagePickerController *PickerImage = [[UIImagePickerController alloc]init];
         //获取方式:通过相机
         PickerImage.sourceType = UIImagePickerControllerSourceTypeCamera;
+        PickerImage.mediaTypes = [NSArray arrayWithObject:(NSString*) kUTTypeImage];//设置媒体类型为静态图像
         PickerImage.allowsEditing = YES;
         PickerImage.delegate = self;
         [self presentViewController:PickerImage animated:YES completion:nil];
@@ -124,13 +162,66 @@
 }
 
 
-//PickerImage完成后的代理方法
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    //定义一个newPhoto，用来存放我们选择的图片。
-    UIImage *newPhoto = [info objectForKey:@"UIImagePickerControllerEditedImage"];
-    self.myHeadPortrait.image = newPhoto;
-    [self dismissViewControllerAnimated:YES completion:nil];
+#pragma mark - UIImagePickerControllerDelegate
+//相册或者拍照的回调方法
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)
+    {
+        self.myHeadPortrait.image = [info objectForKey:UIImagePickerControllerEditedImage];
+    }
+    else if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+    {
+        NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+        
+        //判断是静态图像还是视屏
+        if ([mediaType isEqualToString:(NSString*)kUTTypeImage])
+        {
+            UIImage *editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
+            self.myHeadPortrait.image = editedImage;//显示编辑后的图片
+            
+            if (picker.cameraDevice == UIImagePickerControllerCameraDeviceFront)
+            {
+                //前置拍的照片
+//                self.myHeadPortrait.transform = CGAffineTransformIsIdentity;
+                self.myHeadPortrait.transform = CGAffineTransformScale(picker.cameraViewTransform, -1, 1);
+                
+            }
+            
+            UIImageWriteToSavedPhotosAlbum(editedImage, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+        }
+    }
+    
+    //隐藏图像选取控制器
+    [picker dismissViewControllerAnimated:YES completion:^{
+    }];
 }
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    //隐藏图像选取控制器
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
+/*
+ @功能：图像保存后的状态回调
+ @参数：保存的图像 错误的信息 设备上下文
+ @返回值：无
+ */
+- (void)image:(UIImage*)image didFinishSavingWithError:(NSError*)error contextInfo:(void*)contextInfo
+{
+    if (!error)
+    {
+        NSLogTC(@"保存图像成功");
+    }
+    else
+    {
+        NSLogTC(@"图像保存失败：%@", [error localizedDescription]);
+    }
+}
+
 
 
 //表格视图数据源委托
@@ -213,7 +304,8 @@
             }
             if (indexPath.row == 1)
             {
-                cell.detailTextLabel.text = @"3.1M";
+//                cell.detailTextLabel.text = @"3.1M";
+                cell.detailTextLabel.text= [NSString stringWithFormat:@"%@", [self getCacheSize]];
             }
         }
         
@@ -227,10 +319,65 @@
     return cell;
 }
 
+
+#pragma mark - UITableViewDelegate
 //设置每行表格的高度
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 45;
+}
+
+//选择表格视图某一行调用的方法
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        if (indexPath.row == 0)
+        {
+            nickNameVC *nickName = [[nickNameVC alloc] init];
+            [self.navigationController pushViewController:nickName animated:YES];
+        }
+        
+        if (indexPath.row == 1)
+        {
+            NSLogTC(@"清理缓存");
+        }
+    }
+    
+    if (indexPath.section == 1)
+    {
+        NSLogTC(@"退出登录");
+    }
+}
+
+
+#pragma mark - 计算缓存大小
+- (NSString *)getCacheSize
+{
+    //定义变量存储总的缓存大小
+    long long sumSize = 0;
+
+    //01.获取当前图片缓存路径
+    NSString *cacheFilePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches"];
+
+    //02.创建文件管理对象
+    NSFileManager *filemanager = [NSFileManager defaultManager];
+
+    //获取当前缓存路径下的所有子路径
+    NSArray *subPaths = [filemanager subpathsOfDirectoryAtPath:cacheFilePath error:nil];
+    
+    //遍历所有子文件
+    for (NSString *subPath in subPaths) {
+        //1）.拼接完整路径
+        NSString *filePath = [cacheFilePath stringByAppendingFormat:@"/%@",subPath];
+        //2）.计算文件的大小
+        long long fileSize = [[filemanager attributesOfItemAtPath:filePath error:nil]fileSize];
+        //3）.加载到文件的大小
+        sumSize += fileSize;
+    }
+    float size_m = sumSize/(1000*1000);
+    return [NSString stringWithFormat:@"%.2fM",size_m];
+    
 }
     
 

@@ -8,6 +8,10 @@
 
 #import "PersonalViewController.h"
 #import "SettingVC.h"
+#import "tradeVC.h"
+#import "TicketViewController.h"
+#import "ImportantVC.h"
+#import "MyBuyViewController.h"
 
 @interface PersonalViewController ()
 
@@ -22,7 +26,6 @@
     [super viewWillAppear:animated];
     [self Daohang];//导航栏设置
 //    self.navigationController.navigationBar.barTintColor = [UIColor colorFromHexRGB:@"2887ee"];
-
 }
 
 - (void)viewDidLoad {
@@ -325,10 +328,60 @@
     return cell;
 }
 
+
+#pragma mark - UITableViewDelegate
 //设置每行表格的高度
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 40;
+}
+
+//选择表格视图某一行调用的方法
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *array = [self.arrayData objectAtIndex:indexPath.section];
+    PersNSObject *tableCell = [array objectAtIndex:indexPath.row];
+    
+    if (indexPath.section == 0)
+    {
+        if (indexPath.row == 0)
+        {
+            tradeVC *tVC = [[tradeVC alloc] initwithTitle:tableCell.context];
+            [self.navigationController pushViewController:tVC animated:YES];
+        }
+        
+        if (indexPath.row == 1)
+        {
+            tradeVC *tVC = [[tradeVC alloc] initwithTitle:tableCell.context];
+            [self.navigationController pushViewController:tVC animated:YES];
+        }
+        
+        if (indexPath.row == 2)
+        {
+            TicketViewController *ticketVC = [[TicketViewController alloc] init];
+            [self.navigationController pushViewController:ticketVC animated:YES];
+        }
+    }
+    
+    if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0)
+        {
+            ImportantVC *impVC = [[ImportantVC alloc] init];
+            [self.navigationController pushViewController:impVC animated:YES];
+        }
+        
+        if (indexPath.row == 1)
+        {
+            NSLogTC(@"建议反馈");
+        }
+    }
+    
+    if (indexPath.section == 2 && indexPath.row == 0)
+    {
+        MyBuyViewController *myBuyVC = [[MyBuyViewController alloc] init];
+        [self.navigationController pushViewController:myBuyVC animated:YES];
+    }
 }
 
 

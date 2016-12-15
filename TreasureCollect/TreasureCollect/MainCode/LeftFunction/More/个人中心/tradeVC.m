@@ -1,30 +1,35 @@
 //
-//  MyBuyViewController.m
+//  tradeVC.m
 //  TreasureCollect
 //
-//  Created by FYHR on 2016/12/13.
+//  Created by FYHR on 2016/12/15.
 //  Copyright © 2016年 Apple. All rights reserved.
 //
 
-#import "MyBuyViewController.h"
+#import "tradeVC.h"
 
-@interface MyBuyViewController ()
+@interface tradeVC ()
 
 @end
 
-@implementation MyBuyViewController
+@implementation tradeVC
+
+- (id)initwithTitle:(NSString*)title
+{
+    self.titleString = title;
+    return self;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self Daohang];//导航栏设置
+    [self DaoHang];//设置导航栏
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    [self Daohang];//导航栏设置
-    [self initSubViews];//主要内容
+    [self initSubView];//主页面
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,10 +37,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-//导航栏设置
-- (void)Daohang
+
+//导航栏
+- (void)DaoHang
 {
-    self.title = @"我的合买";
+    self.title = self.titleString;
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -46,22 +52,20 @@
     [leftBtn addTarget:self action:@selector(returnClicked) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     self.navigationItem.leftBarButtonItem = leftItem;
-    
 }
 
-
-//主要内容
-- (void)initSubViews
-{
-    //显示现货产品价格
-    
-}
-
-
-//返回按钮响应事件
+//返回按钮
 - (void)returnClicked
 {
+    NSLogTC(@"返回按钮点击了");
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+//主页面显示
+- (void)initSubView
+{
+    
+}
+
 
 @end

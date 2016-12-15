@@ -12,6 +12,8 @@
 
 @property (nonatomic, retain) UITableView       *tableView;
 @property (nonatomic, retain) NSArray           *arrayData;
+
+
 @property (nonatomic, retain) UIImageView       *myHeadPortrait;
 
 @end
