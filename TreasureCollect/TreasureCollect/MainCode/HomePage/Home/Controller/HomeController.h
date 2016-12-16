@@ -19,6 +19,7 @@
 #import "TicketViewController.h"
 #import "LeftMore.h"
 #import "ProportionView.h"
+#import "HRLivePlayer.h"
 
 @interface HomeController : BaseViewController<UIPickerViewDelegate,UIPickerViewDataSource,GCDAsyncSocketDelegate>{
 

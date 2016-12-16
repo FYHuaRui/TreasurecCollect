@@ -554,6 +554,8 @@
 - (void)LiveShowAction:(UIButton *)button{
 
     NSLogTC(@"要进入直播室了");
+    HRLivePlayer *livePlay = [[HRLivePlayer alloc] init];
+    [self.navigationController pushViewController:livePlay animated:YES];
 
 }
 

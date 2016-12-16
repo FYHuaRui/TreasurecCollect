@@ -53,7 +53,7 @@
 {
     NSLogTC(@"返回按钮点击了");
     [self.navigationController popViewControllerAnimated:YES];
-}
+} 
 
 //主页面显示
 - (void)initSubView

@@ -104,6 +104,7 @@
 		9293DEDC1DFE98C10032EFA1 /* icon-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9293DEDB1DFE98C10032EFA1 /* icon-logo.png */; };
 		92B00F271E022BA00019D040 /* 进入.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B00F261E022BA00019D040 /* 进入.png */; };
 		92B00F291E022BB00019D040 /* 返回3.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B00F281E022BB00019D040 /* 返回3.png */; };
+		92DF83891E03D81200674364 /* HRLivePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DF83881E03D81200674364 /* HRLivePlayer.m */; };
 		9D7204B0697FFCC7D0153A8D /* libPods-TreasureCollect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */; };
 /* End PBXBuildFile section */
 
@@ -284,6 +285,8 @@
 		9293DEDB1DFE98C10032EFA1 /* icon-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-logo.png"; sourceTree = "<group>"; };
 		92B00F261E022BA00019D040 /* 进入.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "进入.png"; sourceTree = "<group>"; };
 		92B00F281E022BB00019D040 /* 返回3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回3.png"; sourceTree = "<group>"; };
+		92DF83871E03D81200674364 /* HRLivePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRLivePlayer.h; sourceTree = "<group>"; };
+		92DF83881E03D81200674364 /* HRLivePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRLivePlayer.m; sourceTree = "<group>"; };
 		973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.debug.xcconfig"; sourceTree = "<group>"; };
 		EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreasureCollect.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -464,6 +467,8 @@
 				9293DED31DFE976C0032EFA1 /* TicketViewController.h */,
 				9293DED41DFE976C0032EFA1 /* TicketViewController.m */,
 				9293DED51DFE976C0032EFA1 /* TicketViewController.xib */,
+				92DF83871E03D81200674364 /* HRLivePlayer.h */,
+				92DF83881E03D81200674364 /* HRLivePlayer.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1301,6 +1306,7 @@
 				1829DA401DFAB0E900405DF2 /* YYLineDataModel.m in Sources */,
 				1896E6011E011EC10072DC50 /* ProportionView.m in Sources */,
 				18273CAA1DFA574F00855FCB /* AppDelegate.m in Sources */,
+				92DF83891E03D81200674364 /* HRLivePlayer.m in Sources */,
 				1829DA321DFAAFE000405DF2 /* YYFiveRecordView.m in Sources */,
 				1877BD4B1E02A1A30055AC7F /* TrangleCell.m in Sources */,
 				1829DA411DFAB0E900405DF2 /* YYTimeLineModel.m in Sources */,
