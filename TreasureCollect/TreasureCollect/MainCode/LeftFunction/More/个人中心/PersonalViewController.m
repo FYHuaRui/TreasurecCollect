@@ -49,6 +49,7 @@
     self.navigationController.navigationBar.barTintColor = [UIColor colorFromHexRGB:@"2887ee"];
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.backBarButtonItem = nil;
+    self.navigationController.navigationBar.hidden = NO;
     
     //左侧返回按钮
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -224,7 +225,7 @@
 - (void)returnClicked
 {
     NSLogTC(@"左侧返回按钮点击了");
-//    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -234,7 +235,7 @@
     NSLogTC(@"联系客服");
 }
 
-//
+//单机头像的手势点击了
 - (void)personalSetTap
 {
     NSLogTC(@"添加头像按钮点击了");

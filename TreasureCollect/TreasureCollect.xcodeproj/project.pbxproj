@@ -113,6 +113,9 @@
 		92B00F271E022BA00019D040 /* 进入.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B00F261E022BA00019D040 /* 进入.png */; };
 		92B00F291E022BB00019D040 /* 返回3.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B00F281E022BB00019D040 /* 返回3.png */; };
 		92DF83891E03D81200674364 /* HRLivePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DF83881E03D81200674364 /* HRLivePlayer.m */; };
+		92DF838C1E03E60700674364 /* ShareTicketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DF838B1E03E60700674364 /* ShareTicketVC.m */; };
+		92DF838F1E03E71A00674364 /* AdviceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DF838E1E03E71A00674364 /* AdviceVC.m */; };
+		92DF83921E03E7F900674364 /* UnderStandVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DF83911E03E7F900674364 /* UnderStandVC.m */; };
 		9D7204B0697FFCC7D0153A8D /* libPods-TreasureCollect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */; };
 /* End PBXBuildFile section */
 
@@ -302,6 +305,12 @@
 		92B00F281E022BB00019D040 /* 返回3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回3.png"; sourceTree = "<group>"; };
 		92DF83871E03D81200674364 /* HRLivePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRLivePlayer.h; sourceTree = "<group>"; };
 		92DF83881E03D81200674364 /* HRLivePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRLivePlayer.m; sourceTree = "<group>"; };
+		92DF838A1E03E60700674364 /* ShareTicketVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareTicketVC.h; path = TreasureCollect/MainCode/HomePage/Home/Controller/ShareTicketVC.h; sourceTree = SOURCE_ROOT; };
+		92DF838B1E03E60700674364 /* ShareTicketVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareTicketVC.m; path = TreasureCollect/MainCode/HomePage/Home/Controller/ShareTicketVC.m; sourceTree = SOURCE_ROOT; };
+		92DF838D1E03E71A00674364 /* AdviceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdviceVC.h; path = TreasureCollect/MainCode/HomePage/Home/Controller/AdviceVC.h; sourceTree = SOURCE_ROOT; };
+		92DF838E1E03E71A00674364 /* AdviceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdviceVC.m; path = TreasureCollect/MainCode/HomePage/Home/Controller/AdviceVC.m; sourceTree = SOURCE_ROOT; };
+		92DF83901E03E7F900674364 /* UnderStandVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnderStandVC.h; path = TreasureCollect/MainCode/HomePage/Home/Controller/UnderStandVC.h; sourceTree = SOURCE_ROOT; };
+		92DF83911E03E7F900674364 /* UnderStandVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnderStandVC.m; path = TreasureCollect/MainCode/HomePage/Home/Controller/UnderStandVC.m; sourceTree = SOURCE_ROOT; };
 		973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.debug.xcconfig"; sourceTree = "<group>"; };
 		EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreasureCollect.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -941,6 +950,8 @@
 		92442FBD1DFE33E6008BF127 /* 分享领券 */ = {
 			isa = PBXGroup;
 			children = (
+				92DF838A1E03E60700674364 /* ShareTicketVC.h */,
+				92DF838B1E03E60700674364 /* ShareTicketVC.m */,
 			);
 			path = "分享领券";
 			sourceTree = "<group>";
@@ -968,6 +979,8 @@
 		92442FC01DFE33E6008BF127 /* 建议反馈 */ = {
 			isa = PBXGroup;
 			children = (
+				92DF838D1E03E71A00674364 /* AdviceVC.h */,
+				92DF838E1E03E71A00674364 /* AdviceVC.m */,
 			);
 			path = "建议反馈";
 			sourceTree = "<group>";
@@ -975,6 +988,8 @@
 		92442FC11DFE33E6008BF127 /* 了解微盘宝 */ = {
 			isa = PBXGroup;
 			children = (
+				92DF83901E03E7F900674364 /* UnderStandVC.h */,
+				92DF83911E03E7F900674364 /* UnderStandVC.m */,
 			);
 			path = "了解微盘宝";
 			sourceTree = "<group>";
@@ -1338,8 +1353,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92DF83921E03E7F900674364 /* UnderStandVC.m in Sources */,
 				1829DA301DFAAFE000405DF2 /* YYFiveRecordTableViewCell.m in Sources */,
 				1829DA341DFAAFE000405DF2 /* YYTimeLineView.m in Sources */,
+				92DF838F1E03E71A00674364 /* AdviceVC.m in Sources */,
 				1829D9DB1DFAAA4600405DF2 /* LeftMainController.m in Sources */,
 				1829DA251DFAAFE000405DF2 /* YYStockVariable.m in Sources */,
 				1829DA261DFAAFE000405DF2 /* YYTopBarView.m in Sources */,
@@ -1371,6 +1388,7 @@
 				926C35B31E02931D005BF715 /* tradeVC.m in Sources */,
 				1829D9C91DFAA7CE00405DF2 /* UIColor+RGB.m in Sources */,
 				921BDE461DFFBE1A00C031C5 /* PersNSObject.m in Sources */,
+				92DF838C1E03E60700674364 /* ShareTicketVC.m in Sources */,
 				1829DA331DFAAFE000405DF2 /* YYTimeLineMaskView.m in Sources */,
 				92442FC41DFE400C008BF127 /* LeftMore.m in Sources */,
 				1829D9D11DFAA9AB00405DF2 /* HomeController.m in Sources */,

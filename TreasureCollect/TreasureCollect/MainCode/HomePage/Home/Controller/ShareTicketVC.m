@@ -1,32 +1,30 @@
 //
-//  HRLivePlayer.m
+//  ShareTicketVC.m
 //  TreasureCollect
 //
 //  Created by FYHR on 2016/12/16.
 //  Copyright © 2016年 Apple. All rights reserved.
 //
 
-#import "HRLivePlayer.h"
+#import "ShareTicketVC.h"
 
-@interface HRLivePlayer ()
+@interface ShareTicketVC ()
 
 @end
 
-@implementation HRLivePlayer
+@implementation ShareTicketVC
 
-- (void)viewWillAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self Daohang];//导航栏设置
-    
+    [self DaoHang];//设置导航栏
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    //[self Daohang];//导航栏设置
-    [self initSubViews];//主要内容
+    //[self DaoHang];//设置导航栏
+    [self initSubView];//主页面显示
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,14 +32,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-//导航栏设置
-- (void)Daohang
+
+//导航栏
+- (void)DaoHang
 {
-    self.title = @"直播大厅";
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.translucent = NO;
-    self.navigationItem.backBarButtonItem = nil;
+    self.title = @"邀请";
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.hidden = NO;
     
     //左侧返回按钮
@@ -51,6 +48,17 @@
     [leftBtn addTarget:self action:@selector(returnClicked) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     self.navigationItem.leftBarButtonItem = leftItem;
+    
+    //右侧联系客服
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightBtn setTitle:@"客服" forState:UIControlStateNormal];
+    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [rightBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    rightBtn.frame = CGRectMake(0, 0, 60, 30);
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [rightBtn addTarget:self action:@selector(rightBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    self.navigationItem.rightBarButtonItem = rightItem;
 }
 
 //返回按钮
@@ -60,10 +68,16 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
-//主要内容
-- (void)initSubViews
+//客服按钮响应事件
+- (void)rightBtnClicked
 {
+    NSLogTC(@"联系客服");
+}
+
+//主页面显示
+- (void)initSubView
+{
+    
     
 }
 

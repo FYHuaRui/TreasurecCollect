@@ -44,6 +44,7 @@
     self.title = self.titleString;
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.hidden = NO;
     
     //左侧返回按钮
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];

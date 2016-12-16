@@ -8,7 +8,11 @@
 
 #import "LeftMore.h"
 #import "LeftTableView.h"
-//#import "HMViewController.h"
+#import "HMViewController.h"
+#import "PersonalViewController.h"
+#import "ShareTicketVC.h"
+#import "AdviceVC.h"
+#import "UnderStandVC.h"
 
 @implementation LeftMore
 
@@ -56,10 +60,10 @@
     
     //添加约束
     [cView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(bView).offset(10);
-        make.left.equalTo(bView).offset(100);
-        make.right.equalTo(bView).offset(10);
-        make.bottom.equalTo(bView).offset(10);
+        make.top.equalTo(bView).offset(7);
+        make.left.equalTo(bView).offset(90);
+        make.right.equalTo(bView).offset(-7);
+        make.bottom.equalTo(bView).offset(-7);
     }];
     
     //添加一个TableView
@@ -157,32 +161,69 @@
 //选择
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.row)
+    if (indexPath.row == 0)
     {
-        case 0:
-            NSLogTC(@"合买点击了");
-            
-            break;
-            
-        case 1:
-            //
-            break;
-            
-        case 2:
-            //
-            break;
-            
-        case 3:
-            //
-            break;
-            
-        case 4:
-            //
-            break;
-            
-        default:
-            break;
+        HMViewController *hmVC = [[HMViewController alloc] init];
+        [[self viewController].navigationController pushViewController:hmVC animated:YES];
     }
+    
+    if (indexPath.row == 1)
+    {
+        PersonalViewController *pVC = [[PersonalViewController alloc] init];
+        [[self viewController].navigationController pushViewController:pVC animated:YES];
+    }
+    
+    if (indexPath.row == 2)
+    {
+        ShareTicketVC *shareVC = [[ShareTicketVC alloc] init];
+        [[self viewController].navigationController pushViewController:shareVC animated:YES];
+    }
+    
+    if (indexPath.row == 3)
+    {
+        AdviceVC *adviceVC = [[AdviceVC alloc] init];
+        [[self viewController].navigationController pushViewController:adviceVC animated:YES];
+    }
+    
+    if (indexPath.row == 4)
+    {
+        UnderStandVC *underVC = [[UnderStandVC alloc] init];
+        [[self viewController].navigationController pushViewController:underVC animated:YES];
+    }
+    
+    //右侧View收回
+    [self moreTapClicked];
+}
+
+
+#pragma mark - 单机手势相应事件
+- (void)moreTapClicked
+{
+    if (self.hidden == NO)
+    {
+        NSLogTC(@"首页手势触发了");
+        [UIView animateWithDuration:0.3 animations:^{
+            self.transform = CGAffineTransformIdentity;
+        }completion:^(BOOL finished) {
+            self.hidden = YES;
+        }];
+    }
+    
+}
+
+
+//获取父视图的Controller
+- (UIViewController *)viewController
+{
+    for (UIView *next = [self superview]; next; next = next.superview)
+    {
+        UIResponder *nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]])
+        {
+            return (UIViewController*)nextResponder;
+        }
+    }
+    return nil;
 }
 
 @end

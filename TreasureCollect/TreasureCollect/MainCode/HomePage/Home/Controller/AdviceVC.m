@@ -1,18 +1,18 @@
 //
-//  ImportantVC.m
+//  AdviceVC.m
 //  TreasureCollect
 //
-//  Created by FYHR on 2016/12/15.
+//  Created by FYHR on 2016/12/16.
 //  Copyright © 2016年 Apple. All rights reserved.
 //
 
-#import "ImportantVC.h"
+#import "AdviceVC.h"
 
-@interface ImportantVC ()
+@interface AdviceVC ()
 
 @end
 
-@implementation ImportantVC
+@implementation AdviceVC
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -35,8 +35,8 @@
 //导航栏
 - (void)DaoHang
 {
-    self.title = @"重要提醒";
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.title = @"热门问题";
+    self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.hidden = NO;
     
@@ -47,6 +47,17 @@
     [leftBtn addTarget:self action:@selector(returnClicked) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     self.navigationItem.leftBarButtonItem = leftItem;
+    
+    //右侧历史反馈按钮
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightBtn setTitle:@"历史反馈" forState:UIControlStateNormal];
+    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [rightBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    rightBtn.frame = CGRectMake(0, 0, 60, 30);
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [rightBtn addTarget:self action:@selector(rightBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    self.navigationItem.rightBarButtonItem = rightItem;
 }
 
 //返回按钮
@@ -56,12 +67,16 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+//右侧历史反馈按钮响应事件
+- (void)rightBtnClicked
+{
+    
+}
+
 //主页面显示
 - (void)initSubView
 {
     
-
 }
-
 
 @end
