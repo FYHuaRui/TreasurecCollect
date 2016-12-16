@@ -23,6 +23,7 @@
 #import "BaseViewController.h"
 #import "UIViewExt.h"
 #import <GCDAsyncSocket.h>
+#import "HttpTool.h"
 
 #endif
 
