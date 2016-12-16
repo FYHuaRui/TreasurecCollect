@@ -51,6 +51,9 @@
 + (void)post:(NSString *)url params:(NSDictionary *)params success:(void (^)(id json))success failure:(void (^)(NSError *error))failure{
     
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+//    mgr.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+    mgr.requestSerializer = [AFHTTPRequestSerializer serializer];
+    mgr.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSMutableDictionary *paramsObj = [NSMutableDictionary dictionary];
     if (params) {
         NSString *obj = [params JSONString];
@@ -58,7 +61,12 @@
     } else {
         paramsObj = nil;
     }
-    [mgr POST:url parameters:paramsObj
+    
+    NSString *paramsString = @"yzm";
+    NSMutableDictionary *paramsObj111 = [NSMutableDictionary dictionary];
+    paramsObj111[@"InterName"] = paramsString;
+    [mgr POST:url
+   parameters:paramsObj111
 constructingBodyWithBlock:nil
      
      progress:^(NSProgress * _Nonnull uploadProgress) {
