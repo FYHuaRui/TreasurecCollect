@@ -1190,7 +1190,7 @@
 				TargetAttributes = {
 					18273CA11DFA574F00855FCB = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 84W6EV66WN;
+						DevelopmentTeam = 8H2B3Y5JNC;
 						ProvisioningStyle = Automatic;
 					};
 					18273CBA1DFA574F00855FCB = {
@@ -1551,7 +1551,7 @@
 			baseConfigurationReference = 973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 84W6EV66WN;
+				DEVELOPMENT_TEAM = 8H2B3Y5JNC;
 				GCC_PREFIX_HEADER = TreasureCollect/PrefixHeader.pch;
 				INFOPLIST_FILE = TreasureCollect/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -1567,7 +1567,7 @@
 			baseConfigurationReference = 5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 84W6EV66WN;
+				DEVELOPMENT_TEAM = 8H2B3Y5JNC;
 				GCC_PREFIX_HEADER = TreasureCollect/PrefixHeader.pch;
 				INFOPLIST_FILE = TreasureCollect/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;

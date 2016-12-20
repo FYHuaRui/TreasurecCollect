@@ -98,7 +98,7 @@
     
     
     //添加一个TableView
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 150, 200) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 150, 210) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -125,7 +125,7 @@
     self.arrayData = [NSArray arrayWithObjects:table1, table2, table3, table4, table5, table6, nil];
     
     //添加软件Log
-    UIButton *logBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 250, 40, 40)];//120
+    UIButton *logBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 260, 30, 30)];//120
     [logBtn addTarget:self action:@selector(logBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [logBtn setBackgroundImage:[UIImage imageNamed:@"icon-logo"] forState:UIControlStateNormal];
     [imageView addSubview:logBtn];
@@ -220,13 +220,14 @@
     
     if (indexPath.row == 4)
     {
-        UnderStandVC *underVC = [[UnderStandVC alloc] init];
-        [[self viewController].navigationController pushViewController:underVC animated:YES];
+        
     }
     
     if (indexPath.row == 5)
     {
-        
+        UnderStandVC *underVC = [[UnderStandVC alloc] init];
+        [[self viewController].navigationController pushViewController:underVC animated:YES];
+
     }
     
     //右侧View收回
