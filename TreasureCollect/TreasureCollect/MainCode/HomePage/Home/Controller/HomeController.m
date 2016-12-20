@@ -80,9 +80,9 @@
         make.edges.equalTo(self.stockContainerView);
     }];
     //添加单击监听
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(stock_enterFullScreen:)];
-    tap.numberOfTapsRequired = 1;
-    [self.stock.containerView addGestureRecognizer:tap];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(stock_enterFullScreen:)];
+//    tap.numberOfTapsRequired = 1;
+//    [self.stock.containerView addGestureRecognizer:tap];
     
     [self.stock.containerView.subviews setValue:@0 forKey:@"userInteractionEnabled"];
     
@@ -408,8 +408,8 @@
 - (void)initViews{
     
     //点击收回更多界面
-//    UITapGestureRecognizer  *moreTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(moreTapClicked:)];
-//    [self.view addGestureRecognizer:moreTap];
+    UITapGestureRecognizer  *moreTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(moreTapClicked:)];
+    [self.stock.containerView addGestureRecognizer:moreTap];
     
     //更多功能按钮
     _leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -518,26 +518,19 @@
     NSLogTC(@"更多按钮点击了");
 }
 
-//#pragma mark - 单机手势相应事件
-//- (void)moreTapClicked:(UITapGestureRecognizer*)gesture
-//{
-//    if (CGRectContainsPoint(self.leftMore.frame, [gesture locationInView:self.view]))
-//    {
-//        
-//    }
-//    else
-//    {
-//        if (self.leftMore.hidden == NO)
-//        {
-//            NSLogTC(@"首页手势触发了");
-//            [UIView animateWithDuration:0.3 animations:^{
-//                self.leftMore.transform = CGAffineTransformIdentity;
-//            }completion:^(BOOL finished) {
-//                self.leftMore.hidden = YES;
-//            }];
-//        }
-//    }
-//}
+#pragma mark - 单机手势相应事件
+- (void)moreTapClicked:(UITapGestureRecognizer*)gesture
+{
+    if (self.leftMore.hidden == NO)
+    {
+        NSLogTC(@"首页手势触发了");
+        [UIView animateWithDuration:0.3 animations:^{
+            self.leftMore.transform = CGAffineTransformIdentity;
+        }completion:^(BOOL finished) {
+            self.leftMore.hidden = YES;
+        }];
+    }
+}
 
 #pragma mark - 充值事件
 - (void)rechargeAction:(UIButton *)button{

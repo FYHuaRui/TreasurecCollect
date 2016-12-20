@@ -53,18 +53,49 @@
     //添加一个软件Log
 //    UIImageView *imageView = [[UIImageView alloc] init];
     
-    //注册登录按钮
-    UIView *cView = [[UIView alloc] initWithFrame:CGRectZero];
-    cView.backgroundColor = [UIColor whiteColor];
-    [self addSubview:cView];
+    //判断用户是否登录
+    BOOL Login = NO;
+    if (Login)//未登录
+    {
+        UIImageView *LogImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
+        LogImage.image = [UIImage imageNamed:@"icon-logo"];
+        [bView addSubview:LogImage];
+        
+        //设置按钮按钮
+        UIView *setView = [[UIView alloc] initWithFrame:CGRectZero];
+        setView.backgroundColor = [UIColor whiteColor];
+        [bView addSubview:setView];
+        
+        //添加约束
+        [setView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(bView).offset(7);
+            make.left.equalTo(bView).offset(70);
+            make.right.equalTo(bView).offset(-7);
+            make.bottom.equalTo(bView).offset(-7);
+        }];
+    }
+    else
+    {
+        UIImageView *LogImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
+        LogImage.image = [UIImage imageNamed:@"icon-logo"];
+        [bView addSubview:LogImage];
+        
+        //注册登录按钮
+        UIView *cView = [[UIView alloc] initWithFrame:CGRectZero];
+        cView.backgroundColor = [UIColor whiteColor];
+        [bView addSubview:cView];
+        
+        //添加约束
+        [cView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(bView).offset(7);
+            make.left.equalTo(bView).offset(70);
+            make.right.equalTo(bView).offset(-7);
+            make.bottom.equalTo(bView).offset(-7);
+        }];
+
+    }
     
-    //添加约束
-    [cView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(bView).offset(7);
-        make.left.equalTo(bView).offset(90);
-        make.right.equalTo(bView).offset(-7);
-        make.bottom.equalTo(bView).offset(-7);
-    }];
+    
     
     //添加一个TableView
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 150, 200) style:UITableViewStylePlain];
