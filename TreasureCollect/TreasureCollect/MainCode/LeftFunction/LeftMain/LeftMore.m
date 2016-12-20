@@ -80,7 +80,7 @@
         LogImage.image = [UIImage imageNamed:@"icon-logo"];
         [bView addSubview:LogImage];
         
-        //注册登录按钮
+        //注册登录按钮背景
         UIView *cView = [[UIView alloc] initWithFrame:CGRectZero];
         cView.backgroundColor = [UIColor whiteColor];
         [bView addSubview:cView];
@@ -98,12 +98,13 @@
     
     
     //添加一个TableView
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 150, 200) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 150, 210) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.scrollEnabled = NO;//禁止tableView滚动
     self.tableView.userInteractionEnabled = YES;
+    self.tableView.separatorStyle = NO;
     [self addSubview:self.tableView];
     
     //添加约束
@@ -117,13 +118,14 @@
     LeftTableView *table1 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"合买"] label:@"合买大厅"];
     LeftTableView *table2 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"个人中心"] label:@"个人中心"];
     LeftTableView *table3 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"券"] label:@"分享领券"];
-    LeftTableView *table4 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"反馈"] label:@"建议反馈"];
-    LeftTableView *table5 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"了解"] label:@"了解发财"];
+    LeftTableView *table4 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"活动"] label:@"活动详情"];
+    LeftTableView *table5 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"反馈"] label:@"建议反馈"];
+    LeftTableView *table6 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"了解"] label:@"了解微胜宝"];
     
-    self.arrayData = [NSArray arrayWithObjects:table1, table2, table3, table4, table5, nil];
+    self.arrayData = [NSArray arrayWithObjects:table1, table2, table3, table4, table5, table6, nil];
     
     //添加软件Log
-    UIButton *logBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 250, 40, 40)];//120
+    UIButton *logBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 260, 30, 30)];//120
     [logBtn addTarget:self action:@selector(logBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [logBtn setBackgroundImage:[UIImage imageNamed:@"icon-logo"] forState:UIControlStateNormal];
     [imageView addSubview:logBtn];
@@ -186,7 +188,7 @@
 //每行cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 40;
+    return 35;
 }
 
 //选择
@@ -218,8 +220,14 @@
     
     if (indexPath.row == 4)
     {
+        
+    }
+    
+    if (indexPath.row == 5)
+    {
         UnderStandVC *underVC = [[UnderStandVC alloc] init];
         [[self viewController].navigationController pushViewController:underVC animated:YES];
+
     }
     
     //右侧View收回
