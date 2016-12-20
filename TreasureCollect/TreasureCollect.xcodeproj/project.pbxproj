@@ -51,6 +51,9 @@
 		1829DA4A1DFAB12B00405DF2 /* minuteData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1829DA471DFAB12B00405DF2 /* minuteData.plist */; };
 		1829DA4C1DFAB28E00405DF2 /* YYStockFullScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1829DA4B1DFAB28E00405DF2 /* YYStockFullScreenView.xib */; };
 		1829DA501DFAB85D00405DF2 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829DA4F1DFAB85D00405DF2 /* UIViewExt.m */; };
+		18412FB61E08D77D008B20C6 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 18412FB51E08D77D008B20C6 /* more.png */; };
+		18412FB81E0909D1008B20C6 /* liveShow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18412FB71E0909D1008B20C6 /* liveShow.png */; };
+		18412FBA1E092014008B20C6 /* ticket.png in Resources */ = {isa = PBXBuildFile; fileRef = 18412FB91E092014008B20C6 /* ticket.png */; };
 		1886D6D91DFFFBF000F4A067 /* toptrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1886D6D81DFFFBF000F4A067 /* toptrangle.png */; };
 		1886D6DB1DFFFDFB00F4A067 /* downtrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1886D6DA1DFFFDFB00F4A067 /* downtrangle.png */; };
 		188EB88E1E0377BB005168E0 /* green1.png in Resources */ = {isa = PBXBuildFile; fileRef = 188EB88B1E0377BB005168E0 /* green1.png */; };
@@ -224,6 +227,9 @@
 		1829DA4B1DFAB28E00405DF2 /* YYStockFullScreenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YYStockFullScreenView.xib; sourceTree = "<group>"; };
 		1829DA4E1DFAB85D00405DF2 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		1829DA4F1DFAB85D00405DF2 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		18412FB51E08D77D008B20C6 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more.png; sourceTree = "<group>"; };
+		18412FB71E0909D1008B20C6 /* liveShow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liveShow.png; sourceTree = "<group>"; };
+		18412FB91E092014008B20C6 /* ticket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ticket.png; sourceTree = "<group>"; };
 		1886D6D81DFFFBF000F4A067 /* toptrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toptrangle.png; sourceTree = "<group>"; };
 		1886D6DA1DFFFDFB00F4A067 /* downtrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downtrangle.png; sourceTree = "<group>"; };
 		188EB88B1E0377BB005168E0 /* green1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green1.png; sourceTree = "<group>"; };
@@ -837,6 +843,9 @@
 		1886D6D71DFFFBF000F4A067 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				18412FB91E092014008B20C6 /* ticket.png */,
+				18412FB71E0909D1008B20C6 /* liveShow.png */,
+				18412FB51E08D77D008B20C6 /* more.png */,
 				188EB88A1E0377BB005168E0 /* GifImage */,
 				1896E5FB1E011DE80072DC50 /* leftTrangle.png */,
 				1896E5FC1E011DE80072DC50 /* rightTrangle.png */,
@@ -1233,7 +1242,9 @@
 				922CEF951E01504100C67B1F /* 建仓确认.png in Resources */,
 				1829D9C51DFAA78300405DF2 /* BaseViewController.xib in Resources */,
 				1829DA481DFAB12B00405DF2 /* dayData.plist in Resources */,
+				18412FB61E08D77D008B20C6 /* more.png in Resources */,
 				188EB8961E038DF9005168E0 /* green5.png in Resources */,
+				18412FB81E0909D1008B20C6 /* liveShow.png in Resources */,
 				1886D6D91DFFFBF000F4A067 /* toptrangle.png in Resources */,
 				1829D9DC1DFAAA4600405DF2 /* LeftMainController.xib in Resources */,
 				922CEF981E01504100C67B1F /* 未登录状态.png in Resources */,
@@ -1241,6 +1252,7 @@
 				922CEF9B1E01504100C67B1F /* 银元券.png in Resources */,
 				92B00F271E022BA00019D040 /* 进入.png in Resources */,
 				922CEF901E01504100C67B1F /* 个人资产.png in Resources */,
+				18412FBA1E092014008B20C6 /* ticket.png in Resources */,
 				188F09431DFE3C6F004E1284 /* RechargeController.xib in Resources */,
 				1829DA491DFAB12B00405DF2 /* fiveData.plist in Resources */,
 				92442FDA1DFE78A0008BF127 /* recharge_top.png in Resources */,

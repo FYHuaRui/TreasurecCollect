@@ -29,7 +29,13 @@
     
     UIButton *_ticketButton;
     
+    UILabel     *_ticketCountButton;
+    
     UIButton *_liveShowButton;
+    
+    UILabel  *_liveShowLabel;
+    
+    UILabel  *_assetsLabel;
     
     UIPickerView    *_countPicker;
     

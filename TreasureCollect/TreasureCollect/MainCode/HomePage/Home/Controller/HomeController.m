@@ -413,45 +413,90 @@
     
     //更多功能按钮
     _leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _leftButton.frame = CGRectMake(20.f, 12.f, 44.f, 24.f);
-    [_leftButton setTitle:@"更多" forState:UIControlStateNormal];
+    _leftButton.frame = CGRectMake(12.f, 28.f, 36.f, 36.f);
+    [_leftButton setBackgroundImage:[UIImage imageNamed:@"more"]
+                           forState:UIControlStateNormal];
     [_leftButton addTarget:self action:@selector(MoreButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_leftButton];
     
-    //充值按钮
-    _rechargeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _rechargeButton.frame = CGRectMake(100.f, 12.f, 44.f, 24.f);
-    [_rechargeButton setTitle:@"充值" forState:UIControlStateNormal];
-    [_rechargeButton addTarget:self
-                        action:@selector(rechargeAction:)
-              forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_rechargeButton];
-    
     //银元券
     _ticketButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _ticketButton.frame = CGRectMake(180.f, 12.f, 60.f, 24.f);
-    [_ticketButton setTitle:@"银元券" forState:UIControlStateNormal];
+    _ticketButton.frame = CGRectMake(KScreenWidth - 140.f, 32.f, 28.f, 28.f);
+    [_ticketButton setBackgroundImage: [UIImage imageNamed:@"ticket"]
+                             forState:UIControlStateNormal];
     [_ticketButton addTarget:self
                         action:@selector(ticketAction:)
               forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_ticketButton];
     
+    _ticketCountButton =  [[UILabel alloc] initWithFrame:CGRectMake(_ticketButton.width * 7 / 10, 0, _ticketButton.width * 2 / 5, _ticketButton.height * 2 / 5)];
+    _ticketCountButton.text = @"8";
+    _ticketCountButton.backgroundColor = [UIColor colorFromHexRGB:@"E15747"];
+    _ticketCountButton.textColor = [UIColor whiteColor];
+    _ticketCountButton.font = [UIFont systemFontOfSize:8];
+    _ticketCountButton.textAlignment = NSTextAlignmentCenter;
+    _ticketCountButton.layer.cornerRadius = _ticketButton.height / 5;
+    _ticketCountButton.layer.masksToBounds = YES;
+    [_ticketButton addSubview:_ticketCountButton];
+    
     //直播室
     _liveShowButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _liveShowButton.frame = CGRectMake(260.f, 12.f, 60.f, 24.f);
-    [_liveShowButton setTitle:@"直播室" forState:UIControlStateNormal];
+    _liveShowButton.frame = CGRectMake(KScreenWidth - 100.f, 32.f, 28.f, 28.f);
+    [_liveShowButton setBackgroundImage:[UIImage imageNamed:@"liveShow"]
+                               forState:UIControlStateNormal];
     [_liveShowButton addTarget:self
                       action:@selector(LiveShowAction:)
             forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_liveShowButton];
+    
+    _liveShowLabel =  [[UILabel alloc] initWithFrame:CGRectMake(_liveShowButton.width * 3 / 5, 0, _liveShowButton.width * 3 / 5, _liveShowButton.height * 2 / 5)];
+    _liveShowLabel.text = @"直播";
+    _liveShowLabel.backgroundColor = [UIColor colorFromHexRGB:@"E15747"];
+    _liveShowLabel.textColor = [UIColor whiteColor];
+    _liveShowLabel.font = [UIFont systemFontOfSize:7];
+    _liveShowLabel.textAlignment = NSTextAlignmentCenter;
+    _liveShowLabel.layer.cornerRadius = _liveShowButton.height / 5;
+    _liveShowLabel.layer.masksToBounds = YES;
+    [_liveShowButton addSubview:_liveShowLabel];
+    
+    //充值按钮
+    _rechargeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _rechargeButton.frame = CGRectMake(KScreenWidth - 60.f, 32.f, 48.f, 28.f);
+    _rechargeButton.layer.cornerRadius = 2;
+    _rechargeButton.layer.masksToBounds = YES;
+    [_rechargeButton setTitleColor:[UIColor whiteColor]
+                          forState:UIControlStateNormal];
+    _rechargeButton.backgroundColor = [UIColor colorFromHexRGB:@"E15747"];
+    [_rechargeButton setTitle:@"充值"
+                     forState:UIControlStateNormal];
+    [_rechargeButton addTarget:self
+                        action:@selector(rechargeAction:)
+              forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_rechargeButton];
+    
+    _assetsLabel = [[UILabel alloc] initWithFrame:CGRectMake(_leftButton.right + 12.f, 28.f, _ticketButton.left - _leftButton.right - 24.f , 36.f)];
+    _assetsLabel.numberOfLines = 2;
+    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc]initWithString:@"80.00\n个人资产(元)"];
+    //设置第二行字体颜色
+    [attributeString addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor]
+                            range:NSMakeRange(attributeString.length - 7,7)];
+    //设置字体大小
+    [attributeString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@ "Arial Rounded MT Bold"
+                                                                            size:(14.0)]
+                            range:NSMakeRange(0, attributeString.length - 7)];
+    [attributeString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14]
+                            range:NSMakeRange(attributeString.length - 7, 7)];
+    _assetsLabel.attributedText = attributeString;
+    _assetsLabel.textAlignment = NSTextAlignmentLeft;
+    [self.view addSubview:_assetsLabel];
     
     //更多按钮展示界面
     self.leftMore = [[LeftMore alloc] initWithFrame:CGRectMake(-150, 20, 150, 300)];
     self.leftMore.hidden = YES;//先设置隐藏
     [self.view addSubview:self.leftMore];
     
-    //选择弃
-    _countPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(KScreenWidth / 2 - 40, KScreenHeight - kNavigationBarHeight - 140.f, 80.f, 90.f)];
+    //选择器
+    _countPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(KScreenWidth / 2 - 40, KScreenHeight - kNavigationBarHeight - 120.f, 80.f, 90.f)];
     _countPicker.backgroundColor = [UIColor colorFromHexRGB:@"E9E9E9"];
     _countPicker.dataSource = self;
     _countPicker.delegate = self;
@@ -499,7 +544,6 @@
     [greenImage setImage:[UIImage imageNamed:@"downtrangle"]];
     [_saleButton addSubview:greenImage];
     
-
 }
 
 #pragma mark - 更多功能
