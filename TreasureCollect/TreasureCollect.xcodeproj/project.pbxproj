@@ -106,6 +106,7 @@
 		926C35B01E028242005BF715 /* CacheCleaner.m in Sources */ = {isa = PBXBuildFile; fileRef = 926C35AF1E028242005BF715 /* CacheCleaner.m */; };
 		926C35B31E02931D005BF715 /* tradeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 926C35B21E02931D005BF715 /* tradeVC.m */; };
 		926C35B61E029C13005BF715 /* ImportantVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 926C35B51E029C13005BF715 /* ImportantVC.m */; };
+		927C71741E08CE7C001925E4 /* 活动.png in Resources */ = {isa = PBXBuildFile; fileRef = 927C71731E08CE7C001925E4 /* 活动.png */; };
 		9293DED61DFE976C0032EFA1 /* TicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9293DED41DFE976C0032EFA1 /* TicketViewController.m */; };
 		9293DED71DFE976C0032EFA1 /* TicketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9293DED51DFE976C0032EFA1 /* TicketViewController.xib */; };
 		9293DEDA1DFE978D0032EFA1 /* ticktBlank.png in Resources */ = {isa = PBXBuildFile; fileRef = 9293DED91DFE978D0032EFA1 /* ticktBlank.png */; };
@@ -296,6 +297,7 @@
 		926C35B21E02931D005BF715 /* tradeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tradeVC.m; sourceTree = "<group>"; };
 		926C35B41E029C13005BF715 /* ImportantVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportantVC.h; sourceTree = "<group>"; };
 		926C35B51E029C13005BF715 /* ImportantVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportantVC.m; sourceTree = "<group>"; };
+		927C71731E08CE7C001925E4 /* 活动.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "活动.png"; sourceTree = "<group>"; };
 		9293DED31DFE976C0032EFA1 /* TicketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketViewController.h; sourceTree = "<group>"; };
 		9293DED41DFE976C0032EFA1 /* TicketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketViewController.m; sourceTree = "<group>"; };
 		9293DED51DFE976C0032EFA1 /* TicketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketViewController.xib; sourceTree = "<group>"; };
@@ -1040,6 +1042,7 @@
 				92442FE31DFE84F1008BF127 /* 券.png */,
 				92442FE41DFE84F1008BF127 /* bg.png */,
 				9293DEDB1DFE98C10032EFA1 /* icon-logo.png */,
+				927C71731E08CE7C001925E4 /* 活动.png */,
 			);
 			name = "更多";
 			path = "充值/更多";
@@ -1247,6 +1250,7 @@
 				1886D6DB1DFFFDFB00F4A067 /* downtrangle.png in Resources */,
 				92442FE51DFE84F1008BF127 /* 反馈.png in Resources */,
 				188EB8901E0377BB005168E0 /* green3.png in Resources */,
+				927C71741E08CE7C001925E4 /* 活动.png in Resources */,
 				922CEF971E01504100C67B1F /* 我的合买.png in Resources */,
 				18273CB51DFA574F00855FCB /* LaunchScreen.storyboard in Resources */,
 				922CEF911E01504100C67B1F /* 个人资产01.png in Resources */,
