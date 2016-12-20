@@ -54,13 +54,13 @@
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    //测试数据
-    {
-        _isShowFiveRecord = YES;
-        _stockId = @"88888888";
-        self.navigationItem.title = @"YY股(88888888)";
-    }
-    
+//    //测试数据
+//    {
+//        _isShowFiveRecord = YES;
+//        _stockId = @"88888888";
+//        self.navigationItem.title = @"YY股(88888888)";
+//    }
+//
     [self initStockView];
     [self fetchData];
     
@@ -80,9 +80,9 @@
         make.edges.equalTo(self.stockContainerView);
     }];
     //添加单击监听
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(stock_enterFullScreen:)];
-//    tap.numberOfTapsRequired = 1;
-//    [self.stock.containerView addGestureRecognizer:tap];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(stock_enterFullScreen:)];
+    tap.numberOfTapsRequired = 2;
+    [self.stock.containerView addGestureRecognizer:tap];
     
     [self.stock.containerView.subviews setValue:@0 forKey:@"userInteractionEnabled"];
     
