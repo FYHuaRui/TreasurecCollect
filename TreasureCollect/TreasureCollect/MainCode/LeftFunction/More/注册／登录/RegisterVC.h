@@ -10,4 +10,10 @@
 
 @interface RegisterVC : UIViewController
 
+@property (nonatomic, retain) UITextField       *phoneField;//手机号
+
+@property (nonatomic, retain) UITextField       *pictureField;//图形验证
+
+@property (nonatomic, retain) UITextField       *messageField;//短信验证
+
 @end

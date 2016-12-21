@@ -96,7 +96,7 @@
         
         UIButton *zBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [zBtn setTitle:@"注册" forState:UIControlStateNormal];
-        zBtn.titleLabel.font = [UIFont systemFontOfSize:10];
+        zBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         zBtn.backgroundColor = [UIColor colorFromHexRGB:@"f74236"];
         [zBtn addTarget:self action:@selector(zBtnClicked) forControlEvents:UIControlEventTouchUpInside];
         zBtn.frame = CGRectZero;
@@ -104,7 +104,7 @@
         
         UIButton *dBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [dBtn setTitle:@"登录" forState:UIControlStateNormal];
-        dBtn.titleLabel.font = [UIFont systemFontOfSize:10];
+        dBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         dBtn.backgroundColor = [UIColor colorFromHexRGB:@"f74236"];
         [dBtn addTarget:self action:@selector(dBtnClicked) forControlEvents:UIControlEventTouchUpInside];
         dBtn.frame = CGRectZero;
@@ -149,7 +149,7 @@
     LeftTableView *table3 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"券"] label:@"分享领券"];
     LeftTableView *table4 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"活动"] label:@"活动详情"];
     LeftTableView *table5 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"反馈"] label:@"建议反馈"];
-    LeftTableView *table6 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"了解"] label:@"了解微胜宝"];
+    LeftTableView *table6 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"了解微胜宝"] label:@"了解微胜宝"];
     
     self.arrayData = [NSArray arrayWithObjects:table1, table2, table3, table4, table5, table6, nil];
     
