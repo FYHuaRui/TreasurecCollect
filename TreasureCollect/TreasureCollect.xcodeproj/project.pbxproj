@@ -54,6 +54,8 @@
 		18412FB61E08D77D008B20C6 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 18412FB51E08D77D008B20C6 /* more.png */; };
 		18412FB81E0909D1008B20C6 /* liveShow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18412FB71E0909D1008B20C6 /* liveShow.png */; };
 		18412FBA1E092014008B20C6 /* ticket.png in Resources */ = {isa = PBXBuildFile; fileRef = 18412FB91E092014008B20C6 /* ticket.png */; };
+		1848B66B1E0A6D2600C806D8 /* echarts.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 1848B6691E0A6D2600C806D8 /* echarts.min.js */; };
+		1848B66C1E0A6D2600C806D8 /* kline.html in Resources */ = {isa = PBXBuildFile; fileRef = 1848B66A1E0A6D2600C806D8 /* kline.html */; };
 		1886D6D91DFFFBF000F4A067 /* toptrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1886D6D81DFFFBF000F4A067 /* toptrangle.png */; };
 		1886D6DB1DFFFDFB00F4A067 /* downtrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1886D6DA1DFFFDFB00F4A067 /* downtrangle.png */; };
 		188EB88E1E0377BB005168E0 /* green1.png in Resources */ = {isa = PBXBuildFile; fileRef = 188EB88B1E0377BB005168E0 /* green1.png */; };
@@ -238,6 +240,8 @@
 		18412FB51E08D77D008B20C6 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more.png; sourceTree = "<group>"; };
 		18412FB71E0909D1008B20C6 /* liveShow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liveShow.png; sourceTree = "<group>"; };
 		18412FB91E092014008B20C6 /* ticket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ticket.png; sourceTree = "<group>"; };
+		1848B6691E0A6D2600C806D8 /* echarts.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = echarts.min.js; sourceTree = "<group>"; };
+		1848B66A1E0A6D2600C806D8 /* kline.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = kline.html; sourceTree = "<group>"; };
 		1886D6D81DFFFBF000F4A067 /* toptrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toptrangle.png; sourceTree = "<group>"; };
 		1886D6DA1DFFFDFB00F4A067 /* downtrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downtrangle.png; sourceTree = "<group>"; };
 		188EB88B1E0377BB005168E0 /* green1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green1.png; sourceTree = "<group>"; };
@@ -539,6 +543,8 @@
 		1829D9CD1DFAA99A00405DF2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1848B6691E0A6D2600C806D8 /* echarts.min.js */,
+				1848B66A1E0A6D2600C806D8 /* kline.html */,
 				92442FCC1DFE785F008BF127 /* PayButton.h */,
 				92442FCD1DFE785F008BF127 /* PayButton.m */,
 				92442FCE1DFE785F008BF127 /* PayCountButton.h */,
@@ -1238,7 +1244,7 @@
 				TargetAttributes = {
 					18273CA11DFA574F00855FCB = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 8H2B3Y5JNC;
+						DevelopmentTeam = 84W6EV66WN;
 						ProvisioningStyle = Automatic;
 					};
 					18273CBA1DFA574F00855FCB = {
@@ -1292,9 +1298,11 @@
 				1886D6D91DFFFBF000F4A067 /* toptrangle.png in Resources */,
 				1829D9DC1DFAAA4600405DF2 /* LeftMainController.xib in Resources */,
 				922CEF981E01504100C67B1F /* 未登录状态.png in Resources */,
+				1848B66C1E0A6D2600C806D8 /* kline.html in Resources */,
 				9293DEDC1DFE98C10032EFA1 /* icon-logo.png in Resources */,
 				922CEF9B1E01504100C67B1F /* 银元券.png in Resources */,
 				92B00F271E022BA00019D040 /* 进入.png in Resources */,
+				1848B66B1E0A6D2600C806D8 /* echarts.min.js in Resources */,
 				922CEF901E01504100C67B1F /* 个人资产.png in Resources */,
 				18412FBA1E092014008B20C6 /* ticket.png in Resources */,
 				188F09431DFE3C6F004E1284 /* RechargeController.xib in Resources */,
@@ -1609,7 +1617,7 @@
 			baseConfigurationReference = 973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8H2B3Y5JNC;
+				DEVELOPMENT_TEAM = 84W6EV66WN;
 				GCC_PREFIX_HEADER = TreasureCollect/PrefixHeader.pch;
 				INFOPLIST_FILE = TreasureCollect/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -1625,7 +1633,7 @@
 			baseConfigurationReference = 5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8H2B3Y5JNC;
+				DEVELOPMENT_TEAM = 84W6EV66WN;
 				GCC_PREFIX_HEADER = TreasureCollect/PrefixHeader.pch;
 				INFOPLIST_FILE = TreasureCollect/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;

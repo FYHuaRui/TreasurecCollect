@@ -86,6 +86,15 @@
     
     [self.stock.containerView.subviews setValue:@0 forKey:@"userInteractionEnabled"];
     
+    UIWebView *testWebView = [[UIWebView alloc] initWithFrame:self.stockContainerView.frame];
+    testWebView.backgroundColor = [UIColor whiteColor];
+       testWebView.delegate=self;
+       [self.view addSubview:testWebView];
+       
+       NSString *filePath = [[NSBundle mainBundle]pathForResource:@"kline" ofType:@"html"];
+       NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+       [testWebView loadHTMLString:htmlString baseURL:[NSURL URLWithString:filePath]];
+    
 }
 
 /*******************************************股票数据源获取更新*********************************************/
@@ -523,10 +532,14 @@
     
     //买入卖出按钮
     _buyButton = [[UIButton alloc] initWithFrame:CGRectMake(12.f, _countPicker.top, _countPicker.left - 24.f, _countPicker.height)];
+    _buyButton.tag = 300;
     _buyButton.layer.cornerRadius = 5.f;
     _buyButton.layer.masksToBounds = YES;
     [_buyButton setTitle:@"买涨" forState:UIControlStateNormal];
     _buyButton.backgroundColor = [UIColor colorFromHexRGB:@"E45141"];
+    [_buyButton addTarget:self
+                   action:@selector(BuyAction:)
+         forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_buyButton];
     
     UIImageView *redImage = [[UIImageView alloc] initWithFrame:CGRectMake(_buyButton.width / 2 - 8, 16.f, 16.f, 16.f)];
@@ -534,10 +547,14 @@
     [_buyButton addSubview:redImage];
     
     _saleButton = [[UIButton alloc] initWithFrame:CGRectMake(_countPicker.right + 12.f, _countPicker.top, _countPicker.left - 24.f, _countPicker.height)];
+    _saleButton.tag = 301;
     _saleButton.layer.cornerRadius = 5.f;
     _saleButton.layer.masksToBounds = YES;
     [_saleButton setTitle:@"买跌" forState:UIControlStateNormal];
     _saleButton.backgroundColor = [UIColor colorFromHexRGB:@"55BB72"];
+    [_saleButton addTarget:self
+                    action:@selector(BuyAction:)
+          forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_saleButton];
     
     UIImageView *greenImage = [[UIImageView alloc] initWithFrame:CGRectMake(_buyButton.width / 2 - 8, 16.f, 16.f, 16.f)];
@@ -576,7 +593,7 @@
     }
 }
 
-#pragma mark - 充值事件
+#pragma mark - 按钮点击事件
 - (void)rechargeAction:(UIButton *)button{
 
 
@@ -600,6 +617,20 @@
     HRLivePlayer *livePlay = [[HRLivePlayer alloc] init];
     [self.navigationController pushViewController:livePlay animated:YES];
 
+}
+
+- (void)BuyAction:(UIButton *)button{
+    
+    if (button.tag == 300) {
+    
+        NSLogTC(@"买涨啦");
+        
+    }else{
+    
+        NSLogTC(@"买跌啦");
+    
+    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -694,6 +725,8 @@
     }
     
 }
+
+
 
 
 @end
