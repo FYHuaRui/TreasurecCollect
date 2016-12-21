@@ -13,6 +13,7 @@
 #import "ShareTicketVC.h"
 #import "AdviceVC.h"
 #import "UnderStandVC.h"
+#import "RegisterVC.h"
 
 @implementation LeftMore
 
@@ -76,8 +77,8 @@
     }
     else
     {
-        UIImageView *LogImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
-        LogImage.image = [UIImage imageNamed:@"icon-logo"];
+        UIImageView *LogImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 8, 24, 24)];
+        LogImage.image = [UIImage imageNamed:@"头像"];
         [bView addSubview:LogImage];
         
         //注册登录按钮背景
@@ -92,10 +93,38 @@
             make.right.equalTo(bView).offset(-7);
             make.bottom.equalTo(bView).offset(-7);
         }];
-
+        
+        UIButton *zBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [zBtn setTitle:@"注册" forState:UIControlStateNormal];
+        zBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        zBtn.backgroundColor = [UIColor colorFromHexRGB:@"f74236"];
+        [zBtn addTarget:self action:@selector(zBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+        zBtn.frame = CGRectZero;
+        [cView addSubview:zBtn];
+        
+        UIButton *dBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [dBtn setTitle:@"登录" forState:UIControlStateNormal];
+        dBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        dBtn.backgroundColor = [UIColor colorFromHexRGB:@"f74236"];
+        [dBtn addTarget:self action:@selector(dBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+        dBtn.frame = CGRectZero;
+        [cView addSubview:dBtn];
+        
+        [zBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(cView.mas_centerY);
+            make.left.equalTo(cView.mas_left).with.offset(1);
+            make.right.equalTo(dBtn.mas_left).with.offset(-1);
+            make.height.mas_equalTo(@23);
+            make.width.equalTo(dBtn);
+        }];
+        [dBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(cView.mas_centerY);
+            make.left.equalTo(zBtn.mas_right).with.offset(1);
+            make.right.equalTo(cView.mas_right).with.offset(-1);
+            make.height.mas_equalTo(@23);
+            make.width.equalTo(zBtn);
+        }];
     }
-    
-    
     
     //添加一个TableView
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 150, 210) style:UITableViewStylePlain];
@@ -120,7 +149,7 @@
     LeftTableView *table3 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"券"] label:@"分享领券"];
     LeftTableView *table4 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"活动"] label:@"活动详情"];
     LeftTableView *table5 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"反馈"] label:@"建议反馈"];
-    LeftTableView *table6 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"了解"] label:@"了解微胜宝"];
+    LeftTableView *table6 = [[LeftTableView alloc] initWithLeftView:[UIImage imageNamed:@"了解微胜宝"] label:@"了解微胜宝"];
     
     self.arrayData = [NSArray arrayWithObjects:table1, table2, table3, table4, table5, table6, nil];
     
@@ -139,6 +168,36 @@
 - (void)logBtnClicked
 {
     NSLogTC(@"log点击了");
+    if (self.hidden == NO)
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.transform = CGAffineTransformIdentity;
+        }completion:^(BOOL finished) {
+            self.hidden = YES;
+        }];
+    }
+}
+
+/*
+ 功能：响应注册按钮点击事件
+ 参数：无
+ 返回值：无
+ */
+- (void)zBtnClicked
+{
+    NSLogTC(@"注册按钮点击了");
+    RegisterVC *registerVC = [[RegisterVC alloc] init];
+    [[self viewController].navigationController pushViewController:registerVC animated:YES];
+}
+
+/*
+ 功能：响应登录按钮点击事件
+ 参数：无
+ 返回值：无
+ */
+- (void)dBtnClicked
+{
+    NSLogTC(@"登录按钮点击了");
 }
 
 #pragma mark - UITableViewDataSource
@@ -214,13 +273,13 @@
     
     if (indexPath.row == 3)
     {
-        AdviceVC *adviceVC = [[AdviceVC alloc] init];
-        [[self viewController].navigationController pushViewController:adviceVC animated:YES];
+        
     }
     
     if (indexPath.row == 4)
     {
-        
+        AdviceVC *adviceVC = [[AdviceVC alloc] init];
+        [[self viewController].navigationController pushViewController:adviceVC animated:YES];
     }
     
     if (indexPath.row == 5)
