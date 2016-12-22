@@ -88,6 +88,7 @@
     
     UIWebView *testWebView = [[UIWebView alloc] initWithFrame:self.stockContainerView.frame];
     testWebView.backgroundColor = [UIColor whiteColor];
+    testWebView.scrollView.scrollEnabled = NO;
        testWebView.delegate=self;
        [self.view addSubview:testWebView];
        
@@ -525,7 +526,7 @@
     [_countPicker reloadAllComponents];
     _titleArr = @[@"8",@"80",@"200",@"2000",@"银元券"];
     
-    _proportionView = [[ProportionView alloc] initWithFrame:CGRectMake(0, _stockContainerView.bottom, KScreenWidth, 16.f)];
+    _proportionView = [[ProportionView alloc] initWithFrame:CGRectMake(0, _stockContainerView.bottom + 10, KScreenWidth, 16.f)];
     _proportionView.backgroundColor = [UIColor yellowColor];
     _proportionView.userInteractionEnabled = NO;
     [self.view addSubview:_proportionView];
@@ -625,10 +626,28 @@
     
         NSLogTC(@"买涨啦");
         
+        NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL];
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        [params setObject:[NSNumber numberWithInt:0] forKey:@"regId"];
+        [HttpTool post:url
+                params:params
+               success:^(id json) {
+                   
+                   NSArray *dataArr = [json objectForKey:@"strImgYzm"];
+                   NSDictionary *imageDic = [dataArr firstObject];
+                   NSString *imageString = [imageDic objectForKey:@"ImageYzm"];
+                   NSData *imageData = [GTMBase64 decodeString:imageString];
+                   UIImage *image = [UIImage imageWithData:imageData];
+                   [_buyButton setBackgroundImage:image forState:UIControlStateNormal];
+                   
+               } failure:^(NSError *error) {
+                   
+               }];
+        
     }else{
     
         NSLogTC(@"买跌啦");
-    
+        
     }
     
 }
@@ -725,8 +744,5 @@
     }
     
 }
-
-
-
 
 @end

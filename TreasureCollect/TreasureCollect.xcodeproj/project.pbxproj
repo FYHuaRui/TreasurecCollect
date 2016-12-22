@@ -56,6 +56,10 @@
 		18412FBA1E092014008B20C6 /* ticket.png in Resources */ = {isa = PBXBuildFile; fileRef = 18412FB91E092014008B20C6 /* ticket.png */; };
 		1848B66B1E0A6D2600C806D8 /* echarts.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 1848B6691E0A6D2600C806D8 /* echarts.min.js */; };
 		1848B66C1E0A6D2600C806D8 /* kline.html in Resources */ = {isa = PBXBuildFile; fileRef = 1848B66A1E0A6D2600C806D8 /* kline.html */; };
+		187EDC6F1E0B78CA00941A57 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 187EDC671E0B78CA00941A57 /* GTMBase64.m */; };
+		187EDC701E0B78CA00941A57 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 187EDC6A1E0B78CA00941A57 /* NSData+AES.m */; };
+		187EDC711E0B78CA00941A57 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 187EDC6C1E0B78CA00941A57 /* NSString+MD5.m */; };
+		187EDC721E0B78CA00941A57 /* SecurityUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 187EDC6E1E0B78CA00941A57 /* SecurityUtil.m */; };
 		1886D6D91DFFFBF000F4A067 /* toptrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1886D6D81DFFFBF000F4A067 /* toptrangle.png */; };
 		1886D6DB1DFFFDFB00F4A067 /* downtrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1886D6DA1DFFFDFB00F4A067 /* downtrangle.png */; };
 		188EB88E1E0377BB005168E0 /* green1.png in Resources */ = {isa = PBXBuildFile; fileRef = 188EB88B1E0377BB005168E0 /* green1.png */; };
@@ -242,6 +246,15 @@
 		18412FB91E092014008B20C6 /* ticket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ticket.png; sourceTree = "<group>"; };
 		1848B6691E0A6D2600C806D8 /* echarts.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = echarts.min.js; sourceTree = "<group>"; };
 		1848B66A1E0A6D2600C806D8 /* kline.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = kline.html; sourceTree = "<group>"; };
+		187EDC661E0B78CA00941A57 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		187EDC671E0B78CA00941A57 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		187EDC681E0B78CA00941A57 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		187EDC691E0B78CA00941A57 /* NSData+AES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
+		187EDC6A1E0B78CA00941A57 /* NSData+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
+		187EDC6B1E0B78CA00941A57 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		187EDC6C1E0B78CA00941A57 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		187EDC6D1E0B78CA00941A57 /* SecurityUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityUtil.h; sourceTree = "<group>"; };
+		187EDC6E1E0B78CA00941A57 /* SecurityUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityUtil.m; sourceTree = "<group>"; };
 		1886D6D81DFFFBF000F4A067 /* toptrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toptrangle.png; sourceTree = "<group>"; };
 		1886D6DA1DFFFDFB00F4A067 /* downtrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downtrangle.png; sourceTree = "<group>"; };
 		188EB88B1E0377BB005168E0 /* green1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green1.png; sourceTree = "<group>"; };
@@ -437,6 +450,7 @@
 			isa = PBXGroup;
 			children = (
 				18273CDE1DFA9E2400855FCB /* Common.h */,
+				187EDC641E0B78CA00941A57 /* 报文加密和解密 */,
 				926C35AD1E027CBC005BF715 /* 清理缓存 */,
 				92442FC81DFE7841008BF127 /* UIButton类目 */,
 				1829DA4D1DFAB85D00405DF2 /* UIViewExt */,
@@ -861,6 +875,30 @@
 				1829DA4F1DFAB85D00405DF2 /* UIViewExt.m */,
 			);
 			path = UIViewExt;
+			sourceTree = "<group>";
+		};
+		187EDC641E0B78CA00941A57 /* 报文加密和解密 */ = {
+			isa = PBXGroup;
+			children = (
+				187EDC651E0B78CA00941A57 /* GTMBase64 */,
+				187EDC691E0B78CA00941A57 /* NSData+AES.h */,
+				187EDC6A1E0B78CA00941A57 /* NSData+AES.m */,
+				187EDC6B1E0B78CA00941A57 /* NSString+MD5.h */,
+				187EDC6C1E0B78CA00941A57 /* NSString+MD5.m */,
+				187EDC6D1E0B78CA00941A57 /* SecurityUtil.h */,
+				187EDC6E1E0B78CA00941A57 /* SecurityUtil.m */,
+			);
+			path = "报文加密和解密";
+			sourceTree = "<group>";
+		};
+		187EDC651E0B78CA00941A57 /* GTMBase64 */ = {
+			isa = PBXGroup;
+			children = (
+				187EDC661E0B78CA00941A57 /* GTMBase64.h */,
+				187EDC671E0B78CA00941A57 /* GTMBase64.m */,
+				187EDC681E0B78CA00941A57 /* GTMDefines.h */,
+			);
+			path = GTMBase64;
 			sourceTree = "<group>";
 		};
 		1886D6D71DFFFBF000F4A067 /* 首页 */ = {
@@ -1424,6 +1462,7 @@
 			files = (
 				92DF83921E03E7F900674364 /* UnderStandVC.m in Sources */,
 				1829DA301DFAAFE000405DF2 /* YYFiveRecordTableViewCell.m in Sources */,
+				187EDC6F1E0B78CA00941A57 /* GTMBase64.m in Sources */,
 				1829DA341DFAAFE000405DF2 /* YYTimeLineView.m in Sources */,
 				92DF838F1E03E71A00674364 /* AdviceVC.m in Sources */,
 				1829D9DB1DFAAA4600405DF2 /* LeftMainController.m in Sources */,
@@ -1435,6 +1474,7 @@
 				92DF83891E03D81200674364 /* HRLivePlayer.m in Sources */,
 				1829DA321DFAAFE000405DF2 /* YYFiveRecordView.m in Sources */,
 				1829DA411DFAB0E900405DF2 /* YYTimeLineModel.m in Sources */,
+				187EDC701E0B78CA00941A57 /* NSData+AES.m in Sources */,
 				1829DA241DFAAFE000405DF2 /* UIColor+YYStockTheme.m in Sources */,
 				1829DA271DFAAFE000405DF2 /* YYLinePositionModel.m in Sources */,
 				F8ABB9A81E0935DD00B2DFBF /* RegisterVC.m in Sources */,
@@ -1447,11 +1487,13 @@
 				1829DA2F1DFAAFE000405DF2 /* YYStockScrollView.m in Sources */,
 				9293DED61DFE976C0032EFA1 /* TicketViewController.m in Sources */,
 				1829DA351DFAAFE000405DF2 /* YYTimeLineVolumeView.m in Sources */,
+				187EDC711E0B78CA00941A57 /* NSString+MD5.m in Sources */,
 				1829DA2C1DFAAFE000405DF2 /* YYKlineMaskView.m in Sources */,
 				92442FD11DFE785F008BF127 /* PayCountButton.m in Sources */,
 				1829DA441DFAB0F300405DF2 /* AppServer.m in Sources */,
 				926C35AC1E024F86005BF715 /* nickNameVC.m in Sources */,
 				18273CA71DFA574F00855FCB /* main.m in Sources */,
+				187EDC721E0B78CA00941A57 /* SecurityUtil.m in Sources */,
 				922CEFA21E0150BA00C67B1F /* SettingVC.m in Sources */,
 				188F09421DFE3C6F004E1284 /* RechargeController.m in Sources */,
 				926679FB1DFF871900982041 /* HMViewController.m in Sources */,
