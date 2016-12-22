@@ -626,12 +626,19 @@
     
         NSLogTC(@"买涨啦");
         
-        NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,LOGIN_URL];
+        NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL];
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
-        [params setObject:[NSNumber numberWithInt:501] forKey:@"test"];
+        [params setObject:[NSNumber numberWithInt:0] forKey:@"regId"];
         [HttpTool post:url
                 params:params
                success:^(id json) {
+                   
+                   NSArray *dataArr = [json objectForKey:@"strImgYzm"];
+                   NSDictionary *imageDic = [dataArr firstObject];
+                   NSString *imageString = [imageDic objectForKey:@"ImageYzm"];
+                   NSData *imageData = [GTMBase64 decodeString:imageString];
+                   UIImage *image = [UIImage imageWithData:imageData];
+                   [_buyButton setBackgroundImage:image forState:UIControlStateNormal];
                    
                } failure:^(NSError *error) {
                    

@@ -12,6 +12,8 @@
 
 #ifdef __OBJC__
 #import "Common.h"
+#import "SecurityUtil.h"
+#import "GTMBase64.h"
 #import <AFNetworking.h>
 #import <JSONKit.h>
 #import <MMDrawerController.h>
