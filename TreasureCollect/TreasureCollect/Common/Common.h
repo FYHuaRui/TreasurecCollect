@@ -11,11 +11,14 @@
 
 //管理接口和服务器地址
 #define BASE_URL @"http://192.168.100.105:8080" //吉哥服务器
+#define BASE_URL2 @"http://192.168.10.106:8080"//钱钱服务器
 
 //登陆模块
 #define LOGIN_URL @"/wsb/java/servlet/LoginSeleUser"
 
 //图形验证码
 #define GETREGISTIMAGE_URL @"/wsb/java/servlet/RegistGetImageYzm"
+#define GETREGISTIMAGE_URL2 @"/wsb/java/servlet/RegistGetYzm"//钱钱验证码
+
 
 #endif /* Common_h */

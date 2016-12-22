@@ -76,9 +76,29 @@
     [pictureImage addSubview:self.pictureField];
     
     //图形验证码图片
-    UIButton *imageBtn = [[UIButton alloc] initWithFrame:CGRectMake(pictureImage.frame.origin.x+pictureImage.frame.size.width+20, pictureImage.frame.origin.y, phoneImage.frame.size.width-pictureImage.frame.size.width-20, pictureImage.frame.size.height)];
+    UIButton *imageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    imageBtn.frame = CGRectMake(pictureImage.frame.origin.x+pictureImage.frame.size.width+15, pictureImage.frame.origin.y, phoneImage.frame.size.width-pictureImage.frame.size.width-15, pictureImage.frame.size.height);
     imageBtn.backgroundColor = [UIColor redColor];
+    [imageBtn addTarget:self action:@selector(changePicture:) forControlEvents:UIControlEventTouchUpInside];
+    imageBtn.layer.cornerRadius = 15;
+    imageBtn.layer.masksToBounds = YES;
     [self.view addSubview:imageBtn];
+    
+    //网络请求验证码
+    NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:[NSNumber numberWithInt:0] forKey:@"regId"];
+    [HttpTool post:url params:params success:^(id json) {
+        NSArray *dataArr = [json objectForKey:@"strImgYzm"];
+        NSDictionary *imageDic = [dataArr firstObject];
+        NSString *imageString = [imageDic objectForKey:@"ImageYzm"];
+        NSData *imageData = [GTMBase64 decodeString:imageString];
+        UIImage *image = [UIImage imageWithData:imageData];
+        [imageBtn setBackgroundImage:image forState:UIControlStateNormal];
+    } failure:^(NSError *error) {
+        NSLogTC(@"获取验证码失败：%@",error);
+    }];
+
     
     //短信验证码输入框
     UIImageView *messageImage = [[UIImageView alloc] initWithFrame:CGRectMake(pictureImage.frame.origin.x, pictureImage.frame.origin.y+pictureImage.frame.size.height+20, phoneImage.frame.size.width, phoneImage.frame.size.height)];
@@ -105,6 +125,25 @@
     nextBtn.backgroundColor = [UIColor colorFromHexRGB:@"b4b4b4"];
     [self.view addSubview:nextBtn];
     
+}
+
+//更换验证码图片
+- (void)changePicture:(UIButton*)button
+{
+    //网络请求验证码
+    NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:[NSNumber numberWithInt:0] forKey:@"regId"];
+    [HttpTool post:url params:params success:^(id json) {
+        NSArray *dataArr = [json objectForKey:@"strImgYzm"];
+        NSDictionary *imageDic = [dataArr firstObject];
+        NSString *imageString = [imageDic objectForKey:@"ImageYzm"];
+        NSData *imageData = [GTMBase64 decodeString:imageString];
+        UIImage *image = [UIImage imageWithData:imageData];
+        [button setBackgroundImage:image forState:UIControlStateNormal];
+    } failure:^(NSError *error) {
+        NSLogTC(@"获取验证码失败：%@",error);
+    }];
 }
 
 //返回按钮
