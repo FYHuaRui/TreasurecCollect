@@ -638,7 +638,6 @@
                    NSString *imageString = [imageDic objectForKey:@"ImageYzm"];
                    NSData *imageData = [GTMBase64 decodeString:imageString];
                    UIImage *image = [UIImage imageWithData:imageData];
-                   [_buyButton setBackgroundImage:image forState:UIControlStateNormal];
                    
                } failure:^(NSError *error) {
                    

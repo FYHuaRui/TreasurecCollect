@@ -179,6 +179,9 @@
     _rechargeButton.layer.cornerRadius = 3.f;
     _rechargeButton.layer.masksToBounds = YES;
     _rechargeButton.backgroundColor = [UIColor colorFromHexRGB:@"4095EB"];
+    [_rechargeButton addTarget:self
+                        action:@selector(rechargeAction:)
+              forControlEvents:UIControlEventTouchUpInside];
     [_bgScrollView addSubview:_rechargeButton];
  
     //温馨提示
@@ -238,5 +241,23 @@
     _countSelectButton = button;
 
 }
+
+- (void)rechargeAction:(UIButton *)button{
+
+    NSString *url = @"http://192.168.10.139:8080/Pingplusplus/ReceiptServlet";
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:@"666" forKey:@"RechargeAccount"];
+    [params setObject:@"" forKey:@"client_ip"];
+    [HttpTool post:url
+            params:params
+           success:^(id json) {
+               
+
+           } failure:^(NSError *error) {
+               
+           }];
+
+}
+
 
 @end
