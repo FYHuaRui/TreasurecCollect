@@ -75,6 +75,7 @@
                    withObject:nil
                    afterDelay:2.f];
     }
+    _hud = nil;
     
 }
 
@@ -95,7 +96,7 @@
                    withObject:nil
                    afterDelay:2.f];
     }
-    
+    _hud = nil;
 }
 
 - (void)changgeModel{

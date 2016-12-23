@@ -121,9 +121,10 @@ static int regID = 0;
     UIButton *yzmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     yzmBtn.frame = CGRectMake(imageBtn.frame.origin.x, messageImage.frame.origin.y, imageBtn.width, imageBtn.height);
     [yzmBtn setTitle:@"获取短信验证码" forState:UIControlStateNormal];
+    [yzmBtn setBackgroundColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [yzmBtn addTarget:self action:@selector(messageCheck) forControlEvents:UIControlEventTouchUpInside];
     yzmBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-    yzmBtn.backgroundColor = [UIColor grayColor];
+    yzmBtn.backgroundColor = [UIColor lightGrayColor];
     yzmBtn.layer.cornerRadius = 20;
     yzmBtn.layer.masksToBounds = YES;
     [self.view addSubview:yzmBtn];
@@ -186,7 +187,7 @@ static int regID = 0;
 {
     if ([self.phoneField.text isEqualToString:@""])
     {
-        [self setHUDmessage:@"手机号不能为空"];
+        [self hideSuccessHUD:@"手机号不能为空"];
     }
     else
     {
@@ -195,7 +196,7 @@ static int regID = 0;
         NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",secretRegex];
         if (![test evaluateWithObject:self.phoneField.text])
         {
-            [self setHUDmessage:@"手机号不合法"];
+            [self hideSuccessHUD:@"手机号不合法"];
         }
         else
         {
@@ -205,8 +206,7 @@ static int regID = 0;
             [params setObject:[NSNumber numberWithInt:regID] forKey:@"regId"];
             [params setObject:[NSString stringWithString:self.phoneField.text] forKey:@"telephone"];
             [params setObject:[NSString stringWithString:self.pictureField.text] forKey:@"stringYzm"];
-//            NSDictionary *params2 = @{@"regId":@0,@"telephone":self.phoneField.text,@"stringYzm":self.pictureField.text};
-            NSLog(@"%@",params);
+             NSLog(@"%@",params);
             [HttpTool post:url params:params success:^(id json) {
                 NSLog(@"%@",json);
 //                NSArray *dataArr = [json objectForKey:@"strImgYzm"];
@@ -216,7 +216,7 @@ static int regID = 0;
 //                UIImage *image = [UIImage imageWithData:imageData];
             } failure:^(NSError *error) {
                 NSLogTC(@"获取验证码失败：%@",error);
-                [self setHUDmessage:@"验证码获取失败"];
+                [self hideSuccessHUD:@"验证码获取失败"];
             }];
 
         }
@@ -238,7 +238,7 @@ static int regID = 0;
     NSLogTC(@"注册");
     if ([self.phoneField.text isEqualToString:@""])
     {
-        [self setHUDmessage:@"手机号不能为空"];
+        [self hideSuccessHUD:@"手机号不能为空"];
     }
     else
     {
@@ -247,61 +247,37 @@ static int regID = 0;
         NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",secretRegex];
         if (![test evaluateWithObject:self.phoneField.text])
         {
-            [self setHUDmessage:@"手机号不合法"];
+            [self hideSuccessHUD:@"手机号不合法"];
         }
         else
         {
-            //网络请求验证码
-            NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL];
-            NSMutableDictionary *params = [NSMutableDictionary dictionary];
-            [params setObject:[NSNumber numberWithInt:0] forKey:@"regId"];
-            [HttpTool post:url params:params success:^(id json) {
-//                NSArray *dataArr = [json objectForKey:@"strImgYzm"];
-//                NSDictionary *imageDic = [dataArr firstObject];
-//                NSString *imageString = [imageDic objectForKey:@"ImageYzm"];
-//                NSData *imageData = [GTMBase64 decodeString:imageString];
-//                UIImage *image = [UIImage imageWithData:imageData];
-            } failure:^(NSError *error) {
-                NSLogTC(@"获取验证码失败：%@",error);
-                [self setHUDmessage:@"验证码获取失败"];
-            }];
+            
+            if ([self.password.text isEqualToString:self.password2.text])
+            {
+                //网络请求验证码
+                NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL3];
+                NSMutableDictionary *params = [NSMutableDictionary dictionary];
+                [params setObject:[NSNumber numberWithInt:regID] forKey:@"regId"];
+                [params setObject:[NSString stringWithString:self.phoneField.text] forKey:@"telephone"];
+                [params setObject:[NSString stringWithString:self.pictureField.text] forKey:@"stringYzm"];
+                [params setObject:[NSString stringWithString:self.messageField.text] forKey:@"shortMsgYzm"];
+                [params setObject:[NSString stringWithString:self.password.text] forKey:@"password"];
+                [params setObject:[NSString stringWithString:self.password2.text] forKey:@"pwdConfirm"];
+                [HttpTool post:url params:params success:^(id json) {
+                    [self hideSuccessHUD:@"注册成功"];
+                    NSLogTC(@"%@",json);
+                } failure:^(NSError *error) {
+                    NSLogTC(@"获取验证码失败：%@",error);
+                    [self hideSuccessHUD:@"注册失败"];
+                }];
+
+            }
+            else
+            {
+                [self hideSuccessHUD:@"密码不一致"];
+            }
             
         }
     }
-    
-    if ([self.password.text isEqualToString:self.password2.text])
-    {
-        //
-    }
-    else
-    {
-        [self setHUDmessage:@"密码不一致"];
-    }
 }
-
-
-- (void)setHUDmessage:(NSString*)str
-{
-    
-//    [self showHUD:str];
-    
-
-    [self hideSuccessHUD:str];
-//    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
-//    [self.view addSubview:HUD];
-//    
-//    HUD.label.text = str;
-//    HUD.mode = MBProgressHUDModeText;//设置模式为纯文本
-//    
-    
-//    [HUD showAnimated:YES whileExecutingBlock:^{
-//        //对话框显示时需要执行的操作
-//        sleep(1);
-//    } completionBlock:^{
-//        [HUD removeFromSuperview];
-//        //        self.HUD = nil;
-//    }];
-
-}
-
 @end
