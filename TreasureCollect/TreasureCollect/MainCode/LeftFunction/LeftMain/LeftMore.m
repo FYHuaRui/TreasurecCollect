@@ -273,7 +273,8 @@
     
     if (indexPath.row == 3)
     {
-        
+        AdvertiseView *view = [[AdvertiseView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight)];
+        [[self viewController].view addSubview:view];
     }
     
     if (indexPath.row == 4)

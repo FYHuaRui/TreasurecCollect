@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AdvertiseView.h"
 
 @interface LeftMore : UIView<UITableViewDelegate, UITableViewDataSource>
 
