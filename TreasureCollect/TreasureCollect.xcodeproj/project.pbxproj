@@ -141,6 +141,7 @@
 		F8ABB99E1E092B1700B2DFBF /* 头像.png in Resources */ = {isa = PBXBuildFile; fileRef = F8ABB99D1E092B1700B2DFBF /* 头像.png */; };
 		F8ABB9A81E0935DD00B2DFBF /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ABB9A71E0935DD00B2DFBF /* RegisterVC.m */; };
 		F8ABB9AA1E09392D00B2DFBF /* 返回-灰.png in Resources */ = {isa = PBXBuildFile; fileRef = F8ABB9A91E09392D00B2DFBF /* 返回-灰.png */; };
+		F8B74A201E0BB6B800CA4B09 /* 密码.png in Resources */ = {isa = PBXBuildFile; fileRef = F8B74A1F1E0BB6B800CA4B09 /* 密码.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -368,6 +369,7 @@
 		F8ABB9A61E0935DD00B2DFBF /* RegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterVC.h; sourceTree = "<group>"; };
 		F8ABB9A71E0935DD00B2DFBF /* RegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
 		F8ABB9A91E09392D00B2DFBF /* 返回-灰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回-灰.png"; sourceTree = "<group>"; };
+		F8B74A1F1E0BB6B800CA4B09 /* 密码.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1154,6 +1156,7 @@
 		9259D9001E0A1ECB00BB5AB4 /* 注册／登录 */ = {
 			isa = PBXGroup;
 			children = (
+				F8B74A1F1E0BB6B800CA4B09 /* 密码.png */,
 				9259D9011E0A1ECB00BB5AB4 /* 图形验证码.png */,
 				9259D9021E0A1ECB00BB5AB4 /* 手机号码.png */,
 				9259D9031E0A1ECB00BB5AB4 /* 登录01.png */,
@@ -1409,6 +1412,7 @@
 				9293DEDA1DFE978D0032EFA1 /* ticktBlank.png in Resources */,
 				1829DA311DFAAFE000405DF2 /* YYFiveRecordTableViewCell.xib in Resources */,
 				1896E5FE1E011DE80072DC50 /* rightTrangle.png in Resources */,
+				F8B74A201E0BB6B800CA4B09 /* 密码.png in Resources */,
 				92442FDD1DFE78A0008BF127 /* 返回.png in Resources */,
 				188EB89D1E038F86005168E0 /* red2.png in Resources */,
 				92B00F291E022BB00019D040 /* 返回3.png in Resources */,
