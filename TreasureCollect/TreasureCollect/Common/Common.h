@@ -18,7 +18,7 @@
 
 //图形验证码
 #define GETREGISTIMAGE_URL @"/wsb/java/servlet/RegistGetImageYzm"
-#define GETREGISTIMAGE_URL2 @"/wsb/java/servlet/RegistGetYzm"//钱钱验证码
+#define GETREGISTIMAGE_URL2 @"/wsb/java/servlet/RegistGetShortMsgYzm"//短信验证码
 
 
 #endif /* Common_h */

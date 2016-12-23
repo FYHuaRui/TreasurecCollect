@@ -56,11 +56,15 @@
 
 - (void)hideSuccessHUD:(NSString *)title {
     
+    if (_hud == nil) {
+        _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }
+    
     if (title.length == 0) {
         [_hud hideAnimated:YES afterDelay:1.f];
     } else {
         
-        _hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+//        _hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
         //显示模式设置为：自定义视图模式
         _hud.mode = MBProgressHUDModeCustomView;
         _hud.label.text = title;
