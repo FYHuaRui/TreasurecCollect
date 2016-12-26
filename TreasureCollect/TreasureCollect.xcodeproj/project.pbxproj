@@ -84,6 +84,24 @@
 		1896E5FD1E011DE80072DC50 /* leftTrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896E5FB1E011DE80072DC50 /* leftTrangle.png */; };
 		1896E5FE1E011DE80072DC50 /* rightTrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896E5FC1E011DE80072DC50 /* rightTrangle.png */; };
 		1896E6011E011EC10072DC50 /* ProportionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896E6001E011EC10072DC50 /* ProportionView.m */; };
+		18BFDDBA1E10CB39006CF255 /* NSString+GetNetip.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BFDDB91E10CB39006CF255 /* NSString+GetNetip.m */; };
+		18BFDDCE1E10FE60006CF255 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDDCD1E10FE60006CF255 /* CFNetwork.framework */; };
+		18BFDDD01E10FE6A006CF255 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDDCF1E10FE6A006CF255 /* SystemConfiguration.framework */; };
+		18BFDDD21E10FE74006CF255 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDDD11E10FE74006CF255 /* Security.framework */; };
+		18BFDDD41E10FE7C006CF255 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDDD31E10FE7C006CF255 /* QuartzCore.framework */; };
+		18BFDDD61E10FE8B006CF255 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDDD51E10FE8B006CF255 /* CoreTelephony.framework */; };
+		18BFDDD81E10FE98006CF255 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDDD71E10FE98006CF255 /* CoreMotion.framework */; };
+		18BFDDDA1E10FEA6006CF255 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDDD91E10FEA6006CF255 /* libc++.tbd */; };
+		18BFDDDC1E10FEB2006CF255 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDDDB1E10FEB2006CF255 /* libz.tbd */; };
+		18BFDDDE1E10FEBD006CF255 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDDDD1E10FEBD006CF255 /* libsqlite3.0.tbd */; };
+		18BFDDE01E10FEC7006CF255 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDDDF1E10FEC7006CF255 /* libstdc++.tbd */; };
+		18BFE0011E10FF16006CF255 /* libPaymentControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDF121E10FF15006CF255 /* libPaymentControl.a */; };
+		18BFE0021E10FF16006CF255 /* libpingpp+up.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDF131E10FF15006CF255 /* libpingpp+up.a */; };
+		18BFE0041E10FF16006CF255 /* libpingpp+network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDF181E10FF15006CF255 /* libpingpp+network.a */; };
+		18BFE0051E10FF16006CF255 /* libpingpp+webview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDF1B1E10FF15006CF255 /* libpingpp+webview.a */; };
+		18BFE0061E10FF16006CF255 /* libpingppcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDF1C1E10FF15006CF255 /* libpingppcore.a */; };
+		18BFE0071E10FF16006CF255 /* libpingpp+one.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDF1E1E10FF15006CF255 /* libpingpp+one.a */; };
+		18BFE0081E10FF16006CF255 /* Pingpp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18BFDF201E10FF15006CF255 /* Pingpp.bundle */; };
 		921BDE461DFFBE1A00C031C5 /* PersNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 921BDE451DFFBE1A00C031C5 /* PersNSObject.m */; };
 		921BDE5D1DFFDE5D00C031C5 /* 返回2.png in Resources */ = {isa = PBXBuildFile; fileRef = 921BDE5C1DFFDE5D00C031C5 /* 返回2.png */; };
 		922CEF901E01504100C67B1F /* 个人资产.png in Resources */ = {isa = PBXBuildFile; fileRef = 922CEF841E01504100C67B1F /* 个人资产.png */; };
@@ -290,6 +308,37 @@
 		1896E5FC1E011DE80072DC50 /* rightTrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightTrangle.png; sourceTree = "<group>"; };
 		1896E5FF1E011EC10072DC50 /* ProportionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProportionView.h; sourceTree = "<group>"; };
 		1896E6001E011EC10072DC50 /* ProportionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProportionView.m; sourceTree = "<group>"; };
+		18BFDDB81E10CB39006CF255 /* NSString+GetNetip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GetNetip.h"; sourceTree = "<group>"; };
+		18BFDDB91E10CB39006CF255 /* NSString+GetNetip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GetNetip.m"; sourceTree = "<group>"; };
+		18BFDDBB1E10FCCE006CF255 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		18BFDDBD1E10FCE8006CF255 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		18BFDDBF1E10FCEF006CF255 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		18BFDDC11E10FD12006CF255 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		18BFDDC31E10FD4A006CF255 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		18BFDDC51E10FD55006CF255 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		18BFDDC71E10FD77006CF255 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		18BFDDC91E10FD81006CF255 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		18BFDDCB1E10FD90006CF255 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		18BFDDCD1E10FE60006CF255 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		18BFDDCF1E10FE6A006CF255 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		18BFDDD11E10FE74006CF255 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		18BFDDD31E10FE7C006CF255 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		18BFDDD51E10FE8B006CF255 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		18BFDDD71E10FE98006CF255 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		18BFDDD91E10FEA6006CF255 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		18BFDDDB1E10FEB2006CF255 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		18BFDDDD1E10FEBD006CF255 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		18BFDDDF1E10FEC7006CF255 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		18BFDF121E10FF15006CF255 /* libPaymentControl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPaymentControl.a; sourceTree = "<group>"; };
+		18BFDF131E10FF15006CF255 /* libpingpp+up.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+up.a"; sourceTree = "<group>"; };
+		18BFDF181E10FF15006CF255 /* libpingpp+network.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+network.a"; sourceTree = "<group>"; };
+		18BFDF191E10FF15006CF255 /* PingppURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingppURLResponse.h; sourceTree = "<group>"; };
+		18BFDF1B1E10FF15006CF255 /* libpingpp+webview.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+webview.a"; sourceTree = "<group>"; };
+		18BFDF1C1E10FF15006CF255 /* libpingppcore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpingppcore.a; sourceTree = "<group>"; };
+		18BFDF1E1E10FF15006CF255 /* libpingpp+one.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+one.a"; sourceTree = "<group>"; };
+		18BFDF1F1E10FF15006CF255 /* Pingpp+One.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Pingpp+One.h"; sourceTree = "<group>"; };
+		18BFDF201E10FF15006CF255 /* Pingpp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Pingpp.bundle; sourceTree = "<group>"; };
+		18BFDF211E10FF15006CF255 /* Pingpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pingpp.h; sourceTree = "<group>"; };
 		5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.release.xcconfig"; sourceTree = "<group>"; };
 		921BDE441DFFBE1A00C031C5 /* PersNSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersNSObject.h; sourceTree = "<group>"; };
 		921BDE451DFFBE1A00C031C5 /* PersNSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersNSObject.m; sourceTree = "<group>"; };
@@ -377,6 +426,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18BFDDE01E10FEC7006CF255 /* libstdc++.tbd in Frameworks */,
+				18BFE0051E10FF16006CF255 /* libpingpp+webview.a in Frameworks */,
+				18BFDDDE1E10FEBD006CF255 /* libsqlite3.0.tbd in Frameworks */,
+				18BFDDDC1E10FEB2006CF255 /* libz.tbd in Frameworks */,
+				18BFE0021E10FF16006CF255 /* libpingpp+up.a in Frameworks */,
+				18BFE0061E10FF16006CF255 /* libpingppcore.a in Frameworks */,
+				18BFDDDA1E10FEA6006CF255 /* libc++.tbd in Frameworks */,
+				18BFDDD81E10FE98006CF255 /* CoreMotion.framework in Frameworks */,
+				18BFDDD61E10FE8B006CF255 /* CoreTelephony.framework in Frameworks */,
+				18BFDDD41E10FE7C006CF255 /* QuartzCore.framework in Frameworks */,
+				18BFE0011E10FF16006CF255 /* libPaymentControl.a in Frameworks */,
+				18BFDDD21E10FE74006CF255 /* Security.framework in Frameworks */,
+				18BFE0041E10FF16006CF255 /* libpingpp+network.a in Frameworks */,
+				18BFE0071E10FF16006CF255 /* libpingpp+one.a in Frameworks */,
+				18BFDDD01E10FE6A006CF255 /* SystemConfiguration.framework in Frameworks */,
+				18BFDDCE1E10FE60006CF255 /* CFNetwork.framework in Frameworks */,
 				9D7204B0697FFCC7D0153A8D /* libPods-TreasureCollect.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +532,7 @@
 			isa = PBXGroup;
 			children = (
 				18273CDE1DFA9E2400855FCB /* Common.h */,
+				18BFDDE11E10FF15006CF255 /* PingPP */,
 				187EDC641E0B78CA00941A57 /* 报文加密和解密 */,
 				926C35AD1E027CBC005BF715 /* 清理缓存 */,
 				92442FC81DFE7841008BF127 /* UIButton类目 */,
@@ -483,6 +549,8 @@
 			children = (
 				18273CE11DFAA01C00855FCB /* HttpTool.h */,
 				18273CE21DFAA01C00855FCB /* HttpTool.m */,
+				18BFDDB81E10CB39006CF255 /* NSString+GetNetip.h */,
+				18BFDDB91E10CB39006CF255 /* NSString+GetNetip.m */,
 			);
 			path = HttpTools;
 			sourceTree = "<group>";
@@ -966,9 +1034,93 @@
 			path = GifImage;
 			sourceTree = "<group>";
 		};
+		18BFDDE11E10FF15006CF255 /* PingPP */ = {
+			isa = PBXGroup;
+			children = (
+				18BFDDE21E10FF15006CF255 /* Channels */,
+				18BFDF161E10FF15006CF255 /* Dependencies */,
+				18BFDF1C1E10FF15006CF255 /* libpingppcore.a */,
+				18BFDF1D1E10FF15006CF255 /* One */,
+				18BFDF201E10FF15006CF255 /* Pingpp.bundle */,
+				18BFDF211E10FF15006CF255 /* Pingpp.h */,
+			);
+			path = PingPP;
+			sourceTree = "<group>";
+		};
+		18BFDDE21E10FF15006CF255 /* Channels */ = {
+			isa = PBXGroup;
+			children = (
+				18BFDF111E10FF15006CF255 /* UnionPay */,
+			);
+			path = Channels;
+			sourceTree = "<group>";
+		};
+		18BFDF111E10FF15006CF255 /* UnionPay */ = {
+			isa = PBXGroup;
+			children = (
+				18BFDF121E10FF15006CF255 /* libPaymentControl.a */,
+				18BFDF131E10FF15006CF255 /* libpingpp+up.a */,
+			);
+			path = UnionPay;
+			sourceTree = "<group>";
+		};
+		18BFDF161E10FF15006CF255 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				18BFDF171E10FF15006CF255 /* Network */,
+				18BFDF1A1E10FF15006CF255 /* WebView */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		18BFDF171E10FF15006CF255 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				18BFDF181E10FF15006CF255 /* libpingpp+network.a */,
+				18BFDF191E10FF15006CF255 /* PingppURLResponse.h */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		18BFDF1A1E10FF15006CF255 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				18BFDF1B1E10FF15006CF255 /* libpingpp+webview.a */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
+		18BFDF1D1E10FF15006CF255 /* One */ = {
+			isa = PBXGroup;
+			children = (
+				18BFDF1E1E10FF15006CF255 /* libpingpp+one.a */,
+				18BFDF1F1E10FF15006CF255 /* Pingpp+One.h */,
+			);
+			path = One;
+			sourceTree = "<group>";
+		};
 		33D3739CAE8A88E9F62F8BD5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18BFDDDF1E10FEC7006CF255 /* libstdc++.tbd */,
+				18BFDDDD1E10FEBD006CF255 /* libsqlite3.0.tbd */,
+				18BFDDDB1E10FEB2006CF255 /* libz.tbd */,
+				18BFDDD91E10FEA6006CF255 /* libc++.tbd */,
+				18BFDDD71E10FE98006CF255 /* CoreMotion.framework */,
+				18BFDDD51E10FE8B006CF255 /* CoreTelephony.framework */,
+				18BFDDD31E10FE7C006CF255 /* QuartzCore.framework */,
+				18BFDDD11E10FE74006CF255 /* Security.framework */,
+				18BFDDCF1E10FE6A006CF255 /* SystemConfiguration.framework */,
+				18BFDDCD1E10FE60006CF255 /* CFNetwork.framework */,
+				18BFDDCB1E10FD90006CF255 /* MobileCoreServices.framework */,
+				18BFDDC91E10FD81006CF255 /* MessageUI.framework */,
+				18BFDDC71E10FD77006CF255 /* MapKit.framework */,
+				18BFDDC51E10FD55006CF255 /* ImageIO.framework */,
+				18BFDDC31E10FD4A006CF255 /* CoreGraphics.framework */,
+				18BFDDC11E10FD12006CF255 /* CoreAudio.framework */,
+				18BFDDBF1E10FCEF006CF255 /* AudioToolbox.framework */,
+				18BFDDBD1E10FCE8006CF255 /* AddressBookUI.framework */,
+				18BFDDBB1E10FCCE006CF255 /* AddressBook.framework */,
 				EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */,
 			);
 			name = Frameworks;
@@ -1316,7 +1468,7 @@
 				TargetAttributes = {
 					18273CA11DFA574F00855FCB = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 8H2B3Y5JNC;
+						DevelopmentTeam = 84W6EV66WN;
 						ProvisioningStyle = Automatic;
 					};
 					18273CBA1DFA574F00855FCB = {
@@ -1374,6 +1526,7 @@
 				9293DEDC1DFE98C10032EFA1 /* icon-logo.png in Resources */,
 				922CEF9B1E01504100C67B1F /* 银元券.png in Resources */,
 				92B00F271E022BA00019D040 /* 进入.png in Resources */,
+				18BFE0081E10FF16006CF255 /* Pingpp.bundle in Resources */,
 				18511D821E0BD97200E30772 /* close.png in Resources */,
 				1848B66B1E0A6D2600C806D8 /* echarts.min.js in Resources */,
 				922CEF901E01504100C67B1F /* 个人资产.png in Resources */,
@@ -1518,6 +1671,7 @@
 				187EDC701E0B78CA00941A57 /* NSData+AES.m in Sources */,
 				1829DA241DFAAFE000405DF2 /* UIColor+YYStockTheme.m in Sources */,
 				1829DA271DFAAFE000405DF2 /* YYLinePositionModel.m in Sources */,
+				18BFDDBA1E10CB39006CF255 /* NSString+GetNetip.m in Sources */,
 				F8ABB9A81E0935DD00B2DFBF /* RegisterVC.m in Sources */,
 				1829DA281DFAAFE000405DF2 /* YYVolumePositionModel.m in Sources */,
 				1829DA3F1DFAB0E900405DF2 /* YYFiveRecordModel.m in Sources */,
@@ -1701,12 +1855,37 @@
 			baseConfigurationReference = 973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8H2B3Y5JNC;
+				DEVELOPMENT_TEAM = 84W6EV66WN;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Alipay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/CmbWallet",
+				);
 				GCC_PREFIX_HEADER = TreasureCollect/PrefixHeader.pch;
 				INFOPLIST_FILE = TreasureCollect/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fyhr;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Alipay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/ApplePay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/BfbWap",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/CmbWallet",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Cnp",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Fqlpay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Jdpay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Mmdpay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Qgbc",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/QQWallet",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/UnionPay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Yeepay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Dependencies/Network",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Dependencies/WebView",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/One",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fyhr.treasure;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1717,12 +1896,37 @@
 			baseConfigurationReference = 5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8H2B3Y5JNC;
+				DEVELOPMENT_TEAM = 84W6EV66WN;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Alipay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/CmbWallet",
+				);
 				GCC_PREFIX_HEADER = TreasureCollect/PrefixHeader.pch;
 				INFOPLIST_FILE = TreasureCollect/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fyhr;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Alipay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/ApplePay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/BfbWap",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/CmbWallet",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Cnp",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Fqlpay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Jdpay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Mmdpay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Qgbc",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/QQWallet",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/UnionPay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Channels/Yeepay",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Dependencies/Network",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/Dependencies/WebView",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP",
+					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/One",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fyhr.treasure;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

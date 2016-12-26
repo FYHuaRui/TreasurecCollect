@@ -26,6 +26,8 @@
 #import "UIViewExt.h"
 #import <GCDAsyncSocket.h>
 #import "HttpTool.h"
+#import "NSString+GetNetip.h"
+#import "Pingpp.h"
 
 #endif
 

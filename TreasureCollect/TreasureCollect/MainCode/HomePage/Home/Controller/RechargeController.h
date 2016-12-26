@@ -7,6 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import <ifaddrs.h>
+#import <arpa/inet.h>
 
 #import "PayButton.h"
 #import "PayCountButton.h"
@@ -32,6 +34,9 @@
     UILabel     *_recommandLabel;
     
     UILabel     *_recommandDetailLabel;
+    
+    //充值金额
+    NSInteger   _rechargeCount;
     
 }
 
