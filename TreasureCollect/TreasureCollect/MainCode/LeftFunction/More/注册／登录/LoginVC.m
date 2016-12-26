@@ -58,15 +58,19 @@
 {
     //密码登录／短信验证登录
     UIButton *password = [UIButton buttonWithType:UIButtonTypeCustom];
+    password.tag = 1001;
     [password setTitle:@"密码登录" forState:UIControlStateNormal];
     [password setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     password.backgroundColor = [UIColor colorFromHexRGB:@"008fd0"];
+    [password addTarget:self action:@selector(passwordClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:password];
     
     UIButton *messageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [messageBtn setTitle:@"验证码登录" forState:UIControlStateNormal];
+    messageBtn.tag = 1002;
+    [messageBtn setTitle:@"短信登录" forState:UIControlStateNormal];
     [messageBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     messageBtn.backgroundColor = [UIColor whiteColor];
+    [messageBtn addTarget:self action:@selector(messageBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:messageBtn];
     
     [password mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -86,6 +90,19 @@
     }];
     
     
+    
+}
+
+//密码登录
+- (void)passwordClicked
+{
+    UIButton *button = [self.view viewWithTag:1002];
+    
+}
+
+//短信登录
+- (void)messageBtnClicked
+{
     
 }
 
