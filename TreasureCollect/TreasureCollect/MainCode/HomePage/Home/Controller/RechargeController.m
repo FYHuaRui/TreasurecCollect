@@ -63,6 +63,8 @@
     self.title = @"充值";
     self.navigationController.navigationBar.hidden = NO;
 
+    _rechargeCount = 2000;
+    
     [self initNavbar];
     
     [self initViews];
@@ -179,6 +181,9 @@
     _rechargeButton.layer.cornerRadius = 3.f;
     _rechargeButton.layer.masksToBounds = YES;
     _rechargeButton.backgroundColor = [UIColor colorFromHexRGB:@"4095EB"];
+    [_rechargeButton addTarget:self
+                        action:@selector(rechargeAction:)
+              forControlEvents:UIControlEventTouchUpInside];
     [_bgScrollView addSubview:_rechargeButton];
  
     //温馨提示
@@ -231,6 +236,8 @@
 
 - (void)countSelectAction:(PayCountButton *)button{
 
+    _rechargeCount = [button.titleLabel.text integerValue];
+    
     button.selected = YES;
     
     _countSelectButton.selected = NO;
@@ -238,5 +245,69 @@
     _countSelectButton = button;
 
 }
+
+- (void)rechargeAction:(UIButton *)button{
+
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示"
+                                                                     message:[NSString stringWithFormat:@"你确定要充值%ld元",_rechargeCount]
+                                                              preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             
+                                                             [alertVC dismissViewControllerAnimated:YES
+                                                                                         completion:nil];
+                                                             
+                                                         }];
+    UIAlertAction *ensureAction = [UIAlertAction actionWithTitle:@"确定"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             
+                                                             
+                                                             NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL2,RECHARTE_URL];
+                                                             NSMutableDictionary *params = [NSMutableDictionary dictionary];
+                                                             [params setObject:[NSNumber numberWithInteger:_rechargeCount] forKey:@"RechargeAccount"];
+                                                             [params setObject:[NSString getIPAddress:YES] forKey:@"client_ip"];
+                                                             //请求第三方支付信息
+                                                             [HttpTool post:url
+                                                                     params:params
+                                                                    success:^(id json) {
+                                                                        
+                                                                        NSLogTC(@"充值订单信息%@",json);
+                                                                        
+                                                                        [Pingpp createPayment:json
+                                                                               viewController:self
+                                                                                 appURLScheme:kUrlScheme
+                                                                               withCompletion:^(NSString *result, PingppError *error) {
+                                                                                   NSLogTC(@"%@",result);
+                                                                                   if ([result isEqualToString:@"success"]) {
+                                                                                       // 支付成功
+                                                                                   } else {
+                                                                                       // 支付失败或取消
+                                                                                       NSLog(@"Error: code=%lu msg=%@", error.code, [error getMsg]);
+                                                                                   }
+                                                                               }];
+                                                                        
+                                                                        
+                                                                    } failure:^(NSError *error) {
+                                                                        
+                                                                        NSLogTC(@"充值失败:%@",error);
+                                                                        
+                                                                    }];
+
+                                                             
+                                                         }];
+    
+    [alertVC addAction:cancelAction];
+    [alertVC addAction:ensureAction];
+    [self presentViewController:alertVC
+                       animated:YES
+                     completion:^{
+                         
+                     }];
+
+}
+
+
 
 @end
