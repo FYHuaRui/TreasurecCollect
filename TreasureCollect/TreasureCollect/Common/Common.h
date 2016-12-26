@@ -10,8 +10,9 @@
 #define Common_h
 
 //管理接口和服务器地址
-#define BASE_URL @"http://192.168.100.105:8080" //吉哥服务器
+#define BASE_URL @"http://192.168.100.101:8080" //吉哥服务器
 #define BASE_URL2 @"http://192.168.10.106:8080"//钱钱服务器
+
 
 //登陆模块
 #define LOGIN_URL @"/wsb/java/servlet/LoginSeleUser"

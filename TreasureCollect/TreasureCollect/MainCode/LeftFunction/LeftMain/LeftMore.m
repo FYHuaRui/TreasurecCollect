@@ -14,6 +14,7 @@
 #import "AdviceVC.h"
 #import "UnderStandVC.h"
 #import "RegisterVC.h"
+#import "LoginVC.h"
 
 @implementation LeftMore
 
@@ -198,6 +199,8 @@
 - (void)dBtnClicked
 {
     NSLogTC(@"登录按钮点击了");
+    LoginVC *loginVC = [[LoginVC alloc] init];
+    [[self viewController].navigationController pushViewController:loginVC animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
