@@ -93,37 +93,33 @@
     _restLabel.textAlignment = NSTextAlignmentCenter;
     [_bgScrollView addSubview:_restLabel];
     
-    //按钮灰线
-    _bgLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, _restLabel.bottom, KScreenWidth, 3.f)];
-    _bgLine.backgroundColor = [UIColor colorFromHexRGB:@"FBFBFB"];
-    [_bgScrollView addSubview:_bgLine];
-    
-    //浮动线条
-    _flowLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, _restLabel.bottom, KScreenWidth / 2, 2.f)];
-    _flowLine.backgroundColor = [UIColor colorFromHexRGB:@"4095EB"];
-    [_bgScrollView addSubview:_flowLine];
-    
     //选择支付类型按钮
-    NSArray *titleArr = @[@"微信支付",@"银联支付"];
+    NSArray *titleArr = @[@"充值",@"提现"];
     for (int i = 0; i < titleArr.count; i ++) {
         
-        PayButton *button = [[PayButton alloc] initWithFrame:CGRectMake(KScreenWidth / 2 * i, _bgLine.bottom, KScreenWidth / 2, 40.f)];
-        button.topicTitle = titleArr[i];
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(12 + (KScreenWidth / 2 - 12) * i , _restLabel.bottom, KScreenWidth / 2 - 12.f , 40.f)];
+        [button setTitle:titleArr[i] forState:UIControlStateNormal];
+        [button setTitle:titleArr[i] forState:UIControlStateSelected];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        [button setBackgroundColor:[UIColor colorFromHexRGB:@"E8E8E8"] forState:UIControlStateNormal];
+        [button setBackgroundColor:[UIColor colorFromHexRGB:@"479FF6"] forState:UIControlStateSelected];
         if (i == 0) {
-            button.backgroundColor = [UIColor colorFromHexRGB:@"FBFBFB"];
+            button.selected = YES;
+            _operationButton = button;
         }else{
-            button.backgroundColor = [UIColor whiteColor];
+            button.selected = NO;
         }
         button.tag = 100 + i;
         [button addTarget:self
                    action:@selector(PayButtonAction:)
          forControlEvents:UIControlEventTouchUpInside];
         [_bgScrollView addSubview:button];
-        
+
     }
     
     //提示label
-    _selectLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.f, _bgLine.bottom + 44.f, KScreenWidth - 24.f, 40.f)];
+    _selectLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.f, _restLabel.bottom + 44.f, KScreenWidth - 24.f, 40.f)];
     _selectLabel.backgroundColor = [UIColor whiteColor];
     _selectLabel.text = @"请选择充值金额(元)";
     _selectLabel.textColor = [UIColor lightGrayColor];
@@ -176,59 +172,35 @@
     }
     
     //充值按钮
-    _rechargeButton = [[UIButton alloc] initWithFrame:CGRectMake(12.f, _selectLabel.bottom + 150.f, KScreenWidth - 24.f, 40)];
+    _rechargeButton = [[UIButton alloc] initWithFrame:CGRectMake(12.f, KScreenHeight - kNavigationBarHeight - 56.f, KScreenWidth - 24.f, 40)];
     [_rechargeButton setTitle:@"充值" forState:UIControlStateNormal];
-    _rechargeButton.layer.cornerRadius = 3.f;
+    _rechargeButton.layer.cornerRadius = 5.f;
     _rechargeButton.layer.masksToBounds = YES;
-    _rechargeButton.backgroundColor = [UIColor colorFromHexRGB:@"4095EB"];
+    _rechargeButton.backgroundColor = [UIColor colorFromHexRGB:@"479FF6"];
     [_rechargeButton addTarget:self
                         action:@selector(rechargeAction:)
               forControlEvents:UIControlEventTouchUpInside];
     [_bgScrollView addSubview:_rechargeButton];
- 
-    //温馨提示
-    _recommandLabel = [[UILabel alloc] initWithFrame:CGRectMake(16.f, _rechargeButton.bottom + 12.f, KScreenWidth - 32.f, 24.f)];
-    _recommandLabel.text = @"温馨提示:";
-    _recommandLabel.textColor = [UIColor blackColor];
-    _recommandLabel.textAlignment = NSTextAlignmentLeft;
-    _recommandLabel.font = [UIFont systemFontOfSize:15];
-    [_bgScrollView addSubview:_recommandLabel];
     
-    _recommandDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(16.f, _recommandLabel.bottom + 4.f, KScreenWidth - 32.f, 24.f)];
-    _recommandDetailLabel.text = @"-每日上限5000元";
-    _recommandDetailLabel.textColor = [UIColor lightGrayColor];
-    _recommandDetailLabel.textAlignment = NSTextAlignmentLeft;
-    _recommandDetailLabel.font = [UIFont systemFontOfSize:15];
-    [_bgScrollView addSubview:_recommandDetailLabel];
-    
-    _bgScrollView.contentSize = CGSizeMake(KScreenWidth, _recommandDetailLabel.bottom + 32.f);
+    _bgScrollView.contentSize = CGSizeMake(KScreenWidth, _selectLabel.bottom + 180.f);
 
 }
 
 #pragma mark - 按钮事件
-- (void)PayButtonAction:(PayButton *)button{
+- (void)PayButtonAction:(UIButton *)button{
 
-    if(button.tag == 100){
-    
-        [UIView animateWithDuration:0.5 animations:^{
-            
-            _flowLine.frame = CGRectMake(0, _restLabel.bottom, KScreenWidth / 2, 2.f);
-            
-        }];
-        PayButton *unSelectbutton = [_bgScrollView viewWithTag:101];
-        unSelectbutton.backgroundColor = [UIColor whiteColor];
-        button.backgroundColor = [UIColor colorFromHexRGB:@"FBFBFB"];
+    _operationButton.selected = NO;
+    [button setSelected:YES];
+    _operationButton = button;
+    if (button.tag == 100) {
         
+        [_rechargeButton setTitle:@"充值" forState:UIControlStateNormal];
+        self.title = @"充值";
+    
     }else{
     
-        [UIView animateWithDuration:0.5 animations:^{
-            
-            _flowLine.frame = CGRectMake(KScreenWidth / 2, _restLabel.bottom, KScreenWidth / 2, 2.f);
-            
-        }];
-        PayButton *unSelectbutton = [_bgScrollView viewWithTag:100];
-        unSelectbutton.backgroundColor = [UIColor whiteColor];
-        button.backgroundColor = [UIColor colorFromHexRGB:@"FBFBFB"];
+        [_rechargeButton setTitle:@"提现" forState:UIControlStateNormal];
+        self.title = @"提现";
         
     }
 
@@ -251,6 +223,7 @@
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示"
                                                                      message:[NSString stringWithFormat:@"你确定要充值%ld元",_rechargeCount]
                                                               preferredStyle:UIAlertControllerStyleAlert];
+    
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消"
                                                            style:UIAlertActionStyleCancel
                                                          handler:^(UIAlertAction * _Nonnull action) {
@@ -259,6 +232,7 @@
                                                                                          completion:nil];
                                                              
                                                          }];
+    
     UIAlertAction *ensureAction = [UIAlertAction actionWithTitle:@"确定"
                                                            style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * _Nonnull action) {

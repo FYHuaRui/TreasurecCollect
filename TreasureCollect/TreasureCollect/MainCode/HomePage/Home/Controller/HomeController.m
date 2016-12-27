@@ -527,7 +527,7 @@
     [_countPicker reloadAllComponents];
     _titleArr = @[@"8",@"80",@"200",@"2000",@"银元券"];
     
-    _proportionView = [[ProportionView alloc] initWithFrame:CGRectMake(0, _stockContainerView.bottom + 10, KScreenWidth, 16.f)];
+    _proportionView = [[ProportionView alloc] initWithFrame:CGRectMake(0, _stockContainerView.bottom , KScreenWidth, 26.f)];
     _proportionView.backgroundColor = [UIColor yellowColor];
     _proportionView.userInteractionEnabled = NO;
     [self.view addSubview:_proportionView];

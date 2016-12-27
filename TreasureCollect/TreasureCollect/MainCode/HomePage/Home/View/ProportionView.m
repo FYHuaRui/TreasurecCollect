@@ -51,8 +51,8 @@
     //买涨的比例视图
     _redImage = [[UIImageView alloc] initWithFrame:CGRectMake( -self.width / 2, 0, self.width, self.height)];
     [self addSubview:_redImage];
-    _redImage.animationImages = @[[UIImage imageNamed:@"red1"],[UIImage imageNamed:@"red2"],[UIImage imageNamed:@"red3"],[UIImage imageNamed:@"red4"],[UIImage imageNamed:@"red5"]];
-    _redImage.animationDuration = 0.4;
+    _redImage.animationImages = @[[UIImage imageNamed:@"red01"],[UIImage imageNamed:@"red02"],[UIImage imageNamed:@"red03"],[UIImage imageNamed:@"red04"],[UIImage imageNamed:@"red05"],[UIImage imageNamed:@"red06"],[UIImage imageNamed:@"red07"],[UIImage imageNamed:@"red08"]];
+    _redImage.animationDuration = 0.5;
     _redImage.animationRepeatCount = 0;
     [_redImage startAnimating];
     _redImage.backgroundColor = [UIColor colorFromHexRGB:@"C93723"];
@@ -67,8 +67,8 @@
     //买跌的比例视图
     _greenImage = [[UIImageView alloc] initWithFrame:CGRectMake(self.width / 2, 0, self.width , self.height)];
         [self addSubview:_greenImage];
-    _greenImage.animationImages = @[[UIImage imageNamed:@"green1"],[UIImage imageNamed:@"green2"],[UIImage imageNamed:@"green3"],[UIImage imageNamed:@"green4"],[UIImage imageNamed:@"green5"]];
-    _greenImage.animationDuration = 0.4;
+    _greenImage.animationImages = @[[UIImage imageNamed:@"green01"],[UIImage imageNamed:@"green02"],[UIImage imageNamed:@"green03"],[UIImage imageNamed:@"green04"],[UIImage imageNamed:@"green05"],[UIImage imageNamed:@"green06"],[UIImage imageNamed:@"green07"],[UIImage imageNamed:@"green08"]];
+    _greenImage.animationDuration = 0.5;
     _greenImage.animationRepeatCount = 0;
     [_greenImage startAnimating];
     _greenImage.backgroundColor = [UIColor colorFromHexRGB:@"75BA7F"];

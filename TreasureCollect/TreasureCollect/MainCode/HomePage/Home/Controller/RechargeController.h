@@ -21,22 +21,25 @@
     
     UILabel     *_restLabel;
     
-    UIImageView *_bgLine;
-    
-    UIImageView *_flowLine;
-    
+    //充值视图
+    UIView      *_rechargeView;
     UILabel     *_selectLabel;
+    
+    //提现试图
+    UIView      *_withdrawView;
+    UITextField *_countTF;
+    
     
     PayCountButton *_countSelectButton;
     
+    //充值按钮
     UIButton    *_rechargeButton;
-    
-    UILabel     *_recommandLabel;
-    
-    UILabel     *_recommandDetailLabel;
     
     //充值金额
     NSInteger   _rechargeCount;
+    
+    //全局按钮
+    UIButton    *_operationButton;
     
 }
 
