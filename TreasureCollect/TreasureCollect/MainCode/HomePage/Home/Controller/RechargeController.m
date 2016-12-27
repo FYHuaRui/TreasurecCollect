@@ -279,6 +279,7 @@
                                                                                viewController:self
                                                                                  appURLScheme:kUrlScheme
                                                                                withCompletion:^(NSString *result, PingppError *error) {
+                                                                                   
                                                                                    NSLogTC(@"%@",result);
                                                                                    if ([result isEqualToString:@"success"]) {
                                                                                        // 支付成功
@@ -286,8 +287,8 @@
                                                                                        // 支付失败或取消
                                                                                        NSLog(@"Error: code=%lu msg=%@", error.code, [error getMsg]);
                                                                                    }
+                                                                                   
                                                                                }];
-                                                                        
                                                                         
                                                                     } failure:^(NSError *error) {
                                                                         
@@ -295,7 +296,6 @@
                                                                         
                                                                     }];
 
-                                                             
                                                          }];
     
     [alertVC addAction:cancelAction];
@@ -307,7 +307,5 @@
                      }];
 
 }
-
-
 
 @end

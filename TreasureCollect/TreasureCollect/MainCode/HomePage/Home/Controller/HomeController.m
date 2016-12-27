@@ -355,6 +355,7 @@
         make.height.equalTo(window.mas_width);
         make.center.equalTo(window);
     }];
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
     [fullScreenView addSubview:self.stock.mainView];
