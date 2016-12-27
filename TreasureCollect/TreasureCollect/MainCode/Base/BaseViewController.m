@@ -61,7 +61,7 @@
     }
     
     if (title.length == 0) {
-        [_hud hideAnimated:YES afterDelay:1.f];
+        [_hud hideAnimated:YES afterDelay:1.5f];
     } else {
         
 //        _hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
@@ -70,7 +70,7 @@
         _hud.label.text = title;
         
         //延迟隐藏
-        [_hud hideAnimated:YES afterDelay:1.f];
+        [_hud hideAnimated:YES afterDelay:1.5f];
         [self performSelector:@selector(changgeModel)
                    withObject:nil
                    afterDelay:2.f];

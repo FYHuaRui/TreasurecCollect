@@ -14,9 +14,8 @@
 
 @implementation RegisterVC
 
+//第一次页面加载进行验证码请求的regID
 static int regID = 0;
-
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -53,7 +52,6 @@ static int regID = 0;
     self.navigationItem.leftBarButtonItem = leftItem;
 }
 
-
 //内容加载
 - (void)initSubViews
 {
@@ -64,10 +62,15 @@ static int regID = 0;
     [self.view addSubview:phoneImage];
     
     self.phoneField = [[UITextField alloc] initWithFrame:CGRectMake(45, 5, phoneImage.frame.size.width-50, 30)];
+    self.phoneField.delegate = self;
     self.phoneField.placeholder = @"请输入手机号";
+    self.phoneField.tag = 1001;
+    self.phoneField.clearButtonMode = UITextFieldViewModeAlways;
     self.phoneField.font = [UIFont systemFontOfSize:12];
     self.phoneField.textAlignment = NSTextAlignmentLeft;
     [phoneImage addSubview:self.phoneField];
+    
+    [self.phoneField addTarget:self action:@selector(textValueChanged) forControlEvents:UIControlEventEditingChanged];
     
     //图形验证码输入框
     UIImageView *pictureImage = [[UIImageView alloc] initWithFrame:CGRectMake(phoneImage.frame.origin.x, phoneImage.frame.origin.y+phoneImage.frame.size.height+20, self.view.frame.size.width/2+20, phoneImage.frame.size.height)];
@@ -83,7 +86,7 @@ static int regID = 0;
     //图形验证码图片
     UIButton *imageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     imageBtn.frame = CGRectMake(pictureImage.frame.origin.x+pictureImage.frame.size.width+15, pictureImage.frame.origin.y, phoneImage.frame.size.width-pictureImage.frame.size.width-15, pictureImage.frame.size.height);
-    imageBtn.backgroundColor = [UIColor redColor];
+    imageBtn.backgroundColor = [UIColor lightGrayColor];
     [imageBtn addTarget:self action:@selector(changePicture:) forControlEvents:UIControlEventTouchUpInside];
     imageBtn.layer.cornerRadius = 15;
     imageBtn.layer.masksToBounds = YES;
@@ -119,10 +122,10 @@ static int regID = 0;
     
     //获取验证码的按钮
     UIButton *yzmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    yzmBtn.tag = 1001;
+    yzmBtn.tag = 1101;
     yzmBtn.frame = CGRectMake(imageBtn.frame.origin.x, messageImage.frame.origin.y, imageBtn.width, imageBtn.height);
     [yzmBtn setTitle:@"获取短信验证" forState:UIControlStateNormal];
-    [yzmBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [yzmBtn setTitleColor:[UIColor colorFromHexRGB:@"008fd0"] forState:UIControlStateNormal];
     [yzmBtn setBackgroundColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [yzmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [yzmBtn.layer setBorderWidth:1.0];
@@ -141,8 +144,9 @@ static int regID = 0;
     [self.view addSubview:pwImage];
     
     self.password = [[UITextField alloc] initWithFrame:CGRectMake(45, 5, messageImage.frame.size.width-50, 30)];
-    self.password.placeholder = @"设置密码";
+    self.password.placeholder = @"设置密码(6~16位，字母、数字组合)";
     self.password.font = [UIFont systemFontOfSize:12];
+    self.password.secureTextEntry = YES;
     [pwImage addSubview:self.password];
     
     UIImageView *pw2Image = [[UIImageView alloc] initWithFrame:CGRectMake(pwImage.frame.origin.x, pwImage.frame.origin.y+pwImage.frame.size.height+20, pwImage.frame.size.width, pwImage.frame.size.height)];
@@ -150,22 +154,56 @@ static int regID = 0;
     pw2Image.image = [UIImage imageNamed:@"icon_lock"];
     [self.view addSubview:pw2Image];
     
-    self.password2 = [[UITextField alloc] initWithFrame:CGRectMake(45, 5, messageImage.frame.size.width-50, 30)];
-    self.password2.placeholder = @"请确认密码";
+    self.password2 = [[UITextField alloc] initWithFrame:CGRectMake(45, 5, messageImage.frame.size.width-80, 30)];
+    self.password2.placeholder = @"请确认密码(6~16位，字母、数字组合)";
     self.password2.font = [UIFont systemFontOfSize:12];
+    self.password2.secureTextEntry = YES;
     [pw2Image addSubview:self.password2];
+    
+    //查看密码按钮
+    UIButton *checkBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    checkBtn.frame = CGRectMake(self.password2.frame.origin.x+self.password2.width+2, self.password2.frame.origin.y+8, 22.5, 14);
+    [checkBtn setBackgroundImage:[UIImage imageNamed:@"icon_show"] forState:UIControlStateNormal];
+    [checkBtn addTarget:self action:@selector(checkBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [pw2Image addSubview:checkBtn];
     
     //注册按钮
     UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    nextBtn.tag = 1002;
+    nextBtn.tag = 1102;
     nextBtn.frame = CGRectMake(self.view.center.x-phoneImage.frame.size.width/2+25, pw2Image.frame.origin.y+pw2Image.frame.size.height+20, phoneImage.frame.size.width-50, phoneImage.frame.size.height);
     [nextBtn setTitle:@"注册" forState:UIControlStateNormal];
     [nextBtn addTarget:self action:@selector(nextBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     nextBtn.layer.cornerRadius = 20;
+    nextBtn.userInteractionEnabled = NO;
     nextBtn.backgroundColor = [UIColor colorFromHexRGB:@"b4b4b4"];
     [self.view addSubview:nextBtn];
     
 }
+
+//返回按钮
+- (void)returnClicked
+{
+    NSLogTC(@"返回按钮点击了");
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+//监听文本输入框内容的改变
+- (void)textValueChanged
+{
+    UIButton *button = [self.view viewWithTag:1102];
+    if ([self.phoneField.text length] == 11)
+    {
+        button.userInteractionEnabled = YES;
+        button.backgroundColor = [UIColor colorFromHexRGB:@"008fd0"];
+    }
+    else
+    {
+        button.userInteractionEnabled = NO;
+        button.backgroundColor = [UIColor colorFromHexRGB:@"b4b4b4"];
+    }
+}
+
 
 //更换验证码图片
 - (void)changePicture:(UIButton*)button
@@ -206,35 +244,60 @@ static int regID = 0;
         }
         else
         {
-            //网络请求验证码
-            NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL2];
-            NSMutableDictionary *params = [NSMutableDictionary dictionary];
-            [params setObject:[NSNumber numberWithInt:regID] forKey:@"regId"];
-            [params setObject:[NSString stringWithString:self.phoneField.text] forKey:@"telephone"];
-            [params setObject:[NSString stringWithString:self.pictureField.text] forKey:@"stringYzm"];
-             NSLog(@"%@",params);
-            [HttpTool post:url params:params success:^(id json) {
-                NSLog(@"%@",json);
-//                NSArray *dataArr = [json objectForKey:@"strImgYzm"];
-//                NSDictionary *imageDic = [dataArr firstObject];
-//                NSString *imageString = [imageDic objectForKey:@"ImageYzm"];
-//                NSData *imageData = [GTMBase64 decodeString:imageString];
-//                UIImage *image = [UIImage imageWithData:imageData];
-            } failure:^(NSError *error) {
-                NSLogTC(@"获取验证码失败：%@",error);
-                [self hideSuccessHUD:@"验证码获取失败"];
-            }];
-
+            if ([self.pictureField.text isEqualToString:@""])
+            {
+                [self hideSuccessHUD:@"请输入验证码"];
+            }
+            else
+            {
+                //网络请求验证码
+                NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL2];
+                NSMutableDictionary *params = [NSMutableDictionary dictionary];
+                [params setObject:[NSNumber numberWithInt:regID] forKey:@"regId"];
+                [params setObject:[NSString stringWithString:self.phoneField.text] forKey:@"telephone"];
+                [params setObject:[NSString stringWithString:self.pictureField.text] forKey:@"stringYzm"];
+                NSLog(@"%@",params);
+                [HttpTool post:url params:params success:^(id json) {
+                    NSLog(@"%@",json);
+                    NSArray *dataArr = [json objectForKey:@"RspMsg"];
+                    NSDictionary *imageDic = [dataArr firstObject];
+                    NSString *runMessage = [imageDic objectForKey:@"runMsg"];
+                    int a = [[imageDic objectForKey:@"runCode"] intValue];
+                    if (a == 110003)
+                    {
+                        [self hideSuccessHUD:runMessage];
+                    }
+                } failure:^(NSError *error) {
+                    NSLogTC(@"获取验证码失败：%@",error);
+                    [self hideSuccessHUD:@"验证码获取失败"];
+                }];
+            }
         }
     }
 }
 
-
-//返回按钮
-- (void)returnClicked
+/*
+ @功能：查看密码
+ @参数：按钮
+ @返回值：无
+ */
+- (void)checkBtnClicked:(UIButton*)button
 {
-    NSLogTC(@"返回按钮点击了");
-    [self.navigationController popViewControllerAnimated:YES];
+    static BOOL change = YES;
+    if (change)
+    {
+        [button setBackgroundImage:[UIImage imageNamed:@"icon_show1"] forState:UIControlStateNormal];
+        self.password.secureTextEntry = NO;
+        self.password2.secureTextEntry = NO;
+        change = NO;
+    }
+    else
+    {
+        [button setBackgroundImage:[UIImage imageNamed:@"icon_show"] forState:UIControlStateNormal];
+        self.password.secureTextEntry = YES;
+        self.password2.secureTextEntry = YES;
+        change = YES;
+    }
 }
 
 
@@ -257,33 +320,62 @@ static int regID = 0;
         }
         else
         {
-            
-            if ([self.password.text isEqualToString:self.password2.text])
+            if (![self.pictureField.text isEqualToString:@""])
             {
-                //网络请求验证码
-                NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL3];
-                NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                [params setObject:[NSNumber numberWithInt:regID] forKey:@"regId"];
-                [params setObject:[NSString stringWithString:self.phoneField.text] forKey:@"telephone"];
-                [params setObject:[NSString stringWithString:self.pictureField.text] forKey:@"stringYzm"];
-                [params setObject:[NSString stringWithString:self.messageField.text] forKey:@"shortMsgYzm"];
-                [params setObject:[NSString stringWithString:self.password.text] forKey:@"password"];
-                [params setObject:[NSString stringWithString:self.password2.text] forKey:@"pwdConfirm"];
-                [HttpTool post:url params:params success:^(id json) {
-                    [self hideSuccessHUD:@"注册成功"];
-                    NSLogTC(@"%@",json);
-                } failure:^(NSError *error) {
-                    NSLogTC(@"获取验证码失败：%@",error);
-                    [self hideSuccessHUD:@"注册失败"];
-                }];
-
+                if ([self.messageField.text isEqualToString:@""])
+                {
+                    [self hideSuccessHUD:@"请输入短信验证码"];
+                }
+                else
+                {
+                    if ([self.password.text isEqualToString:@""] && [self.password2.text isEqualToString:@""])
+                    {
+                        [self hideSuccessHUD:@"请输入密码"];
+                    }
+                    else
+                    {
+                        if ([self.password.text isEqualToString:self.password2.text])
+                        {
+                            //网络请求验证码
+                            NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL3];
+                            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+                            [params setObject:[NSNumber numberWithInt:regID] forKey:@"regId"];
+                            [params setObject:[NSString stringWithString:self.phoneField.text] forKey:@"telephone"];
+                            [params setObject:[NSString stringWithString:self.pictureField.text] forKey:@"stringYzm"];
+                            [params setObject:[NSString stringWithString:self.messageField.text] forKey:@"shortMsgYzm"];
+                            [params setObject:[NSString stringWithString:self.password.text] forKey:@"password"];
+                            [params setObject:[NSString stringWithString:self.password2.text] forKey:@"pwdConfirm"];
+                            [HttpTool post:url params:params success:^(id json) {
+                                [self hideSuccessHUD:@"注册成功"];
+                                NSLogTC(@"%@",json);
+                            } failure:^(NSError *error) {
+                                NSLogTC(@"获取验证码失败：%@",error);
+                                [self hideSuccessHUD:@"注册失败"];
+                            }];
+                            
+                        }
+                        else
+                        {
+                            [self hideSuccessHUD:@"密码不一致"];
+                        }
+                    }
+                }
             }
             else
             {
-                [self hideSuccessHUD:@"密码不一致"];
+                [self hideSuccessHUD:@"请输入验证码"];
             }
-            
         }
     }
+}
+
+#pragma mark - UITextFiledDelegate
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == self.phoneField)
+    {
+
+    }
+    return YES;
 }
 @end
