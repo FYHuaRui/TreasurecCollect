@@ -167,6 +167,14 @@
 		92DF838F1E03E71A00674364 /* AdviceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DF838E1E03E71A00674364 /* AdviceVC.m */; };
 		92DF83921E03E7F900674364 /* UnderStandVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DF83911E03E7F900674364 /* UnderStandVC.m */; };
 		9D7204B0697FFCC7D0153A8D /* libPods-TreasureCollect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */; };
+		F863AE371E14FCA60051EE32 /* icon_show.png in Resources */ = {isa = PBXBuildFile; fileRef = F863AE351E14FCA60051EE32 /* icon_show.png */; };
+		F863AE381E14FCA60051EE32 /* icon_show1.png in Resources */ = {isa = PBXBuildFile; fileRef = F863AE361E14FCA60051EE32 /* icon_show1.png */; };
+		F8765EAD1E13592C00060948 /* question@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8765EAA1E13592C00060948 /* question@2x.png */; };
+		F8765EAE1E13592C00060948 /* question@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8765EAB1E13592C00060948 /* question@3x.png */; };
+		F8765EAF1E13592C00060948 /* Simulator Screen Shot 2016年12月20日 下午6.10.46.png in Resources */ = {isa = PBXBuildFile; fileRef = F8765EAC1E13592C00060948 /* Simulator Screen Shot 2016年12月20日 下午6.10.46.png */; };
+		F8765EB21E13A11300060948 /* ForgetPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F8765EB11E13A11300060948 /* ForgetPasswordVC.m */; };
+		F8765EB51E13BBD900060948 /* messagebg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8765EB31E13BBD900060948 /* messagebg@2x.png */; };
+		F8765EB61E13BBD900060948 /* messagebg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8765EB41E13BBD900060948 /* messagebg@3x.png */; };
 		F8ABB99E1E092B1700B2DFBF /* 头像.png in Resources */ = {isa = PBXBuildFile; fileRef = F8ABB99D1E092B1700B2DFBF /* 头像.png */; };
 		F8ABB9A81E0935DD00B2DFBF /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ABB9A71E0935DD00B2DFBF /* RegisterVC.m */; };
 		F8ABB9AA1E09392D00B2DFBF /* 返回-灰.png in Resources */ = {isa = PBXBuildFile; fileRef = F8ABB9A91E09392D00B2DFBF /* 返回-灰.png */; };
@@ -436,6 +444,15 @@
 		92DF83911E03E7F900674364 /* UnderStandVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnderStandVC.m; path = TreasureCollect/MainCode/HomePage/Home/Controller/UnderStandVC.m; sourceTree = SOURCE_ROOT; };
 		973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.debug.xcconfig"; sourceTree = "<group>"; };
 		EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreasureCollect.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F863AE351E14FCA60051EE32 /* icon_show.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_show.png; sourceTree = "<group>"; };
+		F863AE361E14FCA60051EE32 /* icon_show1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_show1.png; sourceTree = "<group>"; };
+		F8765EAA1E13592C00060948 /* question@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "question@2x.png"; sourceTree = "<group>"; };
+		F8765EAB1E13592C00060948 /* question@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "question@3x.png"; sourceTree = "<group>"; };
+		F8765EAC1E13592C00060948 /* Simulator Screen Shot 2016年12月20日 下午6.10.46.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot 2016年12月20日 下午6.10.46.png"; sourceTree = "<group>"; };
+		F8765EB01E13A11300060948 /* ForgetPasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordVC.h; sourceTree = "<group>"; };
+		F8765EB11E13A11300060948 /* ForgetPasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordVC.m; sourceTree = "<group>"; };
+		F8765EB31E13BBD900060948 /* messagebg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messagebg@2x.png"; sourceTree = "<group>"; };
+		F8765EB41E13BBD900060948 /* messagebg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messagebg@3x.png"; sourceTree = "<group>"; };
 		F8ABB99D1E092B1700B2DFBF /* 头像.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "头像.png"; sourceTree = "<group>"; };
 		F8ABB9A61E0935DD00B2DFBF /* RegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterVC.h; sourceTree = "<group>"; };
 		F8ABB9A71E0935DD00B2DFBF /* RegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
@@ -1001,6 +1018,13 @@
 		187C5BA81E1205DA0043A1A1 /* 注册／登录 */ = {
 			isa = PBXGroup;
 			children = (
+				F863AE351E14FCA60051EE32 /* icon_show.png */,
+				F863AE361E14FCA60051EE32 /* icon_show1.png */,
+				F8765EB31E13BBD900060948 /* messagebg@2x.png */,
+				F8765EB41E13BBD900060948 /* messagebg@3x.png */,
+				F8765EAA1E13592C00060948 /* question@2x.png */,
+				F8765EAB1E13592C00060948 /* question@3x.png */,
+				F8765EAC1E13592C00060948 /* Simulator Screen Shot 2016年12月20日 下午6.10.46.png */,
 				187C5BA91E1205DA0043A1A1 /* duanxin@2x.png */,
 				187C5BAA1E1205DA0043A1A1 /* duanxin@3x.png */,
 				187C5BAB1E1205DA0043A1A1 /* icon_iphon@2x.png */,
@@ -1422,10 +1446,12 @@
 		F8ABB99F1E09351000B2DFBF /* 注册／登录 */ = {
 			isa = PBXGroup;
 			children = (
-				187C5B9C1E1205B00043A1A1 /* LoginVC.h */,
-				187C5B9D1E1205B00043A1A1 /* LoginVC.m */,
 				F8ABB9A61E0935DD00B2DFBF /* RegisterVC.h */,
 				F8ABB9A71E0935DD00B2DFBF /* RegisterVC.m */,
+				187C5B9C1E1205B00043A1A1 /* LoginVC.h */,
+				187C5B9D1E1205B00043A1A1 /* LoginVC.m */,
+				F8765EB01E13A11300060948 /* ForgetPasswordVC.h */,
+				F8765EB11E13A11300060948 /* ForgetPasswordVC.m */,
 			);
 			path = "注册／登录";
 			sourceTree = "<group>";
@@ -1500,7 +1526,7 @@
 				TargetAttributes = {
 					18273CA11DFA574F00855FCB = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 84W6EV66WN;
+						DevelopmentTeam = 8H2B3Y5JNC;
 						ProvisioningStyle = Automatic;
 					};
 					18273CBA1DFA574F00855FCB = {
@@ -1557,6 +1583,7 @@
 				1886D6D91DFFFBF000F4A067 /* toptrangle.png in Resources */,
 				1829D9DC1DFAAA4600405DF2 /* LeftMainController.xib in Resources */,
 				922CEF981E01504100C67B1F /* 未登录状态.png in Resources */,
+				F863AE381E14FCA60051EE32 /* icon_show1.png in Resources */,
 				187C5BD51E1222200043A1A1 /* green03.png in Resources */,
 				1848B66C1E0A6D2600C806D8 /* kline.html in Resources */,
 				9293DEDC1DFE98C10032EFA1 /* icon-logo.png in Resources */,
@@ -1582,6 +1609,7 @@
 				18511D7E1E0BBE7700E30772 /* AD2.png in Resources */,
 				187C5BDB1E1222200043A1A1 /* red01.png in Resources */,
 				92442FE51DFE84F1008BF127 /* 反馈.png in Resources */,
+				F8765EB51E13BBD900060948 /* messagebg@2x.png in Resources */,
 				18511D7C1E0BBE7700E30772 /* AD0.png in Resources */,
 				187C5BD91E1222200043A1A1 /* green07.png in Resources */,
 				927C71741E08CE7C001925E4 /* 活动.png in Resources */,
@@ -1590,6 +1618,8 @@
 				922CEF911E01504100C67B1F /* 个人资产01.png in Resources */,
 				1896E5FD1E011DE80072DC50 /* leftTrangle.png in Resources */,
 				187C5BDD1E1222200043A1A1 /* red03.png in Resources */,
+				F8765EAE1E13592C00060948 /* question@3x.png in Resources */,
+				F863AE371E14FCA60051EE32 /* icon_show.png in Resources */,
 				92442FDC1DFE78A0008BF127 /* 银联支付.png in Resources */,
 				92442FE81DFE84F1008BF127 /* 了解微胜宝.png in Resources */,
 				92442FE71DFE84F1008BF127 /* 合买.png in Resources */,
@@ -1597,6 +1627,7 @@
 				922CEF9A1E01504100C67B1F /* 重要提醒.png in Resources */,
 				187C5BE21E1222200043A1A1 /* red08.png in Resources */,
 				18511D801E0BBE7700E30772 /* AD4.png in Resources */,
+				F8765EB61E13BBD900060948 /* messagebg@3x.png in Resources */,
 				18511D7D1E0BBE7700E30772 /* AD1.png in Resources */,
 				92442FE91DFE84F1008BF127 /* 券.png in Resources */,
 				922CEF961E01504100C67B1F /* 建议反馈.png in Resources */,
@@ -1612,6 +1643,7 @@
 				92B00F291E022BB00019D040 /* 返回3.png in Resources */,
 				92442FD91DFE78A0008BF127 /* hot.png in Resources */,
 				921BDE5D1DFFDE5D00C031C5 /* 返回2.png in Resources */,
+				F8765EAD1E13592C00060948 /* question@2x.png in Resources */,
 				187C5BDC1E1222200043A1A1 /* red02.png in Resources */,
 				1829DA4C1DFAB28E00405DF2 /* YYStockFullScreenView.xib in Resources */,
 				187C5BC11E1205DA0043A1A1 /* icon_tuxing@3x.png in Resources */,
@@ -1619,6 +1651,7 @@
 				187C5BDF1E1222200043A1A1 /* red05.png in Resources */,
 				187C5BBE1E1205DA0043A1A1 /* icon_lock@2x.png in Resources */,
 				18511D7F1E0BBE7700E30772 /* AD3.png in Resources */,
+				F8765EAF1E13592C00060948 /* Simulator Screen Shot 2016年12月20日 下午6.10.46.png in Resources */,
 				92442FEA1DFE84F1008BF127 /* bg.png in Resources */,
 				922CEF991E01504100C67B1F /* 资金流水.png in Resources */,
 				922CEF931E01504100C67B1F /* 交易明细.png in Resources */,
@@ -1697,6 +1730,7 @@
 			files = (
 				92DF83921E03E7F900674364 /* UnderStandVC.m in Sources */,
 				1829DA301DFAAFE000405DF2 /* YYFiveRecordTableViewCell.m in Sources */,
+				F8765EB21E13A11300060948 /* ForgetPasswordVC.m in Sources */,
 				187EDC6F1E0B78CA00941A57 /* GTMBase64.m in Sources */,
 				1829DA341DFAAFE000405DF2 /* YYTimeLineView.m in Sources */,
 				92DF838F1E03E71A00674364 /* AdviceVC.m in Sources */,
@@ -1897,7 +1931,7 @@
 			baseConfigurationReference = 973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 84W6EV66WN;
+				DEVELOPMENT_TEAM = 8H2B3Y5JNC;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1938,7 +1972,7 @@
 			baseConfigurationReference = 5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 84W6EV66WN;
+				DEVELOPMENT_TEAM = 8H2B3Y5JNC;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

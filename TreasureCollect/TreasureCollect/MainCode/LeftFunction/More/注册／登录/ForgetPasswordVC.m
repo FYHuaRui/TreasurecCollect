@@ -1,18 +1,18 @@
 //
-//  RegisterVC.m
+//  ForgetPasswordVC.m
 //  TreasureCollect
 //
-//  Created by 杨鹏 on 2016/12/20.
+//  Created by 杨鹏 on 2016/12/28.
 //  Copyright © 2016年 Apple. All rights reserved.
 //
 
-#import "RegisterVC.h"
+#import "ForgetPasswordVC.h"
 
-@interface RegisterVC ()
+@interface ForgetPasswordVC ()
 
 @end
 
-@implementation RegisterVC
+@implementation ForgetPasswordVC
 
 //第一次页面加载进行验证码请求的regID
 static int regID = 0;
@@ -109,7 +109,8 @@ static int regID = 0;
     } failure:^(NSError *error) {
         NSLogTC(@"获取验证码失败：%@",error);
     }];
-
+    
+    
     //短信验证码输入框
     UIImageView *messageImage = [[UIImageView alloc] initWithFrame:CGRectMake(pictureImage.frame.origin.x, pictureImage.frame.origin.y+pictureImage.frame.size.height+20, phoneImage.frame.size.width, phoneImage.frame.size.height)];
     messageImage.image = [UIImage imageNamed:@"duanxin"];
@@ -181,6 +182,7 @@ static int regID = 0;
     
 }
 
+
 //返回按钮
 - (void)returnClicked
 {
@@ -206,204 +208,5 @@ static int regID = 0;
 }
 
 
-//更换验证码图片
-- (void)changePicture:(UIButton*)button
-{
-    //网络请求验证码
-    NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:[NSNumber numberWithInt:regID] forKey:@"regId"];
-    [HttpTool post:url params:params success:^(id json) {
-        NSArray *dataArr = [json objectForKey:@"strImgYzm"];
-        NSDictionary *imageDic = [dataArr firstObject];
-        NSString *imageString = [imageDic objectForKey:@"ImageYzm"];
-        NSData *imageData = [GTMBase64 decodeString:imageString];
-        UIImage *image = [UIImage imageWithData:imageData];
-        [button setBackgroundImage:image forState:UIControlStateNormal];
-        regID = [[imageDic objectForKey:@"regId"] intValue];
-    } failure:^(NSError *error) {
-        NSLogTC(@"获取验证码失败：%@",error);
-    }];
-}
 
-
-//获取短信验证码
-- (void)messageCheck
-{
-    if ([self.phoneField.text isEqualToString:@""])
-    {
-        [self hideSuccessHUD:@"手机号不能为空"];
-    }
-    else
-    {
-        //正规表达式 验证手机号合法性
-        NSString *secretRegex = @"^((13[0-9])|(14[5,7])|(15[^4,\\D])|(18[0-9]))\\d{8}$";
-        NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",secretRegex];
-        if (![test evaluateWithObject:self.phoneField.text])
-        {
-            [self hideSuccessHUD:@"手机号不合法"];
-        }
-        else
-        {
-            if ([self.pictureField.text isEqualToString:@""])
-            {
-                [self hideSuccessHUD:@"请输入验证码"];
-            }
-            else
-            {
-                //网络请求验证码
-                NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL2];
-                NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                [params setObject:[NSNumber numberWithInt:regID] forKey:@"regId"];
-                [params setObject:[NSString stringWithString:self.phoneField.text] forKey:@"telephone"];
-                [params setObject:[NSString stringWithString:self.pictureField.text] forKey:@"stringYzm"];
-                NSLog(@"%@",params);
-                [HttpTool post:url params:params success:^(id json) {
-                    NSLog(@"%@",json);
-                    NSArray *dataArr = [json objectForKey:@"RspMsg"];
-                    NSDictionary *imageDic = [dataArr firstObject];
-                    NSString *runMessage = [imageDic objectForKey:@"runMsg"];
-                    int a = [[imageDic objectForKey:@"runCode"] intValue];
-                    if (a == 110003)
-                    {
-                        [self hideSuccessHUD:runMessage];
-                        [self changeYzm];
-                    }
-                    if (a == 110002)
-                    {
-                        [self hideSuccessHUD:runMessage];
-                    }
-                } failure:^(NSError *error) {
-                    NSLogTC(@"获取验证码失败：%@",error);
-                    [self hideSuccessHUD:@"验证码获取失败"];
-                }];
-            }
-        }
-    }
-}
-
-//验证码输入不争取，重新获取验证码
-- (void)changeYzm
-{
-    //网络请求验证码
-    NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:[NSNumber numberWithInt:regID] forKey:@"regId"];
-    [HttpTool post:url params:params success:^(id json) {
-        NSArray *dataArr = [json objectForKey:@"strImgYzm"];
-        NSDictionary *imageDic = [dataArr firstObject];
-        NSString *imageString = [imageDic objectForKey:@"ImageYzm"];
-        NSData *imageData = [GTMBase64 decodeString:imageString];
-        UIImage *image = [UIImage imageWithData:imageData];
-        UIButton *button = [self.view viewWithTag:9999];
-        [button setBackgroundImage:image forState:UIControlStateNormal];
-        regID = [[imageDic objectForKey:@"regId"] intValue];
-    } failure:^(NSError *error) {
-        NSLogTC(@"获取验证码失败：%@",error);
-    }];
-
-}
-
-/*
- @功能：查看密码
- @参数：按钮
- @返回值：无
- */
-- (void)checkBtnClicked:(UIButton*)button
-{
-    static BOOL change = YES;
-    if (change)
-    {
-        [button setBackgroundImage:[UIImage imageNamed:@"icon_show1"] forState:UIControlStateNormal];
-        self.password.secureTextEntry = NO;
-        self.password2.secureTextEntry = NO;
-        change = NO;
-    }
-    else
-    {
-        [button setBackgroundImage:[UIImage imageNamed:@"icon_show"] forState:UIControlStateNormal];
-        self.password.secureTextEntry = YES;
-        self.password2.secureTextEntry = YES;
-        change = YES;
-    }
-}
-
-
-//注册按钮
-- (void)nextBtnClicked
-{
-    NSLogTC(@"注册");
-    if ([self.phoneField.text isEqualToString:@""])
-    {
-        [self hideSuccessHUD:@"手机号不能为空"];
-    }
-    else
-    {
-        //正规表达式 验证手机号合法性
-        NSString *secretRegex = @"^((13[0-9])|(14[5,7])|(15[^4,\\D])|(18[0-9]))\\d{8}$";
-        NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",secretRegex];
-        if (![test evaluateWithObject:self.phoneField.text])
-        {
-            [self hideSuccessHUD:@"手机号不合法"];
-        }
-        else
-        {
-            if (![self.pictureField.text isEqualToString:@""])
-            {
-                if ([self.messageField.text isEqualToString:@""])
-                {
-                    [self hideSuccessHUD:@"请输入短信验证码"];
-                }
-                else
-                {
-                    if ([self.password.text isEqualToString:@""] && [self.password2.text isEqualToString:@""])
-                    {
-                        [self hideSuccessHUD:@"请输入密码"];
-                    }
-                    else
-                    {
-                        if ([self.password.text isEqualToString:self.password2.text])
-                        {
-                            //网络请求验证码
-                            NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL3];
-                            NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                            [params setObject:[NSNumber numberWithInt:regID] forKey:@"regId"];
-                            [params setObject:[NSString stringWithString:self.phoneField.text] forKey:@"telephone"];
-                            [params setObject:[NSString stringWithString:self.pictureField.text] forKey:@"stringYzm"];
-                            [params setObject:[NSString stringWithString:self.messageField.text] forKey:@"shortMsgYzm"];
-                            [params setObject:[NSString stringWithString:self.password.text] forKey:@"password"];
-                            [params setObject:[NSString stringWithString:self.password2.text] forKey:@"pwdConfirm"];
-                            [HttpTool post:url params:params success:^(id json) {
-                                [self hideSuccessHUD:@"注册成功"];
-                                NSLogTC(@"%@",json);
-                            } failure:^(NSError *error) {
-                                NSLogTC(@"获取验证码失败：%@",error);
-                                [self hideSuccessHUD:@"注册失败"];
-                            }];
-                            
-                        }
-                        else
-                        {
-                            [self hideSuccessHUD:@"密码不一致"];
-                        }
-                    }
-                }
-            }
-            else
-            {
-                [self hideSuccessHUD:@"请输入验证码"];
-            }
-        }
-    }
-}
-
-#pragma mark - UITextFiledDelegate
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    if (textField == self.phoneField)
-    {
-
-    }
-    return YES;
-}
 @end
