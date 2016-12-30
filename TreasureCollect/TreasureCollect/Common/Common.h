@@ -19,12 +19,16 @@
 
 //登陆模块
 #define LOGIN_URL @"/wsb/java/servlet/LoginSeleUser"
+#define LOGIN_Password @"/wsb/java/servlet/LoginByPassword"
+#define LOGIN_MSG @"/wsb/java/servlet/LoginGetShortMsgYzm"
+#define LOGIN @"/wsb/java/servlet/LoginByShortMsg"
 
 //图形验证码
-#define GETREGISTIMAGE_URL @"/wsb/java/servlet/RegisterGetImageYzm"
+#define GETREGISTIMAGE_URL @"/wsb/java/servlet/RegisterGetImageYzm"//图片验证码
 #define GETREGISTIMAGE_URL2 @"/wsb/java/servlet/RegisterGetShortMsgYzm"//短信验证码
-#define GETREGISTIMAGE_URL3 @"/wsb/java/servlet/RegisterLastStep"//账号密码注册
 
+#define GETREGISTIMAGE_URL3 @"/wsb/java/servlet/RegisterLastStep"//账号密码注册
+#define GETREGISTIMAGE_URL4 @"/wsb/java/servlet/LoginGetImageYzm"//密码登录获取验证码
 
 //充值模块
 #define RECHARTE_URL @"/Pingplusplus/ReceiptServlet"

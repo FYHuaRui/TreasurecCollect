@@ -189,6 +189,8 @@
     NSLogTC(@"注册按钮点击了");
     RegisterVC *registerVC = [[RegisterVC alloc] init];
     [[self viewController].navigationController pushViewController:registerVC animated:YES];
+    //右侧View收回
+    [self moreTapClicked];
 }
 
 /*
@@ -201,6 +203,8 @@
     NSLogTC(@"登录按钮点击了");
     LoginVC *loginVC = [[LoginVC alloc] init];
     [[self viewController].navigationController pushViewController:loginVC animated:YES];
+    //右侧View收回
+    [self moreTapClicked];
 }
 
 #pragma mark - UITableViewDataSource
