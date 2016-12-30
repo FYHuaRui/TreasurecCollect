@@ -51,20 +51,37 @@
 + (void)post:(NSString *)url params:(NSDictionary *)params success:(void (^)(id json))success failure:(void (^)(NSError *error))failure{
     
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    for (NSString *keyValue in mgr.requestSerializer.HTTPRequestHeaders.allKeys) {
+        NSLog(@"%@",mgr.requestSerializer.HTTPRequestHeaders);
+        NSLog(@"%@",keyValue);
+    }
+
+    [mgr.requestSerializer setValue:@"testValue" forHTTPHeaderField:@"testABC"];
     NSMutableDictionary *paramsObj = [NSMutableDictionary dictionary];
     if (params) {
         NSString *obj = [params JSONString];
         
         paramsObj[@"param"] = obj;
+        
     } else {
         paramsObj = nil;
     }
-    
+
     [mgr POST:url
    parameters:paramsObj
      progress:^(NSProgress * _Nonnull uploadProgress) {
          
      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         
+//         NSMutableDictionary *file = [NSMutableDictionary dictionary];
+//         NSURL *url = task.currentRequest.URL;
+//         NSArray *cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:file forURL:url];
+//         
+//         for (NSHTTPCookie *cookie in cookies) {
+//             
+//             NSLog(@"cookie：%@",cookie.value);
+//             
+//         }
          
          if (success) {
              success(responseObject);
