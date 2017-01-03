@@ -86,16 +86,6 @@
     
     [self.stock.containerView.subviews setValue:@0 forKey:@"userInteractionEnabled"];
     
-    UIWebView *testWebView = [[UIWebView alloc] initWithFrame:self.stockContainerView.frame];
-    testWebView.backgroundColor = [UIColor whiteColor];
-    testWebView.scrollView.scrollEnabled = NO;
-       testWebView.delegate=self;
-       [self.view addSubview:testWebView];
-       
-       NSString *filePath = [[NSBundle mainBundle]pathForResource:@"kline" ofType:@"html"];
-       NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-       [testWebView loadHTMLString:htmlString baseURL:[NSURL URLWithString:filePath]];
-    
 }
 
 /*******************************************股票数据源获取更新*********************************************/
@@ -420,7 +410,9 @@
     
     //点击收回更多界面
     UITapGestureRecognizer  *moreTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(moreTapClicked:)];
+    self.stock.mainView.hidden = YES;
     [self.stock.containerView addGestureRecognizer:moreTap];
+    self.stock.containerView.hidden = YES;
     
     //更多功能按钮
     _leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -507,7 +499,8 @@
     [self.view addSubview:self.leftMore];
     
     //选择器
-    _countPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(KScreenWidth / 2 - 40, KScreenHeight - kNavigationBarHeight - 120.f, 80.f, 90.f)];
+    _titleArr = @[@"8",@"80",@"200",@"2000",@"银元券"];
+    _countPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(KScreenWidth / 2 - 40, KScreenHeight - 124.f, 80.f, 90.f)];
     _countPicker.backgroundColor = [UIColor colorFromHexRGB:@"E9E9E9"];
     _countPicker.dataSource = self;
     _countPicker.delegate = self;
@@ -525,13 +518,7 @@
     [self.view addSubview:_countPicker];
     
     [_countPicker reloadAllComponents];
-    _titleArr = @[@"8",@"80",@"200",@"2000",@"银元券"];
-    
-    _proportionView = [[ProportionView alloc] initWithFrame:CGRectMake(0, _stockContainerView.bottom , KScreenWidth, 26.f)];
-    _proportionView.backgroundColor = [UIColor yellowColor];
-    _proportionView.userInteractionEnabled = NO;
-    [self.view addSubview:_proportionView];
-    
+
     //买入卖出按钮
     _buyButton = [[UIButton alloc] initWithFrame:CGRectMake(12.f, _countPicker.top, _countPicker.left - 24.f, _countPicker.height)];
     _buyButton.tag = 300;
@@ -562,6 +549,22 @@
     UIImageView *greenImage = [[UIImageView alloc] initWithFrame:CGRectMake(_buyButton.width / 2 - 8, 16.f, 16.f, 16.f)];
     [greenImage setImage:[UIImage imageNamed:@"downtrangle"]];
     [_saleButton addSubview:greenImage];
+    
+    UIWebView *testWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, _leftButton.bottom + 12.f, KScreenWidth, _buyButton.top - 40.f - _leftButton.bottom - 12.f)];
+    testWebView.backgroundColor = [UIColor whiteColor];
+    testWebView.scrollView.scrollEnabled = NO;
+    [testWebView sizeToFit];
+    [self.view addSubview:testWebView];
+    
+    NSString *filePath = [[NSBundle mainBundle]pathForResource:@"kline" ofType:@"html"];
+    NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    [testWebView loadHTMLString:htmlString baseURL:[NSURL URLWithString:filePath]];
+    
+    //进度条
+    _proportionView = [[ProportionView alloc] initWithFrame:CGRectMake(0, testWebView.bottom , KScreenWidth, 26.f)];
+    _proportionView.backgroundColor = [UIColor yellowColor];
+    _proportionView.userInteractionEnabled = NO;
+    [self.view addSubview:_proportionView];
     
 }
 
@@ -626,23 +629,6 @@
     if (button.tag == 300) {
     
         NSLogTC(@"买涨啦");
-        
-        NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL];
-        NSMutableDictionary *params = [NSMutableDictionary dictionary];
-        [params setObject:[NSNumber numberWithInt:0] forKey:@"regId"];
-        [HttpTool post:url
-                params:params
-               success:^(id json) {
-                   
-                   NSArray *dataArr = [json objectForKey:@"strImgYzm"];
-                   NSDictionary *imageDic = [dataArr firstObject];
-                   NSString *imageString = [imageDic objectForKey:@"ImageYzm"];
-                   NSData *imageData = [GTMBase64 decodeString:imageString];
-                   UIImage *image = [UIImage imageWithData:imageData];
-                   
-               } failure:^(NSError *error) {
-                   
-               }];
         
     }else{
     
