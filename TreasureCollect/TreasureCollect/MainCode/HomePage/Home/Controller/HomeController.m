@@ -129,22 +129,22 @@
     } fail:^(NSDictionary *info) {
     }];
 
-    //socket
-    _asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self
-                                              delegateQueue:dispatch_get_main_queue()];
-    
-    NSError *err;
-    
-    //socket连接
-    [_asyncSocket connectToHost:@"43.254.148.72" onPort:9103 error:&err];
-    
-    if (err != nil)
-        
-    {
-        
-        NSLog(@"%@",err);
-        
-    }
+//    //socket
+//    _asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self
+//                                              delegateQueue:dispatch_get_main_queue()];
+//    
+//    NSError *err;
+//    
+//    //socket连接
+//    [_asyncSocket connectToHost:@"43.254.148.72" onPort:9103 error:&err];
+//    
+//    if (err != nil)
+//        
+//    {
+//        
+//        NSLog(@"%@",err);
+//        
+//    }
     
 }
 
