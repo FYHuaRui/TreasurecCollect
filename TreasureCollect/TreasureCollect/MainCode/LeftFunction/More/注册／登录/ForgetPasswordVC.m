@@ -37,7 +37,7 @@ static int regID = 0;
 
 - (void)Daohang
 {
-    self.title = @"注册";
+    self.title = @"忘记密码";
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;

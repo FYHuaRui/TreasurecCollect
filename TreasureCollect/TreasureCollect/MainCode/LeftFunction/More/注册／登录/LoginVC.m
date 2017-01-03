@@ -121,6 +121,9 @@ static int logID2 = 0;
     
     //手机号满足11位，登录变颜色
     [self.phoneField addTarget:self action:@selector(textValueChanged) forControlEvents:UIControlEventEditingChanged];
+    [self.phoneField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+
+    
     
     //图形验证码输入框
     UIImageView *pictureImage = [[UIImageView alloc] initWithFrame:CGRectMake(phoneImage.frame.origin.x, phoneImage.frame.origin.y+phoneImage.frame.size.height+20, self.view.frame.size.width/2+20, phoneImage.frame.size.height)];
@@ -242,6 +245,7 @@ static int logID2 = 0;
     
     //手机号满足11位，登录变颜色
     [self.phoneField2 addTarget:self action:@selector(textValueChanged) forControlEvents:UIControlEventEditingChanged];
+    [self.phoneField2 addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     //短信验证码输入框
     UIImageView *messageImage = [[UIImageView alloc] initWithFrame:CGRectMake(phoneImage2.frame.origin.x, phoneImage2.frame.origin.y+phoneImage2.frame.size.height+20, self.view.frame.size.width/2+20, phoneImage2.frame.size.height)];
@@ -637,6 +641,15 @@ static int logID2 = 0;
         
     }
     return YES;
+}
+
+- (void)textFieldDidChange:(UITextField *)textField
+{
+    if (textField == self.phoneField) {
+        if (textField.text.length > 20) {
+            textField.text = [textField.text substringToIndex:20];
+        }
+    }
 }
 
 @end
