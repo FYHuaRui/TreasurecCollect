@@ -156,7 +156,7 @@
     [pView addSubview:CzBtn];
     
     
-    BOOL login = NO;
+    BOOL login = YES;
     if (login)
     {
         UIView *personView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, KScreenWidth, 70)];

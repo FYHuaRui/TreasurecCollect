@@ -30,6 +30,10 @@
 #define GETREGISTIMAGE_URL3 @"/wsb/java/servlet/RegisterLastStep"//账号密码注册
 #define GETREGISTIMAGE_URL4 @"/wsb/java/servlet/LoginGetImageYzm"//密码登录获取验证码
 
+//忘记密码
+#define GETYZM @"/wsb/java/servlet/ChangePwdGetShortYzm"
+#define CHANGEPW @"/wsb/java/servlet/ChangePwd"
+
 //充值模块
 #define RECHARTE_URL @"/Pingplusplus/ReceiptServlet"
 

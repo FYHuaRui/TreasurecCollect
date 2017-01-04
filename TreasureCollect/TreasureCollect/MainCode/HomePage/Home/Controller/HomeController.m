@@ -493,11 +493,6 @@
     _assetsLabel.textAlignment = NSTextAlignmentLeft;
     [self.view addSubview:_assetsLabel];
     
-    //更多按钮展示界面
-    self.leftMore = [[LeftMore alloc] initWithFrame:CGRectMake(-150, 20, 150, 300)];
-    self.leftMore.hidden = YES;//先设置隐藏
-    [self.view addSubview:self.leftMore];
-    
     //选择器
     _titleArr = @[@"8",@"80",@"200",@"2000",@"银元券"];
     _countPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(KScreenWidth / 2 - 40, KScreenHeight - 124.f, 80.f, 90.f)];
@@ -565,6 +560,11 @@
     _proportionView.backgroundColor = [UIColor yellowColor];
     _proportionView.userInteractionEnabled = NO;
     [self.view addSubview:_proportionView];
+    
+    //更多按钮展示界面
+    self.leftMore = [[LeftMore alloc] initWithFrame:CGRectMake(-150, 20, 150, 300)];
+    self.leftMore.hidden = YES;//先设置隐藏
+    [self.view addSubview:self.leftMore];
     
 }
 
