@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ForgetPasswordVC : UIViewController<UITextFieldDelegate>
+@interface ForgetPasswordVC : BaseViewController<UITextFieldDelegate>
 
 @property (nonatomic, retain) UITextField       *phoneField;//手机号
-
-@property (nonatomic, retain) UITextField       *pictureField;//图形验证
 
 @property (nonatomic, retain) UITextField       *password;//密码
 

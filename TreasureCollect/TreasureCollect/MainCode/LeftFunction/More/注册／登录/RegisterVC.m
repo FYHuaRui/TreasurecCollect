@@ -69,6 +69,7 @@ static int regID = 0;
     self.phoneField.clearButtonMode = UITextFieldViewModeAlways;
     self.phoneField.font = [UIFont systemFontOfSize:12];
     self.phoneField.textAlignment = NSTextAlignmentLeft;
+    self.phoneField.keyboardType = UIKeyboardTypeDecimalPad;//强制输入数字
     [phoneImage addSubview:self.phoneField];
     
     [self.phoneField addTarget:self action:@selector(textValueChanged) forControlEvents:UIControlEventEditingChanged];
@@ -282,7 +283,7 @@ static int regID = 0;
     }
 }
 
-//验证码输入不争取，重新获取验证码
+//验证码输入不正确取，重新获取验证码
 - (void)changeYzm
 {
     //网络请求验证码
@@ -400,9 +401,15 @@ static int regID = 0;
 #pragma mark - UITextFiledDelegate
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (textField == self.phoneField)
-    {
-
+    if (textField == self.phoneField) {
+        if (string.length == 0) return YES;
+        
+        NSInteger existedLength = textField.text.length;
+        NSInteger selectedLength = range.length;
+        NSInteger replaceLength = string.length;
+        if (existedLength - selectedLength + replaceLength > 11) {
+            return NO;
+        }
     }
     return YES;
 }

@@ -117,13 +117,11 @@ static int logID2 = 0;
     self.phoneField.placeholder = @"请输入手机号";
     self.phoneField.font = [UIFont systemFontOfSize:12];
     self.phoneField.textAlignment = NSTextAlignmentLeft;
+    self.phoneField.keyboardType = UIKeyboardTypeDecimalPad;
     [phoneImage addSubview:self.phoneField];
     
     //手机号满足11位，登录变颜色
     [self.phoneField addTarget:self action:@selector(textValueChanged) forControlEvents:UIControlEventEditingChanged];
-    [self.phoneField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-
-    
     
     //图形验证码输入框
     UIImageView *pictureImage = [[UIImageView alloc] initWithFrame:CGRectMake(phoneImage.frame.origin.x, phoneImage.frame.origin.y+phoneImage.frame.size.height+20, self.view.frame.size.width/2+20, phoneImage.frame.size.height)];
@@ -169,7 +167,7 @@ static int logID2 = 0;
     [phoneView addSubview:passwordImage];
     
     self.password = [[UITextField alloc] initWithFrame:CGRectMake(45, 5, passwordImage.frame.size.width-80, 30)];
-    self.password.placeholder = @"请输入短信验证码";
+    self.password.placeholder = @"请输入密码";
     self.password.font = [UIFont systemFontOfSize:12];
     self.password.secureTextEntry = YES;
     [passwordImage addSubview:self.password];
@@ -182,12 +180,13 @@ static int logID2 = 0;
     [passwordImage addSubview:checkBtn];
     
     
-    //注册按钮
+    //登录按钮
     UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     loginBtn.tag = 1102;
     loginBtn.frame = CGRectMake(self.view.center.x-phoneImage.frame.size.width/2+25, passwordImage.frame.origin.y+passwordImage.frame.size.height+20, phoneImage.frame.size.width-50, phoneImage.frame.size.height);
     [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     [loginBtn addTarget:self action:@selector(loginBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [loginBtn setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     loginBtn.layer.cornerRadius = 20;
     loginBtn.backgroundColor = [UIColor colorFromHexRGB:@"b4b4b4"];
     [phoneView addSubview:loginBtn];
@@ -241,11 +240,11 @@ static int logID2 = 0;
     self.phoneField2.placeholder = @"请输入手机号";
     self.phoneField2.font = [UIFont systemFontOfSize:12];
     self.phoneField2.textAlignment = NSTextAlignmentLeft;
+    self.phoneField2.keyboardType = UIKeyboardTypeDecimalPad;
     [phoneImage2 addSubview:self.phoneField2];
     
     //手机号满足11位，登录变颜色
     [self.phoneField2 addTarget:self action:@selector(textValueChanged) forControlEvents:UIControlEventEditingChanged];
-    [self.phoneField2 addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     //短信验证码输入框
     UIImageView *messageImage = [[UIImageView alloc] initWithFrame:CGRectMake(phoneImage2.frame.origin.x, phoneImage2.frame.origin.y+phoneImage2.frame.size.height+20, self.view.frame.size.width/2+20, phoneImage2.frame.size.height)];
@@ -274,6 +273,7 @@ static int logID2 = 0;
     loginBtn2.frame = CGRectMake(messageView.center.x-phoneImage2.frame.size.width/2+25, messageImage.frame.origin.y+messageImage.frame.size.height+20, phoneImage2.frame.size.width-50, phoneImage2.frame.size.height);
     [loginBtn2 setTitle:@"登录" forState:UIControlStateNormal];
     [loginBtn2 addTarget:self action:@selector(messageLogin) forControlEvents:UIControlEventTouchUpInside];
+    [loginBtn2 setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     loginBtn2.layer.cornerRadius = 20;
     loginBtn2.backgroundColor = [UIColor colorFromHexRGB:@"b4b4b4"];
     [messageView addSubview:loginBtn2];
@@ -372,7 +372,6 @@ static int logID2 = 0;
     } failure:^(NSError *error) {
         NSLogTC(@"获取验证码失败：%@",error);
     }];
-
 }
 
 /*
@@ -629,25 +628,6 @@ static int logID2 = 0;
                     [self hideSuccessHUD:@"验证码获取失败"];
                 }];
             }
-        }
-    }
-}
-
-#pragma mark - UITextFiledDelegate
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    if (textField == self.phoneField)
-    {
-        
-    }
-    return YES;
-}
-
-- (void)textFieldDidChange:(UITextField *)textField
-{
-    if (textField == self.phoneField) {
-        if (textField.text.length > 20) {
-            textField.text = [textField.text substringToIndex:20];
         }
     }
 }
