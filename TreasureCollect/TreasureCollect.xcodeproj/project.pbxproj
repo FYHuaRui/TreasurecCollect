@@ -99,6 +99,12 @@
 		1896E5FD1E011DE80072DC50 /* leftTrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896E5FB1E011DE80072DC50 /* leftTrangle.png */; };
 		1896E5FE1E011DE80072DC50 /* rightTrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896E5FC1E011DE80072DC50 /* rightTrangle.png */; };
 		1896E6011E011EC10072DC50 /* ProportionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896E6001E011EC10072DC50 /* ProportionView.m */; };
+		18B34B611E1B75F300BDE0E8 /* hud-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B34B5B1E1B75F300BDE0E8 /* hud-1.png */; };
+		18B34B621E1B75F300BDE0E8 /* hud-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B34B5C1E1B75F300BDE0E8 /* hud-2.png */; };
+		18B34B631E1B75F300BDE0E8 /* hud-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B34B5D1E1B75F300BDE0E8 /* hud-3.png */; };
+		18B34B641E1B75F300BDE0E8 /* hud-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B34B5E1E1B75F300BDE0E8 /* hud-4.png */; };
+		18B34B651E1B75F300BDE0E8 /* hud-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B34B5F1E1B75F300BDE0E8 /* hud-5.png */; };
+		18B34B661E1B75F300BDE0E8 /* hud-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B34B601E1B75F300BDE0E8 /* hud-6.png */; };
 		18BFDDBA1E10CB39006CF255 /* NSString+GetNetip.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BFDDB91E10CB39006CF255 /* NSString+GetNetip.m */; };
 		18BFDDCE1E10FE60006CF255 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDDCD1E10FE60006CF255 /* CFNetwork.framework */; };
 		18BFDDD01E10FE6A006CF255 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDDCF1E10FE6A006CF255 /* SystemConfiguration.framework */; };
@@ -342,6 +348,12 @@
 		1896E5FC1E011DE80072DC50 /* rightTrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightTrangle.png; sourceTree = "<group>"; };
 		1896E5FF1E011EC10072DC50 /* ProportionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProportionView.h; sourceTree = "<group>"; };
 		1896E6001E011EC10072DC50 /* ProportionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProportionView.m; sourceTree = "<group>"; };
+		18B34B5B1E1B75F300BDE0E8 /* hud-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-1.png"; sourceTree = "<group>"; };
+		18B34B5C1E1B75F300BDE0E8 /* hud-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-2.png"; sourceTree = "<group>"; };
+		18B34B5D1E1B75F300BDE0E8 /* hud-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-3.png"; sourceTree = "<group>"; };
+		18B34B5E1E1B75F300BDE0E8 /* hud-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-4.png"; sourceTree = "<group>"; };
+		18B34B5F1E1B75F300BDE0E8 /* hud-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-5.png"; sourceTree = "<group>"; };
+		18B34B601E1B75F300BDE0E8 /* hud-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-6.png"; sourceTree = "<group>"; };
 		18BFDDB81E10CB39006CF255 /* NSString+GetNetip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GetNetip.h"; sourceTree = "<group>"; };
 		18BFDDB91E10CB39006CF255 /* NSString+GetNetip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GetNetip.m"; sourceTree = "<group>"; };
 		18BFDDBB1E10FCCE006CF255 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -1100,6 +1112,19 @@
 			path = GifImage;
 			sourceTree = "<group>";
 		};
+		18B34B5A1E1B75F300BDE0E8 /* 加载动画 */ = {
+			isa = PBXGroup;
+			children = (
+				18B34B5B1E1B75F300BDE0E8 /* hud-1.png */,
+				18B34B5C1E1B75F300BDE0E8 /* hud-2.png */,
+				18B34B5D1E1B75F300BDE0E8 /* hud-3.png */,
+				18B34B5E1E1B75F300BDE0E8 /* hud-4.png */,
+				18B34B5F1E1B75F300BDE0E8 /* hud-5.png */,
+				18B34B601E1B75F300BDE0E8 /* hud-6.png */,
+			);
+			path = "加载动画";
+			sourceTree = "<group>";
+		};
 		18BFDDE11E10FF15006CF255 /* PingPP */ = {
 			isa = PBXGroup;
 			children = (
@@ -1345,6 +1370,7 @@
 		92442FD31DFE78A0008BF127 /* 充值 */ = {
 			isa = PBXGroup;
 			children = (
+				18B34B5A1E1B75F300BDE0E8 /* 加载动画 */,
 				92442FD41DFE78A0008BF127 /* hot.png */,
 				92442FD51DFE78A0008BF127 /* recharge_top.png */,
 				92442FD61DFE78A0008BF127 /* 微信支付.png */,
@@ -1606,6 +1632,8 @@
 				187C5BC01E1205DA0043A1A1 /* icon_tuxing@2x.png in Resources */,
 				92442FDA1DFE78A0008BF127 /* recharge_top.png in Resources */,
 				1886D6DB1DFFFDFB00F4A067 /* downtrangle.png in Resources */,
+				18B34B631E1B75F300BDE0E8 /* hud-3.png in Resources */,
+				18B34B611E1B75F300BDE0E8 /* hud-1.png in Resources */,
 				18511D7E1E0BBE7700E30772 /* AD2.png in Resources */,
 				187C5BDB1E1222200043A1A1 /* red01.png in Resources */,
 				92442FE51DFE84F1008BF127 /* 反馈.png in Resources */,
@@ -1621,12 +1649,14 @@
 				F8765EAE1E13592C00060948 /* question@3x.png in Resources */,
 				F863AE371E14FCA60051EE32 /* icon_show.png in Resources */,
 				92442FDC1DFE78A0008BF127 /* 银联支付.png in Resources */,
+				18B34B621E1B75F300BDE0E8 /* hud-2.png in Resources */,
 				92442FE81DFE84F1008BF127 /* 了解微胜宝.png in Resources */,
 				92442FE71DFE84F1008BF127 /* 合买.png in Resources */,
 				187C5BD61E1222200043A1A1 /* green04.png in Resources */,
 				922CEF9A1E01504100C67B1F /* 重要提醒.png in Resources */,
 				187C5BE21E1222200043A1A1 /* red08.png in Resources */,
 				18511D801E0BBE7700E30772 /* AD4.png in Resources */,
+				18B34B661E1B75F300BDE0E8 /* hud-6.png in Resources */,
 				F8765EB61E13BBD900060948 /* messagebg@3x.png in Resources */,
 				18511D7D1E0BBE7700E30772 /* AD1.png in Resources */,
 				92442FE91DFE84F1008BF127 /* 券.png in Resources */,
@@ -1636,6 +1666,7 @@
 				922CEF941E01504100C67B1F /* 头像-登录状态.png in Resources */,
 				92442FE61DFE84F1008BF127 /* 个人中心.png in Resources */,
 				9293DED71DFE976C0032EFA1 /* TicketViewController.xib in Resources */,
+				18B34B651E1B75F300BDE0E8 /* hud-5.png in Resources */,
 				9293DEDA1DFE978D0032EFA1 /* ticktBlank.png in Resources */,
 				1829DA311DFAAFE000405DF2 /* YYFiveRecordTableViewCell.xib in Resources */,
 				1896E5FE1E011DE80072DC50 /* rightTrangle.png in Resources */,
@@ -1647,6 +1678,7 @@
 				187C5BDC1E1222200043A1A1 /* red02.png in Resources */,
 				1829DA4C1DFAB28E00405DF2 /* YYStockFullScreenView.xib in Resources */,
 				187C5BC11E1205DA0043A1A1 /* icon_tuxing@3x.png in Resources */,
+				18B34B641E1B75F300BDE0E8 /* hud-4.png in Resources */,
 				18273CB21DFA574F00855FCB /* Assets.xcassets in Resources */,
 				187C5BDF1E1222200043A1A1 /* red05.png in Resources */,
 				187C5BBE1E1205DA0043A1A1 /* icon_lock@2x.png in Resources */,
