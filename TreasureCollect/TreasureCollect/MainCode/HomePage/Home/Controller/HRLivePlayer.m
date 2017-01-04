@@ -64,7 +64,31 @@
 //主要内容
 - (void)initSubViews
 {
+    //直播大厅头图片展示
+    UIImageView *titleImage = [[UIImageView alloc] init];
+    titleImage.image = [UIImage imageNamed:@"banner_Live"];
+    titleImage.userInteractionEnabled = YES;
+    [self.view addSubview:titleImage];
     
+    [titleImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.and.left.right.equalTo(self.view).offset(0);
+        make.height.mas_offset(@120);
+    }];
+    
+    //图片上添加响应手势
+    UITapGestureRecognizer  *titleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(forgetTapClicked:)];
+    [titleImage addGestureRecognizer:titleTap];
+}
+
+
+/*
+ @功能：头图片首饰响应方法
+ @参数：当前手势
+ @返回值：无
+ */
+- (void)forgetTapClicked:(UITapGestureRecognizer*) tapGesture
+{
+    NSLogTC(@"图片点击了");
 }
 
 

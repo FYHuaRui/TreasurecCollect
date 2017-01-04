@@ -295,7 +295,7 @@ static int logID2 = 0;
     aLab2.font = [UIFont systemFontOfSize:14];
     [questionView2 addSubview:aLab2];
     
-    //点击收回更多界面
+    //忘记密码手势
     UITapGestureRecognizer  *forgetTap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(forgetTapClicked:)];
     [questionView2 addGestureRecognizer:forgetTap2];
     
@@ -453,7 +453,11 @@ static int logID2 = 0;
     button2.userInteractionEnabled = NO;
 }
 
-//登录
+/*
+ @功能：密码登录
+ @参数：无
+ @返回值：无
+ */
 - (void)loginBtnClicked
 {
     if ([self.phoneField.text isEqualToString:@""])
@@ -487,23 +491,28 @@ static int logID2 = 0;
                 NSLog(@"%@",params);
                 [HttpTool post:url params:params success:^(id json) {
                     NSLog(@"%@",json);
+                    
+                    
+                    
                     NSArray *dataArr = [json objectForKey:@"RspMsg"];
                     NSDictionary *imageDic = [dataArr firstObject];
                     NSString *runMessage = [imageDic objectForKey:@"runMsg"];
                     int a = [[imageDic objectForKey:@"runCode"] intValue];
-                    if (a == 200001)
+                    if (a == 200001)//登录成功!
+                    {
+                        [self hideSuccessHUD:runMessage];
+                        NSArray *userAry = [json objectForKey:@"userInfo"];
+                        NSDictionary *userDic = [userAry firstObject];
+                    }
+                    if (a == 110040)//该手机号没有注册, 不能用来登录
                     {
                         [self hideSuccessHUD:runMessage];
                     }
-                    if (a == 110040)
+                    if (a == 110003)//您输入的图片验证码不对!
                     {
                         [self hideSuccessHUD:runMessage];
                     }
-                    if (a == 110003)
-                    {
-                        [self hideSuccessHUD:runMessage];
-                    }
-                    if (a == 110500)
+                    if (a == 110500)//密码不正确
                     {
                         [self hideSuccessHUD:runMessage];
                     }
