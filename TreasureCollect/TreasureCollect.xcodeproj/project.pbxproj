@@ -123,6 +123,7 @@
 		18BFE0061E10FF16006CF255 /* libpingppcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDF1C1E10FF15006CF255 /* libpingppcore.a */; };
 		18BFE0071E10FF16006CF255 /* libpingpp+one.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BFDF1E1E10FF15006CF255 /* libpingpp+one.a */; };
 		18BFE0081E10FF16006CF255 /* Pingpp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18BFDF201E10FF15006CF255 /* Pingpp.bundle */; };
+		18E413531E1F975B00A868E6 /* 一分钟了解微胜宝.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E413521E1F975B00A868E6 /* 一分钟了解微胜宝.png */; };
 		921BDE461DFFBE1A00C031C5 /* PersNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 921BDE451DFFBE1A00C031C5 /* PersNSObject.m */; };
 		921BDE5D1DFFDE5D00C031C5 /* 返回2.png in Resources */ = {isa = PBXBuildFile; fileRef = 921BDE5C1DFFDE5D00C031C5 /* 返回2.png */; };
 		922CEF901E01504100C67B1F /* 个人资产.png in Resources */ = {isa = PBXBuildFile; fileRef = 922CEF841E01504100C67B1F /* 个人资产.png */; };
@@ -412,6 +413,7 @@
 		18BFDF1F1E10FF15006CF255 /* Pingpp+One.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Pingpp+One.h"; sourceTree = "<group>"; };
 		18BFDF201E10FF15006CF255 /* Pingpp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Pingpp.bundle; sourceTree = "<group>"; };
 		18BFDF211E10FF15006CF255 /* Pingpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pingpp.h; sourceTree = "<group>"; };
+		18E413521E1F975B00A868E6 /* 一分钟了解微胜宝.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "一分钟了解微胜宝.png"; sourceTree = "<group>"; };
 		5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.release.xcconfig"; sourceTree = "<group>"; };
 		921BDE441DFFBE1A00C031C5 /* PersNSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersNSObject.h; sourceTree = "<group>"; };
 		921BDE451DFFBE1A00C031C5 /* PersNSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersNSObject.m; sourceTree = "<group>"; };
@@ -1084,6 +1086,7 @@
 		187C5BA81E1205DA0043A1A1 /* 注册／登录 */ = {
 			isa = PBXGroup;
 			children = (
+				18E413521E1F975B00A868E6 /* 一分钟了解微胜宝.png */,
 				F863AE351E14FCA60051EE32 /* icon_show.png */,
 				F863AE361E14FCA60051EE32 /* icon_show1.png */,
 				F8765EB31E13BBD900060948 /* messagebg@2x.png */,
@@ -1718,6 +1721,7 @@
 				18511D821E0BD97200E30772 /* close.png in Resources */,
 				F8A88B9E1E1CA394003CB922 /* btn_Pause@3x.png in Resources */,
 				1848B66B1E0A6D2600C806D8 /* echarts.min.js in Resources */,
+				18E413531E1F975B00A868E6 /* 一分钟了解微胜宝.png in Resources */,
 				F8A88BAA1E1CA394003CB922 /* img_head_portrait@3x.png in Resources */,
 				922CEF901E01504100C67B1F /* 个人资产.png in Resources */,
 				187C5BD81E1222200043A1A1 /* green06.png in Resources */,
