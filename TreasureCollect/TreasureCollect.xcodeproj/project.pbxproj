@@ -181,6 +181,9 @@
 		F8765EB21E13A11300060948 /* ForgetPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F8765EB11E13A11300060948 /* ForgetPasswordVC.m */; };
 		F8765EB51E13BBD900060948 /* messagebg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8765EB31E13BBD900060948 /* messagebg@2x.png */; };
 		F8765EB61E13BBD900060948 /* messagebg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8765EB41E13BBD900060948 /* messagebg@3x.png */; };
+		F87BAFA01E1E433D00DBBB78 /* icon_shezhi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F87BAF9D1E1E433D00DBBB78 /* icon_shezhi@3x.png */; };
+		F87BAFA11E1E433D00DBBB78 /* icon_shezhi.png in Resources */ = {isa = PBXBuildFile; fileRef = F87BAF9E1E1E433D00DBBB78 /* icon_shezhi.png */; };
+		F87BAFA21E1E433D00DBBB78 /* icon_shezhi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F87BAF9F1E1E433D00DBBB78 /* icon_shezhi@2x.png */; };
 		F8A88B961E1CA394003CB922 /* banner_Live.png in Resources */ = {isa = PBXBuildFile; fileRef = F8A88B7E1E1CA394003CB922 /* banner_Live.png */; };
 		F8A88B971E1CA394003CB922 /* banner_Live@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8A88B7F1E1CA394003CB922 /* banner_Live@2x.png */; };
 		F8A88B981E1CA394003CB922 /* banner_Live@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8A88B801E1CA394003CB922 /* banner_Live@3x.png */; };
@@ -489,6 +492,9 @@
 		F8765EB11E13A11300060948 /* ForgetPasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordVC.m; sourceTree = "<group>"; };
 		F8765EB31E13BBD900060948 /* messagebg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messagebg@2x.png"; sourceTree = "<group>"; };
 		F8765EB41E13BBD900060948 /* messagebg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messagebg@3x.png"; sourceTree = "<group>"; };
+		F87BAF9D1E1E433D00DBBB78 /* icon_shezhi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_shezhi@3x.png"; sourceTree = "<group>"; };
+		F87BAF9E1E1E433D00DBBB78 /* icon_shezhi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_shezhi.png; sourceTree = "<group>"; };
+		F87BAF9F1E1E433D00DBBB78 /* icon_shezhi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_shezhi@2x.png"; sourceTree = "<group>"; };
 		F8A88B7E1E1CA394003CB922 /* banner_Live.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner_Live.png; sourceTree = "<group>"; };
 		F8A88B7F1E1CA394003CB922 /* banner_Live@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner_Live@2x.png"; sourceTree = "<group>"; };
 		F8A88B801E1CA394003CB922 /* banner_Live@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner_Live@3x.png"; sourceTree = "<group>"; };
@@ -1431,6 +1437,9 @@
 		92442FDE1DFE84E4008BF127 /* 更多 */ = {
 			isa = PBXGroup;
 			children = (
+				F87BAF9D1E1E433D00DBBB78 /* icon_shezhi@3x.png */,
+				F87BAF9E1E1E433D00DBBB78 /* icon_shezhi.png */,
+				F87BAF9F1E1E433D00DBBB78 /* icon_shezhi@2x.png */,
 				187C5BA81E1205DA0043A1A1 /* 注册／登录 */,
 				F8ABB99D1E092B1700B2DFBF /* 头像.png */,
 				92442FDF1DFE84F1008BF127 /* 反馈.png */,
@@ -1633,7 +1642,7 @@
 				TargetAttributes = {
 					18273CA11DFA574F00855FCB = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = KPR9DZVBWW;
+						DevelopmentTeam = 8H2B3Y5JNC;
 						ProvisioningStyle = Automatic;
 					};
 					18273CBA1DFA574F00855FCB = {
@@ -1767,10 +1776,12 @@
 				18B34B651E1B75F300BDE0E8 /* hud-5.png in Resources */,
 				9293DEDA1DFE978D0032EFA1 /* ticktBlank.png in Resources */,
 				1829DA311DFAAFE000405DF2 /* YYFiveRecordTableViewCell.xib in Resources */,
+				F87BAFA01E1E433D00DBBB78 /* icon_shezhi@3x.png in Resources */,
 				F8A88BAC1E1CA394003CB922 /* img_Live@2x.png in Resources */,
 				1896E5FE1E011DE80072DC50 /* rightTrangle.png in Resources */,
 				F8A88B9F1E1CA394003CB922 /* btn_play.png in Resources */,
 				92442FDD1DFE78A0008BF127 /* 返回.png in Resources */,
+				F87BAFA21E1E433D00DBBB78 /* icon_shezhi@2x.png in Resources */,
 				F8A88BAB1E1CA394003CB922 /* img_Live.png in Resources */,
 				92B00F291E022BB00019D040 /* 返回3.png in Resources */,
 				F8A88B971E1CA394003CB922 /* banner_Live@2x.png in Resources */,
@@ -1781,6 +1792,7 @@
 				1829DA4C1DFAB28E00405DF2 /* YYStockFullScreenView.xib in Resources */,
 				F8A88BA91E1CA394003CB922 /* img_head_portrait@2x.png in Resources */,
 				187C5BC11E1205DA0043A1A1 /* icon_tuxing@3x.png in Resources */,
+				F87BAFA11E1E433D00DBBB78 /* icon_shezhi.png in Resources */,
 				18B34B641E1B75F300BDE0E8 /* hud-4.png in Resources */,
 				18273CB21DFA574F00855FCB /* Assets.xcassets in Resources */,
 				187C5BDF1E1222200043A1A1 /* red05.png in Resources */,
@@ -2001,6 +2013,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2048,6 +2061,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -2068,7 +2082,7 @@
 			baseConfigurationReference = 973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KPR9DZVBWW;
+				DEVELOPMENT_TEAM = 8H2B3Y5JNC;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2098,7 +2112,7 @@
 					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP",
 					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/One",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fyhr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fyhrk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2109,7 +2123,7 @@
 			baseConfigurationReference = 5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KPR9DZVBWW;
+				DEVELOPMENT_TEAM = 8H2B3Y5JNC;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2139,7 +2153,7 @@
 					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP",
 					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/One",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fyhr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fyhrk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

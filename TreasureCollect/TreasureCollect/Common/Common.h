@@ -36,6 +36,7 @@
 
 //充值模块
 #define RECHARTE_URL @"/Pingplusplus/ReceiptServlet"
+#define AMTCHARGE @"/wsb/java/servlet/AmtCharge"//支付接口
 
 
 #endif /* Common_h */

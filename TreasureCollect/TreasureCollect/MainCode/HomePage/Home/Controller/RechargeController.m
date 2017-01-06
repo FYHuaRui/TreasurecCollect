@@ -238,7 +238,7 @@
                                                          handler:^(UIAlertAction * _Nonnull action) {
                                                              
 
-                                                             NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL2,RECHARTE_URL];
+                                                             NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,AMTCHARGE];
                                                              NSMutableDictionary *params = [NSMutableDictionary dictionary];
                                                              [params setObject:[NSNumber numberWithInteger:_rechargeCount] forKey:@"RechargeAccount"];
                                                              [params setObject:[NSString getIPAddress:YES] forKey:@"client_ip"];
@@ -267,16 +267,16 @@
                                                                         
                                                                     } failure:^(NSError *error) {
                                                                         
-                                                                        UIImageView *hudImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100.f, 100.f)];
-                                                                        hudImage.animationImages = @[[UIImage imageNamed:@"hud-1"],[UIImage imageNamed:@"hud-2"],[UIImage imageNamed:@"hud-3"],[UIImage imageNamed:@"hud-4"],[UIImage imageNamed:@"hud-5"],[UIImage imageNamed:@"hud-4"],[UIImage imageNamed:@"hud-5"]];
-                                                                        hudImage.animationDuration = 1.5;
-                                                                        [hudImage startAnimating];
-                                                                        MBProgressHUD *loadHud = [MBProgressHUD showHUDAddedTo:self.view
-                                                                                                                      animated:YES];
-                                                                        loadHud.customView = hudImage;
-                                                                        loadHud.mode = MBProgressHUDModeCustomView;
-                                                                        [loadHud showAnimated:YES];
-                                                                        [loadHud hideAnimated:YES afterDelay:3.f];
+//                                                                        UIImageView *hudImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100.f, 100.f)];
+//                                                                        hudImage.animationImages = @[[UIImage imageNamed:@"hud-1"],[UIImage imageNamed:@"hud-2"],[UIImage imageNamed:@"hud-3"],[UIImage imageNamed:@"hud-4"],[UIImage imageNamed:@"hud-5"],[UIImage imageNamed:@"hud-4"],[UIImage imageNamed:@"hud-5"]];
+//                                                                        hudImage.animationDuration = 1.5;
+//                                                                        [hudImage startAnimating];
+//                                                                        MBProgressHUD *loadHud = [MBProgressHUD showHUDAddedTo:self.view
+//                                                                                                                      animated:YES];
+//                                                                        loadHud.customView = hudImage;
+//                                                                        loadHud.mode = MBProgressHUDModeCustomView;
+//                                                                        [loadHud showAnimated:YES];
+//                                                                        [loadHud hideAnimated:YES afterDelay:3.f];
                                                                         NSLogTC(@"充值失败:%@",error);
                                                                         
                                                                     }];

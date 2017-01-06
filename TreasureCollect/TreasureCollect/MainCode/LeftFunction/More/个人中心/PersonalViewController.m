@@ -156,8 +156,8 @@
     [pView addSubview:CzBtn];
     
     
-    BOOL login = YES;
-    if (login)
+    BOOL Login = [[NSUserDefaults standardUserDefaults] objectForKey:@"isLogin"];
+    if (Login)
     {
         UIView *personView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, KScreenWidth, 70)];
         personView.backgroundColor = [UIColor clearColor];

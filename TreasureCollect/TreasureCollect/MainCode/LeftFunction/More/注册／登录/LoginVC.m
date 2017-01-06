@@ -9,6 +9,7 @@
 #import "LoginVC.h"
 #import "ForgetPasswordVC.h"
 #import "RegisterVC.h"
+#import "HomeController.h"
 
 @interface LoginVC ()
 
@@ -138,7 +139,7 @@ static int logID2 = 0;
     UIButton *imageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     imageBtn.frame = CGRectMake(pictureImage.frame.origin.x+pictureImage.frame.size.width+15, pictureImage.frame.origin.y, phoneImage.frame.size.width-pictureImage.frame.size.width-15, pictureImage.frame.size.height);
     imageBtn.backgroundColor = [UIColor lightGrayColor];
-    [imageBtn addTarget:self action:@selector(changePicture) forControlEvents:UIControlEventTouchUpInside];
+    [imageBtn addTarget:self action:@selector(ChangePicture:) forControlEvents:UIControlEventTouchUpInside];
     imageBtn.layer.cornerRadius = 15;
     imageBtn.layer.masksToBounds = YES;
     [phoneView addSubview:imageBtn];
@@ -354,19 +355,19 @@ static int logID2 = 0;
 }
 
 //验证码更换
-- (void)changePicture
+- (void)ChangePicture:(UIButton*)button
 {
+    NSLogTC(@"更换验证码");
     //网络请求验证码
     NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL4];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:[NSNumber numberWithInt:logID] forKey:@"regId"];
+    [params setObject:[NSNumber numberWithInt:logID] forKey:@"logId"];
     [HttpTool post:url params:params success:^(id json) {
         NSArray *dataArr = [json objectForKey:@"strImgYzm"];
         NSDictionary *imageDic = [dataArr firstObject];
         NSString *imageString = [imageDic objectForKey:@"ImageYzm"];
         NSData *imageData = [GTMBase64 decodeString:imageString];
         UIImage *image = [UIImage imageWithData:imageData];
-        UIButton *button = [self.view viewWithTag:9999];
         [button setBackgroundImage:image forState:UIControlStateNormal];
         logID = [[imageDic objectForKey:@"logId"] intValue];
     } failure:^(NSError *error) {
@@ -500,9 +501,42 @@ static int logID2 = 0;
                     int a = [[imageDic objectForKey:@"runCode"] intValue];
                     if (a == 200001)//登录成功!
                     {
-                        [self hideSuccessHUD:runMessage];
                         NSArray *userAry = [json objectForKey:@"userInfo"];
                         NSDictionary *userDic = [userAry firstObject];
+                        NSString *PhoneStr = [userDic objectForKey:@"telePhone"];
+                        
+                        //返回的手机号与输入的手机号相同时，返回首页,并保存userId／nikeName
+                        if ([PhoneStr isEqualToString:self.phoneField.text] || [PhoneStr isEqualToString:self.phoneField2.text])
+                        {
+                            //提醒用户登录成功
+                            [self hideSuccessHUD:runMessage];
+            
+                            //子线程中保存用户数据，主线程放回首页
+                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                                NSUserDefaults *userInfo = [NSUserDefaults standardUserDefaults];
+                                [userInfo setObject:userAry forKey:@"userInfo"];
+                       
+                                BOOL isLogin = YES;
+                                [[NSUserDefaults standardUserDefaults] setBool:isLogin forKey:@"isLogin"];
+                                [[NSUserDefaults standardUserDefaults] synchronize];//同步本地数据
+                            
+                                //主线程
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    //返回首页
+                                    for (UIViewController *controller in self.navigationController.viewControllers) {
+                                        if ([controller isKindOfClass:[HomeController class]]) {
+                                            [self.navigationController popToViewController:controller animated:YES];
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                        else
+                        {
+                            [self hideSuccessHUD:@"登录失败，请重新登录!"];
+                        }
+                        
+                        
                     }
                     if (a == 110040)//该手机号没有注册, 不能用来登录
                     {
@@ -616,19 +650,50 @@ static int logID2 = 0;
                     NSDictionary *imageDic = [dataArr firstObject];
                     NSString *runMessage = [imageDic objectForKey:@"runMsg"];
                     int a = [[imageDic objectForKey:@"runCode"] intValue];
-                    if (a == 200001)
+                    if (a == 200001)//登录成功!
+                    {
+                        NSArray *userAry = [json objectForKey:@"userInfo"];
+                        NSDictionary *userDic = [userAry firstObject];
+                        NSString *PhoneStr = [userDic objectForKey:@"telePhone"];
+                        
+                        //返回的手机号与输入的手机号相同时，返回首页,并保存userId／nikeName
+                        if (PhoneStr == self.phoneField.text || PhoneStr == self.phoneField2.text)
+                        {
+                            //提醒用户登录成功
+                            [self hideSuccessHUD:runMessage];
+                            
+                            //子线程中保存用户数据，主线程放回首页
+                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                                NSUserDefaults *userInfo = [NSUserDefaults standardUserDefaults];
+                                [userInfo setObject:userAry forKey:@"userInfo"];
+                                
+                                //主线程
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    //返回首页
+                                    for (UIViewController *controller in self.navigationController.viewControllers) {
+                                        if ([controller isKindOfClass:[HomeController class]]) {
+                                            [self.navigationController popToViewController:controller animated:YES];
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                        else
+                        {
+                            [self hideSuccessHUD:@"登录失败，请重新登录!"];
+                        }
+                        
+                        
+                    }
+                    if (a == 110040)//该手机号没有注册, 不能用来登录
                     {
                         [self hideSuccessHUD:runMessage];
                     }
-                    if (a == 110040)
+                    if (a == 110003)//您输入的图片验证码不对!
                     {
                         [self hideSuccessHUD:runMessage];
                     }
-                    if (a == 110005)
-                    {
-                        [self hideSuccessHUD:runMessage];
-                    }
-                    if (a == 110500)
+                    if (a == 110500)//密码不正确
                     {
                         [self hideSuccessHUD:runMessage];
                     }
