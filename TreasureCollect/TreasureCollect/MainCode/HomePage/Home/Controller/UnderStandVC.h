@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UnderStandVC : UIViewController
+@interface UnderStandVC : UIViewController{
+
+    UIScrollView *_bgScrollView ;
+
+}
 
 @end

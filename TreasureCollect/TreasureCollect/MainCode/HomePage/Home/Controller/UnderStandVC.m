@@ -25,6 +25,24 @@
     // Do any additional setup after loading the view.
     //[self DaoHang];//设置导航栏
     [self initSubView];//主页面显示
+    
+    _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight - kNavigationBarHeight)];
+    _bgScrollView.backgroundColor = [UIColor lightGrayColor];
+    _bgScrollView.showsVerticalScrollIndicator = NO;
+    [self.view addSubview:_bgScrollView];
+
+    UIImage *image = [UIImage imageNamed:@"一分钟了解微胜宝"];
+    float imageWidth = image.size.width;
+    float imageHeight = image.size.height;
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenWidth * imageHeight / imageWidth)];
+    imageView.image = image;
+    [_bgScrollView addSubview:imageView];
+    
+    _bgScrollView.contentSize = CGSizeMake(KScreenWidth, KScreenWidth * imageHeight / imageWidth);
+    
+//    UIImageView *image = [UIImageView ]
+
 }
 
 - (void)didReceiveMemoryWarning {

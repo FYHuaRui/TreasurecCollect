@@ -238,10 +238,12 @@
                                                          handler:^(UIAlertAction * _Nonnull action) {
                                                              
 
-                                                             NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL2,RECHARTE_URL];
+                                                             NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,AMTCHARGE];
                                                              NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                                                             [params setObject:[NSNumber numberWithInteger:_rechargeCount] forKey:@"RechargeAccount"];
-                                                             [params setObject:[NSString getIPAddress:YES] forKey:@"client_ip"];
+                                                             [params setObject:[NSNumber numberWithInt:11] forKey:@"userId"];
+                                                             [params setObject:@"upacp" forKey:@"channel"];
+                                                             [params setObject:[NSNumber numberWithInteger:_rechargeCount * 100] forKey:@"amount"];
+                                                             [params setObject:[NSString getIPAddress:YES] forKey:@"clientIp"];
                                                              
                                                              //请求第三方支付信息
                                                              [HttpTool post:url
@@ -250,7 +252,8 @@
                                                                         
                                                                         NSLogTC(@"充值订单信息%@",json);
                                                                         
-                                                                        [Pingpp createPayment:json
+                                                                        NSLog(@"");
+                                                                        [Pingpp createPayment:[json objectForKey:@"Charge"]
                                                                                viewController:self
                                                                                  appURLScheme:kUrlScheme
                                                                                withCompletion:^(NSString *result, PingppError *error) {
