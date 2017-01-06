@@ -399,7 +399,6 @@
     }
     float size_m = sumSize/(1000*1000);
     return [NSString stringWithFormat:@"%.2fM",size_m];
-    
 }
     
 
