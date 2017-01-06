@@ -270,16 +270,16 @@
                                                                         
                                                                     } failure:^(NSError *error) {
                                                                         
-                                                                        UIImageView *hudImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100.f, 100.f)];
-                                                                        hudImage.animationImages = @[[UIImage imageNamed:@"hud-1"],[UIImage imageNamed:@"hud-2"],[UIImage imageNamed:@"hud-3"],[UIImage imageNamed:@"hud-4"],[UIImage imageNamed:@"hud-5"],[UIImage imageNamed:@"hud-4"],[UIImage imageNamed:@"hud-5"]];
-                                                                        hudImage.animationDuration = 1.5;
-                                                                        [hudImage startAnimating];
-                                                                        MBProgressHUD *loadHud = [MBProgressHUD showHUDAddedTo:self.view
-                                                                                                                      animated:YES];
-                                                                        loadHud.customView = hudImage;
-                                                                        loadHud.mode = MBProgressHUDModeCustomView;
-                                                                        [loadHud showAnimated:YES];
-                                                                        [loadHud hideAnimated:YES afterDelay:3.f];
+//                                                                        UIImageView *hudImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100.f, 100.f)];
+//                                                                        hudImage.animationImages = @[[UIImage imageNamed:@"hud-1"],[UIImage imageNamed:@"hud-2"],[UIImage imageNamed:@"hud-3"],[UIImage imageNamed:@"hud-4"],[UIImage imageNamed:@"hud-5"],[UIImage imageNamed:@"hud-4"],[UIImage imageNamed:@"hud-5"]];
+//                                                                        hudImage.animationDuration = 1.5;
+//                                                                        [hudImage startAnimating];
+//                                                                        MBProgressHUD *loadHud = [MBProgressHUD showHUDAddedTo:self.view
+//                                                                                                                      animated:YES];
+//                                                                        loadHud.customView = hudImage;
+//                                                                        loadHud.mode = MBProgressHUDModeCustomView;
+//                                                                        [loadHud showAnimated:YES];
+//                                                                        [loadHud hideAnimated:YES afterDelay:3.f];
                                                                         NSLogTC(@"充值失败:%@",error);
                                                                         
                                                                     }];

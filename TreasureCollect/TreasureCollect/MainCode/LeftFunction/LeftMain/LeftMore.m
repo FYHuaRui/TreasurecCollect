@@ -15,6 +15,7 @@
 #import "UnderStandVC.h"
 #import "RegisterVC.h"
 #import "LoginVC.h"
+#import "SettingVC.h"
 
 @implementation LeftMore
 
@@ -52,11 +53,8 @@
     bView.backgroundColor = [UIColor colorFromHexRGB:@"B53D2F"];
     [imageView addSubview:bView];
     
-    //添加一个软件Log
-//    UIImageView *imageView = [[UIImageView alloc] init];
-    
     //判断用户是否登录
-    BOOL Login = NO;
+    BOOL Login = [[NSUserDefaults standardUserDefaults] objectForKey:@"isLogin"];
     if (Login)//未登录
     {
         UIImageView *LogImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
@@ -65,8 +63,22 @@
         
         //设置按钮按钮
         UIView *setView = [[UIView alloc] initWithFrame:CGRectZero];
-        setView.backgroundColor = [UIColor whiteColor];
+        setView.backgroundColor = [UIColor colorFromHexRGB:@"B53D2F"];
         [bView addSubview:setView];
+        
+        UITapGestureRecognizer  *moreTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ChagenUserInfo)];
+        [setView addGestureRecognizer:moreTap];
+        
+        UIImageView *setImage = [[UIImageView alloc] init];
+        setImage.image = [UIImage imageNamed:@"icon_shezhi"];
+        [setView addSubview:setImage];
+        
+        UILabel *setLab = [[UILabel alloc] init];
+        setLab.text = @"设置";
+        setLab.font = [UIFont systemFontOfSize:15];
+        setLab.textColor = [UIColor whiteColor];
+        setLab.backgroundColor = [UIColor clearColor];
+        [setView addSubview:setLab];
         
         //添加约束
         [setView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -74,6 +86,18 @@
             make.left.equalTo(bView).offset(70);
             make.right.equalTo(bView).offset(-7);
             make.bottom.equalTo(bView).offset(-7);
+        }];
+        
+        [setImage mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(setView).offset(3);
+            make.left.equalTo(setView).offset(10);
+            make.bottom.equalTo(setView).offset(-3);
+            make.width.mas_equalTo(@20);
+        }];
+        
+        [setLab mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.and.right.bottom.equalTo(setView).offset(0);
+            make.left.equalTo(setImage.mas_right).with.offset(5);
         }];
     }
     else
@@ -207,6 +231,20 @@
     [self moreTapClicked];
 }
 
+/*
+ @功能：响应设置
+ @参数：wu
+ @返回值：无
+ */
+- (void)ChagenUserInfo
+{
+    NSLogTC(@"设置点击了");
+    SettingVC *setVc = [[SettingVC alloc]init];
+    [[self viewController].navigationController pushViewController:setVc animated:YES];
+    //右侧View收回
+    [self moreTapClicked];
+}
+
 #pragma mark - UITableViewDataSource
 //tableView共有多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -294,7 +332,6 @@
     {
         UnderStandVC *underVC = [[UnderStandVC alloc] init];
         [[self viewController].navigationController pushViewController:underVC animated:YES];
-
     }
     
     //右侧View收回

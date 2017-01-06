@@ -10,6 +10,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "nickNameVC.h"
+#import "HomeController.h"
 
 @interface SettingVC ()
 
@@ -43,6 +44,9 @@
     self.title = @"设置";
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationItem.backBarButtonItem = nil;
     
     //左侧返回按钮
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -347,6 +351,24 @@
     if (indexPath.section == 1)
     {
         NSLogTC(@"退出登录");
+        
+        //子线程中保存用户数据，主线程放回首页
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            BOOL isLogin = NO;
+            [[NSUserDefaults standardUserDefaults] setBool:isLogin forKey:@"isLogin"];
+            [[NSUserDefaults standardUserDefaults] synchronize];//同步本地数据
+            
+            //主线程
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //返回首页
+                for (UIViewController *controller in self.navigationController.viewControllers) {
+                    if ([controller isKindOfClass:[HomeController class]]) {
+                        [self.navigationController popToViewController:controller animated:YES];
+                    }
+                }
+            });
+        });
+        
     }
 }
 
@@ -377,7 +399,6 @@
     }
     float size_m = sumSize/(1000*1000);
     return [NSString stringWithFormat:@"%.2fM",size_m];
-    
 }
     
 

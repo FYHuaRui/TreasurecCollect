@@ -561,12 +561,13 @@
     _proportionView.userInteractionEnabled = NO;
     [self.view addSubview:_proportionView];
     
-    //更多按钮展示界面
-    self.leftMore = [[LeftMore alloc] initWithFrame:CGRectMake(-150, 20, 150, 300)];
-    self.leftMore.hidden = YES;//先设置隐藏
-    [self.view addSubview:self.leftMore];
+//    //更多按钮展示界面
+//    self.leftMore = [[LeftMore alloc] initWithFrame:CGRectMake(-150, 20, 150, 300)];
+//    self.leftMore.hidden = YES;//先设置隐藏
+//    [self.view addSubview:self.leftMore];
     
 }
+
 
 #pragma mark - 更多功能
 - (void)MoreButtonClicked:(UIButton*)button
@@ -644,6 +645,11 @@
     
     //隐藏导航栏
     self.navigationController.navigationBar.hidden = YES;
+    
+    //更多按钮展示界面
+    self.leftMore = [[LeftMore alloc] initWithFrame:CGRectMake(-150, 20, 150, 300)];
+    self.leftMore.hidden = YES;//先设置隐藏
+    [self.view addSubview:self.leftMore];
 
 }
 
