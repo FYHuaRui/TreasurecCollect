@@ -25,24 +25,6 @@
     // Do any additional setup after loading the view.
     //[self DaoHang];//设置导航栏
     [self initSubView];//主页面显示
-    
-    _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight - kNavigationBarHeight)];
-    _bgScrollView.backgroundColor = [UIColor lightGrayColor];
-    _bgScrollView.showsVerticalScrollIndicator = NO;
-    [self.view addSubview:_bgScrollView];
-
-    UIImage *image = [UIImage imageNamed:@"一分钟了解微胜宝"];
-    float imageWidth = image.size.width;
-    float imageHeight = image.size.height;
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenWidth * imageHeight / imageWidth)];
-    imageView.image = image;
-    [_bgScrollView addSubview:imageView];
-    
-    _bgScrollView.contentSize = CGSizeMake(KScreenWidth, KScreenWidth * imageHeight / imageWidth);
-    
-//    UIImageView *image = [UIImageView ]
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,6 +47,7 @@
     [leftBtn addTarget:self action:@selector(returnClicked) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     self.navigationItem.leftBarButtonItem = leftItem;
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 //返回按钮
@@ -78,7 +61,20 @@
 //主页面显示
 - (void)initSubView
 {
+    _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight - kNavigationBarHeight)];
+    _bgScrollView.backgroundColor = [UIColor lightGrayColor];
+    _bgScrollView.showsVerticalScrollIndicator = NO;
+    [self.view addSubview:_bgScrollView];
     
+    UIImage *image = [UIImage imageNamed:@"一分钟了解微胜宝"];
+    float imageWidth = image.size.width;
+    float imageHeight = image.size.height;
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenWidth * imageHeight / imageWidth)];
+    imageView.image = image;
+    [_bgScrollView addSubview:imageView];
+    
+    _bgScrollView.contentSize = CGSizeMake(KScreenWidth, KScreenWidth * imageHeight / imageWidth);
 }
 
 @end

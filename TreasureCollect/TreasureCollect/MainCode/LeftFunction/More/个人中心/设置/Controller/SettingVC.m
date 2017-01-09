@@ -352,11 +352,11 @@
     {
         NSLogTC(@"退出登录");
         
+        BOOL isLogin = NO;
+        [[NSUserDefaults standardUserDefaults] setBool:isLogin forKey:@"isLogin"];
+        [[NSUserDefaults standardUserDefaults] synchronize];//同步本地数据
         //子线程中保存用户数据，主线程放回首页
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            BOOL isLogin = NO;
-            [[NSUserDefaults standardUserDefaults] setBool:isLogin forKey:@"isLogin"];
-            [[NSUserDefaults standardUserDefaults] synchronize];//同步本地数据
             
             //主线程
             dispatch_async(dispatch_get_main_queue(), ^{
