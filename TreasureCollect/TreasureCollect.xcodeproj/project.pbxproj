@@ -173,6 +173,8 @@
 		92DF838F1E03E71A00674364 /* AdviceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DF838E1E03E71A00674364 /* AdviceVC.m */; };
 		92DF83921E03E7F900674364 /* UnderStandVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DF83911E03E7F900674364 /* UnderStandVC.m */; };
 		9D7204B0697FFCC7D0153A8D /* libPods-TreasureCollect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */; };
+		AF8960C41E2374260084817E /* AreaData.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8960C21E2374260084817E /* AreaData.m */; };
+		AF8960C51E2374260084817E /* areaData.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF8960C31E2374260084817E /* areaData.plist */; };
 		F863AE371E14FCA60051EE32 /* icon_show.png in Resources */ = {isa = PBXBuildFile; fileRef = F863AE351E14FCA60051EE32 /* icon_show.png */; };
 		F863AE381E14FCA60051EE32 /* icon_show1.png in Resources */ = {isa = PBXBuildFile; fileRef = F863AE361E14FCA60051EE32 /* icon_show1.png */; };
 		F8765EAD1E13592C00060948 /* question@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8765EAA1E13592C00060948 /* question@2x.png */; };
@@ -312,7 +314,7 @@
 		1829DA3D1DFAB0E900405DF2 /* YYTimeLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTimeLineModel.h; sourceTree = "<group>"; };
 		1829DA3E1DFAB0E900405DF2 /* YYTimeLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTimeLineModel.m; sourceTree = "<group>"; };
 		1829DA421DFAB0F300405DF2 /* AppServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppServer.h; sourceTree = "<group>"; };
-		1829DA431DFAB0F300405DF2 /* AppServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppServer.m; sourceTree = "<group>"; };
+		1829DA431DFAB0F300405DF2 /* AppServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppServer.m; path = ../HomePage/Home/AppServer.m; sourceTree = "<group>"; };
 		1829DA451DFAB12B00405DF2 /* dayData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dayData.plist; sourceTree = "<group>"; };
 		1829DA461DFAB12B00405DF2 /* fiveData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fiveData.plist; sourceTree = "<group>"; };
 		1829DA471DFAB12B00405DF2 /* minuteData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = minuteData.plist; sourceTree = "<group>"; };
@@ -483,6 +485,9 @@
 		92DF83901E03E7F900674364 /* UnderStandVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnderStandVC.h; path = TreasureCollect/MainCode/HomePage/Home/Controller/UnderStandVC.h; sourceTree = SOURCE_ROOT; };
 		92DF83911E03E7F900674364 /* UnderStandVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnderStandVC.m; path = TreasureCollect/MainCode/HomePage/Home/Controller/UnderStandVC.m; sourceTree = SOURCE_ROOT; };
 		973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.debug.xcconfig"; sourceTree = "<group>"; };
+		AF8960C11E2374260084817E /* AreaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaData.h; sourceTree = "<group>"; };
+		AF8960C21E2374260084817E /* AreaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaData.m; sourceTree = "<group>"; };
+		AF8960C31E2374260084817E /* areaData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = areaData.plist; sourceTree = "<group>"; };
 		EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TreasureCollect.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F863AE351E14FCA60051EE32 /* icon_show.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_show.png; sourceTree = "<group>"; };
 		F863AE361E14FCA60051EE32 /* icon_show1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_show1.png; sourceTree = "<group>"; };
@@ -638,6 +643,7 @@
 			isa = PBXGroup;
 			children = (
 				18273CDE1DFA9E2400855FCB /* Common.h */,
+				AF8960C01E2374260084817E /* 地址数据 */,
 				18BFDDE11E10FF15006CF255 /* PingPP */,
 				187EDC641E0B78CA00941A57 /* 报文加密和解密 */,
 				926C35AD1E027CBC005BF715 /* 清理缓存 */,
@@ -674,6 +680,7 @@
 		1829D9BF1DFAA62D00405DF2 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				1829DA431DFAB0F300405DF2 /* AppServer.m */,
 				1829D9C11DFAA78300405DF2 /* BaseViewController.h */,
 				1829D9C21DFAA78300405DF2 /* BaseViewController.m */,
 				1829D9C31DFAA78300405DF2 /* BaseViewController.xib */,
@@ -702,7 +709,6 @@
 			isa = PBXGroup;
 			children = (
 				1829DA421DFAB0F300405DF2 /* AppServer.h */,
-				1829DA431DFAB0F300405DF2 /* AppServer.m */,
 				1829D9CB1DFAA99A00405DF2 /* Controller */,
 				1829D9CC1DFAA99A00405DF2 /* Model */,
 				1829D9CD1DFAA99A00405DF2 /* View */,
@@ -1530,6 +1536,16 @@
 			path = "银元券";
 			sourceTree = "<group>";
 		};
+		AF8960C01E2374260084817E /* 地址数据 */ = {
+			isa = PBXGroup;
+			children = (
+				AF8960C11E2374260084817E /* AreaData.h */,
+				AF8960C21E2374260084817E /* AreaData.m */,
+				AF8960C31E2374260084817E /* areaData.plist */,
+			);
+			path = "地址数据";
+			sourceTree = "<group>";
+		};
 		F8A88B7D1E1CA394003CB922 /* 直播 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1724,6 +1740,7 @@
 				F8DDB5991E1F98F4009AB7D6 /* 一分钟了解微胜宝.png in Resources */,
 				F8A88BAA1E1CA394003CB922 /* img_head_portrait@3x.png in Resources */,
 				922CEF901E01504100C67B1F /* 个人资产.png in Resources */,
+				AF8960C51E2374260084817E /* areaData.plist in Resources */,
 				187C5BD81E1222200043A1A1 /* green06.png in Resources */,
 				18412FBA1E092014008B20C6 /* ticket.png in Resources */,
 				188F09431DFE3C6F004E1284 /* RechargeController.xib in Resources */,
@@ -1941,6 +1958,7 @@
 				92442FD01DFE785F008BF127 /* PayButton.m in Sources */,
 				1829DA2E1DFAAFE000405DF2 /* YYStockViewMaskView.m in Sources */,
 				926C35B01E028242005BF715 /* CacheCleaner.m in Sources */,
+				AF8960C41E2374260084817E /* AreaData.m in Sources */,
 				1829DA2B1DFAAFE000405DF2 /* YYKlineView.m in Sources */,
 				92667A011DFF907C00982041 /* MyBuyViewController.m in Sources */,
 			);

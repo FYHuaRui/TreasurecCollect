@@ -78,6 +78,7 @@
     //图片上添加响应手势
     UITapGestureRecognizer  *titleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(forgetTapClicked:)];
     [titleImage addGestureRecognizer:titleTap];
+    
 }
 
 
@@ -90,7 +91,6 @@
 {
     NSLogTC(@"图片点击了");
 }
-
 
 
 @end
