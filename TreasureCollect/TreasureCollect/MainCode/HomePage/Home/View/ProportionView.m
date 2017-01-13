@@ -61,7 +61,7 @@
     _redLabel.text = @"买涨：50%";
     _redLabel.textColor = [UIColor whiteColor];
     _redLabel.textAlignment = NSTextAlignmentLeft;
-    _redLabel.font = [UIFont systemFontOfSize:11];
+    _redLabel.font =  [UIFont fontWithName:@"Helvetica-Bold" size:11];
     [self addSubview:_redLabel];
     
     //买跌的比例视图
@@ -77,7 +77,7 @@
     _greenLabel.text = @"买跌：50%";
     _greenLabel.textColor = [UIColor whiteColor];
     _greenLabel.textAlignment = NSTextAlignmentRight;
-    _greenLabel.font = [UIFont systemFontOfSize:11];
+    _greenLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:11];
     [self addSubview:_greenLabel];
     
 

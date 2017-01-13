@@ -8,20 +8,17 @@
 
 #import "BaseViewController.h"
 
-#import "UIColor+YYStockTheme.h"
-#import "YYFiveRecordModel.h"
-#import "YYLineDataModel.h"
-#import "YYTimeLineModel.h"
-#import "AppServer.h"
-#import "YYStock.h"
-
 #import "RechargeController.h"
 #import "TicketViewController.h"
+
 #import "LeftMore.h"
 #import "ProportionView.h"
 #import "HRLivePlayer.h"
 
-@interface HomeController : BaseViewController<UIPickerViewDelegate,UIPickerViewDataSource,GCDAsyncSocketDelegate>{
+#import "KlineModel.h"
+#import "KlineView.h"
+
+@interface HomeController : BaseViewController<UIPickerViewDelegate,UIPickerViewDataSource,GCDAsyncSocketDelegate,lineDataSource>{
 
     UIButton *_leftButton;
     
@@ -51,6 +48,8 @@
     
 }
 
-@property (nonatomic, retain) LeftMore      *leftMore;//更多视图
+@property (nonatomic, retain) LeftMore  *leftMore;//更多视图
+@property (nonatomic, strong)NSArray    *KlineModels;
+@property (nonatomic, assign)NSInteger   index;
 
 @end

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "AdDetailController.h"
+
 @interface AdvertiseView : UIView<UIScrollViewDelegate>{
 
     UIScrollView *_advertiseView;

@@ -89,8 +89,26 @@
 - (void)imageClick:(UIButton *)button{
 
     NSLogTC(@"buttonTag:%ld",button.tag);
+    AdDetailController *ADVC = [[AdDetailController alloc] init];
+    [[self viewController].navigationController pushViewController:ADVC
+                                                          animated:YES ];
 
 }
+
+//获取父视图的Controller
+- (UIViewController *)viewController
+{
+    for (UIView *next = [self superview]; next; next = next.superview)
+    {
+        UIResponder *nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]])
+        {
+            return (UIViewController*)nextResponder;
+        }
+    }
+    return nil;
+}
+
 
 - (void)singleTagAction:(UITapGestureRecognizer *)singletap{
 
