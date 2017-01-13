@@ -79,8 +79,21 @@
     UITapGestureRecognizer  *titleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(forgetTapClicked:)];
     [titleImage addGestureRecognizer:titleTap];
     
+    //直播列表
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    self.tableView.backgroundColor = [UIColor cyanColor];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self.view addSubview:self.tableView];
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(titleImage.mas_bottom).offset(0);
+        make.left.and.bottom.right.equalTo(self.view).offset(0);
+    }];
+    
+    //初始化数据源
+    self.aryData = [NSMutableArray array];
 }
-
 
 /*
  @功能：头图片首饰响应方法
@@ -92,5 +105,43 @@
     NSLogTC(@"图片点击了");
 }
 
+
+#pragma mark - UITableViewDataSource
+//tableView每行显示的内容
+- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"customcell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell.backgroundColor = [UIColor blackColor];
+    }
+    return cell;
+}
+
+//tableView的行数
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 0;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+#pragma mark - UITableViewDelegate
+//tableViewCell每行高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    return 200;
+}
+
+//选择表格视图某一行调用的方法
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
 
 @end
