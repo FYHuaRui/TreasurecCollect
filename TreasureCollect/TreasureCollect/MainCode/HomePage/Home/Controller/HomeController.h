@@ -17,26 +17,35 @@
 
 #import "KlineModel.h"
 #import "KlineView.h"
+#import "DataView.h"
 
 @interface HomeController : BaseViewController<UIPickerViewDelegate,UIPickerViewDataSource,GCDAsyncSocketDelegate,lineDataSource>{
 
-    UIButton *_leftButton;
+    UIButton    *_leftButton;
     
-    UIButton *_rechargeButton;
+    UIButton    *_rechargeButton;
     
-    UIButton *_ticketButton;
+    UIButton    *_ticketButton;
     
     UILabel     *_ticketCountButton;
     
-    UIButton *_liveShowButton;
+    UIButton    *_liveShowButton;
     
-    UILabel  *_liveShowLabel;
+    UILabel     *_liveShowLabel;
     
-    UILabel  *_assetsLabel;
+    UILabel     *_assetsLabel;
+    
+    DataView     *_dataView;
+    
+    UIView      *_lineView;
+    
+    KlineView   *_kline;
+    
+    UIButton    *_lineKindButton;
     
     UIPickerView    *_countPicker;
     
-    NSArray  *_titleArr;
+    NSArray     *_titleArr;
     
     UIButton    *_buyButton;
     

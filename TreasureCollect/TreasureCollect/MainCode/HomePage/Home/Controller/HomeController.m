@@ -30,22 +30,22 @@
  */
 - (void)fetchData {
 
-//    //socket
-//    _asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self
-//                                              delegateQueue:dispatch_get_main_queue()];
-//    
-//    NSError *err;
-//    
-//    //socket连接
-//    [_asyncSocket connectToHost:@"43.254.148.72" onPort:9103 error:&err];
-//    
-//    if (err != nil)
-//        
-//    {
-//        
-//        NSLog(@"%@",err);
-//
-//    }
+    //socket
+    _asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self
+                                              delegateQueue:dispatch_get_main_queue()];
+    
+    NSError *err;
+    
+    //socket连接
+    [_asyncSocket connectToHost:@"43.254.148.72" onPort:9103 error:&err];
+    
+    if (err != nil)
+        
+    {
+        
+        NSLog(@"%@",err);
+
+    }
     
 }
 
@@ -102,6 +102,7 @@
     if (jsonError == nil) {
         
         NSLog(@"字典%@",dictionary);
+        _dataView.dataDic = dictionary;
         
 //        [AppServer Get:@"minute" params:nil success:^(NSDictionary *response) {
 //            NSMutableArray *array = [NSMutableArray array];
@@ -157,13 +158,13 @@
 //                [responseDic writeToFile:[[NSBundle mainBundle] pathForResource:@"minuteData" ofType:@"plist"] atomically:YES];
 //                
 //            }
-//            
-//            _proportionView.proportionNum = 0.3;
-//            
+        
+
+            
 //        } fail:^(NSDictionary *info) {
 //            
 //        }];
-        
+        _proportionView.proportionNum = 0.3;
         [_asyncSocket readDataWithTimeout:-1 tag:0];
         
     }else{
@@ -310,16 +311,6 @@
     [greenImage setImage:[UIImage imageNamed:@"downtrangle"]];
     [_saleButton addSubview:greenImage];
     
-//    UIWebView *testWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, _leftButton.bottom + 12.f, KScreenWidth, _buyButton.top - 40.f - _leftButton.bottom - 12.f)];
-//    testWebView.backgroundColor = [UIColor whiteColor];
-//    testWebView.scrollView.scrollEnabled = NO;
-//    [testWebView sizeToFit];
-//    [self.view addSubview:testWebView];
-//    
-//    NSString *filePath = [[NSBundle mainBundle]pathForResource:@"kline" ofType:@"html"];
-//    NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-//    [testWebView loadHTMLString:htmlString baseURL:[NSURL URLWithString:filePath]];
-//
     KlineModel *model = [KlineModel new];
     __weak HomeController *selfWeak = self;
     [model GetModelArray:^(NSArray *dataArray) {
@@ -327,25 +318,57 @@
         strongSelf.KlineModels = dataArray;
     }];
     
-    KlineView *kline = [[KlineView alloc] initWithFrame:CGRectMake(0, _leftButton.bottom + 12.f, KScreenWidth, _buyButton.top - 40.f - _leftButton.bottom - 12.f) Delegate:self];
+    _lineView = [[UIView alloc] initWithFrame:CGRectMake(0, _leftButton.bottom + 66.f, KScreenWidth, _buyButton.top - 40.f - _leftButton.bottom - 72.f)];
+    _lineView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:_lineView];
     
-    kline.ShowTrackingCross = YES;
-    //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    //        kline.ShowTrackingCross = NO;
-    //    });
+    _kline = [[KlineView alloc] initWithFrame:CGRectMake(0, 0, _lineView.width, _lineView.height) Delegate:self];
+    _kline.ShowTrackingCross = YES;
+    [_lineView addSubview:_kline];
     
-    [self.view addSubview:kline];
+    _lineKindButton = [[UIButton alloc] initWithFrame:CGRectMake(KScreenWidth - 64.f, _leftButton.bottom + 84.f,44.f, 24.f)];
+    _lineKindButton.layer.cornerRadius = 3.f;
+    _lineKindButton.layer.masksToBounds = YES;
+    [_lineKindButton setTitle:@"五分图" forState:UIControlStateNormal];
+    [_lineKindButton setTitle:@"闪电图" forState:UIControlStateSelected];
+    _lineKindButton.titleLabel.font = [UIFont systemFontOfSize:12];
+    [_lineKindButton setBackgroundColor:[UIColor redColor]
+                               forState:UIControlStateNormal];
+    [_lineKindButton setBackgroundColor:[UIColor redColor]
+                               forState:UIControlStateSelected];
+    [_lineKindButton addTarget:self
+                        action:@selector(lineButtonAction:)
+              forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_lineKindButton];
+    
+    _dataView = [[DataView alloc] initWithFrame:CGRectMake(0, _leftButton.bottom + 2, KScreenWidth, 64.f)];
+    _dataView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:_dataView];
+    
     //进度条
-    _proportionView = [[ProportionView alloc] initWithFrame:CGRectMake(0, kline.bottom , KScreenWidth, 26.f)];
+    UIImage *gifimage = [UIImage imageNamed:@"red01"];
+    _proportionView = [[ProportionView alloc] initWithFrame:CGRectMake(0, _lineView.bottom , KScreenWidth, KScreenWidth * gifimage.size.height / gifimage.size.width)];
     _proportionView.backgroundColor = [UIColor yellowColor];
     _proportionView.userInteractionEnabled = NO;
     [self.view addSubview:_proportionView];
     
-//    //更多按钮展示界面
-//    self.leftMore = [[LeftMore alloc] initWithFrame:CGRectMake(-150, 20, 150, 300)];
-//    self.leftMore.hidden = YES;//先设置隐藏
-//    [self.view addSubview:self.leftMore];
+}
+
+#pragma mark - k线视图切换
+- (void)lineButtonAction:(UIButton *)button{
+
+    if (button.selected == YES) {
+        
+        button.selected = NO;
+        _kline.hidden = NO;
+        
+    }else{
     
+        button.selected = YES;
+        _kline.hidden = YES;
+    
+    }
+
 }
 
 

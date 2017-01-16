@@ -49,6 +49,7 @@
 - (void)initViews{
     
     //买涨的比例视图
+    
     _redImage = [[UIImageView alloc] initWithFrame:CGRectMake( -self.width / 2, 0, self.width, self.height)];
     [self addSubview:_redImage];
     _redImage.animationImages = @[[UIImage imageNamed:@"red01"],[UIImage imageNamed:@"red02"],[UIImage imageNamed:@"red03"],[UIImage imageNamed:@"red04"],[UIImage imageNamed:@"red05"],[UIImage imageNamed:@"red06"],[UIImage imageNamed:@"red07"],[UIImage imageNamed:@"red08"]];
