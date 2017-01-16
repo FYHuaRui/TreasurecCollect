@@ -59,6 +59,10 @@ static int smYzmId = 0;
 //内容加载
 - (void)initSubViews
 {
+    //辞去键盘手势
+    UITapGestureRecognizer *resignTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignTap:)];
+    [self.view addGestureRecognizer:resignTap];
+    
     //手机号的输入框
     UIImageView *phoneImage = [[UIImageView alloc] initWithFrame:CGRectMake(25, 60, self.view.frame.size.width-50, 40)];
     phoneImage.image = [UIImage imageNamed:@"icon_iphon"];
@@ -184,6 +188,7 @@ static int smYzmId = 0;
     [self.view addSubview:nextBtn];
     
 }
+
 
 //返回按钮
 - (void)returnClicked
