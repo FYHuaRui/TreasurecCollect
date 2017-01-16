@@ -14,8 +14,8 @@
 
 @implementation ForgetPasswordVC
 
-//第一次页面加载进行验证码请求的updId
-static int updId = 0;
+//第一次页面加载进行验证码请求的smYzmId
+static int smYzmId = 0;
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -216,15 +216,14 @@ static int updId = 0;
             //网络请求验证码
             NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETYZM];
             NSMutableDictionary *params = [NSMutableDictionary dictionary];
-            [params setObject:[NSNumber numberWithInt:updId] forKey:@"updId"];
+            [params setObject:[NSNumber numberWithInt:smYzmId] forKey:@"smYzmId"];
             [params setObject:[NSString stringWithString:self.phoneField.text] forKey:@"telephone"];
             NSLog(@"%@",params);
             [HttpTool post:url params:params success:^(id json) {
                 NSLog(@"%@",json);
-                NSArray *DataAry = [json objectForKey:@"NewId"];
+                NSArray *DataAry = [json objectForKey:@"NewSmYzm"];
                 NSDictionary *newId = [DataAry firstObject];
-                updId = [[newId objectForKey:@"updId"] intValue];
-                NSLogTC(@"哈哈哈哈哈哈哈哈哈：%d",updId);
+                smYzmId = [[newId objectForKey:@"smYzmId"] intValue];
                 NSArray *dataArr = [json objectForKey:@"RspMsg"];
                 NSDictionary *imageDic = [dataArr firstObject];
                 NSString *runMessage = [imageDic objectForKey:@"runMsg"];
@@ -277,9 +276,9 @@ static int updId = 0;
                         //网络请求验证码
                         NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,CHANGEPW];
                         NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                        [params setObject:[NSNumber numberWithInt:updId] forKey:@"updId"];
+                        [params setObject:[NSNumber numberWithInt:smYzmId] forKey:@"smYzmId"];
+                        [params setObject:[NSString stringWithString:self.messageField.text] forKey:@"smYzm"];
                         [params setObject:[NSString stringWithString:self.phoneField.text] forKey:@"telephone"];
-                        [params setObject:[NSString stringWithString:self.messageField.text] forKey:@"shortMsgYzm"];
                         [params setObject:[NSString stringWithString:self.password.text] forKey:@"password"];
                         [params setObject:[NSString stringWithString:self.password2.text] forKey:@"pwdConfirm"];
                         [HttpTool post:url params:params success:^(id json) {

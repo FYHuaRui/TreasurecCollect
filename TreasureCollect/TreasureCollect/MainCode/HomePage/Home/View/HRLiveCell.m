@@ -10,6 +10,17 @@
 
 @implementation HRLiveCell
 
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self)
+    {
+        //自定义cell
+        [self initSubView];
+    }
+    return self;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -19,6 +30,16 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+/*
+ @功能:自定义cell
+ @参数：暂无
+ @返回值：无
+ */
+- (void)initSubView
+{
+    
 }
 
 @end

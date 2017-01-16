@@ -35,7 +35,7 @@
 //导航栏
 - (void)DaoHang
 {
-    self.title = @"了解发财";
+    self.title = @"了解微胜宝";
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.hidden = NO;

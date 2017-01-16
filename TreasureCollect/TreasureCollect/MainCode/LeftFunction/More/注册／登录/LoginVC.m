@@ -18,8 +18,8 @@
 @implementation LoginVC
 
 //第一次页面加载进行验证码请求的regID
-static int logID = 0;
-static int logID2 = 0;
+static int imgYzmId = 0;
+static int smYzmId = 0;
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -147,16 +147,16 @@ static int logID2 = 0;
     //网络请求验证码
     NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL4];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:[NSNumber numberWithInt:logID] forKey:@"logId"];
+    [params setObject:[NSNumber numberWithInt:imgYzmId] forKey:@"imgYzmId"];
     [HttpTool post:url params:params success:^(id json) {
         NSLog(@"%@",json);
-        NSArray *dataArr = [json objectForKey:@"strImgYzm"];
+        NSArray *dataArr = [json objectForKey:@"NewImgYzm"];
         NSDictionary *imageDic = [dataArr firstObject];
-        NSString *imageString = [imageDic objectForKey:@"ImageYzm"];
+        NSString *imageString = [imageDic objectForKey:@"imgBase64"];
         NSData *imageData = [GTMBase64 decodeString:imageString];
         UIImage *image = [UIImage imageWithData:imageData];
         [imageBtn setBackgroundImage:image forState:UIControlStateNormal];
-        logID = [[imageDic objectForKey:@"logId"] intValue];
+        imgYzmId = [[imageDic objectForKey:@"imgYzmId"] intValue];
     } failure:^(NSError *error) {
         NSLogTC(@"获取验证码失败：%@",error);
     }];
@@ -179,7 +179,6 @@ static int logID2 = 0;
     [checkBtn setBackgroundImage:[UIImage imageNamed:@"icon_show"] forState:UIControlStateNormal];
     [checkBtn addTarget:self action:@selector(checkBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [passwordImage addSubview:checkBtn];
-    
     
     //登录按钮
     UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -361,15 +360,15 @@ static int logID2 = 0;
     //网络请求验证码
     NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL4];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:[NSNumber numberWithInt:logID] forKey:@"logId"];
+    [params setObject:[NSNumber numberWithInt:imgYzmId] forKey:@"imgYzmId"];
     [HttpTool post:url params:params success:^(id json) {
-        NSArray *dataArr = [json objectForKey:@"strImgYzm"];
+        NSArray *dataArr = [json objectForKey:@"NewImgYzm"];
         NSDictionary *imageDic = [dataArr firstObject];
-        NSString *imageString = [imageDic objectForKey:@"ImageYzm"];
+        NSString *imageString = [imageDic objectForKey:@"imgBase64"];
         NSData *imageData = [GTMBase64 decodeString:imageString];
         UIImage *image = [UIImage imageWithData:imageData];
         [button setBackgroundImage:image forState:UIControlStateNormal];
-        logID = [[imageDic objectForKey:@"logId"] intValue];
+        imgYzmId = [[imageDic objectForKey:@"imgYzmId"] intValue];
     } failure:^(NSError *error) {
         NSLogTC(@"获取验证码失败：%@",error);
     }];
@@ -485,25 +484,22 @@ static int logID2 = 0;
                 //网络请求验证码
                 NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,LOGIN_Password];
                 NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                [params setObject:[NSNumber numberWithInt:logID] forKey:@"logId"];
+                [params setObject:[NSNumber numberWithInt:imgYzmId] forKey:@"imgYzmId"];
+                [params setObject:[NSString stringWithString:self.pictureField.text] forKey:@"imgYzm"];
                 [params setObject:[NSString stringWithString:self.phoneField.text] forKey:@"telephone"];
-                [params setObject:[NSString stringWithString:self.pictureField.text] forKey:@"stringYzm"];
                 [params setObject:[NSString stringWithString:self.password.text] forKey:@"password"];
                 NSLog(@"%@",params);
                 [HttpTool post:url params:params success:^(id json) {
                     NSLog(@"%@",json);
-                    
-                    
-                    
                     NSArray *dataArr = [json objectForKey:@"RspMsg"];
                     NSDictionary *imageDic = [dataArr firstObject];
                     NSString *runMessage = [imageDic objectForKey:@"runMsg"];
                     int a = [[imageDic objectForKey:@"runCode"] intValue];
                     if (a == 200001)//登录成功!
                     {
-                        NSArray *userAry = [json objectForKey:@"userInfo"];
+                        NSArray *userAry = [json objectForKey:@"CurrUser"];
                         NSDictionary *userDic = [userAry firstObject];
-                        NSString *PhoneStr = [userDic objectForKey:@"telePhone"];
+                        NSString *PhoneStr = [userDic objectForKey:@"telephone"];
                         
                         //返回的手机号与输入的手机号相同时，返回首页,并保存userId／nikeName
                         if ([PhoneStr isEqualToString:self.phoneField.text] || [PhoneStr isEqualToString:self.phoneField2.text])
@@ -596,15 +592,22 @@ static int logID2 = 0;
             //网络请求验证码
             NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,LOGIN_MSG];
             NSMutableDictionary *params = [NSMutableDictionary dictionary];
-            [params setObject:[NSNumber numberWithInt:logID2] forKey:@"logId"];
+            [params setObject:[NSNumber numberWithInt:smYzmId] forKey:@"smYzmId"];
             [params setObject:[NSString stringWithString:self.phoneField2.text] forKey:@"telephone"];
-            NSLog(@"%@",params);
             [HttpTool post:url params:params success:^(id json) {
-                NSLog(@"%@",json);
-                NSArray *dataArr = [json objectForKey:@"NewId"];
+                NSLog(@"123123%@",json);
+                NSArray *dataArr = [json objectForKey:@"NewSmYzm"];
                 NSDictionary *imageDic = [dataArr firstObject];
-                logID2 = [[imageDic objectForKey:@"logId"] intValue];
-                NSLog(@"%d",logID2);
+                smYzmId = [[imageDic objectForKey:@"smYzmId"] intValue];
+                
+                NSArray *messageAry = [json objectForKey:@"RspMsg"];
+                NSDictionary *messageDic = [messageAry firstObject];
+                NSString *runMessage = [messageDic objectForKey:@"runMsg"];
+                int a = [[messageDic objectForKey:@"runCode"] intValue];
+                if (a == 110004)//登录成功!
+                {
+                    [self hideSuccessHUD:runMessage];
+                }
             } failure:^(NSError *error) {
                 NSLogTC(@"获取验证码失败：%@",error);
                 [self hideSuccessHUD:@"验证码获取失败"];
@@ -640,9 +643,9 @@ static int logID2 = 0;
                 //网络请求验证码
                 NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,LOGIN];
                 NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                [params setObject:[NSNumber numberWithInt:logID2] forKey:@"logId"];
+                [params setObject:[NSNumber numberWithInt:smYzmId] forKey:@"smYzmId"];
+                [params setObject:[NSString stringWithString:self.messageField.text] forKey:@"smYzm"];
                 [params setObject:[NSString stringWithString:self.phoneField2.text] forKey:@"telephone"];
-                [params setObject:[NSString stringWithString:self.messageField.text] forKey:@"shortMsgYzm"];
                 NSLog(@"%@",params);
                 [HttpTool post:url params:params success:^(id json) {
                     NSLog(@"%@",json);
@@ -652,12 +655,12 @@ static int logID2 = 0;
                     int a = [[imageDic objectForKey:@"runCode"] intValue];
                     if (a == 200001)//登录成功!
                     {
-                        NSArray *userAry = [json objectForKey:@"userInfo"];
+                        NSArray *userAry = [json objectForKey:@"CurrUser"];
                         NSDictionary *userDic = [userAry firstObject];
-                        NSString *PhoneStr = [userDic objectForKey:@"telePhone"];
+                        NSString *PhoneStr = [userDic objectForKey:@"telephone"];
                         
                         //返回的手机号与输入的手机号相同时，返回首页,并保存userId／nikeName
-                        if (PhoneStr == self.phoneField.text || PhoneStr == self.phoneField2.text)
+                        if ([PhoneStr isEqualToString:self.phoneField.text] || [PhoneStr isEqualToString:self.phoneField2.text])
                         {
                             //提醒用户登录成功
                             [self hideSuccessHUD:runMessage];
@@ -682,8 +685,6 @@ static int logID2 = 0;
                         {
                             [self hideSuccessHUD:@"登录失败，请重新登录!"];
                         }
-                        
-                        
                     }
                     if (a == 110040)//该手机号没有注册, 不能用来登录
                     {
@@ -699,7 +700,7 @@ static int logID2 = 0;
                     }
                 } failure:^(NSError *error) {
                     NSLogTC(@"获取验证码失败：%@",error);
-                    [self hideSuccessHUD:@"验证码获取失败"];
+                    [self hideSuccessHUD:@"登陆连接错误"];
                 }];
             }
         }

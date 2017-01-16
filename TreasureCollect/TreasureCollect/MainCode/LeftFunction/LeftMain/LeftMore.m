@@ -298,37 +298,37 @@
 //选择
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
+    if (indexPath.row == 0)//合买大厅
     {
         HMViewController *hmVC = [[HMViewController alloc] init];
         [[self viewController].navigationController pushViewController:hmVC animated:YES];
     }
     
-    if (indexPath.row == 1)
+    if (indexPath.row == 1)//个人中心
     {
         PersonalViewController *pVC = [[PersonalViewController alloc] init];
         [[self viewController].navigationController pushViewController:pVC animated:YES];
     }
     
-    if (indexPath.row == 2)
+    if (indexPath.row == 2)//分享领券
     {
         ShareTicketVC *shareVC = [[ShareTicketVC alloc] init];
         [[self viewController].navigationController pushViewController:shareVC animated:YES];
     }
     
-    if (indexPath.row == 3)
+    if (indexPath.row == 3)//活动详情
     {
         AdvertiseView *view = [[AdvertiseView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight)];
         [[self viewController].view addSubview:view];
     }
     
-    if (indexPath.row == 4)
+    if (indexPath.row == 4)//建议反馈
     {
         AdviceVC *adviceVC = [[AdviceVC alloc] init];
         [[self viewController].navigationController pushViewController:adviceVC animated:YES];
     }
     
-    if (indexPath.row == 5)
+    if (indexPath.row == 5)//了解微胜宝
     {
         UnderStandVC *underVC = [[UnderStandVC alloc] init];
         [[self viewController].navigationController pushViewController:underVC animated:YES];

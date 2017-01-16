@@ -14,8 +14,11 @@
 
 @implementation RegisterVC
 
-//第一次页面加载进行验证码请求的regID
-static int regID = 0;
+//第一次页面加载进行验证码请求的图片验证码ID
+static int imgYzmId = 0;
+
+//第一次页面加载进行验证码请求的短信验证码ID
+static int smYzmId = 0;
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -98,15 +101,15 @@ static int regID = 0;
     //网络请求验证码
     NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:[NSNumber numberWithInt:regID] forKey:@"regId"];
+    [params setObject:[NSNumber numberWithInt:imgYzmId] forKey:@"imgYzmId"];
     [HttpTool post:url params:params success:^(id json) {
-        NSArray *dataArr = [json objectForKey:@"strImgYzm"];
+        NSArray *dataArr = [json objectForKey:@"NewImgYzm"];
         NSDictionary *imageDic = [dataArr firstObject];
-        NSString *imageString = [imageDic objectForKey:@"ImageYzm"];
+        NSString *imageString = [imageDic objectForKey:@"imgBase64"];
         NSData *imageData = [GTMBase64 decodeString:imageString];
         UIImage *image = [UIImage imageWithData:imageData];
         [imageBtn setBackgroundImage:image forState:UIControlStateNormal];
-        regID = [[imageDic objectForKey:@"regId"] intValue];
+        imgYzmId = [[imageDic objectForKey:@"imgYzmId"] intValue];
     } failure:^(NSError *error) {
         NSLogTC(@"获取验证码失败：%@",error);
     }];
@@ -213,15 +216,15 @@ static int regID = 0;
     //网络请求验证码
     NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:[NSNumber numberWithInt:regID] forKey:@"regId"];
+    [params setObject:[NSNumber numberWithInt:imgYzmId] forKey:@"imgYzmId"];
     [HttpTool post:url params:params success:^(id json) {
-        NSArray *dataArr = [json objectForKey:@"strImgYzm"];
+        NSArray *dataArr = [json objectForKey:@"NewImgYzm"];
         NSDictionary *imageDic = [dataArr firstObject];
-        NSString *imageString = [imageDic objectForKey:@"ImageYzm"];
+        NSString *imageString = [imageDic objectForKey:@"imgBase64"];
         NSData *imageData = [GTMBase64 decodeString:imageString];
         UIImage *image = [UIImage imageWithData:imageData];
         [button setBackgroundImage:image forState:UIControlStateNormal];
-        regID = [[imageDic objectForKey:@"regId"] intValue];
+        imgYzmId = [[imageDic objectForKey:@"imgYzmId"] intValue];
     } failure:^(NSError *error) {
         NSLogTC(@"获取验证码失败：%@",error);
     }];
@@ -255,9 +258,10 @@ static int regID = 0;
                 //网络请求验证码
                 NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL2];
                 NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                [params setObject:[NSNumber numberWithInt:regID] forKey:@"regId"];
+                [params setObject:[NSNumber numberWithInt:imgYzmId] forKey:@"imgYzmId"];
+                [params setObject:[NSString stringWithString:self.pictureField.text] forKey:@"imgYzm"];
+                [params setObject:[NSNumber numberWithInt:smYzmId] forKey:@"smYzmId"];
                 [params setObject:[NSString stringWithString:self.phoneField.text] forKey:@"telephone"];
-                [params setObject:[NSString stringWithString:self.pictureField.text] forKey:@"stringYzm"];
                 NSLog(@"%@",params);
                 [HttpTool post:url params:params success:^(id json) {
                     NSLog(@"%@",json);
@@ -274,6 +278,10 @@ static int regID = 0;
                     {
                         [self hideSuccessHUD:runMessage];
                     }
+                    NSArray *MessageYzm = [json objectForKey:@"NewSmYzm"];
+                    NSDictionary *smYzmDic = [MessageYzm firstObject];
+                    smYzmId = [[smYzmDic objectForKey:@"smYzmId"] intValue];
+                    NSLogTC(@"%d", smYzmId);
                 } failure:^(NSError *error) {
                     NSLogTC(@"获取验证码失败：%@",error);
                     [self hideSuccessHUD:@"验证码获取失败"];
@@ -289,7 +297,7 @@ static int regID = 0;
     //网络请求验证码
     NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:[NSNumber numberWithInt:regID] forKey:@"regId"];
+    [params setObject:[NSNumber numberWithInt:imgYzmId] forKey:@"imgYzmId"];
     [HttpTool post:url params:params success:^(id json) {
         NSArray *dataArr = [json objectForKey:@"strImgYzm"];
         NSDictionary *imageDic = [dataArr firstObject];
@@ -298,7 +306,7 @@ static int regID = 0;
         UIImage *image = [UIImage imageWithData:imageData];
         UIButton *button = [self.view viewWithTag:9999];
         [button setBackgroundImage:image forState:UIControlStateNormal];
-        regID = [[imageDic objectForKey:@"regId"] intValue];
+        imgYzmId = [[imageDic objectForKey:@"imgYzmId"] intValue];
     } failure:^(NSError *error) {
         NSLogTC(@"获取验证码失败：%@",error);
     }];
@@ -368,10 +376,11 @@ static int regID = 0;
                             //网络请求验证码
                             NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,GETREGISTIMAGE_URL3];
                             NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                            [params setObject:[NSNumber numberWithInt:regID] forKey:@"regId"];
+                            [params setObject:[NSNumber numberWithInt:imgYzmId] forKey:@"imgYzmId"];
+                            [params setObject:[NSString stringWithString:self.pictureField.text] forKey:@"imgYzm"];
+                            [params setObject:[NSNumber numberWithInt:smYzmId] forKey:@"smYzmId"];
                             [params setObject:[NSString stringWithString:self.phoneField.text] forKey:@"telephone"];
-                            [params setObject:[NSString stringWithString:self.pictureField.text] forKey:@"stringYzm"];
-                            [params setObject:[NSString stringWithString:self.messageField.text] forKey:@"shortMsgYzm"];
+                            [params setObject:[NSString stringWithString:self.messageField.text] forKey:@"smYzm"];
                             [params setObject:[NSString stringWithString:self.password.text] forKey:@"password"];
                             [params setObject:[NSString stringWithString:self.password2.text] forKey:@"pwdConfirm"];
                             [HttpTool post:url params:params success:^(id json) {
