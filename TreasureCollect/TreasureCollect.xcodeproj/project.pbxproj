@@ -92,6 +92,7 @@
 		189286201E2C9FF900D99530 /* arrow_up_04.png in Resources */ = {isa = PBXBuildFile; fileRef = 189286141E2C9FF900D99530 /* arrow_up_04.png */; };
 		189286211E2C9FF900D99530 /* arrow_up_05.png in Resources */ = {isa = PBXBuildFile; fileRef = 189286151E2C9FF900D99530 /* arrow_up_05.png */; };
 		189286221E2C9FF900D99530 /* arrow_up_06.png in Resources */ = {isa = PBXBuildFile; fileRef = 189286161E2C9FF900D99530 /* arrow_up_06.png */; };
+		189286251E2CBF6900D99530 /* lightningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189286241E2CBF6900D99530 /* lightningView.m */; };
 		1896E5FD1E011DE80072DC50 /* leftTrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896E5FB1E011DE80072DC50 /* leftTrangle.png */; };
 		1896E5FE1E011DE80072DC50 /* rightTrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896E5FC1E011DE80072DC50 /* rightTrangle.png */; };
 		1896E6011E011EC10072DC50 /* ProportionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896E6001E011EC10072DC50 /* ProportionView.m */; };
@@ -348,6 +349,8 @@
 		189286141E2C9FF900D99530 /* arrow_up_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up_04.png; sourceTree = "<group>"; };
 		189286151E2C9FF900D99530 /* arrow_up_05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up_05.png; sourceTree = "<group>"; };
 		189286161E2C9FF900D99530 /* arrow_up_06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up_06.png; sourceTree = "<group>"; };
+		189286231E2CBF6900D99530 /* lightningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lightningView.h; sourceTree = "<group>"; };
+		189286241E2CBF6900D99530 /* lightningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lightningView.m; sourceTree = "<group>"; };
 		1896E5FB1E011DE80072DC50 /* leftTrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftTrangle.png; sourceTree = "<group>"; };
 		1896E5FC1E011DE80072DC50 /* rightTrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightTrangle.png; sourceTree = "<group>"; };
 		1896E5FF1E011EC10072DC50 /* ProportionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProportionView.h; sourceTree = "<group>"; };
@@ -937,6 +940,8 @@
 				188F9DA91E286BBD004A3BC2 /* averagePriceLayer.m */,
 				188F9DAA1E286BBD004A3BC2 /* KlineView.h */,
 				188F9DAB1E286BBD004A3BC2 /* KlineView.m */,
+				189286231E2CBF6900D99530 /* lightningView.h */,
+				189286241E2CBF6900D99530 /* lightningView.m */,
 				188F9DAC1E286BBD004A3BC2 /* lineDataSource.h */,
 				188F9DAD1E286BBD004A3BC2 /* lineView.h */,
 				188F9DAE1E286BBD004A3BC2 /* lineView.m */,
@@ -1448,7 +1453,7 @@
 				TargetAttributes = {
 					18273CA11DFA574F00855FCB = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 8H2B3Y5JNC;
+						DevelopmentTeam = 84W6EV66WN;
 						ProvisioningStyle = Automatic;
 					};
 					18273CBA1DFA574F00855FCB = {
@@ -1707,6 +1712,7 @@
 				188F9DB31E286BBD004A3BC2 /* KlineView.m in Sources */,
 				18273CAA1DFA574F00855FCB /* AppDelegate.m in Sources */,
 				92DF83891E03D81200674364 /* HRLivePlayer.m in Sources */,
+				189286251E2CBF6900D99530 /* lightningView.m in Sources */,
 				187EDC701E0B78CA00941A57 /* NSData+AES.m in Sources */,
 				AF8947DE1E273B04007A2AC6 /* HRLiveCell.m in Sources */,
 				18BFDDBA1E10CB39006CF255 /* NSString+GetNetip.m in Sources */,
@@ -1888,7 +1894,7 @@
 			baseConfigurationReference = 973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8H2B3Y5JNC;
+				DEVELOPMENT_TEAM = 84W6EV66WN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1929,7 +1935,7 @@
 			baseConfigurationReference = 5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8H2B3Y5JNC;
+				DEVELOPMENT_TEAM = 84W6EV66WN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

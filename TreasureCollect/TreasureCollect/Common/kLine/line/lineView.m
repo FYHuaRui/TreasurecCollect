@@ -115,6 +115,7 @@ static const NSInteger CellOffset = 10;
 }
 //计算最高最低
 - (void)CalculationHeightAndLowerFromArray:(NSArray *)array{
+    
     _lowerPrice = 0;
     _heightPrice = 0;
     [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -285,8 +286,6 @@ static const NSInteger CellOffset = 10;
     
 }
 
-
-
 //十字光标
 - (void)TrackingCrossFromPoint:(CGPoint)point{
     if (self.showArray.count == 0) {
@@ -341,6 +340,7 @@ static const NSInteger CellOffset = 10;
 
 
 - (void)setShowTrackingCross:(BOOL)showTrackingCross{
+    
     _showTrackingCross = showTrackingCross;
     if (showTrackingCross) {
         
@@ -356,12 +356,5 @@ static const NSInteger CellOffset = 10;
 - (void)removeLineLayer{
     [self.layer removeFromSuperlayer];
 }
-
-- (void)dealloc{
-    NSLog(@"11");
-}
-
-
-
 
 @end
