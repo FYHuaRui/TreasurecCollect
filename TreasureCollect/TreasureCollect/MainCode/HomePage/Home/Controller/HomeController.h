@@ -18,6 +18,7 @@
 #import "KlineModel.h"
 #import "KlineView.h"
 #import "DataView.h"
+#import "lightningView.h"
 
 @interface HomeController : BaseViewController<UIPickerViewDelegate,UIPickerViewDataSource,GCDAsyncSocketDelegate,lineDataSource>{
 
@@ -40,6 +41,7 @@
     UIView      *_lineView;
     
     KlineView   *_kline;
+    lightningView *_lightingView;
     
     UIButton    *_lineKindButton;
     

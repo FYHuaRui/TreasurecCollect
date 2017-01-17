@@ -54,7 +54,7 @@
     _titleLabel.textColor = [UIColor whiteColor];
     [self addSubview:_titleLabel];
     
-    _currentCount = [[UILabel alloc] initWithFrame:CGRectMake(8.f, _titleLabel.bottom , 90.f, 48.f)];
+    _currentCount = [[UILabel alloc] initWithFrame:CGRectMake(8.f, _titleLabel.bottom , 88.f, 48.f)];
     _currentCount.font = [UIFont systemFontOfSize:32];
     _currentCount.text = @"- -";
     _currentCount.textColor = [UIColor whiteColor];
@@ -73,7 +73,7 @@
                  [UIImage imageNamed:@"arrow_down_05"],
                  [UIImage imageNamed:@"arrow_down_06"]];
     
-    _animationImage = [[UIImageView alloc] initWithFrame:CGRectMake(_currentCount.right, _titleLabel.bottom + 12, 16.f, 24.f)];
+    _animationImage = [[UIImageView alloc] initWithFrame:CGRectMake(_currentCount.right, _titleLabel.bottom + 12, 20.f, 24.f)];
     _animationImage.backgroundColor = [UIColor clearColor];
     _animationImage.animationImages = _upArr;
     _animationImage.animationDuration = 1;
@@ -124,30 +124,34 @@
     if (_dataDic != dataDic) {
         
         _dataDic = dataDic;
-        _currentCount.text = [dataDic objectForKey:@"lastprice"];
-        if (_oldDic != nil) {
+        if (![[dataDic objectForKey:@"lastprice"] isKindOfClass:[NSNull class]]) {
             
-            float oldValue = [[_oldDic objectForKey:@"lastprice"] floatValue];
-            float newValue = [[_dataDic objectForKey:@"lastprice"] floatValue];
-            if (oldValue > newValue) {
+            _currentCount.text = [dataDic objectForKey:@"lastprice"];
+            if (_oldDic != nil) {
                 
-                _currentCount.textColor = [UIColor colorFromHexRGB:@"53B972"];
-                [_animationImage stopAnimating];
-                _animationImage.animationImages = _downArr;
-                [_animationImage startAnimating];
+                float oldValue = [[_oldDic objectForKey:@"lastprice"] floatValue];
+                float newValue = [[_dataDic objectForKey:@"lastprice"] floatValue];
+                if (oldValue > newValue) {
+                    
+                    //                _currentCount.textColor = [UIColor colorFromHexRGB:@"53B972"];
+                    [_animationImage stopAnimating];
+                    _animationImage.animationImages = _downArr;
+                    [_animationImage startAnimating];
+                    
+                }else{
+                    //
+                    //                _currentCount.textColor = [UIColor colorFromHexRGB:@"E35040"];
+                    [_animationImage stopAnimating];
+                    _animationImage.animationImages = _upArr;
+                    [_animationImage startAnimating];
+                    
+                }
                 
             }else{
-            
-                _currentCount.textColor = [UIColor colorFromHexRGB:@"E35040"];
-                [_animationImage stopAnimating];
-                _animationImage.animationImages = _upArr;
-                [_animationImage startAnimating];
                 
+                _currentCount.textColor = [UIColor colorFromHexRGB:@"E35040"];
             }
             
-        }else{
-            
-            _currentCount.textColor = [UIColor colorFromHexRGB:@"E35040"];
         }
         
         _oldDic = dataDic;

@@ -326,6 +326,10 @@
     _kline.ShowTrackingCross = YES;
     [_lineView addSubview:_kline];
     
+    _lightingView = [[lightningView alloc] initWithFrame:CGRectMake(0, 0, _lineView.width, _lineView.height) Delegate:self];
+    _lightingView.hidden = YES;
+    [_lineView addSubview:_lightingView];
+    
     _lineKindButton = [[UIButton alloc] initWithFrame:CGRectMake(KScreenWidth - 64.f, _leftButton.bottom + 84.f,44.f, 24.f)];
     _lineKindButton.layer.cornerRadius = 3.f;
     _lineKindButton.layer.masksToBounds = YES;
@@ -361,11 +365,13 @@
         
         button.selected = NO;
         _kline.hidden = NO;
+        _lightingView.hidden = YES;
         
     }else{
     
         button.selected = YES;
         _kline.hidden = YES;
+        _lightingView.hidden = NO;
     
     }
 

@@ -1,13 +1,12 @@
 //
-//  KlineView.m
-//  kline
+//  lightningView.m
+//  TreasureCollect
 //
-//  Created by HuangZiJia on 2016/11/1.
-//  Copyright © 2016年 GuangZhou Heng Rui Asset Management Co. Ltd. All rights reserved.
+//  Created by Apple on 2017/1/16.
+//  Copyright © 2017年 Apple. All rights reserved.
 //
 
-#import "KlineView.h"
-
+#import "lightningView.h"
 #import "KlineModel.h"
 #import "averagePriceLayer.h"
 
@@ -20,7 +19,7 @@ static const CGFloat scale_Min = 0.1;//最小缩放量
 static const CGFloat scale_Max = 1;//最大缩放量
 
 
-@interface KlineView()
+@interface lightningView()
 
 @property (nonatomic, strong)CAShapeLayer *ShapeLayer;//父layer
 
@@ -49,8 +48,7 @@ static const CGFloat scale_Max = 1;//最大缩放量
 
 @end
 
-@implementation KlineView
-
+@implementation lightningView
 
 #pragma mark- 基本设置
 - (instancetype)initWithFrame:(CGRect)frame Delegate:(id<lineDataSource>)delegate{
@@ -86,11 +84,11 @@ static const CGFloat scale_Max = 1;//最大缩放量
 
 #pragma mark- 响应手势
 - (void)panGesture:(UIPanGestureRecognizer *)pan{
-   
+    
     //十字光标开启 进入滑动显示对应的model数据
     if (self.isShowTrackingCross) {
         //记录初始点
-         CGPoint point = [pan locationInView:pan.view];
+        CGPoint point = [pan locationInView:pan.view];
         if (pan.state == UIGestureRecognizerStateChanged) {
             //移动十字光标
             [self TrackingCrossFromPoint:point];
@@ -103,7 +101,7 @@ static const CGFloat scale_Max = 1;//最大缩放量
     }else{
         //十字光标关闭 拉动显示图显示其它数据
         //判断左右移动
-         CGPoint point = [pan translationInView:pan.view];
+        CGPoint point = [pan translationInView:pan.view];
         //更改移动点
         [self offset_xPoint:point];
         
@@ -154,7 +152,7 @@ static const CGFloat scale_Max = 1;//最大缩放量
 - (void)offsetNormal{
     
     [self offset_xPoint:CGPointMake(0, 0)];
-
+    
 }
 
 //计算最高最低
@@ -217,14 +215,14 @@ static const CGFloat scale_Max = 1;//最大缩放量
         [self.KlineShowArray enumerateObjectsUsingBlock:^(KlineModel * _Nonnull model, NSUInteger idx, BOOL * _Nonnull stop) {
             
             if (idx == self.KlineShowArray.count / 4 * i) {
-
+                
                 NSMutableString *timeStr = [model.CreateTime mutableCopy];
                 timeStr = [timeStr substringWithRange:NSMakeRange(11, 5)];
                 label.text = timeStr;
             }
             
         }];
-
+        
         label.font = [UIFont systemFontOfSize:10];
         label.textColor = [UIColor whiteColor];
         [self addSubview:label];
@@ -298,18 +296,10 @@ static const CGFloat scale_Max = 1;//最大缩放量
     
     //重置ShapeLayer 父层
     [self initShapeLayer];
-    
-    [array enumerateObjectsUsingBlock:^(KlineModel * _Nonnull model, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-        //生成蜡烛图 添加到父层
-        CAShapeLayer *cellCAShapeLayer = [self GetShapeLayerFromModel:model Index:idx];
-        [self.ShapeLayer addSublayer:cellCAShapeLayer];
-        
-    }];
-
     //把这些层添加到这个view
     [self.layer addSublayer:self.ShapeLayer];
     [self.layer addSublayer:self.APLayer];
+    
 }
 
 //替换以后一个点
@@ -327,58 +317,8 @@ static const CGFloat scale_Max = 1;//最大缩放量
     }else{
         [self initShapeLayer];
     }
-    //生成新的点 添加到父视图
-    CAShapeLayer *layer = [self GetShapeLayerFromModel:model Index:self.KlineShowArray.count-1];
-    [self.ShapeLayer addSublayer:layer];
-}
 
-//制作CAShapeLayer
-- (CAShapeLayer *)GetShapeLayerFromModel:(KlineModel *)model Index:(NSInteger)idx{
-    
-    //开盘价减去这个视图的最小价格得出差值除以每一个点代表的值
-    CGFloat OpenPrice = (model.OpenPrice- self.lowerPrice)/self.h;
-    //收盘价减去这个视图的最小价格得出差值除以每一个点代表的值
-    CGFloat PreClosePrice = (model.PreClosePrice- self.lowerPrice)/self.h;
-    CGFloat x = (KlineCellSpace+KlineCellWidth)*idx*self.x_scale;
-    CGFloat y = OpenPrice > PreClosePrice ? PreClosePrice : OpenPrice;
-    //fabs 取整
-    CGFloat height = MAX(fabs(PreClosePrice-OpenPrice), 1);
-    
-    //在这里绘制好方形  如果出现蜡烛倒置  可用showheight－height 或者倒转这个layer
-    CGRect rect = CGRectMake(x, y, KlineCellWidth*self.x_scale, height);
-    
-    //用贝塞尔描路径
-    UIBezierPath *cellpath = [UIBezierPath bezierPathWithRect:rect];
-    cellpath.lineWidth = 0.75;
-    
-    //移动点 绘制最高最低值
-    [cellpath moveToPoint:CGPointMake(x+KlineCellWidth/2, y)];
-    [cellpath addLineToPoint:CGPointMake(x+KlineCellWidth/2, (model.LowestPrice- self.lowerPrice)/self.h)];
-    
-    [cellpath moveToPoint:CGPointMake(x+KlineCellWidth/2, y+height)];
-    [cellpath addLineToPoint:CGPointMake(x+KlineCellWidth/2, (model.HighestPrice- self.lowerPrice)/self.h)];
-    
-    //生成layer 用贝塞尔路径给他渲染
-    CAShapeLayer *cellCAShapeLayer = [CAShapeLayer layer];
-    cellCAShapeLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
-    cellCAShapeLayer.fillColor = [UIColor clearColor].CGColor;
-    
-    //调整颜色
-    if (model.OpenPrice == model.PreClosePrice) {
-        cellCAShapeLayer.strokeColor = _whiteColor.CGColor;
-    }else if (model.OpenPrice > model.PreClosePrice){
-        cellCAShapeLayer.fillColor = _redColor.CGColor;
-    }else{
-        cellCAShapeLayer.fillColor = _BlueColor.CGColor;
-    }
-    cellCAShapeLayer.path = cellpath.CGPath;
-    
-    [cellpath removeAllPoints];
-    //返回一个蜡烛图
-    return cellCAShapeLayer;
-    
 }
-
 
 //滑动效果
 - (void)offset_xPoint:(CGPoint)point{
@@ -399,11 +339,11 @@ static const CGFloat scale_Max = 1;//最大缩放量
         }
         
         NSInteger index = self.OffsetIndex;
-  
+        
         if (index < 0) {
             index = 0;
         }
-
+        
         //获取到对应的数据
         @synchronized (self) {
             [self.KlineShowArray removeAllObjects];
@@ -489,7 +429,7 @@ static const CGFloat scale_Max = 1;//最大缩放量
     self.TrackingCrosslayer.path = nil;
     
     if (!self.TrackingCrosslayer) {
-     
+        
         self.TrackingCrosslayer = [CAShapeLayer layer];
         self.TrackingCrosslayer.frame = CGRectMake(0, 0, self.ShowWidth, self.ShowHeight);
         self.TrackingCrosslayer.strokeColor = [UIColor colorWithRed:40/255.0 green:135/255.0 blue:255/255.0 alpha:1].CGColor;
@@ -513,7 +453,7 @@ static const CGFloat scale_Max = 1;//最大缩放量
         
         [self.ShapeLayer removeFromSuperlayer];
         self.ShapeLayer = nil;
-    
+        
     }
     
     if (self.ShapeLayer == nil) {
@@ -544,3 +484,4 @@ static const CGFloat scale_Max = 1;//最大缩放量
 
 
 @end
+
