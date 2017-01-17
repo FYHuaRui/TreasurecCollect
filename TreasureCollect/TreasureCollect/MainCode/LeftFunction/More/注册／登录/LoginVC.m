@@ -63,6 +63,10 @@ static int smYzmId = 0;
 //内容加载
 - (void)initSubViews
 {
+    //辞去键盘手势
+    UITapGestureRecognizer *resignTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignTap:)];
+    [self.view addGestureRecognizer:resignTap];
+    
     //密码登录／短信验证登录
     UIButton *password = [UIButton buttonWithType:UIButtonTypeCustom];
     password.tag = 1001;
@@ -318,6 +322,16 @@ static int smYzmId = 0;
 {
     NSLogTC(@"返回按钮点击了");
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+/*
+ @功能：辞去键盘响应
+ @参数：当前手饰
+ @返回值：无
+ */
+- (void)resignTap:(UITapGestureRecognizer*)gesture
+{
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
 }
 
 //监听文本输入框内容的改变

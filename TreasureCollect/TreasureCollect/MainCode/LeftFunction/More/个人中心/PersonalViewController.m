@@ -122,8 +122,6 @@
         make.bottom.equalTo(self.view).offset(0);
     }];
 
-    
-    
     //添加TabView头
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 240)];
     headerView.backgroundColor = [UIColor whiteColor];

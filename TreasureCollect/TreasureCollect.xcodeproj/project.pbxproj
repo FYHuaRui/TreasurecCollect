@@ -1918,7 +1918,7 @@
 					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP",
 					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/One",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fyhrkr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fyhr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1959,7 +1959,7 @@
 					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP",
 					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/One",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fyhrkr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fyhr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
