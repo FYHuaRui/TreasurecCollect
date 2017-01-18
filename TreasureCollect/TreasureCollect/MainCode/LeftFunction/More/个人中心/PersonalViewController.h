@@ -11,7 +11,6 @@
 
 @interface PersonalViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
-
 @property (nonatomic, retain) UITableView       *tableView;//表视图
 @property (nonatomic, retain) NSArray           *arrayData;//数据源
 

@@ -545,8 +545,6 @@ static int smYzmId = 0;
                         {
                             [self hideSuccessHUD:@"登录失败，请重新登录!"];
                         }
-                        
-                        
                     }
                     if (a == 110040)//该手机号没有注册, 不能用来登录
                     {
@@ -683,6 +681,10 @@ static int smYzmId = 0;
                             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                                 NSUserDefaults *userInfo = [NSUserDefaults standardUserDefaults];
                                 [userInfo setObject:userAry forKey:@"userInfo"];
+                                
+                                BOOL isLogin = YES;
+                                [[NSUserDefaults standardUserDefaults] setBool:isLogin forKey:@"isLogin"];
+                                [[NSUserDefaults standardUserDefaults] synchronize];//同步本地数据
                                 
                                 //主线程
                                 dispatch_async(dispatch_get_main_queue(), ^{

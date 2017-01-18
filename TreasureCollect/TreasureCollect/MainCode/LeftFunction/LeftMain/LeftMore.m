@@ -54,8 +54,8 @@
     [imageView addSubview:bView];
     
     //判断用户是否登录
-    BOOL Login = [[NSUserDefaults standardUserDefaults] objectForKey:@"isLogin"];
-    if (Login)//未登录
+    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"isLogin"];
+    if (isLogin)//登录
     {
         UIImageView *LogImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
         LogImage.image = [UIImage imageNamed:@"icon-logo"];
@@ -351,7 +351,6 @@
             self.hidden = YES;
         }];
     }
-    
 }
 
 
