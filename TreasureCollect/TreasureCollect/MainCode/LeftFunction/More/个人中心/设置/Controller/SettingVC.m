@@ -201,15 +201,24 @@
     [picker dismissViewControllerAnimated:YES completion:^{
     }];
     
-    //上传头像图片
-    NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,LOGIN_MSG];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [self performSelector:@selector(saveImage:) withObject:self.myHeadPortrait.image afterDelay:1];
+    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     //隐藏图像选取控制器
     [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
+- (void)saveImage:(UIImage*)image
+{
+    NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,LOGIN_MSG];
+    [HttpTool post:url params:nil success:^(id json) {
+        
+    } failure:^(NSError *error) {
         
     }];
 }
