@@ -101,6 +101,23 @@
 - (void)yesBtnClicked
 {
     NSLogTC(@"确认修改昵称");
+    //修改昵称
+    NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,ChangeNickName];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:[NSNumber numberWithInt:12] forKey:@"userId"];
+    [params setObject:[NSString stringWithFormat:@""] forKey:@"nickName"];
+    [HttpTool post:url params:params success:^(id json) {
+        NSArray *dataArr = [json objectForKey:@"RspMsg"];
+        NSDictionary *imageDic = [dataArr firstObject];
+        NSString *runMessage = [imageDic objectForKey:@"runMsg"];
+        int a = [[imageDic objectForKey:@"runCode"] intValue];
+        if (a == 0)//登录成功!
+        {
+            [self hideSuccessHUD:runMessage];
+        }
+    } failure:^(NSError *error) {
+        [self hideSuccessHUD:@"修改昵称失败"];
+    }];
 }
 
 @end

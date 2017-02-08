@@ -14,8 +14,7 @@
 #define kUrlScheme      @"demoapp001"
 
 //管理接口和服务器地址
-#define BASE_URL @"http://192.168.100.218:8080" //吉哥服务器
-#define BASE_URL2 @"http://192.168.10.66:8080"//钱钱服务器
+#define BASE_URL @"http://112.74.169.207:80" //阿里云服务器
 
 //登陆模块
 #define LOGIN_URL @"/wsb/java/servlet/LoginSeleUser"
@@ -37,6 +36,9 @@
 //充值模块
 #define RECHARTE_URL @"/Pingplusplus/ReceiptServlet"
 #define AMTCHARGE @"/wsb/java/servlet/AmtCharge"//支付接口
+
+//修改用户昵称
+#define ChangeNickName @"/wsb/java/servlet/ChangeNickName" //修改昵称
 
 
 #endif /* Common_h */

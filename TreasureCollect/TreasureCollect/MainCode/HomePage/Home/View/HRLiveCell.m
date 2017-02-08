@@ -59,9 +59,7 @@
     
     [liverImgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.equalTo(liverImgView).offset(5);
-        
     }];
-    
     
     
     //直播人姓名
