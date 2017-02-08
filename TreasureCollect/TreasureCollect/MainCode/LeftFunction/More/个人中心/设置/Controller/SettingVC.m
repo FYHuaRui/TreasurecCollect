@@ -204,7 +204,6 @@
     //上传头像图片
     NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,LOGIN_MSG];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

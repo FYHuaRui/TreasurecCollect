@@ -10,4 +10,6 @@
 
 @interface nickNameVC : BaseViewController<UITextFieldDelegate>
 
+@property (nonatomic, retain) UITextField   *nickName;//用户昵称
+
 @end

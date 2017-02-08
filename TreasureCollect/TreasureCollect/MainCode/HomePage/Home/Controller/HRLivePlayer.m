@@ -7,6 +7,7 @@
 //
 
 #import "HRLivePlayer.h"
+#import "HRLiveCell.h"
 
 @interface HRLivePlayer ()
 
@@ -108,15 +109,17 @@
 
 #pragma mark - UITableViewDataSource
 //tableView每行显示的内容
-- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (HRLiveCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"customcell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    HRLiveCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[HRLiveCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.backgroundColor = [UIColor blackColor];
     }
+    //使用自定义cell
+    
     return cell;
 }
 

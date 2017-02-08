@@ -69,6 +69,7 @@
 //主要内容
 - (void)initSubViews
 {
+#if 0
     //显示现货产品价格
     UILabel *sLab = [[UILabel alloc] initWithFrame:CGRectMake(KScreenWidth/4-25, 5, 50, 20)];
     sLab.text = @"白银";
@@ -88,6 +89,25 @@
     [self.view addSubview:lineView];
     
     //滚动通知
+    
+#else
+    
+    //功能未开发
+    UIImageView *underdevelopment = [[UIImageView alloc] init];
+    underdevelopment.image = [UIImage imageNamed:@""];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:underdevelopment];
+    
+    //布局
+    [underdevelopment mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.and.left.bottom.right.equalTo(self.view).offset(0);
+    }];
+    
+    //添加返回手势
+    UITapGestureRecognizer *returnTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(returnClicked)];
+    [underdevelopment addGestureRecognizer:returnTap];
+    
+#endif
     
 }
 
