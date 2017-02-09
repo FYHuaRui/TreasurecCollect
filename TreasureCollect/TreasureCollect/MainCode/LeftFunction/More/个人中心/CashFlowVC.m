@@ -1,29 +1,22 @@
 //
-//  tradeVC.m
+//  CashFlowVC.m
 //  TreasureCollect
 //
-//  Created by FYHR on 2016/12/15.
-//  Copyright © 2016年 Apple. All rights reserved.
+//  Created by 方圆华睿 on 2017/2/9.
+//  Copyright © 2017年 Apple. All rights reserved.
 //
 
-#import "tradeVC.h"
+#import "CashFlowVC.h"
 
-@interface tradeVC ()
+@interface CashFlowVC ()
 
 @end
 
-@implementation tradeVC
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self DaoHang];//设置导航栏
-}
+@implementation CashFlowVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self initSubView];//主页面
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,11 +24,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 //导航栏
 - (void)DaoHang
 {
-    self.title = @"交易明细";
+    self.title = @"资金流水";
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.hidden = NO;
@@ -59,8 +51,24 @@
 //主页面显示
 - (void)initSubView
 {
+    //添加TableView
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    [self.view addSubview:self.tableView];
     
+    //TableView布局
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.and.left.bottom.right.equalTo(self.view).offset(0);
+    }];
+    
+    //数据源
+    self.arrayData = [NSMutableArray array];
+    
+
 }
 
+#define mark - UITableViewDataSource
+//tableView的行数
+
+#define mark - UITableViewDelegate
 
 @end

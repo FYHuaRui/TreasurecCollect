@@ -12,6 +12,7 @@
 #import "TicketViewController.h"
 #import "ImportantVC.h"
 #import "MyBuyViewController.h"
+#import "CashFlowVC.h"
 
 @interface PersonalViewController ()
 
@@ -344,19 +345,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray *array = [self.arrayData objectAtIndex:indexPath.section];
-    PersNSObject *tableCell = [array objectAtIndex:indexPath.row];
+//    PersNSObject *tableCell = [array objectAtIndex:indexPath.row];
     
     if (indexPath.section == 0)
     {
         if (indexPath.row == 0)
         {
-            tradeVC *tVC = [[tradeVC alloc] initwithTitle:tableCell.context];
+            tradeVC *tVC = [[tradeVC alloc] init];
             [self.navigationController pushViewController:tVC animated:YES];
         }
         
         if (indexPath.row == 1)
         {
-            tradeVC *tVC = [[tradeVC alloc] initwithTitle:tableCell.context];
+            CashFlowVC *tVC = [[CashFlowVC alloc] init];
             [self.navigationController pushViewController:tVC animated:YES];
         }
         

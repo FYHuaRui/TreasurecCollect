@@ -316,7 +316,6 @@ static int smYzmId = 0;
                             NSLogTC(@"获取验证码失败：%@",error);
                             [self hideSuccessHUD:@"修改失败"];
                         }];
-                        
                     }
                     else
                     {
