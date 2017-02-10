@@ -62,13 +62,47 @@
     
     //数据源
     self.arrayData = [NSMutableArray array];
-    
-
+    NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,AmtIOSele];
 }
 
 #define mark - UITableViewDataSource
-//tableView的行数
+//tableView共有多少行
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (self.arrayData && [self.arrayData count])
+    {
+        return [self.arrayData count];
+    }
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"customcell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell == nil)
+    {
+        //添加一个自定义的Cell
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = [UIColor clearColor];
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        
+    }
+    
+    if (self.arrayData && [self.arrayData count])
+    {
+        
+    }
+    return cell;
+}
 
 #define mark - UITableViewDelegate
+//每行cell的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 35;
+}
 
 @end

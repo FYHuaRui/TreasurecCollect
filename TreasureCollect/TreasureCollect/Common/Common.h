@@ -40,5 +40,8 @@
 //修改用户昵称
 #define ChangeNickName @"/wsb/java/servlet/ChangeNickName" //修改昵称
 
+//资金流水
+#define AmtIOSele @"/wsb/java/servlet/AmtIOSele"
+
 
 #endif /* Common_h */
