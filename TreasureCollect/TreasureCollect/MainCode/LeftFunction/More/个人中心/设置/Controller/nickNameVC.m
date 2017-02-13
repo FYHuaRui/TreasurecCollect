@@ -59,20 +59,20 @@
 - (void)initSubView
 {
     //添加一个UITextFile输入框
-    UITextField *nickName = [[UITextField alloc] initWithFrame:CGRectZero];
-    nickName.borderStyle = UITextBorderStyleRoundedRect;
-    nickName.placeholder = @"昵称";
-    nickName.font = [UIFont fontWithName:@"Arial" size:18];
-    nickName.textColor = [UIColor blackColor];
-    nickName.clearButtonMode = UITextFieldViewModeWhileEditing;
-    nickName.text = @"大象1231231231";
-    nickName.textAlignment = NSTextAlignmentLeft;
-    nickName.delegate = self;
-    nickName.backgroundColor = [UIColor clearColor];
-    nickName.layer.cornerRadius = 3.0;
-    [self.view addSubview:nickName];
+    self.nickName = [[UITextField alloc] initWithFrame:CGRectZero];
+    self.nickName.borderStyle = UITextBorderStyleRoundedRect;
+    self.nickName.placeholder = @"昵称";
+    self.nickName.font = [UIFont fontWithName:@"Arial" size:18];
+    self.nickName.textColor = [UIColor blackColor];
+    self.nickName.clearButtonMode = UITextFieldViewModeWhileEditing;
+    self.nickName.text = @"大象1231231231";
+    self.nickName.textAlignment = NSTextAlignmentLeft;
+    self.nickName.delegate = self;
+    self.nickName.backgroundColor = [UIColor clearColor];
+    self.nickName.layer.cornerRadius = 3.0;
+    [self.view addSubview:self.nickName];
     
-    [nickName mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.nickName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(self.view).offset(15);
         make.right.equalTo(self.view).offset(-15);
         make.height.mas_equalTo(30);
@@ -101,6 +101,23 @@
 - (void)yesBtnClicked
 {
     NSLogTC(@"确认修改昵称");
+    //修改昵称
+    NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,ChangeNickName];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:[NSNumber numberWithInt:12] forKey:@"userId"];
+    [params setObject:[NSString stringWithFormat:@""] forKey:@"nickName"];
+    [HttpTool post:url params:params success:^(id json) {
+        NSArray *dataArr = [json objectForKey:@"RspMsg"];
+        NSDictionary *imageDic = [dataArr firstObject];
+        NSString *runMessage = [imageDic objectForKey:@"runMsg"];
+        int a = [[imageDic objectForKey:@"runCode"] intValue];
+        if (a == 0)//登录成功!
+        {
+            [self hideSuccessHUD:runMessage];
+        }
+    } failure:^(NSError *error) {
+        [self hideSuccessHUD:@"修改昵称失败"];
+    }];
 }
 
 @end

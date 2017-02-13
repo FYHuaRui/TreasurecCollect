@@ -63,6 +63,10 @@ static int smYzmId = 0;
 //内容加载
 - (void)initSubViews
 {
+    //辞去键盘手势
+    UITapGestureRecognizer *resignTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignTap:)];
+    [self.view addGestureRecognizer:resignTap];
+    
     //密码登录／短信验证登录
     UIButton *password = [UIButton buttonWithType:UIButtonTypeCustom];
     password.tag = 1001;
@@ -320,6 +324,16 @@ static int smYzmId = 0;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+/*
+ @功能：辞去键盘响应
+ @参数：当前手饰
+ @返回值：无
+ */
+- (void)resignTap:(UITapGestureRecognizer*)gesture
+{
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+}
+
 //监听文本输入框内容的改变
 - (void)textValueChanged
 {
@@ -531,8 +545,6 @@ static int smYzmId = 0;
                         {
                             [self hideSuccessHUD:@"登录失败，请重新登录!"];
                         }
-                        
-                        
                     }
                     if (a == 110040)//该手机号没有注册, 不能用来登录
                     {
@@ -669,6 +681,10 @@ static int smYzmId = 0;
                             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                                 NSUserDefaults *userInfo = [NSUserDefaults standardUserDefaults];
                                 [userInfo setObject:userAry forKey:@"userInfo"];
+                                
+                                BOOL isLogin = YES;
+                                [[NSUserDefaults standardUserDefaults] setBool:isLogin forKey:@"isLogin"];
+                                [[NSUserDefaults standardUserDefaults] synchronize];//同步本地数据
                                 
                                 //主线程
                                 dispatch_async(dispatch_get_main_queue(), ^{

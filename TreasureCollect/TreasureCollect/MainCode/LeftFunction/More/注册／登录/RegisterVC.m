@@ -189,7 +189,6 @@ static int smYzmId = 0;
     
 }
 
-
 //返回按钮
 - (void)returnClicked
 {
@@ -197,6 +196,16 @@ static int smYzmId = 0;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+/*
+ @功能：辞去键盘响应
+ @参数：当前手饰
+ @返回值：无
+ */
+- (void)resignTap:(UITapGestureRecognizer*)gesture
+{
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+}
 
 //监听文本输入框内容的改变
 - (void)textValueChanged

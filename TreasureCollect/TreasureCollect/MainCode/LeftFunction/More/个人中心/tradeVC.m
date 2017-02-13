@@ -14,12 +14,6 @@
 
 @implementation tradeVC
 
-- (id)initwithTitle:(NSString*)title
-{
-    self.titleString = title;
-    return self;
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -41,14 +35,14 @@
 //导航栏
 - (void)DaoHang
 {
-    self.title = self.titleString;
+    self.title = @"交易明细";
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.hidden = NO;
     
     //左侧返回按钮
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回-灰"] forState:UIControlStateNormal];
     leftBtn.frame = CGRectMake(0, 0, 30, 30);
     [leftBtn addTarget:self action:@selector(returnClicked) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];

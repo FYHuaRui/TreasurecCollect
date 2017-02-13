@@ -170,6 +170,8 @@
 		92DF838F1E03E71A00674364 /* AdviceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DF838E1E03E71A00674364 /* AdviceVC.m */; };
 		92DF83921E03E7F900674364 /* UnderStandVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DF83911E03E7F900674364 /* UnderStandVC.m */; };
 		9D7204B0697FFCC7D0153A8D /* libPods-TreasureCollect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */; };
+		AF2B908E1E4BF94900087B9D /* CashFlowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2B908D1E4BF94900087B9D /* CashFlowVC.m */; };
+		AF2B90911E4C0DB500087B9D /* CashFlowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2B90901E4C0DB500087B9D /* CashFlowCell.m */; };
 		AF8947DE1E273B04007A2AC6 /* HRLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8947DD1E273B04007A2AC6 /* HRLiveCell.m */; };
 		AF8960C41E2374260084817E /* AreaData.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8960C21E2374260084817E /* AreaData.m */; };
 		AF8960C51E2374260084817E /* areaData.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF8960C31E2374260084817E /* areaData.plist */; };
@@ -462,6 +464,10 @@
 		92DF83901E03E7F900674364 /* UnderStandVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnderStandVC.h; path = TreasureCollect/MainCode/HomePage/Home/Controller/UnderStandVC.h; sourceTree = SOURCE_ROOT; };
 		92DF83911E03E7F900674364 /* UnderStandVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnderStandVC.m; path = TreasureCollect/MainCode/HomePage/Home/Controller/UnderStandVC.m; sourceTree = SOURCE_ROOT; };
 		973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.debug.xcconfig"; sourceTree = "<group>"; };
+		AF2B908C1E4BF94900087B9D /* CashFlowVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashFlowVC.h; sourceTree = "<group>"; };
+		AF2B908D1E4BF94900087B9D /* CashFlowVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashFlowVC.m; sourceTree = "<group>"; };
+		AF2B908F1E4C0DB500087B9D /* CashFlowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashFlowCell.h; sourceTree = "<group>"; };
+		AF2B90901E4C0DB500087B9D /* CashFlowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashFlowCell.m; sourceTree = "<group>"; };
 		AF8947DC1E273B04007A2AC6 /* HRLiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRLiveCell.h; sourceTree = "<group>"; };
 		AF8947DD1E273B04007A2AC6 /* HRLiveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRLiveCell.m; sourceTree = "<group>"; };
 		AF8960C11E2374260084817E /* AreaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaData.h; sourceTree = "<group>"; };
@@ -1293,6 +1299,8 @@
 		92667A031DFF9D2200982041 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AF2B908F1E4C0DB500087B9D /* CashFlowCell.h */,
+				AF2B90901E4C0DB500087B9D /* CashFlowCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1304,6 +1312,8 @@
 				92667A061DFF9DB200982041 /* PersonalViewController.m */,
 				926C35B11E02931D005BF715 /* tradeVC.h */,
 				926C35B21E02931D005BF715 /* tradeVC.m */,
+				AF2B908C1E4BF94900087B9D /* CashFlowVC.h */,
+				AF2B908D1E4BF94900087B9D /* CashFlowVC.m */,
 				926C35B41E029C13005BF715 /* ImportantVC.h */,
 				926C35B51E029C13005BF715 /* ImportantVC.m */,
 				922CEF9C1E0150BA00C67B1F /* 设置 */,
@@ -1453,7 +1463,7 @@
 				TargetAttributes = {
 					18273CA11DFA574F00855FCB = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 84W6EV66WN;
+						DevelopmentTeam = 8H2B3Y5JNC;
 						ProvisioningStyle = Automatic;
 					};
 					18273CBA1DFA574F00855FCB = {
@@ -1736,11 +1746,13 @@
 				1829D9C91DFAA7CE00405DF2 /* UIColor+RGB.m in Sources */,
 				921BDE461DFFBE1A00C031C5 /* PersNSObject.m in Sources */,
 				92DF838C1E03E60700674364 /* ShareTicketVC.m in Sources */,
+				AF2B90911E4C0DB500087B9D /* CashFlowCell.m in Sources */,
 				92442FC41DFE400C008BF127 /* LeftMore.m in Sources */,
 				1829D9D11DFAA9AB00405DF2 /* HomeController.m in Sources */,
 				188F9DB01E286BBD004A3BC2 /* GetKlineData.m in Sources */,
 				18273CE31DFAA01C00855FCB /* HttpTool.m in Sources */,
 				92442FCB1DFE7841008BF127 /* UIButton+BackGroundColor.m in Sources */,
+				AF2B908E1E4BF94900087B9D /* CashFlowVC.m in Sources */,
 				92442FC71DFE6E18008BF127 /* LeftTableView.m in Sources */,
 				926C35B61E029C13005BF715 /* ImportantVC.m in Sources */,
 				187C5B9E1E1205B00043A1A1 /* LoginVC.m in Sources */,
@@ -1894,7 +1906,7 @@
 			baseConfigurationReference = 973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 84W6EV66WN;
+				DEVELOPMENT_TEAM = 8H2B3Y5JNC;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1924,7 +1936,7 @@
 					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP",
 					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/One",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fyhrkr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fyhr.cn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1935,7 +1947,7 @@
 			baseConfigurationReference = 5421384DC7F74BEE72F40E01 /* Pods-TreasureCollect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 84W6EV66WN;
+				DEVELOPMENT_TEAM = 8H2B3Y5JNC;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1965,7 +1977,7 @@
 					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP",
 					"$(PROJECT_DIR)/TreasureCollect/Common/PingPP/One",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fyhrkr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fyhr.cn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

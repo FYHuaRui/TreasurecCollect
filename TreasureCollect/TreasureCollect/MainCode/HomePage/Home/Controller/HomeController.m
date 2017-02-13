@@ -523,6 +523,8 @@
     self.leftMore = [[LeftMore alloc] initWithFrame:CGRectMake(-150, 20, 150, 300)];
     self.leftMore.hidden = YES;//先设置隐藏
     [self.view addSubview:self.leftMore];
+    
+    BOOL islogin = [[NSUserDefaults standardUserDefaults] objectForKey:@"isLogin"];
 
 }
 

@@ -12,6 +12,7 @@
 #import "TicketViewController.h"
 #import "ImportantVC.h"
 #import "MyBuyViewController.h"
+#import "CashFlowVC.h"
 
 @interface PersonalViewController ()
 
@@ -45,6 +46,7 @@
 - (void)Daohang
 {
     self.title = @"我";
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName,nil]];//修改标题颜色
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = [UIColor colorFromHexRGB:@"2887ee"];
     self.navigationController.navigationBar.translucent = NO;
@@ -60,15 +62,15 @@
     self.navigationItem.leftBarButtonItem = leftItem;
     
     //右侧联系客服
-    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightBtn setTitle:@"客服" forState:UIControlStateNormal];
-    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [rightBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    rightBtn.frame = CGRectMake(0, 0, 60, 30);
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [rightBtn addTarget:self action:@selector(rightBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
-    self.navigationItem.rightBarButtonItem = rightItem;
+//    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [rightBtn setTitle:@"客服" forState:UIControlStateNormal];
+//    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [rightBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+//    rightBtn.frame = CGRectMake(0, 0, 60, 30);
+//    rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//    [rightBtn addTarget:self action:@selector(rightBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+//    self.navigationItem.rightBarButtonItem = rightItem;
     
 }
 
@@ -98,7 +100,7 @@
     aSwitch.thumbTintColor = [UIColor whiteColor];
     aSwitch.on = YES;//开关打开
     PersNSObject *table7 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"建仓确认"] label:@"建仓确认" rightView:aSwitch];
-    PersNSObject *table8 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"了解"] label:@"一分钟了解微胜宝" rightView:nil];
+    PersNSObject *table8 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"了解"] label:@"了解微胜宝" rightView:nil];
     
     NSArray *ary1 = [NSArray arrayWithObjects:table1, table2, table3, nil];
     NSArray *ary2 = [NSArray arrayWithObjects:table4, table5, nil];
@@ -122,11 +124,9 @@
         make.bottom.equalTo(self.view).offset(0);
     }];
 
-    
-    
     //添加TabView头
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 240)];
-    headerView.backgroundColor = [UIColor whiteColor];
+    headerView.backgroundColor = [UIColor colorFromHexRGB:@"f0f0f0"];
     
     //个人登录信息
     UIView *pView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -156,8 +156,8 @@
     [pView addSubview:CzBtn];
     
     
-    BOOL Login = [[NSUserDefaults standardUserDefaults] objectForKey:@"isLogin"];
-    if (Login)
+    BOOL isLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"isLogin"];
+    if (isLogin)
     {
         UIView *personView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, KScreenWidth, 70)];
         personView.backgroundColor = [UIColor clearColor];
@@ -210,11 +210,16 @@
     aLab.text = @"个人资产（元）";
     [headerView addSubview:aLab];
     
+    //用户持仓／资金状态
     UILabel *moneyLab = [[UILabel alloc] initWithFrame:CGRectMake(aLab.frame.origin.x, aLab.frame.origin.y+aLab.frame.size.height+5, KScreenWidth, 50)];
     moneyLab.text = @"8888888";
     moneyLab.textColor = [UIColor redColor];
     moneyLab.font = [UIFont systemFontOfSize:35];
     [headerView addSubview:moneyLab];
+    
+    //持仓／资金查看切换按钮
+    UIButton *ChangeBtn = [[UIButton alloc] init];
+    [ChangeBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     
     self.tableView.tableHeaderView = headerView;
     
@@ -324,7 +329,6 @@
         {
             cell.accessoryView = tableCell.rightView;
         }
-        
     }
     return cell;
 }
@@ -341,19 +345,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray *array = [self.arrayData objectAtIndex:indexPath.section];
-    PersNSObject *tableCell = [array objectAtIndex:indexPath.row];
+//    PersNSObject *tableCell = [array objectAtIndex:indexPath.row];
     
     if (indexPath.section == 0)
     {
         if (indexPath.row == 0)
         {
-            tradeVC *tVC = [[tradeVC alloc] initwithTitle:tableCell.context];
+            tradeVC *tVC = [[tradeVC alloc] init];
             [self.navigationController pushViewController:tVC animated:YES];
         }
         
         if (indexPath.row == 1)
         {
-            tradeVC *tVC = [[tradeVC alloc] initwithTitle:tableCell.context];
+            CashFlowVC *tVC = [[CashFlowVC alloc] init];
             [self.navigationController pushViewController:tVC animated:YES];
         }
         

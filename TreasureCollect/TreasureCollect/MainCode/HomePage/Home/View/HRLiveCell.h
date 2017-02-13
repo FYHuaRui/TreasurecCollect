@@ -14,6 +14,6 @@
 @property (nonatomic, retain) UILabel       *nameLab;//直播人姓名
 @property (nonatomic, retain) UIImage       *liveImage;//直播简略图
 @property (nonatomic, retain) UILabel       *messageLab;//直播内容简介
-@property (nonatomic) int                   userNum;//观看的用户总人数
+@property (nonatomic, retain) UILabel       *usersLab;//观看的用户总人数
 
 @end

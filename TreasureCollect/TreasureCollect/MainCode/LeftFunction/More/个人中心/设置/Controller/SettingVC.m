@@ -184,6 +184,7 @@
             UIImage *editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
             self.myHeadPortrait.image = editedImage;//显示编辑后的图片
             
+            
             if (picker.cameraDevice == UIImagePickerControllerCameraDeviceFront)
             {
                 //前置拍的照片
@@ -199,12 +200,25 @@
     //隐藏图像选取控制器
     [picker dismissViewControllerAnimated:YES completion:^{
     }];
+    
+    [self performSelector:@selector(saveImage:) withObject:self.myHeadPortrait.image afterDelay:1];
+    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     //隐藏图像选取控制器
     [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
+- (void)saveImage:(UIImage*)image
+{
+    NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,LOGIN_MSG];
+    [HttpTool post:url params:nil success:^(id json) {
+        
+    } failure:^(NSError *error) {
         
     }];
 }
@@ -225,8 +239,6 @@
         NSLogTC(@"图像保存失败：%@", [error localizedDescription]);
     }
 }
-
-
 
 //表格视图数据源委托
 #pragma mark - UITableViewDataSource
@@ -351,13 +363,16 @@
     if (indexPath.section == 1)
     {
         NSLogTC(@"退出登录");
-        
-        BOOL isLogin = NO;
-        [[NSUserDefaults standardUserDefaults] setBool:isLogin forKey:@"isLogin"];
-        [[NSUserDefaults standardUserDefaults] synchronize];//同步本地数据
         //子线程中保存用户数据，主线程放回首页
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
+            //清理用户信息
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            BOOL isLogin = NO;
+            [[NSUserDefaults standardUserDefaults] setBool:isLogin forKey:@"isLogin"];
+            [[NSUserDefaults standardUserDefaults] synchronize];//同步本地数据
             //主线程
             dispatch_async(dispatch_get_main_queue(), ^{
                 //返回首页

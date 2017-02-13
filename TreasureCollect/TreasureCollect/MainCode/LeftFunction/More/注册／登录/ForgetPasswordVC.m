@@ -56,6 +56,10 @@ static int smYzmId = 0;
 //内容加载
 - (void)initSubViews
 {
+    //辞去键盘手势
+    UITapGestureRecognizer *resignTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignTap:)];
+    [self.view addGestureRecognizer:resignTap];
+    
     //手机号的输入框
     UIImageView *phoneImage = [[UIImageView alloc] initWithFrame:CGRectMake(25, 60, self.view.frame.size.width-50, 40)];
     phoneImage.image = [UIImage imageNamed:@"icon_iphon"];
@@ -153,6 +157,15 @@ static int smYzmId = 0;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+/*
+ @功能：辞去键盘响应
+ @参数：当前手饰
+ @返回值：无
+ */
+- (void)resignTap:(UITapGestureRecognizer*)gesture
+{
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+}
 
 //监听文本输入框内容的改变
 - (void)textValueChanged
@@ -303,7 +316,6 @@ static int smYzmId = 0;
                             NSLogTC(@"获取验证码失败：%@",error);
                             [self hideSuccessHUD:@"修改失败"];
                         }];
-                        
                     }
                     else
                     {
