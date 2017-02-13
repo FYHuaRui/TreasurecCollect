@@ -34,8 +34,11 @@
 #define CHANGEPW @"/wsb/java/servlet/UpdPwd"
 
 //充值模块
-#define RECHARTE_URL @"/Pingplusplus/ReceiptServlet"
-#define AMTCHARGE @"/wsb/java/servlet/AmtCharge"//支付接口
+#define RECHARTE_URL @"/Pingplusplus/ReceiptServlet"//充值
+#define AMTCHARGE @"/wsb/java/servlet/AmtCharge"//体现
+
+//买入卖出
+#define BUYIN_URL @"/wsb/java/servlet/OpenPos"//买入
 
 //修改用户昵称
 #define ChangeNickName @"/wsb/java/servlet/ChangeNickName" //修改昵称
