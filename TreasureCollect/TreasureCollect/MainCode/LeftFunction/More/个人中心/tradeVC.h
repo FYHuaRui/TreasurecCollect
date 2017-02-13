@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface tradeVC : UIViewController
+@interface tradeVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, retain) NSString      *titleString;
-
+@property (nonatomic, retain) UITableView       *tableView;
+@property (nonatomic, retain) NSMutableArray    *arrayData;
 
 @end

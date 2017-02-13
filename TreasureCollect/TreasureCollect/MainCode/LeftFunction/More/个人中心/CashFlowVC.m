@@ -7,6 +7,7 @@
 //
 
 #import "CashFlowVC.h"
+#import "CashFlowCell.h"
 
 @interface CashFlowVC ()
 
@@ -14,9 +15,18 @@
 
 @implementation CashFlowVC
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self DaoHang];//设置导航栏
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self initSubView];//主页面
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,6 +39,7 @@
 {
     self.title = @"资金流水";
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor], NSForegroundColorAttributeName,nil]];//修改标题颜色
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.hidden = NO;
     
@@ -51,6 +62,8 @@
 //主页面显示
 - (void)initSubView
 {
+    int userId = 22;
+    
     //添加TableView
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
@@ -62,7 +75,17 @@
     
     //数据源
     self.arrayData = [NSMutableArray array];
+    
     NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,AmtIOSele];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:[NSNumber numberWithInt:userId] forKey:@"userId"];
+    [HttpTool post:url params:params success:^(id json) {
+        self.arrayData = [json objectForKey:@"AmtIO"];
+        NSLogTC(@"12312312312:%@",self.arrayData);
+    } failure:^(NSError *error) {
+        NSLogTC(@"获取验证码失败：%@",error);
+    }];
+
 }
 
 #define mark - UITableViewDataSource
@@ -88,12 +111,15 @@
         cell.backgroundColor = [UIColor clearColor];
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.textLabel.textColor = [UIColor whiteColor];
-        
     }
+    
+    NSDictionary *imageDic = [self.arrayData firstObject];
+    NSLog(@"12312312312:%@",imageDic);
     
     if (self.arrayData && [self.arrayData count])
     {
-        
+        CashFlowCell *cashCell = [[CashFlowCell alloc] init];
+        cashCell.ioType.text = [imageDic objectForKey:@"IOType"];
     }
     return cell;
 }
@@ -102,7 +128,7 @@
 //每行cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 35;
+    return 80;
 }
 
 @end
