@@ -14,7 +14,8 @@
 #define kUrlScheme      @"demoapp001"
 
 //管理接口和服务器地址
-#define BASE_URL @"http://112.74.169.207:80" //阿里云服务器
+//#define BASE_URL @"http://112.74.169.207" //阿里云服务器
+#define BASE_URL @"http://192.168.1.218:8080"
 
 //登陆模块
 #define LOGIN_URL @"/wsb/java/servlet/LoginSeleUser"
@@ -34,8 +35,8 @@
 #define CHANGEPW @"/wsb/java/servlet/UpdPwd"
 
 //充值模块
-#define RECHARTE_URL @"/Pingplusplus/ReceiptServlet"//充值
-#define AMTCHARGE @"/wsb/java/servlet/AmtCharge"//体现
+#define RECHARTE_URL @"/wsb/java/servlet/ChargeFromCust"//充值
+#define AMTCHARGE @"/wsb/java/servlet/AmtTransfer"//体现
 
 //买入卖出
 #define BUYIN_URL @"/wsb/java/servlet/OpenPos"//买入
