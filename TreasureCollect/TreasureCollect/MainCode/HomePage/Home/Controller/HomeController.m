@@ -20,6 +20,8 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
 
+    _currentPrice = 0.f;
+    
     [self fetchData];
     [self initViews];
 }
@@ -103,7 +105,7 @@
         
         NSLog(@"字典%@",dictionary);
         _dataView.dataDic = dictionary;
-        
+        _currentPrice = [[dictionary objectForKey:@"lastprice"] floatValue];
 //        [AppServer Get:@"minute" params:nil success:^(NSDictionary *response) {
 //            NSMutableArray *array = [NSMutableArray array];
 //            
@@ -159,7 +161,6 @@
 //                
 //            }
         
-
             
 //        } fail:^(NSDictionary *info) {
 //            
@@ -260,7 +261,8 @@
     [self.view addSubview:_assetsLabel];
     
     //选择器
-    _titleArr = @[@"8",@"80",@"200",@"2000",@"银元券"];
+    _titleArr = @[@"8",@"80",@"200",@"2000"];
+    _selectPrice = [_titleArr[0] integerValue];
     _countPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(KScreenWidth / 2 - 40, KScreenHeight - 124.f, 80.f, 90.f)];
     _countPicker.backgroundColor = [UIColor colorFromHexRGB:@"E9E9E9"];
     _countPicker.dataSource = self;
@@ -441,6 +443,67 @@
     
         NSLogTC(@"买涨啦");
         
+        NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,BUYIN_URL];
+        
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSArray *userInfoArr = [defaults objectForKey:@"userInfo"];
+        NSDictionary *userDic = [userInfoArr firstObject];
+        NSString *userIdStr = [userDic objectForKey:@"userId"];
+        [params setObject:userIdStr forKey:@"userId"];
+        [params setObject:@"goup" forKey:@"buyType"];
+        
+        NSDate * senddate=[NSDate date];
+        NSDateFormatter *dateformatter=[[NSDateFormatter alloc] init];
+        [dateformatter setDateFormat:@"YYYY-MM-dd HH:mm:ss.SSS"];
+        NSString * locationString=[dateformatter stringFromDate:senddate];
+        [params setObject:locationString
+                   forKey:@"clientTm"];
+        NSLog(@"%@",locationString);
+        
+        [params setObject:[NSNumber numberWithFloat:_currentPrice * 1000]
+                   forKey:@"clientPrice"];
+        [params setObject:[NSNumber numberWithInteger:_selectPrice * 100] forKey:@"cost"];
+        [params setObject:[NSNumber numberWithInteger:0]
+                   forKey:@"stopLossScale"];
+        [params setObject:[NSNumber numberWithInteger:0]
+                   forKey:@"stopGainScale"];
+        switch (_selectPrice) {
+            case 8:
+                
+                [params setObject:[NSNumber numberWithInteger:60]
+                           forKey:@"fee"];
+                break;
+            case 80:
+                [params setObject:[NSNumber numberWithInteger:600]
+                           forKey:@"fee"];
+                break;
+            case 200:
+                [params setObject:[NSNumber numberWithInteger:2400]
+                           forKey:@"fee"];
+                break;
+            case 2000:
+                [params setObject:[NSNumber numberWithInteger:24000]
+                           forKey:@"fee"];
+                break;
+            default:
+                break;
+        }
+        
+        [HttpTool post:url
+                params:params
+               success:^(id json) {
+                   
+                   NSArray *resultDic = [json objectForKey:@"RspMsg"];
+                   NSLogTC(@"%@",json);
+                   NSLogTC(@"%@",[[resultDic objectAtIndex:0] objectForKey:@"runMsg"]);
+                   
+               } failure:^(NSError *error) {
+                   
+               }];
+        
+        
     }else{
     
         NSLogTC(@"买跌啦");
@@ -520,6 +583,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     
+    _selectPrice = [_titleArr[row] integerValue];
     //选中栏上一栏3d旋转
     if (row != 0) {
         

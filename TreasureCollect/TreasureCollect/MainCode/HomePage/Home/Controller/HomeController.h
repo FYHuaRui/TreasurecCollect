@@ -57,6 +57,9 @@
     
     GCDAsyncSocket *_asyncSocket;
     
+    float       _currentPrice;
+    NSInteger   _selectPrice;
+    
 }
 
 @property (nonatomic, retain) LeftMore  *leftMore;//更多视图

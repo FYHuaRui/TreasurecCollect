@@ -38,5 +38,9 @@
 #define RECHARTE_URL @"/Pingplusplus/ReceiptServlet"
 #define AMTCHARGE @"/wsb/java/servlet/AmtCharge"//支付接口
 
+//建仓
+#define BUYIN_URL @"/wsb/java/servlet/OpenPos"
+//手动平仓
+
 
 #endif /* Common_h */

@@ -93,33 +93,8 @@
     _restLabel.textAlignment = NSTextAlignmentCenter;
     [_bgScrollView addSubview:_restLabel];
     
-    //选择支付类型按钮
-    NSArray *titleArr = @[@"充值",@"提现"];
-    for (int i = 0; i < titleArr.count; i ++) {
-        
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(12 + (KScreenWidth / 2 - 12) * i , _restLabel.bottom, KScreenWidth / 2 - 12.f , 40.f)];
-        [button setTitle:titleArr[i] forState:UIControlStateNormal];
-        [button setTitle:titleArr[i] forState:UIControlStateSelected];
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [button setBackgroundColor:[UIColor colorFromHexRGB:@"E8E8E8"] forState:UIControlStateNormal];
-        [button setBackgroundColor:[UIColor colorFromHexRGB:@"479FF6"] forState:UIControlStateSelected];
-        if (i == 0) {
-            button.selected = YES;
-            _operationButton = button;
-        }else{
-            button.selected = NO;
-        }
-        button.tag = 100 + i;
-        [button addTarget:self
-                   action:@selector(PayButtonAction:)
-         forControlEvents:UIControlEventTouchUpInside];
-        [_bgScrollView addSubview:button];
-
-    }
-    
     //提示label
-    _selectLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.f, _restLabel.bottom + 44.f, KScreenWidth - 24.f, 40.f)];
+    _selectLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.f, _restLabel.bottom, KScreenWidth - 24.f, 40.f)];
     _selectLabel.backgroundColor = [UIColor whiteColor];
     _selectLabel.text = @"请选择充值金额(元)";
     _selectLabel.textColor = [UIColor lightGrayColor];
@@ -183,26 +158,6 @@
     [_bgScrollView addSubview:_rechargeButton];
     
     _bgScrollView.contentSize = CGSizeMake(KScreenWidth, _selectLabel.bottom + 180.f);
-
-}
-
-#pragma mark - 按钮事件
-- (void)PayButtonAction:(UIButton *)button{
-
-    _operationButton.selected = NO;
-    [button setSelected:YES];
-    _operationButton = button;
-    if (button.tag == 100) {
-        
-        [_rechargeButton setTitle:@"充值" forState:UIControlStateNormal];
-        self.title = @"充值";
-    
-    }else{
-    
-        [_rechargeButton setTitle:@"提现" forState:UIControlStateNormal];
-        self.title = @"提现";
-        
-    }
 
 }
 
