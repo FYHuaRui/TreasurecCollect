@@ -13,6 +13,9 @@
 #import "ImportantVC.h"
 #import "MyBuyViewController.h"
 #import "CashFlowVC.h"
+#import "LoginVC.h"//登录
+#import "RechargeController.h"//充值
+#import "RegisterVC.h"
 
 @interface PersonalViewController ()
 
@@ -144,6 +147,7 @@
     [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     loginBtn.backgroundColor = [UIColor colorFromHexRGB:@"00a6ff"];
     loginBtn.layer.cornerRadius = 3.0;
+    [loginBtn addTarget:self action:@selector(loginBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [pView addSubview:loginBtn];
     
     //注册／充值
@@ -153,6 +157,7 @@
     [CzBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     CzBtn.backgroundColor = [UIColor colorFromHexRGB:@"ffba00"];
     CzBtn.layer.cornerRadius = 3.0;
+    [CzBtn addTarget:self action:@selector(CzBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [pView addSubview:CzBtn];
     
     
@@ -249,6 +254,42 @@
     
 }
 
+/**
+ @功能：登录／提现按钮响应事件
+ @参数：按钮本身
+ @返回值：无
+ */
+- (void)loginBtnClicked:(UIButton*)button
+{
+    if ([button.titleLabel.text isEqualToString:@"登录"])
+    {
+        LoginVC *loginVC = [[LoginVC alloc] init];
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }
+    else
+    {
+        NSLogTC(@"提现，发钱啦，啦啦啦啦啦");
+    }
+}
+
+/**
+ @功能：注册／充值按钮响应事件
+ @参数:按钮本身
+ @返回值：无
+ */
+- (void)CzBtnClicked:(UIButton*)button
+{
+    if ([button.titleLabel.text isEqualToString:@"注册"])
+    {
+        RegisterVC *registerVC = [[RegisterVC alloc] init];
+        [self.navigationController pushViewController:registerVC  animated:YES];
+    }
+    else
+    {
+        RechargeController *rechargeVC = [[RechargeController alloc] init];
+        [self.navigationController pushViewController:rechargeVC animated:YES];
+    }
+}
 
 //表格视图数据源委托
 #pragma mark - UITableViewDataSource

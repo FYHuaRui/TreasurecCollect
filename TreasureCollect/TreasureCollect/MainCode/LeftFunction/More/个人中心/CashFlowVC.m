@@ -66,6 +66,8 @@
     
     //添加TableView
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     
     //TableView布局
@@ -77,11 +79,11 @@
     self.arrayData = [NSMutableArray array];
     
     NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,AmtIOSele];
+    NSLogTC(@"%@",url);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:[NSNumber numberWithInt:userId] forKey:@"userId"];
     [HttpTool post:url params:params success:^(id json) {
         self.arrayData = [json objectForKey:@"AmtIO"];
-        NSLogTC(@"12312312312:%@",self.arrayData);
     } failure:^(NSError *error) {
         NSLogTC(@"获取验证码失败：%@",error);
     }];
@@ -120,6 +122,8 @@
     {
         CashFlowCell *cashCell = [[CashFlowCell alloc] init];
         cashCell.ioType.text = [imageDic objectForKey:@"IOType"];
+        cashCell.createTime.text = [imageDic objectForKey:@"createTm"];
+        cashCell.amount.text = [imageDic objectForKey:@"amount"];
     }
     return cell;
 }
