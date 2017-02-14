@@ -7,10 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "tradeCell.h"
+#import "tradeDetailCell.h"
 
-@interface tradeVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface tradeVC : UIViewController<UITableViewDelegate, UITableViewDataSource>{
+
+    NSMutableArray *_isDownArr;
+    NSString   *_lastSection;
+
+}
 
 @property (nonatomic, retain) UITableView       *tableView;
 @property (nonatomic, retain) NSMutableArray    *arrayData;
+
 
 @end

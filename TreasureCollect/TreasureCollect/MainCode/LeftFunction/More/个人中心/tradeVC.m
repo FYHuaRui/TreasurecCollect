@@ -22,15 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     [self initSubView];//主页面
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 //导航栏
 - (void)DaoHang
@@ -51,8 +45,7 @@
 }
 
 //返回按钮
-- (void)returnClicked
-{
+- (void)returnClicked{
     NSLogTC(@"返回按钮点击了");
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -61,50 +54,180 @@
 - (void)initSubView
 {
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    self.tableView.backgroundColor = [UIColor redColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.separatorStyle =  UITableViewCellSeparatorStyleNone;
+    [self.tableView registerNib:[UINib nibWithNibName:@"tradeCell"
+                                               bundle:[NSBundle mainBundle]]
+         forCellReuseIdentifier:@"trade_Cell"];
+//    tradeDetailCell
+    [self.tableView registerNib:[UINib nibWithNibName:@"tradeDetailCell"
+                                               bundle:[NSBundle mainBundle]]
+         forCellReuseIdentifier:@"tradeDetail_Cell"];
     [self.view addSubview:self.tableView];
     
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.and.left.bottom.right.equalTo(self.view).offset(0);
+    }];
+    
+    //数据源
     self.arrayData = [NSMutableArray array];
+    _isDownArr = [NSMutableArray array];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,Exchange_URL];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    int userId = 22;
+    [params setObject:[NSNumber numberWithInt:userId] forKey:@"userId"];
+    [HttpTool post:url params:params success:^(id json) {
+        
+        NSLog(@"json:%@",json);
+        self.arrayData = [json objectForKey:@"PosDetail"];
+        for (int i = 0; i < self.arrayData.count; i ++) {
+            
+            [_isDownArr addObject:@"0"];
+            
+        }
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        NSLogTC(@"获取验证码失败：%@",error);
+    }];
+    
 }
 
 #define mark - UITableViewDataSource
-//tableView共有多少行
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+
     if (self.arrayData && [self.arrayData count])
     {
         return [self.arrayData count];
     }
     return 0;
+
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+
+    NSString *arrStr = [_isDownArr objectAtIndex:section];
+    if ([arrStr isEqualToString:@"1"]) {
+        return 2;
+    }else{
+        return 1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"customcell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil)
-    {
-        //添加一个自定义的Cell
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = [UIColor clearColor];
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
-        cell.textLabel.textColor = [UIColor whiteColor];
-    }
+    
+    NSDictionary *dic = [self.arrayData objectAtIndex:indexPath.section];
+    if (indexPath.row == 0) {
         
-    if (self.arrayData && [self.arrayData count])
-    {
+        tradeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"trade_Cell"];
+        if (cell == nil)
+        {
+            //添加一个自定义的Cell
+            cell = [[tradeCell alloc] init];
+        }
+        
+        NSString *selectStr = [_isDownArr objectAtIndex:indexPath.section];
+        //修改图片方向
+        if ([selectStr isEqualToString:@"0"]) {
+            [cell.image setImage:[UIImage imageNamed:@"交易明细向下"]];
+        }else{
+            [cell.image setImage:[UIImage imageNamed:@"交易明细向上"]];
+        }
+        
+        cell.timeLabel.text = [dic objectForKey:@"trdMth"];
+        cell.accountLabel.text = [dic objectForKey:@"vBuyQty"];
+        NSInteger cost = [[dic objectForKey:@"vGainAmt"] integerValue];
+        cell.countLabel.text = [NSString stringWithFormat:@"%ld",cost];
+        if (cost >= 0) {
+            cell.isRaise.text = @"涨";
+            cell.isRaise.backgroundColor = [UIColor redColor];
+            cell.countLabel.textColor = [UIColor redColor];
+        }else{
+            cell.isRaise.text = @"跌";
+            cell.isRaise.backgroundColor = [UIColor greenColor];
+            cell.countLabel.textColor = [UIColor greenColor];
+        }
+        
+        return cell;
+        
+    }else{
+    
+        tradeDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tradeDetail_Cell"];
+        if (cell == nil)
+        {
+            //添加一个自定义的Cell
+            cell = [[tradeDetailCell alloc] init];
+            
+        }
+        
+        cell.beginCost.text = [dic objectForKey:@"vOpenPrice"];
+        cell.overCost.text = [dic objectForKey:@"vClosePrice"];
+        cell.beganTime.text = [dic objectForKey:@"openTm"];
+        cell.overTime.text = [dic objectForKey:@"closeTm"];
+        cell.buyType.text = [dic objectForKey:@"costType"];
+        cell.payLabel.text = [[dic objectForKey:@"cost"] stringValue];
+        cell.poundageLabel.text = [[dic objectForKey:@"fee"] stringValue];
+        cell.overKind.text = [dic objectForKey:@"closeWay"];
+        return cell;
         
     }
-    return cell;
+    
 }
 
 
-#define mark - UITableViewDelegate
-//每行cell高度
+#pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    if (indexPath.row == 0) {
+        return 44;
+    }else{
+        return 230;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    [tableView deselectRowAtIndexPath:indexPath
+                             animated:NO];
+    if (indexPath.row == 0) {
+        
+        //取到当前点击的cell
+        tradeCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        NSString *selectStr = [_isDownArr objectAtIndex:indexPath.section];
+ 
+        //更新记录状态的数组
+        _isDownArr = [NSMutableArray array];
+        for (int i = 0; i < self.arrayData.count; i ++) {
+            
+            if (i != indexPath.section) {
+                [_isDownArr addObject:@"0"];
+            }else{
+                if ([selectStr isEqualToString:@"0"]) {
+                    [_isDownArr addObject:@"1"];
+                }else{
+                    [_isDownArr addObject:@"0"];
+                }
+            }
+
+        }
+        
+        NSMutableIndexSet *idxSet = [[NSMutableIndexSet alloc] init];
+        if (_lastSection.length > 0) {
+            [idxSet addIndex:[_lastSection integerValue]];
+        }
+
+        [idxSet addIndex:indexPath.section];
+        [tableView reloadSections:idxSet withRowAnimation:UITableViewRowAnimationFade];
+        
+        _lastSection = [NSString stringWithFormat:@"%ld",indexPath.section];
+        
+    }
+
 }
 
 @end

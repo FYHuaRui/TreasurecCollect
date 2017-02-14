@@ -7,7 +7,6 @@
 //
 
 #import "CashFlowVC.h"
-#import "CashFlowCell.h"
 
 @interface CashFlowVC ()
 
@@ -66,6 +65,13 @@
     
     //添加TableView
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.separatorStyle =  UITableViewCellSeparatorStyleNone;
+//    [self.tableView registerClass:[CashFlowCell class] forCellReuseIdentifier:@"customcell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CashFlowTableViewCell"
+                                               bundle:[NSBundle mainBundle]]
+         forCellReuseIdentifier:@"CashFlowTableView_Cell"];
     [self.view addSubview:self.tableView];
     
     //TableView布局
@@ -81,7 +87,7 @@
     [params setObject:[NSNumber numberWithInt:userId] forKey:@"userId"];
     [HttpTool post:url params:params success:^(id json) {
         self.arrayData = [json objectForKey:@"AmtIO"];
-        NSLogTC(@"12312312312:%@",self.arrayData);
+        [self.tableView reloadData];
     } failure:^(NSError *error) {
         NSLogTC(@"获取验证码失败：%@",error);
     }];
@@ -95,40 +101,64 @@
     if (self.arrayData && [self.arrayData count])
     {
         return [self.arrayData count];
+    }else{
+        return 0;
     }
-    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"customcell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil)
-    {
-        //添加一个自定义的Cell
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = [UIColor clearColor];
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
-        cell.textLabel.textColor = [UIColor whiteColor];
+//    static NSString *identifier = @"customcell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+//    if (cell == nil)
+//    {
+//        //添加一个自定义的Cell
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        cell.backgroundColor = [UIColor clearColor];
+//        cell.textLabel.font = [UIFont systemFontOfSize:14];
+//        cell.textLabel.textColor = [UIColor whiteColor];
+//    }
+//    
+//    NSDictionary *imageDic = [self.arrayData firstObject];
+//    NSLog(@"12312312312:%@",imageDic);
+//    
+//    if (self.arrayData && [self.arrayData count])
+//    {
+//        CashFlowCell *cashCell = [[CashFlowCell alloc] init];
+//        cashCell.ioType.text = [imageDic objectForKey:@"IOType"];
+//    }
+    
+    
+    CashFlowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CashFlowTableView_Cell"];
+    
+    if (!cell) {
+        
+        cell = [[CashFlowTableViewCell alloc] init];
+        
     }
     
-    NSDictionary *imageDic = [self.arrayData firstObject];
-    NSLog(@"12312312312:%@",imageDic);
-    
-    if (self.arrayData && [self.arrayData count])
-    {
-        CashFlowCell *cashCell = [[CashFlowCell alloc] init];
-        cashCell.ioType.text = [imageDic objectForKey:@"IOType"];
+    NSDictionary *dic = [self.arrayData objectAtIndex:indexPath.row];
+    NSString *operationKind = [dic objectForKey:@"IOType"];
+    cell.operationKindLabel.text = operationKind;
+    cell.timeLabel.text = [dic objectForKey:@"createTm"];
+    NSInteger account = [[dic objectForKey:@"amount"] integerValue] / 100;
+    cell.accountLabel.text = [NSString stringWithFormat:@"%ld",account];
+    if ([operationKind isEqualToString:@"提现"]) {
+        cell.accountLabel.textColor = [UIColor greenColor];
+    }else{
+        cell.accountLabel.textColor = [UIColor redColor];
     }
+    
     return cell;
+    
 }
 
-#define mark - UITableViewDelegate
+#pragma mark - UITableViewDelegate
 //每行cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 60;
 }
 
 @end

@@ -41,11 +41,11 @@
 //买入卖出
 #define BUYIN_URL @"/wsb/java/servlet/OpenPos"//买入
 
-//修改用户昵称
-#define ChangeNickName @"/wsb/java/servlet/ChangeNickName" //修改昵称
+//个人中心
 
-//资金流水
-#define AmtIOSele @"/wsb/java/servlet/AmtIOSele"
+#define AmtIOSele @"/wsb/java/servlet/AmtIOSele"//资金流水
+#define Exchange_URL @"/wsb/java/servlet/PosDetailSele"//交易明细
+#define ChangeNickName @"/wsb/java/servlet/ChangeNickName" //修改昵称
 
 
 #endif /* Common_h */
