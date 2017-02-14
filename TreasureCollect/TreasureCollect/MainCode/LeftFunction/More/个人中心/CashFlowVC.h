@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "CashFlowTableViewCell.h"
+
 @interface CashFlowVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, retain) UITableView       *tableView;

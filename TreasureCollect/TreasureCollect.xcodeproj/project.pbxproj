@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18139BCE1E5191CC00B105E4 /* CashFlowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18139BCC1E5191CC00B105E4 /* CashFlowTableViewCell.m */; };
+		18139BCF1E5191CC00B105E4 /* CashFlowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18139BCD1E5191CC00B105E4 /* CashFlowTableViewCell.xib */; };
+		18139BD31E51AB4900B105E4 /* tradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18139BD11E51AB4900B105E4 /* tradeCell.m */; };
+		18139BD41E51AB4900B105E4 /* tradeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18139BD21E51AB4900B105E4 /* tradeCell.xib */; };
+		18139BD71E51ACB400B105E4 /* 交易明细向上.png in Resources */ = {isa = PBXBuildFile; fileRef = 18139BD51E51ACB400B105E4 /* 交易明细向上.png */; };
+		18139BD81E51ACB400B105E4 /* 交易明细向下.png in Resources */ = {isa = PBXBuildFile; fileRef = 18139BD61E51ACB400B105E4 /* 交易明细向下.png */; };
+		18139BDC1E51BD5C00B105E4 /* tradeDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18139BDA1E51BD5C00B105E4 /* tradeDetailCell.m */; };
+		18139BDD1E51BD5C00B105E4 /* tradeDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18139BDB1E51BD5C00B105E4 /* tradeDetailCell.xib */; };
 		18273CA71DFA574F00855FCB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18273CA61DFA574F00855FCB /* main.m */; };
 		18273CAA1DFA574F00855FCB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18273CA91DFA574F00855FCB /* AppDelegate.m */; };
 		18273CB21DFA574F00855FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18273CB11DFA574F00855FCB /* Assets.xcassets */; };
@@ -171,7 +179,6 @@
 		92DF83921E03E7F900674364 /* UnderStandVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DF83911E03E7F900674364 /* UnderStandVC.m */; };
 		9D7204B0697FFCC7D0153A8D /* libPods-TreasureCollect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1D48F3479A22D07EBE54F5 /* libPods-TreasureCollect.a */; };
 		AF2B908E1E4BF94900087B9D /* CashFlowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2B908D1E4BF94900087B9D /* CashFlowVC.m */; };
-		AF2B90911E4C0DB500087B9D /* CashFlowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2B90901E4C0DB500087B9D /* CashFlowCell.m */; };
 		AF8947DE1E273B04007A2AC6 /* HRLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8947DD1E273B04007A2AC6 /* HRLiveCell.m */; };
 		AF8960C41E2374260084817E /* AreaData.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8960C21E2374260084817E /* AreaData.m */; };
 		AF8960C51E2374260084817E /* areaData.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF8960C31E2374260084817E /* areaData.plist */; };
@@ -234,6 +241,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18139BCB1E5191CC00B105E4 /* CashFlowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashFlowTableViewCell.h; sourceTree = "<group>"; };
+		18139BCC1E5191CC00B105E4 /* CashFlowTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashFlowTableViewCell.m; sourceTree = "<group>"; };
+		18139BCD1E5191CC00B105E4 /* CashFlowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CashFlowTableViewCell.xib; sourceTree = "<group>"; };
+		18139BD01E51AB4900B105E4 /* tradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tradeCell.h; sourceTree = "<group>"; };
+		18139BD11E51AB4900B105E4 /* tradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tradeCell.m; sourceTree = "<group>"; };
+		18139BD21E51AB4900B105E4 /* tradeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tradeCell.xib; sourceTree = "<group>"; };
+		18139BD51E51ACB400B105E4 /* 交易明细向上.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "交易明细向上.png"; sourceTree = "<group>"; };
+		18139BD61E51ACB400B105E4 /* 交易明细向下.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "交易明细向下.png"; sourceTree = "<group>"; };
+		18139BD91E51BD5C00B105E4 /* tradeDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tradeDetailCell.h; sourceTree = "<group>"; };
+		18139BDA1E51BD5C00B105E4 /* tradeDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tradeDetailCell.m; sourceTree = "<group>"; };
+		18139BDB1E51BD5C00B105E4 /* tradeDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tradeDetailCell.xib; sourceTree = "<group>"; };
 		18273CA21DFA574F00855FCB /* TreasureCollect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreasureCollect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18273CA61DFA574F00855FCB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18273CA81DFA574F00855FCB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -466,8 +484,6 @@
 		973B0A67F82586944527AC06 /* Pods-TreasureCollect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreasureCollect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreasureCollect/Pods-TreasureCollect.debug.xcconfig"; sourceTree = "<group>"; };
 		AF2B908C1E4BF94900087B9D /* CashFlowVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashFlowVC.h; sourceTree = "<group>"; };
 		AF2B908D1E4BF94900087B9D /* CashFlowVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashFlowVC.m; sourceTree = "<group>"; };
-		AF2B908F1E4C0DB500087B9D /* CashFlowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashFlowCell.h; sourceTree = "<group>"; };
-		AF2B90901E4C0DB500087B9D /* CashFlowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashFlowCell.m; sourceTree = "<group>"; };
 		AF8947DC1E273B04007A2AC6 /* HRLiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRLiveCell.h; sourceTree = "<group>"; };
 		AF8947DD1E273B04007A2AC6 /* HRLiveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRLiveCell.m; sourceTree = "<group>"; };
 		AF8960C11E2374260084817E /* AreaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaData.h; sourceTree = "<group>"; };
@@ -1105,6 +1121,8 @@
 		922CEF831E01504100C67B1F /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				18139BD51E51ACB400B105E4 /* 交易明细向上.png */,
+				18139BD61E51ACB400B105E4 /* 交易明细向下.png */,
 				922CEF841E01504100C67B1F /* 个人资产.png */,
 				922CEF851E01504100C67B1F /* 个人资产01.png */,
 				922CEF861E01504100C67B1F /* 了解.png */,
@@ -1299,8 +1317,15 @@
 		92667A031DFF9D2200982041 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AF2B908F1E4C0DB500087B9D /* CashFlowCell.h */,
-				AF2B90901E4C0DB500087B9D /* CashFlowCell.m */,
+				18139BCB1E5191CC00B105E4 /* CashFlowTableViewCell.h */,
+				18139BCC1E5191CC00B105E4 /* CashFlowTableViewCell.m */,
+				18139BCD1E5191CC00B105E4 /* CashFlowTableViewCell.xib */,
+				18139BD01E51AB4900B105E4 /* tradeCell.h */,
+				18139BD11E51AB4900B105E4 /* tradeCell.m */,
+				18139BD21E51AB4900B105E4 /* tradeCell.xib */,
+				18139BD91E51BD5C00B105E4 /* tradeDetailCell.h */,
+				18139BDA1E51BD5C00B105E4 /* tradeDetailCell.m */,
+				18139BDB1E51BD5C00B105E4 /* tradeDetailCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1465,6 +1490,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 8H2B3Y5JNC;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					18273CBA1DFA574F00855FCB = {
 						CreatedOnToolsVersion = 8.1;
@@ -1541,6 +1571,7 @@
 				189286221E2C9FF900D99530 /* arrow_up_06.png in Resources */,
 				92B00F271E022BA00019D040 /* 进入.png in Resources */,
 				18BFE0081E10FF16006CF255 /* Pingpp.bundle in Resources */,
+				18139BD81E51ACB400B105E4 /* 交易明细向下.png in Resources */,
 				1892861F1E2C9FF900D99530 /* arrow_up_03.png in Resources */,
 				187C5BBC1E1205DA0043A1A1 /* icon_iphon@2x.png in Resources */,
 				18511D821E0BD97200E30772 /* close.png in Resources */,
@@ -1593,6 +1624,7 @@
 				187C5BE21E1222200043A1A1 /* red08.png in Resources */,
 				18511D801E0BBE7700E30772 /* AD4.png in Resources */,
 				18B34B661E1B75F300BDE0E8 /* hud-6.png in Resources */,
+				18139BDD1E51BD5C00B105E4 /* tradeDetailCell.xib in Resources */,
 				F8765EB61E13BBD900060948 /* messagebg@3x.png in Resources */,
 				F8A88BA81E1CA394003CB922 /* img_head_portrait.png in Resources */,
 				18511D7D1E0BBE7700E30772 /* AD1.png in Resources */,
@@ -1614,7 +1646,9 @@
 				F87BAFA01E1E433D00DBBB78 /* icon_shezhi@3x.png in Resources */,
 				F8A88BAC1E1CA394003CB922 /* img_Live@2x.png in Resources */,
 				1896E5FE1E011DE80072DC50 /* rightTrangle.png in Resources */,
+				18139BD71E51ACB400B105E4 /* 交易明细向上.png in Resources */,
 				F8A88B9F1E1CA394003CB922 /* btn_play.png in Resources */,
+				18139BCF1E5191CC00B105E4 /* CashFlowTableViewCell.xib in Resources */,
 				92442FDD1DFE78A0008BF127 /* 返回.png in Resources */,
 				189286171E2C9FF900D99530 /* arrow_down_01.png in Resources */,
 				F87BAFA21E1E433D00DBBB78 /* icon_shezhi@2x.png in Resources */,
@@ -1639,6 +1673,7 @@
 				F8A88B981E1CA394003CB922 /* banner_Live@3x.png in Resources */,
 				922CEF991E01504100C67B1F /* 资金流水.png in Resources */,
 				922CEF931E01504100C67B1F /* 交易明细.png in Resources */,
+				18139BD41E51AB4900B105E4 /* tradeCell.xib in Resources */,
 				92442FDB1DFE78A0008BF127 /* 微信支付.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1740,22 +1775,24 @@
 				187EDC721E0B78CA00941A57 /* SecurityUtil.m in Sources */,
 				188F9DB81E286C5C004A3BC2 /* AdDetailController.m in Sources */,
 				922CEFA21E0150BA00C67B1F /* SettingVC.m in Sources */,
+				18139BDC1E51BD5C00B105E4 /* tradeDetailCell.m in Sources */,
 				188F09421DFE3C6F004E1284 /* RechargeController.m in Sources */,
 				926679FB1DFF871900982041 /* HMViewController.m in Sources */,
 				926C35B31E02931D005BF715 /* tradeVC.m in Sources */,
 				1829D9C91DFAA7CE00405DF2 /* UIColor+RGB.m in Sources */,
 				921BDE461DFFBE1A00C031C5 /* PersNSObject.m in Sources */,
 				92DF838C1E03E60700674364 /* ShareTicketVC.m in Sources */,
-				AF2B90911E4C0DB500087B9D /* CashFlowCell.m in Sources */,
 				92442FC41DFE400C008BF127 /* LeftMore.m in Sources */,
 				1829D9D11DFAA9AB00405DF2 /* HomeController.m in Sources */,
 				188F9DB01E286BBD004A3BC2 /* GetKlineData.m in Sources */,
 				18273CE31DFAA01C00855FCB /* HttpTool.m in Sources */,
+				18139BD31E51AB4900B105E4 /* tradeCell.m in Sources */,
 				92442FCB1DFE7841008BF127 /* UIButton+BackGroundColor.m in Sources */,
 				AF2B908E1E4BF94900087B9D /* CashFlowVC.m in Sources */,
 				92442FC71DFE6E18008BF127 /* LeftTableView.m in Sources */,
 				926C35B61E029C13005BF715 /* ImportantVC.m in Sources */,
 				187C5B9E1E1205B00043A1A1 /* LoginVC.m in Sources */,
+				18139BCE1E5191CC00B105E4 /* CashFlowTableViewCell.m in Sources */,
 				92667A071DFF9DB200982041 /* PersonalViewController.m in Sources */,
 				189286091E2C53F100D99530 /* DataView.m in Sources */,
 				92442FD01DFE785F008BF127 /* PayButton.m in Sources */,

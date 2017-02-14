@@ -193,10 +193,11 @@
                                                          handler:^(UIAlertAction * _Nonnull action) {
                                                              
 
-                                                             NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,AMTCHARGE];
+                                                             NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,RECHARTE_URL];
                                                              NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                                                             [params setObject:[NSNumber numberWithInt:11] forKey:@"userId"];
-                                                             [params setObject:@"upacp" forKey:@"channel"];
+                                                             [params setObject:[NSNumber numberWithInt:22] forKey:@"userId"];
+                                                             NSString *rechargeKind = @"upacp";
+                                                             [params setObject:rechargeKind forKey:@"channel"];
                                                              [params setObject:[NSNumber numberWithInteger:_rechargeCount * 100] forKey:@"amount"];
                                                              [params setObject:[NSString getIPAddress:YES] forKey:@"clientIp"];
                                                              

@@ -622,7 +622,9 @@
 
 
 - (NSInteger)numberOfLineView:(UIView *)view{
+    
     return self.KlineModels.count;
+
 }
 
 @end
