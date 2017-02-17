@@ -241,7 +241,7 @@
 
 -(void)keyboardWillBeHidden:(NSNotification*)aNotification{
     
-    _bgScrollView.height = KScreenHeight;
+    _bgScrollView.height = KScreenHeight - kNavigationBarHeight;
     
 }
 
