@@ -505,12 +505,22 @@ static int smYzmId = 0;
                 NSLog(@"%@",params);
                 [HttpTool post:url params:params success:^(id json) {
                     NSLog(@"%@",json);
+                    
+                    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:url]];
+                    for (NSHTTPCookie *cookie in cookies)
+                    {
+//                        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+                        NSLog(@"%@",cookie);
+                    }
                     NSArray *dataArr = [json objectForKey:@"RspMsg"];
                     NSDictionary *imageDic = [dataArr firstObject];
                     NSString *runMessage = [imageDic objectForKey:@"runMsg"];
                     int a = [[imageDic objectForKey:@"runCode"] intValue];
                     if (a == 200001)//登录成功!
                     {
+                        
+                        [HttpTool saveCookies];
+                        
                         NSArray *userAry = [json objectForKey:@"CurrUser"];
                         NSDictionary *userDic = [userAry firstObject];
                         NSString *PhoneStr = [userDic objectForKey:@"telephone"];

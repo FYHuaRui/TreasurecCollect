@@ -51,12 +51,9 @@
 + (void)post:(NSString *)url params:(NSDictionary *)params success:(void (^)(id json))success failure:(void (^)(NSError *error))failure{
     
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-    for (NSString *keyValue in mgr.requestSerializer.HTTPRequestHeaders.allKeys) {
-        NSLog(@"%@",mgr.requestSerializer.HTTPRequestHeaders);
-        NSLog(@"%@",keyValue);
-    }
 
-    [mgr.requestSerializer setValue:@"testValue" forHTTPHeaderField:@"testABC"];
+    mgr.requestSerializer.HTTPShouldHandleCookies = YES;
+
     NSMutableDictionary *paramsObj = [NSMutableDictionary dictionary];
     if (params) {
         NSString *obj = [params JSONString];
@@ -72,14 +69,14 @@
      progress:^(NSProgress * _Nonnull uploadProgress) {
          
      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-         
+//         
 //         NSMutableDictionary *file = [NSMutableDictionary dictionary];
 //         NSURL *url = task.currentRequest.URL;
 //         NSArray *cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:file forURL:url];
 //         
 //         for (NSHTTPCookie *cookie in cookies) {
 //             
-//             NSLog(@"cookie：%@",cookie.value);
+//             NSLog(@"cookie：%@",cookie);
 //             
 //         }
          
@@ -199,6 +196,30 @@
            }
            
        }];
+    
+}
+
++ (void)saveCookies{
+    
+    NSData *cookiesData = [NSKeyedArchiver archivedDataWithRootObject: [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject: cookiesData forKey:@"fyhrCookies"];
+    [defaults synchronize];
+
+}
+
+//合适的时机加载持久化后Cookie 一般都是app刚刚启动的时候
++ (void)loadSavedCookies{
+    
+    NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData: [[NSUserDefaults standardUserDefaults] objectForKey: @"fyhrCookies"]];
+//    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    if (cookies.count > 0) {
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookies[0]];
+    }
+
+//    for (NSHTTPCookie *cookie in cookies){
+//        NSLog(@"cookie,name:= %@,valuie = %@",cookie.name,cookie.value);
+//    }
     
 }
 

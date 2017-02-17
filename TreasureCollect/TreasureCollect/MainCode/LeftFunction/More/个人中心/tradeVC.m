@@ -76,10 +76,7 @@
     _isDownArr = [NSMutableArray array];
     
     NSString *url = [NSString stringWithFormat:@"%@%@",BASE_URL,Exchange_URL];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    int userId = 22;
-    [params setObject:[NSNumber numberWithInt:userId] forKey:@"userId"];
-    [HttpTool post:url params:params success:^(id json) {
+    [HttpTool post:url params:nil success:^(id json) {
         
         NSLog(@"json:%@",json);
         self.arrayData = [json objectForKey:@"PosDetail"];

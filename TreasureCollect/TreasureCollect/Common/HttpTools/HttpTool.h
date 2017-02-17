@@ -32,4 +32,8 @@
      success:(void (^)(id))success
      failure:(void (^)(NSError *))failure;
 
++ (void)saveCookies;
+
++ (void)loadSavedCookies;
+
 @end
