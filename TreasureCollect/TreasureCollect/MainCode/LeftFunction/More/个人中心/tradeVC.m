@@ -170,8 +170,8 @@
         cell.beganTime.text = [dic objectForKey:@"openTm"];
         cell.overTime.text = [dic objectForKey:@"closeTm"];
         cell.buyType.text = [dic objectForKey:@"costType"];
-        cell.payLabel.text = [[dic objectForKey:@"cost"] stringValue];
-        cell.poundageLabel.text = [[dic objectForKey:@"fee"] stringValue];
+        cell.payLabel.text = [[dic objectForKey:@"vCost"] stringValue];
+        cell.poundageLabel.text = [[dic objectForKey:@"vFee"] stringValue];
         cell.overKind.text = [dic objectForKey:@"closeWay"];
         return cell;
         
