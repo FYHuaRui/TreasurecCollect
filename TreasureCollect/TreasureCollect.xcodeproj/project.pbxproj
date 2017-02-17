@@ -104,6 +104,9 @@
 		1896E5FD1E011DE80072DC50 /* leftTrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896E5FB1E011DE80072DC50 /* leftTrangle.png */; };
 		1896E5FE1E011DE80072DC50 /* rightTrangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896E5FC1E011DE80072DC50 /* rightTrangle.png */; };
 		1896E6011E011EC10072DC50 /* ProportionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896E6001E011EC10072DC50 /* ProportionView.m */; };
+		189A9F0C1E569A3800FB810A /* WithdrawalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A9F0A1E569A3800FB810A /* WithdrawalController.m */; };
+		189A9F0D1E569A3800FB810A /* WithdrawalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189A9F0B1E569A3800FB810A /* WithdrawalController.xib */; };
+		189A9F101E569A5D00FB810A /* WithDrwwalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A9F0F1E569A5D00FB810A /* WithDrwwalCell.m */; };
 		18B34B611E1B75F300BDE0E8 /* hud-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B34B5B1E1B75F300BDE0E8 /* hud-1.png */; };
 		18B34B621E1B75F300BDE0E8 /* hud-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B34B5C1E1B75F300BDE0E8 /* hud-2.png */; };
 		18B34B631E1B75F300BDE0E8 /* hud-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B34B5D1E1B75F300BDE0E8 /* hud-3.png */; };
@@ -375,6 +378,11 @@
 		1896E5FC1E011DE80072DC50 /* rightTrangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightTrangle.png; sourceTree = "<group>"; };
 		1896E5FF1E011EC10072DC50 /* ProportionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProportionView.h; sourceTree = "<group>"; };
 		1896E6001E011EC10072DC50 /* ProportionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProportionView.m; sourceTree = "<group>"; };
+		189A9F091E569A3800FB810A /* WithdrawalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithdrawalController.h; sourceTree = "<group>"; };
+		189A9F0A1E569A3800FB810A /* WithdrawalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithdrawalController.m; sourceTree = "<group>"; };
+		189A9F0B1E569A3800FB810A /* WithdrawalController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WithdrawalController.xib; sourceTree = "<group>"; };
+		189A9F0E1E569A5D00FB810A /* WithDrwwalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithDrwwalCell.h; sourceTree = "<group>"; };
+		189A9F0F1E569A5D00FB810A /* WithDrwwalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithDrwwalCell.m; sourceTree = "<group>"; };
 		18B34B5B1E1B75F300BDE0E8 /* hud-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-1.png"; sourceTree = "<group>"; };
 		18B34B5C1E1B75F300BDE0E8 /* hud-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-2.png"; sourceTree = "<group>"; };
 		18B34B5D1E1B75F300BDE0E8 /* hud-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-3.png"; sourceTree = "<group>"; };
@@ -1326,6 +1334,8 @@
 				18139BD91E51BD5C00B105E4 /* tradeDetailCell.h */,
 				18139BDA1E51BD5C00B105E4 /* tradeDetailCell.m */,
 				18139BDB1E51BD5C00B105E4 /* tradeDetailCell.xib */,
+				189A9F0E1E569A5D00FB810A /* WithDrwwalCell.h */,
+				189A9F0F1E569A5D00FB810A /* WithDrwwalCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1341,6 +1351,9 @@
 				AF2B908D1E4BF94900087B9D /* CashFlowVC.m */,
 				926C35B41E029C13005BF715 /* ImportantVC.h */,
 				926C35B51E029C13005BF715 /* ImportantVC.m */,
+				189A9F091E569A3800FB810A /* WithdrawalController.h */,
+				189A9F0A1E569A3800FB810A /* WithdrawalController.m */,
+				189A9F0B1E569A3800FB810A /* WithdrawalController.xib */,
 				922CEF9C1E0150BA00C67B1F /* 设置 */,
 			);
 			name = Controller;
@@ -1621,6 +1634,7 @@
 				189286181E2C9FF900D99530 /* arrow_down_02.png in Resources */,
 				F8A88BA21E1CA394003CB922 /* btn_Return.png in Resources */,
 				F8A88BA41E1CA394003CB922 /* btn_Return@3x.png in Resources */,
+				189A9F0D1E569A3800FB810A /* WithdrawalController.xib in Resources */,
 				187C5BE21E1222200043A1A1 /* red08.png in Resources */,
 				18511D801E0BBE7700E30772 /* AD4.png in Resources */,
 				18B34B661E1B75F300BDE0E8 /* hud-6.png in Resources */,
@@ -1747,6 +1761,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				189A9F101E569A5D00FB810A /* WithDrwwalCell.m in Sources */,
 				92DF83921E03E7F900674364 /* UnderStandVC.m in Sources */,
 				F8765EB21E13A11300060948 /* ForgetPasswordVC.m in Sources */,
 				187EDC6F1E0B78CA00941A57 /* GTMBase64.m in Sources */,
@@ -1759,6 +1774,7 @@
 				92DF83891E03D81200674364 /* HRLivePlayer.m in Sources */,
 				189286251E2CBF6900D99530 /* lightningView.m in Sources */,
 				187EDC701E0B78CA00941A57 /* NSData+AES.m in Sources */,
+				189A9F0C1E569A3800FB810A /* WithdrawalController.m in Sources */,
 				AF8947DE1E273B04007A2AC6 /* HRLiveCell.m in Sources */,
 				18BFDDBA1E10CB39006CF255 /* NSString+GetNetip.m in Sources */,
 				F8ABB9A81E0935DD00B2DFBF /* RegisterVC.m in Sources */,

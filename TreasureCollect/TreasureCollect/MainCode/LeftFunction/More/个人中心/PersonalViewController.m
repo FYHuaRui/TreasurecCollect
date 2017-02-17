@@ -29,14 +29,14 @@
 {
     [super viewWillAppear:animated];
     [self Daohang];//导航栏设置
-//    self.navigationController.navigationBar.barTintColor = [UIColor colorFromHexRGB:@"2887ee"];
+    //    self.navigationController.navigationBar.barTintColor = [UIColor colorFromHexRGB:@"2887ee"];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    [self Daohang];//导航栏设置
+    //    [self Daohang];//导航栏设置
     [self initSubViews];//主要内容
 }
 
@@ -65,15 +65,15 @@
     self.navigationItem.leftBarButtonItem = leftItem;
     
     //右侧联系客服
-//    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [rightBtn setTitle:@"客服" forState:UIControlStateNormal];
-//    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [rightBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-//    rightBtn.frame = CGRectMake(0, 0, 60, 30);
-//    rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-//    [rightBtn addTarget:self action:@selector(rightBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
-//    self.navigationItem.rightBarButtonItem = rightItem;
+    //    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    //    [rightBtn setTitle:@"客服" forState:UIControlStateNormal];
+    //    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    //    [rightBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    //    rightBtn.frame = CGRectMake(0, 0, 60, 30);
+    //    rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    //    [rightBtn addTarget:self action:@selector(rightBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    //    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    //    self.navigationItem.rightBarButtonItem = rightItem;
     
 }
 
@@ -86,10 +86,10 @@
     PersNSObject *table2 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"资金流水"] label:@"资金流水" rightView:nil];
     
     //显示银元券有多少张
-//    UILabel *sLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-//    int a = 1;
-//    sLab.textAlignment = NSTextAlignmentRight;
-//    sLab.text = [NSString stringWithFormat:@"%d张",a];
+    //    UILabel *sLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    //    int a = 1;
+    //    sLab.textAlignment = NSTextAlignmentRight;
+    //    sLab.text = [NSString stringWithFormat:@"%d张",a];
     PersNSObject *table3 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"银元券"] label:@"银元券" rightView:nil];
     
     PersNSObject *table4 = [[PersNSObject alloc] initWithLeftView:[UIImage imageNamed:@"重要提醒"] label:@"重要提醒" rightView:nil];
@@ -126,7 +126,7 @@
         make.right.equalTo(self.view).offset(0);
         make.bottom.equalTo(self.view).offset(0);
     }];
-
+    
     //添加TabView头
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 240)];
     headerView.backgroundColor = [UIColor colorFromHexRGB:@"f0f0f0"];
@@ -143,7 +143,7 @@
     //登录／提现
     UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     loginBtn.frame = CGRectMake(15, 110, KScreenWidth/2 - 20, 40);
-//    [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+    //    [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     loginBtn.backgroundColor = [UIColor colorFromHexRGB:@"00a6ff"];
     loginBtn.layer.cornerRadius = 3.0;
@@ -153,7 +153,7 @@
     //注册／充值
     UIButton *CzBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     CzBtn.frame = CGRectMake(self.view.center.x+10, loginBtn.frame.origin.y, loginBtn.frame.size.width, loginBtn.frame.size.height);
-//    [CzBtn setTitle:@"注册" forState:UIControlStateNormal];
+    //    [CzBtn setTitle:@"注册" forState:UIControlStateNormal];
     [CzBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     CzBtn.backgroundColor = [UIColor colorFromHexRGB:@"ffba00"];
     CzBtn.layer.cornerRadius = 3.0;
@@ -208,7 +208,7 @@
         [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
         [CzBtn setTitle:@"注册" forState:UIControlStateNormal];
     }
-
+    
     //个人资产
     UILabel *aLab = [[UILabel alloc] initWithFrame:CGRectMake(10, 180, 150, 10)];
     aLab.font = [UIFont systemFontOfSize:12];
@@ -261,14 +261,14 @@
  */
 - (void)loginBtnClicked:(UIButton*)button
 {
-    if ([button.titleLabel.text isEqualToString:@"登录"])
-    {
+    if ([button.titleLabel.text isEqualToString:@"登录"]){
         LoginVC *loginVC = [[LoginVC alloc] init];
         [self.navigationController pushViewController:loginVC animated:YES];
-    }
-    else
-    {
-        NSLogTC(@"提现，发钱啦，啦啦啦啦啦");
+    }else{
+        //跳转至提现页面
+        WithdrawalController *WVC = [[WithdrawalController alloc] init];
+        [self.navigationController pushViewController:WVC
+                                             animated:YES];
     }
 }
 
@@ -335,7 +335,7 @@
     if (!cell)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-//        cell = [[UITableViewCell alloc] init];
+        //        cell = [[UITableViewCell alloc] init];
     }
     
     if (indexPath.section < [self.arrayData count])
@@ -385,8 +385,6 @@
 //选择表格视图某一行调用的方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *array = [self.arrayData objectAtIndex:indexPath.section];
-//    PersNSObject *tableCell = [array objectAtIndex:indexPath.row];
     
     if (indexPath.section == 0)
     {
