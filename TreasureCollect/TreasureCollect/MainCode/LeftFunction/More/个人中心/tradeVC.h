@@ -11,10 +11,10 @@
 #import "tradeDetailCell.h"
 
 @interface tradeVC : UIViewController<UITableViewDelegate, UITableViewDataSource>{
-
+    
     NSMutableArray *_isDownArr;
     NSString   *_lastSection;
-
+    
 }
 
 @property (nonatomic, retain) UITableView       *tableView;

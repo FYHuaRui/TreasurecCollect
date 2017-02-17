@@ -24,7 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initSubView];//主页面
-
+    
     
 }
 
@@ -34,8 +34,8 @@
 }
 
 //导航栏
-- (void)DaoHang
-{
+- (void)DaoHang{
+    
     self.title = @"资金流水";
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor], NSForegroundColorAttributeName,nil]];//修改标题颜色
@@ -68,7 +68,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle =  UITableViewCellSeparatorStyleNone;
-//    [self.tableView registerClass:[CashFlowCell class] forCellReuseIdentifier:@"customcell"];
+    //    [self.tableView registerClass:[CashFlowCell class] forCellReuseIdentifier:@"customcell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CashFlowTableViewCell"
                                                bundle:[NSBundle mainBundle]]
          forCellReuseIdentifier:@"CashFlowTableView_Cell"];
@@ -91,7 +91,7 @@
     } failure:^(NSError *error) {
         NSLogTC(@"获取验证码失败：%@",error);
     }];
-
+    
 }
 
 #define mark - UITableViewDataSource
@@ -108,26 +108,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    static NSString *identifier = @"customcell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-//    if (cell == nil)
-//    {
-//        //添加一个自定义的Cell
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        cell.backgroundColor = [UIColor clearColor];
-//        cell.textLabel.font = [UIFont systemFontOfSize:14];
-//        cell.textLabel.textColor = [UIColor whiteColor];
-//    }
-//    
-//    NSDictionary *imageDic = [self.arrayData firstObject];
-//    NSLog(@"12312312312:%@",imageDic);
-//    
-//    if (self.arrayData && [self.arrayData count])
-//    {
-//        CashFlowCell *cashCell = [[CashFlowCell alloc] init];
-//        cashCell.ioType.text = [imageDic objectForKey:@"IOType"];
-//    }
+    //    static NSString *identifier = @"customcell";
+    //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    //    if (cell == nil)
+    //    {
+    //        //添加一个自定义的Cell
+    //        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //        cell.backgroundColor = [UIColor clearColor];
+    //        cell.textLabel.font = [UIFont systemFontOfSize:14];
+    //        cell.textLabel.textColor = [UIColor whiteColor];
+    //    }
+    //
+    //    NSDictionary *imageDic = [self.arrayData firstObject];
+    //    NSLog(@"12312312312:%@",imageDic);
+    //
+    //    if (self.arrayData && [self.arrayData count])
+    //    {
+    //        CashFlowCell *cashCell = [[CashFlowCell alloc] init];
+    //        cashCell.ioType.text = [imageDic objectForKey:@"IOType"];
+    //    }
     
     
     CashFlowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CashFlowTableView_Cell"];

@@ -61,7 +61,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"tradeCell"
                                                bundle:[NSBundle mainBundle]]
          forCellReuseIdentifier:@"trade_Cell"];
-//    tradeDetailCell
+    //    tradeDetailCell
     [self.tableView registerNib:[UINib nibWithNibName:@"tradeDetailCell"
                                                bundle:[NSBundle mainBundle]]
          forCellReuseIdentifier:@"tradeDetail_Cell"];
@@ -91,25 +91,25 @@
         [self.tableView reloadData];
         
     } failure:^(NSError *error) {
-        NSLogTC(@"获取验证码失败：%@",error);
+        NSLogTC(@"失败：%@",error);
     }];
     
 }
 
 #define mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-
+    
     if (self.arrayData && [self.arrayData count])
     {
         return [self.arrayData count];
     }
     return 0;
-
+    
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
+    
     NSString *arrStr = [_isDownArr objectAtIndex:section];
     if ([arrStr isEqualToString:@"1"]) {
         return 2;
@@ -156,7 +156,7 @@
         return cell;
         
     }else{
-    
+        
         tradeDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tradeDetail_Cell"];
         if (cell == nil)
         {
@@ -191,15 +191,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     [tableView deselectRowAtIndexPath:indexPath
                              animated:NO];
     if (indexPath.row == 0) {
         
-        //取到当前点击的cell
-        tradeCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        //得到当前选中组号，并转换成字符串
         NSString *selectStr = [_isDownArr objectAtIndex:indexPath.section];
- 
+        
         //更新记录状态的数组
         _isDownArr = [NSMutableArray array];
         for (int i = 0; i < self.arrayData.count; i ++) {
@@ -213,21 +212,21 @@
                     [_isDownArr addObject:@"0"];
                 }
             }
-
+            
         }
         
         NSMutableIndexSet *idxSet = [[NSMutableIndexSet alloc] init];
         if (_lastSection.length > 0) {
             [idxSet addIndex:[_lastSection integerValue]];
         }
-
+        
         [idxSet addIndex:indexPath.section];
         [tableView reloadSections:idxSet withRowAnimation:UITableViewRowAnimationFade];
         
         _lastSection = [NSString stringWithFormat:@"%ld",indexPath.section];
         
     }
-
+    
 }
 
 @end
